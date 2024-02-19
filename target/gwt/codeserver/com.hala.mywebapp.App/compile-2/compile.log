@@ -1,0 +1,13 @@
+binding: user.agent=safari
+Compiling module com.hala.mywebapp.App
+   Computing all possible rebind results for 'com.hala.mywebapp.Starter.MyResources'
+      Rebinding com.hala.mywebapp.Starter.MyResources
+         Invoking generator com.google.gwt.resources.rebind.context.InlineClientBundleGenerator
+            Preparing method immagineStart
+               Finding resources
+                  [ERROR] Resource pictures/immagineStart.jpg not found. Is the name specified as ClassLoader.getResource() would expect?
+   [ERROR] Errors in 'com/hala/mywebapp/Starter.java'
+      [ERROR] Line 30: Failed to resolve 'com.hala.mywebapp.Starter.MyResources' via deferred binding
+   Unification traversed 663 fields and methods and 350 types. 8 are considered part of the current module and 16 had all of their fields and methods traversed.
+   [WARN] Some stale types ([com.hala.mywebapp.GreetingService_Proxy, com.hala.mywebapp.App$1, com.hala.mywebapp.App$1MyHandler$1, com.hala.mywebapp.App$1MyHandler]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+[ERROR] Compiler returned false

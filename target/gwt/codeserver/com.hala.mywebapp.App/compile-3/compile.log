@@ -1,0 +1,14 @@
+binding: user.agent=safari
+Compiling module com.hala.mywebapp.App
+   Unification traversed 701 fields and methods and 363 types. 10 are considered part of the current module and 18 had all of their fields and methods traversed.
+   [WARN] Some stale types ([com.hala.mywebapp.GreetingService_Proxy, com.hala.mywebapp.App$1, com.hala.mywebapp.App$1MyHandler$1, com.hala.mywebapp.App$1MyHandler]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+   Compiling 1 permutation
+      Compiling permutation 0...
+      Linking per-type JS with 10 new/changed types.
+      Source Maps Enabled
+   Compile of permutations succeeded
+   Compilation succeeded -- 1,271s
+Linking into C:\Users\USER\Desktop\hALA\mywebapp\target\gwt\codeserver\com.hala.mywebapp.App\compile-3\war\MyWebApp; Writing extras to C:\Users\USER\Desktop\hALA\mywebapp\target\gwt\codeserver\com.hala.mywebapp.App\compile-3\extras\MyWebApp
+   Link succeeded
+   Linking succeeded -- 0,206s
+1,552s total -- Compile completed
