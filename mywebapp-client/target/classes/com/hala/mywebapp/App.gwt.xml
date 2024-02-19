@@ -1,0 +1,7 @@
+<module rename-to="MyWebApp">
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="com.google.gwt.user.theme.clean.Clean"/>
+  <source path=""/>
+  <entry-point class="com.hala.mywebapp.App"/>
+  <set-property name="user.agent" value="gecko1_8,safari"/>
+</module>
