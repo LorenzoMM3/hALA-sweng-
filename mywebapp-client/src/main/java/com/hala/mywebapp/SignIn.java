@@ -15,8 +15,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class SignIn implements IsWidget {
 
-    private VerticalPanel mainPanel;
-//    private static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
+    public VerticalPanel mainPanel;
+    public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     
     public SignIn() {
        mainPanel = GWT.create(VerticalPanel.class) ;
@@ -40,7 +40,7 @@ public class SignIn implements IsWidget {
 		vp.add(sendButton);
 		vp.add(messageLabel);
         mainPanel.add(vp);
-        /* 
+        
 		sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 String username = usernameField.getText();
@@ -61,7 +61,7 @@ public class SignIn implements IsWidget {
             });
             }
         });
-        */
+        
     }
 
     @Override

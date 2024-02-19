@@ -43,6 +43,5 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 		return false; // Credenziali errate
 	}
 
-	
 
 }

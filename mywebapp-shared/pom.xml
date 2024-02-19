@@ -16,6 +16,11 @@
       <artifactId>gwt-servlet-jakarta</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+        <groupId>org.mapdb</groupId>
+        <artifactId>mapdb</artifactId>
+        <version>3.0.8</version>
+        </dependency>
   </dependencies>
 
   <build>
