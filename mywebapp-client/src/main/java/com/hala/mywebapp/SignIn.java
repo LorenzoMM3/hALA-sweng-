@@ -49,6 +49,7 @@ public class SignIn implements IsWidget {
                 @Override
                 public void onFailure(Throwable throwable) {
                     messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
+                    GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable); //da cancellare
                 }
 
                 @Override

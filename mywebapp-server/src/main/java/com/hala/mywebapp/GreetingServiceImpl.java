@@ -12,13 +12,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 	DB db;
 	BTreeMap<String, String> data;
-	/* 
+	
 	@Override
 	public void initData(){
 		db = GWT.create(DB.class);
 		data = GWT.create(BTreeMap.class);
 	}
-	*/
+	
 	@Override
 	public boolean signIn(String username, String password){
 		for (String user : data.keySet()) {
