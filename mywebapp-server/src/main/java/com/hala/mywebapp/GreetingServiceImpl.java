@@ -10,11 +10,13 @@ import org.mapdb.*;
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
-	DB db = DBMaker.fileDB("file.db").make();
-	HTreeMap<String, String> data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).create();
+	DB db;
+	HTreeMap<String, String> data;
 	
 	@Override
 	public void initData(){
+		db = DBMaker.fileDB("file.db").make();
+		data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).createOrOpen();
 	}
 	
 	@Override
