@@ -10,13 +10,11 @@ import org.mapdb.*;
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
-	DB db;
-	BTreeMap<String, String> data;
+	DB db = DBMaker.fileDB("file.db").make();
+	HTreeMap<String, String> data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).create();
 	
 	@Override
 	public void initData(){
-		db = GWT.create(DB.class);
-		data = GWT.create(BTreeMap.class);
 	}
 	
 	@Override
