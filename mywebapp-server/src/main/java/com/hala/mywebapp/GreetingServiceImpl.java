@@ -37,7 +37,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	public boolean signIn(String username, String password){
         openDB();
 		for (String user : data.keySet()) {
-            if (user.equalsIgnoreCase(username)) {
+            if (user.equals(username)) {
                 return false; // Non si può registrare
             }
         }
@@ -51,7 +51,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	public boolean logIn(String username, String password){
         openDB();
 		for (String user : data.keySet()) {
-            if (user.equalsIgnoreCase(username)) {
+            if (user.equals(username)) {
                 if (data.get(user).equals(password)){
 					return true; // Credenziali corrette
 				}

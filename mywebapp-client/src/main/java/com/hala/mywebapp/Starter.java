@@ -45,6 +45,14 @@ public class Starter implements IsWidget {
                 RootPanel.get("startTable").add(new SignIn());
             }
         });
+
+        loginButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Login());
+            }
+        });
+
     }
 
     
