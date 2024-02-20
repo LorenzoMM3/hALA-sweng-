@@ -2,6 +2,14 @@ package com.hala.mywebapp;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.server.rpc.jakarta.RemoteServiceServlet;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Map;
+import java.io.IOException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.mapdb.*;
 
 /**
@@ -17,6 +25,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	public void initData(){
 		db = DBMaker.fileDB("file.db").make();
 		data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).createOrOpen();
+		
 	}
 	
 	@Override
@@ -28,6 +37,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
 		data.put(username, password);
 		db.commit();
+		convertToJson();
 		return true; // Si può registrare
 	}
 
@@ -42,6 +52,24 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
 		return false; // Credenziali errate
 	}
+
+	private void convertToJson() {
+        try (PrintWriter pW = new PrintWriter(new FileWriter("data.json"))) {
+            pW.println("{");
+            boolean firstEntry = true;
+            for (Map.Entry<String, String> entry : data.entrySet()) {
+                if (!firstEntry) {
+                    pW.println(",");
+                }
+                pW.println("  \"" + entry.getKey() + "\": \"" + entry.getValue() + "\"");
+                firstEntry = false;
+            }
+            pW.println("}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
