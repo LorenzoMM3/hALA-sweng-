@@ -22,7 +22,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	
 	@Override
 	public void initData(){
-		db = DBMaker.fileDB("file.db").make();
+        if (db == null || db.isClosed()){
+            db = DBMaker.fileDB("file.db").make();
+        }
+		
 		data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).createOrOpen();
 		
 	}
