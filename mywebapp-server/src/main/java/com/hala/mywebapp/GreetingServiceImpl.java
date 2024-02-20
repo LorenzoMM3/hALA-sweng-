@@ -22,16 +22,20 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	
 	@Override
 	public void initData(){
-        if (db == null || db.isClosed()){
-            db = DBMaker.fileDB("file.db").make();
-        }
-		
-		data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).createOrOpen();
+        openDB();
 		
 	}
 	
+    private void openDB(){
+        if (db == null || db.isClosed()){
+            db = DBMaker.fileDB("file.db").make();
+            data = db.hashMap("dataStorage").keySerializer(Serializer.STRING).valueSerializer(Serializer.STRING).createOrOpen();
+        }
+    }
+
 	@Override
 	public boolean signIn(String username, String password){
+        openDB();
 		for (String user : data.keySet()) {
             if (user.equalsIgnoreCase(username)) {
                 return false; // Non si può registrare
@@ -45,6 +49,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 	@Override
 	public boolean logIn(String username, String password){
+        openDB();
 		for (String user : data.keySet()) {
             if (user.equalsIgnoreCase(username)) {
                 if (data.get(user).equals(password)){
@@ -56,6 +61,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 	}
 
 	private void convertToJson() {
+        openDB();
         try (PrintWriter pW = new PrintWriter(new FileWriter("data.json"))) {
             pW.println("{");
             boolean firstEntry = true;
