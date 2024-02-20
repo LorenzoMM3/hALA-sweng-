@@ -9,6 +9,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -30,6 +31,7 @@ public class SignIn implements IsWidget {
         TextBox passwordField = new TextBox();
         Button sendButton = new Button("signIn");
         Label messageLabel = new Label();
+        Button homeButton = new Button("Starter");
         sendButton.addStyleName("SignIn");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
@@ -38,6 +40,7 @@ public class SignIn implements IsWidget {
         vp.add(passwordLabel);
         vp.add(passwordField);
 		vp.add(sendButton);
+        vp.add(homeButton);
 		vp.add(messageLabel);
         mainPanel.add(vp);
         
@@ -60,6 +63,14 @@ public class SignIn implements IsWidget {
                         messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
                 }
             });
+            }
+        });
+
+        homeButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Starter());
             }
         });
         

@@ -7,6 +7,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -28,6 +29,7 @@ public class Login implements IsWidget {
         TextBox passwordField = new TextBox();
         Button loginButton = new Button("Login");
         Label messageLabel = new Label();
+        Button homeButton = new Button("Starter");
         loginButton.addStyleName("Login");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
@@ -36,6 +38,7 @@ public class Login implements IsWidget {
         vp.add(passwordLabel);
         vp.add(passwordField);
 		vp.add(loginButton);
+        vp.add(homeButton);
 		vp.add(messageLabel);
         mainPanel.add(vp);
         
@@ -61,8 +64,17 @@ public class Login implements IsWidget {
             });
             }
         });
-        
+
+        homeButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Starter());
+            }
+        });
+
     }
+        
 
     @Override
     public Widget asWidget() {
