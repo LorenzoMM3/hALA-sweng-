@@ -31,7 +31,7 @@ public class SignIn implements IsWidget {
         TextBox passwordField = new TextBox();
         Button sendButton = new Button("signIn");
         Label messageLabel = new Label();
-        Button homeButton = new Button("Starter");
+        Button homeButton = new Button("Back");
         sendButton.addStyleName("SignIn");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);

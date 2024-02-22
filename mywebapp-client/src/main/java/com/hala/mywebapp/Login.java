@@ -29,7 +29,7 @@ public class Login implements IsWidget {
         TextBox passwordField = new TextBox();
         Button loginButton = new Button("Login");
         Label messageLabel = new Label();
-        Button homeButton = new Button("Starter");
+        Button homeButton = new Button("Back");
         loginButton.addStyleName("Login");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
