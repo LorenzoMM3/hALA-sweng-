@@ -1,31 +1,37 @@
 {
-  "lollo": "lollo"
+  "Ale": {
+    "username": "Ale",
+    "password": "a",
+    "isLogged": false
+  }
 ,
-  "s": "s"
+  "Lorenzo": {
+    "username": "Lorenzo",
+    "password": "lore",
+    "isLogged": false
+  }
 ,
-  "aa": "aa"
+  "Alessia": {
+    "username": "Alessia",
+    "password": "ale",
+    "isLogged": false
+  }
 ,
-  "CiaoAmici": "CiaoAmici"
+  "CiaoAmici": {
+    "username": "CiaoAmici",
+    "password": "CiaoAmici",
+    "isLogged": true
+  }
 ,
-  "CiaoAmici2": "CiaoAmici"
+  "Altea": {
+    "username": "Altea",
+    "password": "altea",
+    "isLogged": false
+  }
 ,
-  "bubu": "bubu"
-,
-  "Alessia": "Alessia"
-,
-  "ss": "ss"
-,
-  "SIMOO": "OLLA"
-,
-  "lollo2": "lollo"
-,
-  "yu": "hu"
-,
-  "evvai": "cisonoriuscito"
-,
-  "proviamo": "proviamo"
-,
-  "lollodue": "lollodue"
-,
-  "simo": "olla"
+  "CiaoNano": {
+    "username": "CiaoNano",
+    "password": "CiaoNano",
+    "isLogged": false
+  }
 }
