@@ -31,7 +31,7 @@ public class SignIn implements IsWidget {
         TextBox passwordField = new TextBox();
         Button sendButton = new Button("signIn");
         Label messageLabel = new Label();
-        Button homeButton = new Button("Back");
+        Button backButton = new Button("Back");
         sendButton.addStyleName("SignIn");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
@@ -40,7 +40,7 @@ public class SignIn implements IsWidget {
         vp.add(passwordLabel);
         vp.add(passwordField);
 		vp.add(sendButton);
-        vp.add(homeButton);
+        vp.add(backButton);
 		vp.add(messageLabel);
         mainPanel.add(vp);
         
@@ -67,7 +67,7 @@ public class SignIn implements IsWidget {
             }
         });
 
-        homeButton.addClickHandler(new ClickHandler() {
+        backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();

@@ -88,4 +88,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             e.printStackTrace();
         }
     }
+
+	@Override
+	public boolean logOut(String username) {
+		Utente utenteSalvato = data.get(username);
+        utenteSalvato.setIsLogged(false);
+        data.put(utenteSalvato.getUsername(), utenteSalvato);
+        db.commit();
+        convertToJson();
+        return true;
+	}
 }

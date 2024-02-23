@@ -1,4 +1,4 @@
-var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = '802E68723C0AA472BDB9C602C420A939';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
+var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = '6AB2E86303604289E6375209004D4D07';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
 function cuc_g$(){
   if (!(permutationId_0_g$ != -1)) {
     debugger;
@@ -24806,6 +24806,26 @@ _.logIn_1_g$ = function Sif_g$(utente_0_g$, callback_0_g$){
   }
 }
 ;
+_.logOut_0_g$ = function njf_g$(username_0_g$, callback_0_g$){
+  var ex_0_g$, helper_0_g$, streamWriter_0_g$;
+  helper_0_g$ = new bdf_g$(this, 'GreetingService_Proxy', 'logOut');
+  try {
+    streamWriter_0_g$ = helper_0_g$.start_5_g$(ntc_g$('com.hala.mywebapp.GreetingService'), 1);
+    streamWriter_0_g$.writeString_0_g$('java.lang.String/2004016611');
+    streamWriter_0_g$.writeString_0_g$(username_0_g$);
+    helper_0_g$.finish_2_g$(callback_0_g$, (ldf_g$() , BOOLEAN_0_g$));
+  }
+   catch ($e0_0_g$) {
+    $e0_0_g$ = ruc_g$($e0_0_g$);
+    if (stc_g$($e0_0_g$, 2053)) {
+      ex_0_g$ = $e0_0_g$;
+      callback_0_g$.onFailure_1_g$(ex_0_g$);
+    }
+     else 
+      throw suc_g$($e0_0_g$);
+  }
+}
+;
 _.signIn_1_g$ = function Tif_g$(utente_0_g$, callback_0_g$){
   var ex_0_g$, helper_0_g$, streamWriter_0_g$;
   helper_0_g$ = new bdf_g$(this, 'GreetingService_Proxy', 'signIn');
@@ -24897,14 +24917,14 @@ _.asWidget_0_g$ = function oif_g$(){
 ;
 _.initWidget_3_g$ = function pif_g$(){
   lif_g$();
-  var homeButton_0_g$, loginButton_0_g$, messageLabel_0_g$, passwordField_0_g$, passwordLabel_0_g$, usernameField_0_g$, usernameLabel_0_g$, vp_0_g$;
+  var backButton_0_g$, loginButton_0_g$, messageLabel_0_g$, passwordField_0_g$, passwordLabel_0_g$, usernameField_0_g$, usernameLabel_0_g$, vp_0_g$;
   usernameLabel_0_g$ = new i2c_g$('Username:');
   usernameField_0_g$ = new Cod_g$;
   passwordLabel_0_g$ = new i2c_g$('Password:');
   passwordField_0_g$ = new Cod_g$;
   loginButton_0_g$ = new aWc_g$('Login');
   messageLabel_0_g$ = new g2c_g$;
-  homeButton_0_g$ = new aWc_g$('Back');
+  backButton_0_g$ = new aWc_g$('Back');
   loginButton_0_g$.addStyleName_0_g$('Login');
   vp_0_g$ = ctc_g$(new ltd_g$, 1324);
   vp_0_g$.add_4_g$(usernameLabel_0_g$);
@@ -24912,14 +24932,14 @@ _.initWidget_3_g$ = function pif_g$(){
   vp_0_g$.add_4_g$(passwordLabel_0_g$);
   vp_0_g$.add_4_g$(passwordField_0_g$);
   vp_0_g$.add_4_g$(loginButton_0_g$);
-  vp_0_g$.add_4_g$(homeButton_0_g$);
+  vp_0_g$.add_4_g$(backButton_0_g$);
   vp_0_g$.add_4_g$(messageLabel_0_g$);
   this.mainPanel_3_g$.add_4_g$(vp_0_g$);
   loginButton_0_g$.addClickHandler_0_g$(new sif_g$(this, usernameField_0_g$, passwordField_0_g$, messageLabel_0_g$));
-  homeButton_0_g$.addClickHandler_0_g$(new Cif_g$(this));
+  backButton_0_g$.addClickHandler_0_g$(new Cif_g$(this));
 }
 ;
-var hALAServiceAsync_2_g$;
+var hALAServiceAsync_2_g$, utenteAttivo_0_g$ = '';
 var Lcom_hala_mywebapp_Login_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Login', 2106, Ljava_lang_Object_2_classLit_0_g$);
 function qif_g$(){
   qif_g$ = Object;
@@ -24946,7 +24966,7 @@ _.onClick_0_g$ = function tif_g$(event_0_g$){
   username_0_g$ = this.val$usernameField2_1_g$.getText_0_g$();
   password_0_g$ = this.val$passwordField3_1_g$.getText_0_g$();
   utente_0_g$ = new Xif_g$(username_0_g$, password_0_g$);
-  (lif_g$() , hALAServiceAsync_2_g$).logIn_1_g$(utente_0_g$, new wif_g$(this, this.val$messageLabel4_1_g$));
+  (lif_g$() , hALAServiceAsync_2_g$).logIn_1_g$(utente_0_g$, new wif_g$(this, this.val$messageLabel4_1_g$, username_0_g$));
 }
 ;
 var Lcom_hala_mywebapp_Login$1_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Login/1', 2107, Ljava_lang_Object_2_classLit_0_g$);
@@ -24955,10 +24975,11 @@ function uif_g$(){
   a_g$();
 }
 
-function wif_g$(this$1_0_g$, val$messageLabel_0_g$){
+function wif_g$(this$1_0_g$, val$messageLabel_0_g$, val$username_0_g$){
   uif_g$();
   this.this$11_9_g$ = this$1_0_g$;
   this.val$messageLabel2_1_g$ = val$messageLabel_0_g$;
+  this.val$username3_0_g$ = val$username_0_g$;
   i_g$.call(this);
   this.$init_1450_g$();
 }
@@ -24979,6 +25000,7 @@ _.onFailure_1_g$ = function xif_g$(throwable_0_g$){
 ;
 _.onSuccess_3_g$ = function yif_g$(verifica_0_g$){
   if (zzd_g$(verifica_0_g$)) {
+    lif_g$() , utenteAttivo_0_g$ = this.val$username3_0_g$;
     this.val$messageLabel2_1_g$.setText_0_g$('Login effettuato con successo!');
   }
    else {
@@ -25010,6 +25032,159 @@ _.onClick_0_g$ = function Dif_g$(event_0_g$){
 }
 ;
 var Lcom_hala_mywebapp_Login$2_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Login/2', 2109, Ljava_lang_Object_2_classLit_0_g$);
+function ojf_g$(){
+  ojf_g$ = Object;
+  a_g$();
+  hALAServiceAsync_3_g$ = ctc_g$(new vgf_g$, 2099);
+}
+
+function qjf_g$(){
+  ojf_g$();
+  i_g$.call(this);
+  this.$init_1456_g$();
+  this.mainPanel_4_g$ = ctc_g$(new ltd_g$, 1324);
+  this.initWidget_4_g$();
+}
+
+Ivc_g$(2115, 1, {1191:1, 2115:1, 1:1}, qjf_g$);
+_.$init_1456_g$ = function pjf_g$(){
+  ojf_g$();
+}
+;
+_.asWidget_0_g$ = function rjf_g$(){
+  return this.mainPanel_4_g$;
+}
+;
+_.initWidget_4_g$ = function sjf_g$(){
+  ojf_g$();
+  var backButton_0_g$, domandaLabel_0_g$, messageLabel_0_g$, noButton_0_g$, vp_0_g$, yesButton_0_g$;
+  domandaLabel_0_g$ = new i2c_g$('Sei sicuro di voler uscire?');
+  yesButton_0_g$ = new aWc_g$('Si');
+  noButton_0_g$ = new aWc_g$('No');
+  messageLabel_0_g$ = new g2c_g$;
+  backButton_0_g$ = new aWc_g$('Back');
+  vp_0_g$ = ctc_g$(new ltd_g$, 1324);
+  vp_0_g$.add_4_g$(domandaLabel_0_g$);
+  vp_0_g$.add_4_g$(yesButton_0_g$);
+  vp_0_g$.add_4_g$(noButton_0_g$);
+  vp_0_g$.add_4_g$(messageLabel_0_g$);
+  vp_0_g$.add_4_g$(backButton_0_g$);
+  this.mainPanel_4_g$.add_4_g$(vp_0_g$);
+  yesButton_0_g$.addClickHandler_0_g$(new vjf_g$(this, messageLabel_0_g$));
+  noButton_0_g$.addClickHandler_0_g$(new Fjf_g$(this));
+  backButton_0_g$.addClickHandler_0_g$(new Jjf_g$(this));
+}
+;
+var hALAServiceAsync_3_g$;
+var Lcom_hala_mywebapp_Logout_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Logout', 2115, Ljava_lang_Object_2_classLit_0_g$);
+function tjf_g$(){
+  tjf_g$ = Object;
+  a_g$();
+}
+
+function vjf_g$(this$0_0_g$, val$messageLabel_0_g$){
+  tjf_g$();
+  this.this$01_94_g$ = this$0_0_g$;
+  this.val$messageLabel2_2_g$ = val$messageLabel_0_g$;
+  i_g$.call(this);
+  this.$init_1457_g$();
+}
+
+Ivc_g$(2116, 1, {744:1, 878:1, 2116:1, 1:1}, vjf_g$);
+_.$init_1457_g$ = function ujf_g$(){
+  tjf_g$();
+}
+;
+_.onClick_0_g$ = function wjf_g$(event_0_g$){
+  var username_0_g$;
+  username_0_g$ = (lif_g$() , utenteAttivo_0_g$);
+  (ojf_g$() , hALAServiceAsync_3_g$).logOut_0_g$(username_0_g$, new zjf_g$(this, this.val$messageLabel2_2_g$));
+}
+;
+var Lcom_hala_mywebapp_Logout$1_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Logout/1', 2116, Ljava_lang_Object_2_classLit_0_g$);
+function xjf_g$(){
+  xjf_g$ = Object;
+  a_g$();
+}
+
+function zjf_g$(this$1_0_g$, val$messageLabel_0_g$){
+  xjf_g$();
+  this.this$11_10_g$ = this$1_0_g$;
+  this.val$messageLabel2_3_g$ = val$messageLabel_0_g$;
+  i_g$.call(this);
+  this.$init_1458_g$();
+}
+
+Ivc_g$(2117, 1, {2041:1, 2117:1, 1:1}, zjf_g$);
+_.$init_1458_g$ = function yjf_g$(){
+  xjf_g$();
+}
+;
+_.onSuccess_0_g$ = function Cjf_g$(verifica_0_g$){
+  this.onSuccess_3_g$(ftc_g$(verifica_0_g$));
+}
+;
+_.onFailure_1_g$ = function Ajf_g$(throwable_0_g$){
+  this.val$messageLabel2_3_g$.setText_0_g$("Non \xE8 stato possibile effettuare l'operazione. Riprova.");
+  $A_g$('Errore durante la chiamata asincrona al servizio remoto', throwable_0_g$);
+}
+;
+_.onSuccess_3_g$ = function Bjf_g$(verifica_0_g$){
+  if (zzd_g$(verifica_0_g$)) {
+    this.val$messageLabel2_3_g$.setText_0_g$('Logout effettuato con successo!');
+  }
+   else {
+    this.val$messageLabel2_3_g$.setText_0_g$('Credenziali errate. Riprova.');
+  }
+}
+;
+var Lcom_hala_mywebapp_Logout$1$1_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Logout/1/1', 2117, Ljava_lang_Object_2_classLit_0_g$);
+function Djf_g$(){
+  Djf_g$ = Object;
+  a_g$();
+}
+
+function Fjf_g$(this$0_0_g$){
+  Djf_g$();
+  this.this$01_95_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1459_g$();
+}
+
+Ivc_g$(2118, 1, {744:1, 878:1, 2118:1, 1:1}, Fjf_g$);
+_.$init_1459_g$ = function Ejf_g$(){
+  Djf_g$();
+}
+;
+_.onClick_0_g$ = function Gjf_g$(event_0_g$){
+  gid_g$('startTable').clear_0_g$();
+  gid_g$('startTable').add_3_g$(new Qwd_g$);
+}
+;
+var Lcom_hala_mywebapp_Logout$2_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Logout/2', 2118, Ljava_lang_Object_2_classLit_0_g$);
+function Hjf_g$(){
+  Hjf_g$ = Object;
+  a_g$();
+}
+
+function Jjf_g$(this$0_0_g$){
+  Hjf_g$();
+  this.this$01_96_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1460_g$();
+}
+
+Ivc_g$(2119, 1, {744:1, 878:1, 2119:1, 1:1}, Jjf_g$);
+_.$init_1460_g$ = function Ijf_g$(){
+  Hjf_g$();
+}
+;
+_.onClick_0_g$ = function Kjf_g$(event_0_g$){
+  gid_g$('startTable').clear_0_g$();
+  gid_g$('startTable').add_3_g$(new Qwd_g$);
+}
+;
+var Lcom_hala_mywebapp_Logout$3_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Logout/3', 2119, Ljava_lang_Object_2_classLit_0_g$);
 function Jwd_g$(){
   Jwd_g$ = Object;
   a_g$();
@@ -25035,14 +25210,14 @@ _.asWidget_0_g$ = function Mwd_g$(){
 ;
 _.initWidget_1_g$ = function Nwd_g$(){
   Jwd_g$();
-  var homeButton_0_g$, messageLabel_0_g$, passwordField_0_g$, passwordLabel_0_g$, sendButton_0_g$, usernameField_0_g$, usernameLabel_0_g$, vp_0_g$;
+  var backButton_0_g$, messageLabel_0_g$, passwordField_0_g$, passwordLabel_0_g$, sendButton_0_g$, usernameField_0_g$, usernameLabel_0_g$, vp_0_g$;
   usernameLabel_0_g$ = new i2c_g$('Username:');
   usernameField_0_g$ = new Cod_g$;
   passwordLabel_0_g$ = new i2c_g$('Password:');
   passwordField_0_g$ = new Cod_g$;
   sendButton_0_g$ = new aWc_g$('signIn');
   messageLabel_0_g$ = new g2c_g$;
-  homeButton_0_g$ = new aWc_g$('Back');
+  backButton_0_g$ = new aWc_g$('Back');
   sendButton_0_g$.addStyleName_0_g$('SignIn');
   vp_0_g$ = ctc_g$(new ltd_g$, 1324);
   vp_0_g$.add_4_g$(usernameLabel_0_g$);
@@ -25050,11 +25225,11 @@ _.initWidget_1_g$ = function Nwd_g$(){
   vp_0_g$.add_4_g$(passwordLabel_0_g$);
   vp_0_g$.add_4_g$(passwordField_0_g$);
   vp_0_g$.add_4_g$(sendButton_0_g$);
-  vp_0_g$.add_4_g$(homeButton_0_g$);
+  vp_0_g$.add_4_g$(backButton_0_g$);
   vp_0_g$.add_4_g$(messageLabel_0_g$);
   this.mainPanel_1_g$.add_4_g$(vp_0_g$);
   sendButton_0_g$.addClickHandler_0_g$(new Hgf_g$(this, usernameField_0_g$, passwordField_0_g$, messageLabel_0_g$));
-  homeButton_0_g$.addClickHandler_0_g$(new Gif_g$(this));
+  backButton_0_g$.addClickHandler_0_g$(new Gif_g$(this));
 }
 ;
 var hALAServiceAsync_0_g$;
@@ -25171,10 +25346,11 @@ _.asWidget_0_g$ = function Rwd_g$(){
 ;
 _.initWidget_2_g$ = function Swd_g$(){
   Owd_g$();
-  var buttonPanel_0_g$, homePageButton_0_g$, immStart_0_g$, loginButton_0_g$, resources_0_g$, signInButton_0_g$;
+  var buttonPanel_0_g$, homePageButton_0_g$, immStart_0_g$, loginButton_0_g$, logoutButton_0_g$, resources_0_g$, signInButton_0_g$;
   signInButton_0_g$ = new aWc_g$('SignIn');
   loginButton_0_g$ = new aWc_g$('Login');
   homePageButton_0_g$ = new aWc_g$('HomePage');
+  logoutButton_0_g$ = new aWc_g$('LogOut');
   resources_0_g$ = ctc_g$(new $wd_g$, 1364);
   immStart_0_g$ = new T6c_g$(resources_0_g$.immagineStart_1_g$());
   immStart_0_g$.setSize_1_g$('10%', '10%');
@@ -25182,10 +25358,12 @@ _.initWidget_2_g$ = function Swd_g$(){
   buttonPanel_0_g$.add_4_g$(signInButton_0_g$);
   buttonPanel_0_g$.add_4_g$(loginButton_0_g$);
   buttonPanel_0_g$.add_4_g$(homePageButton_0_g$);
+  buttonPanel_0_g$.add_4_g$(logoutButton_0_g$);
   this.mainPanel_2_g$.add_4_g$(buttonPanel_0_g$);
   this.mainPanel_2_g$.add_4_g$(immStart_0_g$);
   signInButton_0_g$.addClickHandler_0_g$(new Vwd_g$(this));
   loginButton_0_g$.addClickHandler_0_g$(new Kif_g$(this));
+  logoutButton_0_g$.addClickHandler_0_g$(new Njf_g$(this));
 }
 ;
 var Lcom_hala_mywebapp_Starter_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Starter', 1362, Ljava_lang_Object_2_classLit_0_g$);
@@ -25235,6 +25413,29 @@ _.onClick_0_g$ = function Lif_g$(event_0_g$){
 }
 ;
 var Lcom_hala_mywebapp_Starter$2_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Starter/2', 2111, Ljava_lang_Object_2_classLit_0_g$);
+function Ljf_g$(){
+  Ljf_g$ = Object;
+  a_g$();
+}
+
+function Njf_g$(this$0_0_g$){
+  Ljf_g$();
+  this.this$01_97_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1461_g$();
+}
+
+Ivc_g$(2120, 1, {744:1, 878:1, 2120:1, 1:1}, Njf_g$);
+_.$init_1461_g$ = function Mjf_g$(){
+  Ljf_g$();
+}
+;
+_.onClick_0_g$ = function Ojf_g$(event_0_g$){
+  gid_g$('startTable').clear_0_g$();
+  gid_g$('startTable').add_3_g$(new qjf_g$);
+}
+;
+var Lcom_hala_mywebapp_Starter$3_2_classLit_0_g$ = CCd_g$('com.hala.mywebapp', 'Starter/3', 2120, Ljava_lang_Object_2_classLit_0_g$);
 function Xwd_g$(){
   Xwd_g$ = Object;
 }
@@ -34918,6 +35119,6 @@ var gwtOnLoad = gwtOnLoad = Avc_g$;
 yvc_g$(hwc_g$);
 Cvc_g$('permProps', [[['locale', 'default'], ['user.agent', 'safari']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);$sendStats('moduleStartup', 'end');$gwt && $gwt.permProps && __gwtModuleFunction.__moduleStartupDone($gwt.permProps);
-//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/802E68723C0AA472BDB9C602C420A939_sourcemap.json 
+//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/6AB2E86303604289E6375209004D4D07_sourcemap.json 
 //# sourceURL=MyWebApp-0.js
 

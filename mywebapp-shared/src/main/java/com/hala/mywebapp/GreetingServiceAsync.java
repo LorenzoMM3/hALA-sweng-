@@ -9,4 +9,5 @@ public interface GreetingServiceAsync {
 	public void initData(AsyncCallback<Boolean> callback);
 	public void signIn(Utente utente, AsyncCallback<Boolean> callback);
 	public void logIn(Utente utente, AsyncCallback<Boolean> callback);
+	public void logOut(String username, AsyncCallback<Boolean> callback);
 }

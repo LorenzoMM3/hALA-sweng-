@@ -26,6 +26,7 @@ public class Starter implements IsWidget {
         Button signInButton = new Button("SignIn");
         Button loginButton = new Button("Login");
         Button homePageButton = new Button("HomePage");
+        Button logoutButton = new Button("LogOut");
 
         MyResources resources = GWT.create(MyResources.class);
         Image immStart = new Image(resources.immagineStart());
@@ -35,6 +36,7 @@ public class Starter implements IsWidget {
         buttonPanel.add(signInButton);
         buttonPanel.add(loginButton);
         buttonPanel.add(homePageButton);
+        buttonPanel.add(logoutButton);
 
         mainPanel.add(buttonPanel);
         mainPanel.add(immStart);
@@ -50,6 +52,13 @@ public class Starter implements IsWidget {
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new Login());
+            }
+        });
+
+        logoutButton.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Logout());
             }
         });
 

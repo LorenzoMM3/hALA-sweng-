@@ -16,7 +16,8 @@ public class Login implements IsWidget {
 
     public VerticalPanel mainPanel;
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
-    
+    protected static String utenteAttivo = "";
+
     public Login() {
        mainPanel = GWT.create(VerticalPanel.class) ;
        initWidget();
@@ -29,7 +30,7 @@ public class Login implements IsWidget {
         TextBox passwordField = new TextBox();
         Button loginButton = new Button("Login");
         Label messageLabel = new Label();
-        Button homeButton = new Button("Back");
+        Button backButton = new Button("Back");
         loginButton.addStyleName("Login");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
@@ -38,7 +39,7 @@ public class Login implements IsWidget {
         vp.add(passwordLabel);
         vp.add(passwordField);
 		vp.add(loginButton);
-        vp.add(homeButton);
+        vp.add(backButton);
 		vp.add(messageLabel);
         mainPanel.add(vp);
         
@@ -58,6 +59,7 @@ public class Login implements IsWidget {
                 @Override
                 public void onSuccess(Boolean verifica) {
                     if (verifica) {
+                        utenteAttivo = username;
                         messageLabel.setText("Login effettuato con successo!");
                     } else {
                         messageLabel.setText("Credenziali errate. Riprova.");
@@ -67,7 +69,7 @@ public class Login implements IsWidget {
             }
         });
 
-        homeButton.addClickHandler(new ClickHandler() {
+        backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();

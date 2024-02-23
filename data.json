@@ -34,4 +34,10 @@
     "password": "CiaoNano",
     "isLogged": false
   }
+,
+  "Prova1": {
+    "username": "Prova1",
+    "password": "1",
+    "isLogged": false
+  }
 }
