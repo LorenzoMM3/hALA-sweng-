@@ -1,1 +1,26 @@
-Module setup completed in 1794 ms
+binding: user.agent=safari
+Compiling module com.hala.mywebapp.App
+   Computing all possible rebind results for 'com.hala.mywebapp.GreetingService'
+      Rebinding com.hala.mywebapp.GreetingService
+         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
+            Generating client proxy for remote service interface 'com.hala.mywebapp.GreetingService'
+               [ERROR] 'com.hala.mywebapp.Utente' has no instantiable subtypes
+   [ERROR] Errors in 'com/hala/mywebapp/App.java'
+      [ERROR] Line 9: Failed to resolve 'com.hala.mywebapp.GreetingService' via deferred binding
+   Computing all possible rebind results for 'com.hala.mywebapp.GreetingService'
+      Rebinding com.hala.mywebapp.GreetingService
+         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
+            Generating client proxy for remote service interface 'com.hala.mywebapp.GreetingService'
+               [ERROR] 'com.hala.mywebapp.Utente' has no instantiable subtypes
+   [ERROR] Errors in 'com/hala/mywebapp/Login.java'
+      [ERROR] Line 18: Failed to resolve 'com.hala.mywebapp.GreetingService' via deferred binding
+   Computing all possible rebind results for 'com.hala.mywebapp.GreetingService'
+      Rebinding com.hala.mywebapp.GreetingService
+         Invoking generator com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator
+            Generating client proxy for remote service interface 'com.hala.mywebapp.GreetingService'
+               [ERROR] 'com.hala.mywebapp.Utente' has no instantiable subtypes
+   [ERROR] Errors in 'com/hala/mywebapp/SignIn.java'
+      [ERROR] Line 20: Failed to resolve 'com.hala.mywebapp.GreetingService' via deferred binding
+   Unification traversed 791 fields and methods and 373 types. 20 are considered part of the current module and 28 had all of their fields and methods traversed.
+   [WARN] Some stale types ([com.hala.mywebapp.GreetingService_Proxy]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+[ERROR] Compiler returned false

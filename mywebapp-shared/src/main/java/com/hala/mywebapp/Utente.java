@@ -1,6 +1,8 @@
 package com.hala.mywebapp;
 
-public class Utente implements UtenteI{
+import java.io.Serializable;
+
+public class Utente implements UtenteI, Serializable{
     public String username;
     public String password;
     public boolean isLogged;
@@ -9,6 +11,10 @@ public class Utente implements UtenteI{
         this.username = username;
         this.password = password;
         this.isLogged = false;
+    }
+
+    public Utente(){
+        
     }
 
     public String getUsername(){
@@ -26,4 +32,5 @@ public class Utente implements UtenteI{
     public void setIsLogged(boolean value){
         this.isLogged = value;
     }
+    
 }

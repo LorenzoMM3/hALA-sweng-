@@ -7,6 +7,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface GreetingServiceAsync {
 	public void initData(AsyncCallback<Boolean> callback);
-	public void signIn(String username, String password, AsyncCallback<Boolean> callback);
-	public void logIn(String username, String password, AsyncCallback<Boolean> callback);
+	public void signIn(Utente utente, AsyncCallback<Boolean> callback);
+	public void logIn(Utente utente, AsyncCallback<Boolean> callback);
 }

@@ -46,7 +46,9 @@ public class Login implements IsWidget {
             public void onClick(ClickEvent event) {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
-                hALAServiceAsync.logIn(username, password, new AsyncCallback<Boolean>() {
+                Utente utente = new Utente(username, password);
+                hALAServiceAsync.logIn(utente, new AsyncCallback<Boolean>() {
+
                 @Override
                 public void onFailure(Throwable throwable) {
                     messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
