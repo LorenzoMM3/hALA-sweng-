@@ -25,7 +25,7 @@ public class Starter implements IsWidget {
     private void initWidget() {
         Button signInButton = new Button("SignIn");
         Button loginButton = new Button("Login");
-        Button homePageButton = new Button("HomePage");
+        Button visualizzaButton = new Button("Visualizza storie");
         Button logoutButton = new Button("LogOut");
 
         MyResources resources = GWT.create(MyResources.class);
@@ -35,7 +35,7 @@ public class Starter implements IsWidget {
         HorizontalPanel buttonPanel = GWT.create(HorizontalPanel.class);
         buttonPanel.add(signInButton);
         buttonPanel.add(loginButton);
-        buttonPanel.add(homePageButton);
+        buttonPanel.add(visualizzaButton);
         buttonPanel.add(logoutButton);
 
         mainPanel.add(buttonPanel);

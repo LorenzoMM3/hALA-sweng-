@@ -61,6 +61,8 @@ public class Login implements IsWidget {
                     if (verifica) {
                         utenteAttivo = username;
                         messageLabel.setText("Login effettuato con successo!");
+                        RootPanel.get("startTable").clear();
+                        RootPanel.get("startTable").add(new HomePage());
                     } else {
                         messageLabel.setText("Credenziali errate. Riprova.");
                     }
