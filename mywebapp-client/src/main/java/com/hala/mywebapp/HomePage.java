@@ -25,8 +25,8 @@ public class HomePage implements IsWidget {
 
     private void initWidget() {
 
-        /*Label welcomeLabel = new Label("Ciao " + Utente.getUsername() + "!");
-        welcomeLabel.setStyleName("homeWelcomeLabel");*/
+        /* Label welcomeLabel = new Label("Ciao " + Utente.getUsername() + "!");
+        welcomeLabel.setStyleName("homeWelcomeLabel"); */
         
         Button visualizza = new Button("Visualizza storie");
         Button gioca = new Button("Gioca ad una storia");

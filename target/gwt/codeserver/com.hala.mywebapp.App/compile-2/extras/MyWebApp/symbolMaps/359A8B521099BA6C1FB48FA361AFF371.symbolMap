@@ -4,7 +4,6 @@
 byte[]_0_g$,,byte[],,Unknown,0,-1
 char[]_0_g$,,char[],,Unknown,0,-1
 GWT_0_g$,,com.google.gwt.core.client.GWT,,com/google/gwt/core/client/GWT.java,26,-1
-OA_g$,com.google.gwt.core.client.GWT::getModuleBaseURL()Ljava/lang/String;,com.google.gwt.core.client.GWT,getModuleBaseURL,com/google/gwt/core/client/GWT.java,128,-1
 YA_g$,com.google.gwt.core.client.GWT::isScript()Z,com.google.gwt.core.client.GWT,isScript,com/google/gwt/core/client/GWT.java,230,-1
 $A_g$,com.google.gwt.core.client.GWT::log(Ljava/lang/String;Ljava/lang/Throwable;)V,com.google.gwt.core.client.GWT,log,com/google/gwt/core/client/GWT.java,246,-1
 GWT$1_0_g$,,com.google.gwt.core.client.GWT$1,,com/google/gwt/core/client/GWT.java,280,-1
@@ -39,26 +38,20 @@ GwtEvent$Type_0_g$,,com.google.gwt.event.shared.GwtEvent$Type,,com/google/gwt/ev
 UmbrellaException_0_g$,,com.google.gwt.event.shared.UmbrellaException,,com/google/gwt/event/shared/UmbrellaException.java,24,-1
 PositionImpl_0_g$,,com.google.gwt.geolocation.client.PositionImpl,,com/google/gwt/geolocation/client/PositionImpl.java,24,-1
 PositionImpl$CoordinatesImpl_0_g$,,com.google.gwt.geolocation.client.PositionImpl$CoordinatesImpl,,com/google/gwt/geolocation/client/PositionImpl.java,39,-1
-Request_0_g$,,com.google.gwt.http.client.Request,,com/google/gwt/http/client/Request.java,33,-1
-Request$1_0_g$,,com.google.gwt.http.client.Request$1,,com/google/gwt/http/client/Request.java,91,-1
-Request$ImplHolder_0_g$,,com.google.gwt.http.client.Request$ImplHolder,,com/google/gwt/http/client/Request.java,61,-1
-Request$RequestImpl_0_g$,,com.google.gwt.http.client.Request$RequestImpl,,com/google/gwt/http/client/Request.java,42,-1
 AutoDirectionHandler_0_g$,,com.google.gwt.i18n.client.AutoDirectionHandler,,com/google/gwt/i18n/client/AutoDirectionHandler.java,33,-1
 HasDirection$Direction_0_g$,,com.google.gwt.i18n.client.HasDirection$Direction,,com/google/gwt/i18n/client/HasDirection.java,34,-1
 HasDirection$Direction$Map_0_g$,,com.google.gwt.i18n.client.HasDirection$Direction$Map,,com/google/gwt/i18n/client/HasDirection.java,34,-1
 CurrencyDataJso_0_g$,,com.google.gwt.i18n.client.impl.CurrencyDataJso,,com/google/gwt/i18n/client/impl/CurrencyDataJso.java,38,-1
 Array_0_g$,,com.google.gwt.lang.Array,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Array.java,31,-1
-wrc_g$,com.google.gwt.lang.Array::getClassLiteralForArray(Ljava/lang/Class;I)Ljava/lang/Class;,com.google.gwt.lang.Array,getClassLiteralForArray,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Array.java,271,-1
-Mrc_g$,com.google.gwt.lang.Array::stampJavaTypeInfo(Ljava/lang/Class;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;ILjava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Array,stampJavaTypeInfo,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Array.java,139,-1
+ttc_g$,com.google.gwt.lang.Array::getClassLiteralForArray(Ljava/lang/Class;I)Ljava/lang/Class;,com.google.gwt.lang.Array,getClassLiteralForArray,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Array.java,271,-1
+Jtc_g$,com.google.gwt.lang.Array::stampJavaTypeInfo(Ljava/lang/Class;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;ILjava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Array,stampJavaTypeInfo,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Array.java,139,-1
 BigLongLibBase_0_g$,,com.google.gwt.lang.BigLongLibBase,,com/google/gwt/lang/BigLongLibBase.java,22,-1
 BigLongLibBase$BigLong_0_g$,,com.google.gwt.lang.BigLongLibBase$BigLong,,com/google/gwt/lang/BigLongLibBase.java,38,-1
 Cast_0_g$,,com.google.gwt.lang.Cast,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,33,-1
-ctc_g$,com.google.gwt.lang.Cast::castTo(Ljava/lang/Object;Lcom/google/gwt/core/client/JavaScriptObject;)Ljava/lang/Object;,com.google.gwt.lang.Cast,castTo,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,74,-1
-ftc_g$,com.google.gwt.lang.Cast::castToBoolean(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Cast,castToBoolean,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,90,-1
-ntc_g$,com.google.gwt.lang.Cast::castToString(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Cast,castToString,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,80,-1
-stc_g$,com.google.gwt.lang.Cast::instanceOf(Ljava/lang/Object;Lcom/google/gwt/core/client/JavaScriptObject;)Z,com.google.gwt.lang.Cast,instanceOf,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,163,-1
-Ktc_g$,com.google.gwt.lang.Cast::isNotNull(Ljava/lang/Object;)Z,com.google.gwt.lang.Cast,isNotNull,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,265,-1
-Ltc_g$,com.google.gwt.lang.Cast::isNull(Ljava/lang/Object;)Z,com.google.gwt.lang.Cast,isNull,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,274,-1
+_uc_g$,com.google.gwt.lang.Cast::castTo(Ljava/lang/Object;Lcom/google/gwt/core/client/JavaScriptObject;)Ljava/lang/Object;,com.google.gwt.lang.Cast,castTo,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,74,-1
+cvc_g$,com.google.gwt.lang.Cast::castToBoolean(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Cast,castToBoolean,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,90,-1
+kvc_g$,com.google.gwt.lang.Cast::castToString(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Cast,castToString,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,80,-1
+Ivc_g$,com.google.gwt.lang.Cast::isNull(Ljava/lang/Object;)Z,com.google.gwt.lang.Cast,isNull,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,274,-1
 ClassLiteralHolder_0_g$,,com.google.gwt.lang.ClassLiteralHolder,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ClassLiteralHolder.java,23,-1
 B_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::B_classLit,com.google.gwt.lang.ClassLiteralHolder,B_classLit,Unknown,0,-1
 C_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::C_classLit,com.google.gwt.lang.ClassLiteralHolder,C_classLit,Unknown,0,-1
@@ -67,23 +60,22 @@ F_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::F_classLit,com.google.gw
 I_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::I_classLit,com.google.gwt.lang.ClassLiteralHolder,I_classLit,Unknown,0,-1
 J_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::J_classLit,com.google.gwt.lang.ClassLiteralHolder,J_classLit,Unknown,0,-1
 Lcom_google_gwt_resources_client_ResourcePrototype_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_resources_client_ResourcePrototype_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_resources_client_ResourcePrototype_2_classLit,com/google/gwt/resources/client/ResourcePrototype.java,21,-1
-Lcom_google_gwt_user_client_rpc_impl_RemoteServiceProxy_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_user_client_rpc_impl_RemoteServiceProxy_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_user_client_rpc_impl_RemoteServiceProxy_2_classLit,com/google/gwt/user/client/rpc/impl/RemoteServiceProxy.java,42,-1
 Lcom_hala_mywebapp_App_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_App_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_App_2_classLit,com/hala/mywebapp/App.java,8,-1
-Lcom_hala_mywebapp_GreetingServiceAsync_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_GreetingServiceAsync_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_GreetingServiceAsync_2_classLit,com/hala/mywebapp/GreetingServiceAsync.java,8,-1
-Lcom_hala_mywebapp_GreetingService_1Proxy_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_GreetingService_1Proxy_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_GreetingService_1Proxy_2_classLit,gen/com/hala/mywebapp/GreetingService_Proxy.java,14,-1
+Lcom_hala_mywebapp_HomePage$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_HomePage$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_HomePage$1_2_classLit,com/hala/mywebapp/HomePage.java,45,-1
+Lcom_hala_mywebapp_HomePage$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_HomePage$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_HomePage$2_2_classLit,com/hala/mywebapp/HomePage.java,52,-1
+Lcom_hala_mywebapp_HomePage_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_HomePage_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_HomePage_2_classLit,com/hala/mywebapp/HomePage.java,15,-1
 Lcom_hala_mywebapp_Login$1$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Login$1$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Login$1$1_2_classLit,com/hala/mywebapp/Login.java,51,-1
 Lcom_hala_mywebapp_Login$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Login$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Login$1_2_classLit,com/hala/mywebapp/Login.java,46,-1
-Lcom_hala_mywebapp_Login$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Login$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Login$2_2_classLit,com/hala/mywebapp/Login.java,72,-1
+Lcom_hala_mywebapp_Login$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Login$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Login$2_2_classLit,com/hala/mywebapp/Login.java,74,-1
 Lcom_hala_mywebapp_Login_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Login_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Login_2_classLit,com/hala/mywebapp/Login.java,15,-1
-Lcom_hala_mywebapp_Logout$1$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Logout$1$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Logout$1$1_2_classLit,com/hala/mywebapp/Logout.java,43,-1
 Lcom_hala_mywebapp_Logout$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Logout$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Logout$1_2_classLit,com/hala/mywebapp/Logout.java,40,-1
 Lcom_hala_mywebapp_Logout$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Logout$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Logout$2_2_classLit,com/hala/mywebapp/Logout.java,64,-1
 Lcom_hala_mywebapp_Logout$3_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Logout$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Logout$3_2_classLit,com/hala/mywebapp/Logout.java,71,-1
-Lcom_hala_mywebapp_Logout_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Logout_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Logout_2_classLit,com/hala/mywebapp/Logout.java,15,-1
-Lcom_hala_mywebapp_SignIn$1$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_SignIn$1$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_SignIn$1$1_2_classLit,com/hala/mywebapp/SignIn.java,52,-1
-Lcom_hala_mywebapp_SignIn$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_SignIn$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_SignIn$1_2_classLit,com/hala/mywebapp/SignIn.java,47,-1
+Lcom_hala_mywebapp_ScriviStoria$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_ScriviStoria$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_ScriviStoria$1_2_classLit,com/hala/mywebapp/ScriviStoria.java,55,-1
+Lcom_hala_mywebapp_ScriviStoria$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_ScriviStoria$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_ScriviStoria$2_2_classLit,com/hala/mywebapp/ScriviStoria.java,64,-1
+Lcom_hala_mywebapp_ScriviStoria$3_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_ScriviStoria$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_ScriviStoria$3_2_classLit,com/hala/mywebapp/ScriviStoria.java,74,-1
+Lcom_hala_mywebapp_ScriviStoria_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_ScriviStoria_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_ScriviStoria_2_classLit,com/hala/mywebapp/ScriviStoria.java,15,-1
 Lcom_hala_mywebapp_SignIn$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_SignIn$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_SignIn$2_2_classLit,com/hala/mywebapp/SignIn.java,70,-1
-Lcom_hala_mywebapp_SignIn_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_SignIn_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_SignIn_2_classLit,com/hala/mywebapp/SignIn.java,17,-1
 Lcom_hala_mywebapp_Starter$1_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Starter$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Starter$1_2_classLit,com/hala/mywebapp/Starter.java,44,-1
 Lcom_hala_mywebapp_Starter$2_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Starter$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Starter$2_2_classLit,com/hala/mywebapp/Starter.java,51,-1
 Lcom_hala_mywebapp_Starter$3_2_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Lcom_hala_mywebapp_Starter$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_hala_mywebapp_Starter$3_2_classLit,com/hala/mywebapp/Starter.java,58,-1
@@ -97,33 +89,30 @@ V_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::V_classLit,com.google.gw
 Z_classLit_0_g$,com.google.gwt.lang.ClassLiteralHolder::Z_classLit,com.google.gwt.lang.ClassLiteralHolder,Z_classLit,Unknown,0,-1
 CollapsedPropertyHolder_0_g$,,com.google.gwt.lang.CollapsedPropertyHolder,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/CollapsedPropertyHolder.java,22,-1
 Exceptions_0_g$,,com.google.gwt.lang.Exceptions,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Exceptions.java,26,-1
-ruc_g$,com.google.gwt.lang.Exceptions::toJava(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Exceptions,toJava,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Exceptions.java,29,-1
-suc_g$,com.google.gwt.lang.Exceptions::toJs(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Exceptions,toJs,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Exceptions.java,46,-1
 LongLib_0_g$,,com.google.gwt.lang.LongLib,,com/google/gwt/lang/LongLib.java,23,-1
 LongLib$LongEmul_0_g$,,com.google.gwt.lang.LongLib$LongEmul,,com/google/gwt/lang/LongLib.java,30,-1
 LongLib$SmallLong_0_g$,,com.google.gwt.lang.LongLib$SmallLong,,com/google/gwt/lang/LongLib.java,38,-1
 ModuleUtils_0_g$,,com.google.gwt.lang.ModuleUtils,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,25,-1
-yvc_g$,com.google.gwt.lang.ModuleUtils::addInitFunctions()V,com.google.gwt.lang.ModuleUtils,addInitFunctions,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,62,-1
-Avc_g$,com.google.gwt.lang.ModuleUtils::gwtOnLoad(Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)V,com.google.gwt.lang.ModuleUtils,gwtOnLoad,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,34,-1
-Bvc_g$,com.google.gwt.lang.ModuleUtils::registerEntry()Lcom/google/gwt/core/client/JavaScriptObject;,com.google.gwt.lang.ModuleUtils,registerEntry,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,70,-1
-Cvc_g$,com.google.gwt.lang.ModuleUtils::setGwtProperty(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)V,com.google.gwt.lang.ModuleUtils,setGwtProperty,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,74,-1
+vxc_g$,com.google.gwt.lang.ModuleUtils::addInitFunctions()V,com.google.gwt.lang.ModuleUtils,addInitFunctions,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,62,-1
+xxc_g$,com.google.gwt.lang.ModuleUtils::gwtOnLoad(Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)V,com.google.gwt.lang.ModuleUtils,gwtOnLoad,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,34,-1
+yxc_g$,com.google.gwt.lang.ModuleUtils::registerEntry()Lcom/google/gwt/core/client/JavaScriptObject;,com.google.gwt.lang.ModuleUtils,registerEntry,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,70,-1
+zxc_g$,com.google.gwt.lang.ModuleUtils::setGwtProperty(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)V,com.google.gwt.lang.ModuleUtils,setGwtProperty,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/ModuleUtils.java,74,-1
 Runtime_0_g$,,com.google.gwt.lang.Runtime,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Runtime.java,26,-1
-Fvc_g$,com.google.gwt.lang.Runtime::bootstrap()V,com.google.gwt.lang.Runtime,bootstrap,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Runtime.java,175,-1
-Ivc_g$,com.google.gwt.lang.Runtime::defineClass(Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)V,com.google.gwt.lang.Runtime,defineClass,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Runtime.java,50,-1
-Lvc_g$,com.google.gwt.lang.Runtime::getClassPrototype(Lcom/google/gwt/core/client/JavaScriptObject;)Lcom/google/gwt/core/client/JavaScriptObject;,com.google.gwt.lang.Runtime,getClassPrototype,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Runtime.java,182,-1
+Cxc_g$,com.google.gwt.lang.Runtime::bootstrap()V,com.google.gwt.lang.Runtime,bootstrap,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Runtime.java,175,-1
+Fxc_g$,com.google.gwt.lang.Runtime::defineClass(Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)V,com.google.gwt.lang.Runtime,defineClass,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Runtime.java,50,-1
 Stats_0_g$,,com.google.gwt.lang.Stats,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Stats.java,26,-1
 Util_0_g$,,com.google.gwt.lang.Util,,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Util.java,26,-1
 com_00046hala_00046mywebapp_00046App__EntryMethodHolder_0_g$,,com.google.gwt.lang.com_00046hala_00046mywebapp_00046App__EntryMethodHolder,,gen/com/google/gwt/lang/com_00046hala_00046mywebapp_00046App__EntryMethodHolder.java,2,-1
-hwc_g$,com.google.gwt.lang.com_00046hala_00046mywebapp_00046App__EntryMethodHolder::init()V,com.google.gwt.lang.com_00046hala_00046mywebapp_00046App__EntryMethodHolder,init,gen/com/google/gwt/lang/com_00046hala_00046mywebapp_00046App__EntryMethodHolder.java,3,-1
+eyc_g$,com.google.gwt.lang.com_00046hala_00046mywebapp_00046App__EntryMethodHolder::init()V,com.google.gwt.lang.com_00046hala_00046mywebapp_00046App__EntryMethodHolder,init,gen/com/google/gwt/lang/com_00046hala_00046mywebapp_00046App__EntryMethodHolder.java,3,-1
 RegExp_0_g$,,com.google.gwt.regexp.shared.RegExp,,com/google/gwt/regexp/super/com/google/gwt/regexp/shared/RegExp.java,24,-1
 ImageResource$RepeatStyle_0_g$,,com.google.gwt.resources.client.ImageResource$RepeatStyle,,com/google/gwt/resources/client/ImageResource.java,90,-1
 ImageResource$RepeatStyle$Map_0_g$,,com.google.gwt.resources.client.ImageResource$RepeatStyle$Map,,com/google/gwt/resources/client/ImageResource.java,90,-1
 com.google.gwt.resources.client.ResourcePrototype[]_0_g$,,com.google.gwt.resources.client.ResourcePrototype[],,Unknown,0,-1
 ImageResourcePrototype_0_g$,,com.google.gwt.resources.client.impl.ImageResourcePrototype,,com/google/gwt/resources/client/impl/ImageResourcePrototype.java,25,-1
-Exc_g$,com.google.gwt.resources.client.impl.ImageResourcePrototype::ImageResourcePrototype(Ljava/lang/String;Lcom/google/gwt/safehtml/shared/SafeUri;IIIIZZ) <init>,com.google.gwt.resources.client.impl.ImageResourcePrototype,ImageResourcePrototype,com/google/gwt/resources/client/impl/ImageResourcePrototype.java,49,-1
+Bzc_g$,com.google.gwt.resources.client.impl.ImageResourcePrototype::ImageResourcePrototype(Ljava/lang/String;Lcom/google/gwt/safehtml/shared/SafeUri;IIIIZZ) <init>,com.google.gwt.resources.client.impl.ImageResourcePrototype,ImageResourcePrototype,com/google/gwt/resources/client/impl/ImageResourcePrototype.java,49,-1
 ImageResourcePrototype$Bundle_0_g$,,com.google.gwt.resources.client.impl.ImageResourcePrototype$Bundle,,com/google/gwt/resources/client/impl/ImageResourcePrototype.java,30,-1
 UriUtils_0_g$,,com.google.gwt.safehtml.shared.UriUtils,,com/google/gwt/safehtml/shared/UriUtils.java,30,-1
-NBc_g$,com.google.gwt.safehtml.shared.UriUtils::fromTrustedString(Ljava/lang/String;)Lcom/google/gwt/safehtml/shared/SafeUri;,com.google.gwt.safehtml.shared.UriUtils,fromTrustedString,com/google/gwt/safehtml/shared/UriUtils.java,203,-1
+KDc_g$,com.google.gwt.safehtml.shared.UriUtils::fromTrustedString(Ljava/lang/String;)Lcom/google/gwt/safehtml/shared/SafeUri;,com.google.gwt.safehtml.shared.UriUtils,fromTrustedString,com/google/gwt/safehtml/shared/UriUtils.java,203,-1
 ArrayBufferNative_0_g$,,com.google.gwt.typedarrays.client.ArrayBufferNative,,com/google/gwt/typedarrays/client/ArrayBufferNative.java,24,-1
 ArrayBufferViewNative_0_g$,,com.google.gwt.typedarrays.client.ArrayBufferViewNative,,com/google/gwt/typedarrays/client/ArrayBufferViewNative.java,25,-1
 DataViewNative_0_g$,,com.google.gwt.typedarrays.client.DataViewNative,,com/google/gwt/typedarrays/client/DataViewNative.java,24,-1
@@ -138,46 +127,16 @@ Uint8ArrayNative_0_g$,,com.google.gwt.typedarrays.client.Uint8ArrayNative,,com/g
 DocumentModeAsserter_0_g$,,com.google.gwt.user.client.DocumentModeAsserter,,com/google/gwt/user/client/DocumentModeAsserter.java,30,-1
 DocumentModeAsserter$Severity_0_g$,,com.google.gwt.user.client.DocumentModeAsserter$Severity,,com/google/gwt/user/client/DocumentModeAsserter.java,45,-1
 DocumentModeAsserter$Severity$Map_0_g$,,com.google.gwt.user.client.DocumentModeAsserter$Severity$Map,,com/google/gwt/user/client/DocumentModeAsserter.java,45,-1
-Timer_0_g$,,com.google.gwt.user.client.Timer,,com/google/gwt/user/client/Timer.java,41,-1
 InvocationException_0_g$,,com.google.gwt.user.client.rpc.InvocationException,,com/google/gwt/user/client/rpc/InvocationException.java,45,-1
-RpcTokenException_0_g$,,com.google.gwt.user.client.rpc.RpcTokenException,,com/google/gwt/user/client/rpc/RpcTokenException.java,23,-1
-n9e_g$,com.google.gwt.user.client.rpc.RpcTokenException::RpcTokenException(Ljava/lang/String;) <init>,com.google.gwt.user.client.rpc.RpcTokenException,RpcTokenException,com/google/gwt/user/client/rpc/RpcTokenException.java,38,-1
-SerializationException_0_g$,,com.google.gwt.user.client.rpc.SerializationException,,com/google/gwt/user/client/rpc/SerializationException.java,21,-1
 ServiceDefTarget$NoServiceEntryPointSpecifiedException_0_g$,,com.google.gwt.user.client.rpc.ServiceDefTarget$NoServiceEntryPointSpecifiedException,,com/google/gwt/user/client/rpc/ServiceDefTarget.java,30,-1
-XsrfToken_0_g$,,com.google.gwt.user.client.rpc.XsrfToken,,com/google/gwt/user/client/rpc/XsrfToken.java,21,-1
-AbstractSerializationStream_0_g$,,com.google.gwt.user.client.rpc.impl.AbstractSerializationStream,,com/google/gwt/user/client/rpc/impl/AbstractSerializationStream.java,23,-1
-AbstractSerializationStreamWriter_0_g$,,com.google.gwt.user.client.rpc.impl.AbstractSerializationStreamWriter,,com/google/gwt/user/client/rpc/impl/AbstractSerializationStreamWriter.java,33,-1
-ClientSerializationStreamWriter_0_g$,,com.google.gwt.user.client.rpc.impl.ClientSerializationStreamWriter,,com/google/gwt/user/client/rpc/impl/ClientSerializationStreamWriter.java,26,-1
 RemoteServiceProxy_0_g$,,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy,,com/google/gwt/user/client/rpc/impl/RemoteServiceProxy.java,42,-1
-zcf_g$,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy::$clinit()V,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy,$clinit,com/google/gwt/user/client/rpc/impl/RemoteServiceProxy.java,42,-1
-Bcf_g$,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy::RemoteServiceProxy(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/impl/Serializer;) <init>,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy,RemoteServiceProxy,com/google/gwt/user/client/rpc/impl/RemoteServiceProxy.java,229,-1
 RemoteServiceProxy$ServiceHelper_0_g$,,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy$ServiceHelper,,com/google/gwt/user/client/rpc/impl/RemoteServiceProxy.java,53,-1
-bdf_g$,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy$ServiceHelper::RemoteServiceProxy$ServiceHelper(Lcom/google/gwt/user/client/rpc/impl/RemoteServiceProxy;Ljava/lang/String;Ljava/lang/String;) <init>,com.google.gwt.user.client.rpc.impl.RemoteServiceProxy$ServiceHelper,RemoteServiceProxy$ServiceHelper,com/google/gwt/user/client/rpc/impl/RemoteServiceProxy.java,60,-1
-RequestCallbackAdapter_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,39,-1
-RequestCallbackAdapter$ResponseReader_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,45,-1
-ldf_g$,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader::$clinit()V,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader,$clinit,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,45,-1
-BOOLEAN_0_g$,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader::BOOLEAN,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader,BOOLEAN,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,46,-1
-VOID_0_g$,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader::VOID,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader,VOID,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,126,-1
-RequestCallbackAdapter$ResponseReader$1_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$1,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,46,-1
-RequestCallbackAdapter$ResponseReader$10_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$10,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,118,-1
-RequestCallbackAdapter$ResponseReader$11_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$11,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,126,-1
-RequestCallbackAdapter$ResponseReader$2_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$2,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,54,-1
-RequestCallbackAdapter$ResponseReader$3_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$3,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,62,-1
-RequestCallbackAdapter$ResponseReader$4_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$4,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,70,-1
-RequestCallbackAdapter$ResponseReader$5_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$5,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,78,-1
-RequestCallbackAdapter$ResponseReader$6_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$6,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,86,-1
-RequestCallbackAdapter$ResponseReader$7_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$7,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,94,-1
-RequestCallbackAdapter$ResponseReader$8_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$8,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,102,-1
-RequestCallbackAdapter$ResponseReader$9_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$9,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,110,-1
-RequestCallbackAdapter$ResponseReader$Map_0_g$,,com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter$ResponseReader$Map,,com/google/gwt/user/client/rpc/impl/RequestCallbackAdapter.java,45,-1
-SerializerBase_0_g$,,com.google.gwt.user.client.rpc.impl.SerializerBase,,com/google/gwt/user/client/rpc/impl/SerializerBase.java,35,-1
-SerializerBase$MethodMap_0_g$,,com.google.gwt.user.client.rpc.impl.SerializerBase$MethodMap,,com/google/gwt/user/client/rpc/impl/SerializerBase.java,40,-1
 AbsolutePanel_0_g$,,com.google.gwt.user.client.ui.AbsolutePanel,,com/google/gwt/user/client/ui/AbsolutePanel.java,60,-1
 AttachDetachException_0_g$,,com.google.gwt.user.client.ui.AttachDetachException,,com/google/gwt/user/client/ui/AttachDetachException.java,27,-1
 AttachDetachException$1_0_g$,,com.google.gwt.user.client.ui.AttachDetachException$1,,com/google/gwt/user/client/ui/AttachDetachException.java,32,-1
 AttachDetachException$2_0_g$,,com.google.gwt.user.client.ui.AttachDetachException$2,,com/google/gwt/user/client/ui/AttachDetachException.java,41,-1
 Button_0_g$,,com.google.gwt.user.client.ui.Button,,com/google/gwt/user/client/ui/Button.java,43,-1
-aWc_g$,com.google.gwt.user.client.ui.Button::Button(Ljava/lang/String;) <init>,com.google.gwt.user.client.ui.Button,Button,com/google/gwt/user/client/ui/Button.java,89,-1
+t2c_g$,com.google.gwt.user.client.ui.Button::Button(Ljava/lang/String;) <init>,com.google.gwt.user.client.ui.Button,Button,com/google/gwt/user/client/ui/Button.java,89,-1
 ButtonBase_0_g$,,com.google.gwt.user.client.ui.ButtonBase,,com/google/gwt/user/client/ui/ButtonBase.java,28,-1
 CellPanel_0_g$,,com.google.gwt.user.client.ui.CellPanel,,com/google/gwt/user/client/ui/CellPanel.java,68,-1
 ComplexPanel_0_g$,,com.google.gwt.user.client.ui.ComplexPanel,,com/google/gwt/user/client/ui/ComplexPanel.java,26,-1
@@ -187,25 +146,25 @@ HasHorizontalAlignment$AutoHorizontalAlignmentConstant_0_g$,,com.google.gwt.user
 HasHorizontalAlignment$HorizontalAlignmentConstant_0_g$,,com.google.gwt.user.client.ui.HasHorizontalAlignment$HorizontalAlignmentConstant,,com/google/gwt/user/client/ui/HasHorizontalAlignment.java,65,-1
 HasVerticalAlignment$VerticalAlignmentConstant_0_g$,,com.google.gwt.user.client.ui.HasVerticalAlignment$VerticalAlignmentConstant,,com/google/gwt/user/client/ui/HasVerticalAlignment.java,44,-1
 HorizontalPanel_0_g$,,com.google.gwt.user.client.ui.HorizontalPanel,,com/google/gwt/user/client/ui/HorizontalPanel.java,28,-1
-D6c_g$,com.google.gwt.user.client.ui.HorizontalPanel::HorizontalPanel() <init>,com.google.gwt.user.client.ui.HorizontalPanel,HorizontalPanel,com/google/gwt/user/client/ui/HorizontalPanel.java,37,-1
+Wed_g$,com.google.gwt.user.client.ui.HorizontalPanel::HorizontalPanel() <init>,com.google.gwt.user.client.ui.HorizontalPanel,HorizontalPanel,com/google/gwt/user/client/ui/HorizontalPanel.java,37,-1
 Image_0_g$,,com.google.gwt.user.client.ui.Image,,com/google/gwt/user/client/ui/Image.java,130,-1
-T6c_g$,com.google.gwt.user.client.ui.Image::Image(Lcom/google/gwt/resources/client/ImageResource;) <init>,com.google.gwt.user.client.ui.Image,Image,com/google/gwt/user/client/ui/Image.java,519,-1
+kfd_g$,com.google.gwt.user.client.ui.Image::Image(Lcom/google/gwt/resources/client/ImageResource;) <init>,com.google.gwt.user.client.ui.Image,Image,com/google/gwt/user/client/ui/Image.java,519,-1
 Image$ClippedState_0_g$,,com.google.gwt.user.client.ui.Image$ClippedState,,com/google/gwt/user/client/ui/Image.java,143,-1
 Image$State_0_g$,,com.google.gwt.user.client.ui.Image$State,,com/google/gwt/user/client/ui/Image.java,260,-1
 Image$State$1_0_g$,,com.google.gwt.user.client.ui.Image$State$1,,com/google/gwt/user/client/ui/Image.java,325,-1
 Image$UnclippedState_0_g$,,com.google.gwt.user.client.ui.Image$UnclippedState,,com/google/gwt/user/client/ui/Image.java,362,-1
 Label_0_g$,,com.google.gwt.user.client.ui.Label,,com/google/gwt/user/client/ui/Label.java,103,-1
-g2c_g$,com.google.gwt.user.client.ui.Label::Label() <init>,com.google.gwt.user.client.ui.Label,Label,com/google/gwt/user/client/ui/Label.java,140,-1
-i2c_g$,com.google.gwt.user.client.ui.Label::Label(Ljava/lang/String;) <init>,com.google.gwt.user.client.ui.Label,Label,com/google/gwt/user/client/ui/Label.java,150,-1
+zad_g$,com.google.gwt.user.client.ui.Label::Label() <init>,com.google.gwt.user.client.ui.Label,Label,com/google/gwt/user/client/ui/Label.java,140,-1
+Bad_g$,com.google.gwt.user.client.ui.Label::Label(Ljava/lang/String;) <init>,com.google.gwt.user.client.ui.Label,Label,com/google/gwt/user/client/ui/Label.java,150,-1
 LabelBase_0_g$,,com.google.gwt.user.client.ui.LabelBase,,com/google/gwt/user/client/ui/LabelBase.java,31,-1
 Panel_0_g$,,com.google.gwt.user.client.ui.Panel,,com/google/gwt/user/client/ui/Panel.java,24,-1
 RootPanel_0_g$,,com.google.gwt.user.client.ui.RootPanel,,com/google/gwt/user/client/ui/RootPanel.java,44,-1
-gid_g$,com.google.gwt.user.client.ui.RootPanel::get(Ljava/lang/String;)Lcom/google/gwt/user/client/ui/RootPanel;,com.google.gwt.user.client.ui.RootPanel,get,com/google/gwt/user/client/ui/RootPanel.java,164,-1
+zqd_g$,com.google.gwt.user.client.ui.RootPanel::get(Ljava/lang/String;)Lcom/google/gwt/user/client/ui/RootPanel;,com.google.gwt.user.client.ui.RootPanel,get,com/google/gwt/user/client/ui/RootPanel.java,164,-1
 RootPanel$1_0_g$,,com.google.gwt.user.client.ui.RootPanel$1,,com/google/gwt/user/client/ui/RootPanel.java,69,-1
 RootPanel$2_0_g$,,com.google.gwt.user.client.ui.RootPanel$2,,com/google/gwt/user/client/ui/RootPanel.java,263,-1
 RootPanel$DefaultRootPanel_0_g$,,com.google.gwt.user.client.ui.RootPanel$DefaultRootPanel,,com/google/gwt/user/client/ui/RootPanel.java,49,-1
 TextBox_0_g$,,com.google.gwt.user.client.ui.TextBox,,com/google/gwt/user/client/ui/TextBox.java,49,-1
-Cod_g$,com.google.gwt.user.client.ui.TextBox::TextBox() <init>,com.google.gwt.user.client.ui.TextBox,TextBox,com/google/gwt/user/client/ui/TextBox.java,77,-1
+Vwd_g$,com.google.gwt.user.client.ui.TextBox::TextBox() <init>,com.google.gwt.user.client.ui.TextBox,TextBox,com/google/gwt/user/client/ui/TextBox.java,77,-1
 TextBoxBase_0_g$,,com.google.gwt.user.client.ui.TextBoxBase,,com/google/gwt/user/client/ui/TextBoxBase.java,38,-1
 TextBoxBase$TextAlignConstant_0_g$,,com.google.gwt.user.client.ui.TextBoxBase$TextAlignConstant,,com/google/gwt/user/client/ui/TextBoxBase.java,46,-1
 UIObject_0_g$,,com.google.gwt.user.client.ui.UIObject,,com/google/gwt/user/client/ui/UIObject.java,129,-1
@@ -220,7 +179,7 @@ ValueBoxBase$TextAlignment$3_0_g$,,com.google.gwt.user.client.ui.ValueBoxBase$Te
 ValueBoxBase$TextAlignment$4_0_g$,,com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$4,,com/google/gwt/user/client/ui/ValueBoxBase.java,74,-1
 ValueBoxBase$TextAlignment$Map_0_g$,,com.google.gwt.user.client.ui.ValueBoxBase$TextAlignment$Map,,com/google/gwt/user/client/ui/ValueBoxBase.java,55,-1
 VerticalPanel_0_g$,,com.google.gwt.user.client.ui.VerticalPanel,,com/google/gwt/user/client/ui/VerticalPanel.java,28,-1
-ltd_g$,com.google.gwt.user.client.ui.VerticalPanel::VerticalPanel() <init>,com.google.gwt.user.client.ui.VerticalPanel,VerticalPanel,com/google/gwt/user/client/ui/VerticalPanel.java,37,-1
+EBd_g$,com.google.gwt.user.client.ui.VerticalPanel::VerticalPanel() <init>,com.google.gwt.user.client.ui.VerticalPanel,VerticalPanel,com/google/gwt/user/client/ui/VerticalPanel.java,37,-1
 Widget_0_g$,,com.google.gwt.user.client.ui.Widget,,com/google/gwt/user/client/ui/Widget.java,36,-1
 UserAgentAsserter_0_g$,,com.google.gwt.useragent.client.UserAgentAsserter,,com/google/gwt/useragent/client/UserAgentAsserter.java,29,-1
 UserAgentAsserter$UserAgentAsserterDisabled_0_g$,,com.google.gwt.useragent.client.UserAgentAsserter$UserAgentAsserterDisabled,,com/google/gwt/useragent/client/UserAgentAsserter.java,34,-1
@@ -229,177 +188,180 @@ Event_0_g$,,com.google.web.bindery.event.shared.Event,,com/google/web/bindery/ev
 Event$Type_0_g$,,com.google.web.bindery.event.shared.Event$Type,,com/google/web/bindery/event/shared/Event.java,29,-1
 UmbrellaException_1_g$,,com.google.web.bindery.event.shared.UmbrellaException,,com/google/web/bindery/event/shared/UmbrellaException.java,27,-1
 App_0_g$,,com.hala.mywebapp.App,,com/hala/mywebapp/App.java,8,-1
-Fwd_g$,com.hala.mywebapp.App::$clinit()V,com.hala.mywebapp.App,$clinit,com/hala/mywebapp/App.java,8,0
-Gwd_g$,com.hala.mywebapp.App::$init()V,com.hala.mywebapp.App,$init,com/hala/mywebapp/App.java,8,0
-Hwd_g$,com.hala.mywebapp.App::App() <init>,com.hala.mywebapp.App,App,com/hala/mywebapp/App.java,8,0
-hALAServiceAsync_1_g$,com.hala.mywebapp.App::hALAServiceAsync,com.hala.mywebapp.App,hALAServiceAsync,com/hala/mywebapp/App.java,9,-1
-Iwd_g$,com.hala.mywebapp.App::onModuleLoad()V,com.hala.mywebapp.App,onModuleLoad,com/hala/mywebapp/App.java,11,0
+YFd_g$,com.hala.mywebapp.App::$clinit()V,com.hala.mywebapp.App,$clinit,com/hala/mywebapp/App.java,8,0
+ZFd_g$,com.hala.mywebapp.App::$init()V,com.hala.mywebapp.App,$init,com/hala/mywebapp/App.java,8,0
+$Fd_g$,com.hala.mywebapp.App::App() <init>,com.hala.mywebapp.App,App,com/hala/mywebapp/App.java,8,0
+hALAServiceAsync_0_g$,com.hala.mywebapp.App::hALAServiceAsync,com.hala.mywebapp.App,hALAServiceAsync,com/hala/mywebapp/App.java,9,-1
+_Fd_g$,com.hala.mywebapp.App::onModuleLoad()V,com.hala.mywebapp.App,onModuleLoad,com/hala/mywebapp/App.java,11,0
 App$1_0_g$,,com.hala.mywebapp.App$1,,com/hala/mywebapp/App.java,12,-1
-Thf_g$,com.hala.mywebapp.App$1::App$1(Lcom/hala/mywebapp/App;) <init>,com.hala.mywebapp.App$1,App$1,com/hala/mywebapp/App.java,12,-1
-sgf_g$,com.hala.mywebapp.GreetingServiceAsync::$clinit()V,com.hala.mywebapp.GreetingServiceAsync,$clinit,com/hala/mywebapp/GreetingServiceAsync.java,8,0
+cGd_g$,com.hala.mywebapp.App$1::App$1(Lcom/hala/mywebapp/App;) <init>,com.hala.mywebapp.App$1,App$1,com/hala/mywebapp/App.java,12,-1
 GreetingService_Proxy_0_g$,,com.hala.mywebapp.GreetingService_Proxy,,gen/com/hala/mywebapp/GreetingService_Proxy.java,14,-1
-tgf_g$,com.hala.mywebapp.GreetingService_Proxy::$clinit()V,com.hala.mywebapp.GreetingService_Proxy,$clinit,gen/com/hala/mywebapp/GreetingService_Proxy.java,14,0
-ugf_g$,com.hala.mywebapp.GreetingService_Proxy::$init()V,com.hala.mywebapp.GreetingService_Proxy,$init,gen/com/hala/mywebapp/GreetingService_Proxy.java,14,0
-vgf_g$,com.hala.mywebapp.GreetingService_Proxy::GreetingService_Proxy() <init>,com.hala.mywebapp.GreetingService_Proxy,GreetingService_Proxy,gen/com/hala/mywebapp/GreetingService_Proxy.java,19,0
-REMOTE_SERVICE_INTERFACE_NAME_0_g$,com.hala.mywebapp.GreetingService_Proxy::REMOTE_SERVICE_INTERFACE_NAME,com.hala.mywebapp.GreetingService_Proxy,REMOTE_SERVICE_INTERFACE_NAME,gen/com/hala/mywebapp/GreetingService_Proxy.java,15,-1
-SERIALIZATION_POLICY_0_g$,com.hala.mywebapp.GreetingService_Proxy::SERIALIZATION_POLICY,com.hala.mywebapp.GreetingService_Proxy,SERIALIZATION_POLICY,gen/com/hala/mywebapp/GreetingService_Proxy.java,16,-1
-SERIALIZER_0_g$,com.hala.mywebapp.GreetingService_Proxy::SERIALIZER,com.hala.mywebapp.GreetingService_Proxy,SERIALIZER,gen/com/hala/mywebapp/GreetingService_Proxy.java,17,-1
-wgf_g$,com.hala.mywebapp.GreetingService_Proxy::checkRpcTokenType(Lcom/google/gwt/user/client/rpc/RpcToken;)V,com.hala.mywebapp.GreetingService_Proxy,checkRpcTokenType,gen/com/hala/mywebapp/GreetingService_Proxy.java,81,0
-xgf_g$,com.hala.mywebapp.GreetingService_Proxy::createStreamWriter()Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;,com.hala.mywebapp.GreetingService_Proxy,createStreamWriter,gen/com/hala/mywebapp/GreetingService_Proxy.java,72,0
-Xhf_g$,com.hala.mywebapp.GreetingService_Proxy::initData(Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,com.hala.mywebapp.GreetingService_Proxy,initData,gen/com/hala/mywebapp/GreetingService_Proxy.java,26,0
-Sif_g$,com.hala.mywebapp.GreetingService_Proxy::logIn(Lcom/hala/mywebapp/Utente;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,com.hala.mywebapp.GreetingService_Proxy,logIn,gen/com/hala/mywebapp/GreetingService_Proxy.java,36,0
-njf_g$,com.hala.mywebapp.GreetingService_Proxy::logOut(Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,com.hala.mywebapp.GreetingService_Proxy,logOut,gen/com/hala/mywebapp/GreetingService_Proxy.java,48,0
-Tif_g$,com.hala.mywebapp.GreetingService_Proxy::signIn(Lcom/hala/mywebapp/Utente;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,com.hala.mywebapp.GreetingService_Proxy,signIn,gen/com/hala/mywebapp/GreetingService_Proxy.java,60,0
-GreetingService_TypeSerializer_0_g$,,com.hala.mywebapp.GreetingService_TypeSerializer,,gen/com/hala/mywebapp/GreetingService_TypeSerializer.java,10,-1
-Cgf_g$,com.hala.mywebapp.GreetingService_TypeSerializer::GreetingService_TypeSerializer() <init>,com.hala.mywebapp.GreetingService_TypeSerializer,GreetingService_TypeSerializer,gen/com/hala/mywebapp/GreetingService_TypeSerializer.java,67,-1
+jGd_g$,com.hala.mywebapp.GreetingService_Proxy::GreetingService_Proxy() <init>,com.hala.mywebapp.GreetingService_Proxy,GreetingService_Proxy,gen/com/hala/mywebapp/GreetingService_Proxy.java,19,-1
+HomePage_0_g$,,com.hala.mywebapp.HomePage,,com/hala/mywebapp/HomePage.java,15,-1
+Ejf_g$,com.hala.mywebapp.HomePage::$clinit()V,com.hala.mywebapp.HomePage,$clinit,com/hala/mywebapp/HomePage.java,15,0
+Fjf_g$,com.hala.mywebapp.HomePage::$init()V,com.hala.mywebapp.HomePage,$init,com/hala/mywebapp/HomePage.java,15,0
+Gjf_g$,com.hala.mywebapp.HomePage::HomePage() <init>,com.hala.mywebapp.HomePage,HomePage,com/hala/mywebapp/HomePage.java,21,0
+Hjf_g$,com.hala.mywebapp.HomePage::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.HomePage,asWidget,com/hala/mywebapp/HomePage.java,64,0
+hALAServiceAsync_4_g$,com.hala.mywebapp.HomePage::hALAServiceAsync,com.hala.mywebapp.HomePage,hALAServiceAsync,com/hala/mywebapp/HomePage.java,18,-1
+Ijf_g$,com.hala.mywebapp.HomePage::initWidget()V,com.hala.mywebapp.HomePage,initWidget,com/hala/mywebapp/HomePage.java,26,0
+mainPanel_5_g$,com.hala.mywebapp.HomePage::mainPanel,com.hala.mywebapp.HomePage,mainPanel,com/hala/mywebapp/HomePage.java,17,-1
+utenteAttivo_1_g$,com.hala.mywebapp.HomePage::utenteAttivo,com.hala.mywebapp.HomePage,utenteAttivo,com/hala/mywebapp/HomePage.java,19,-1
+HomePage$1_0_g$,,com.hala.mywebapp.HomePage$1,,com/hala/mywebapp/HomePage.java,45,-1
+Jjf_g$,com.hala.mywebapp.HomePage$1::$clinit()V,com.hala.mywebapp.HomePage$1,$clinit,com/hala/mywebapp/HomePage.java,45,0
+Kjf_g$,com.hala.mywebapp.HomePage$1::$init()V,com.hala.mywebapp.HomePage$1,$init,com/hala/mywebapp/HomePage.java,45,0
+Ljf_g$,com.hala.mywebapp.HomePage$1::HomePage$1(Lcom/hala/mywebapp/HomePage;) <init>,com.hala.mywebapp.HomePage$1,HomePage$1,com/hala/mywebapp/HomePage.java,45,0
+Mjf_g$,com.hala.mywebapp.HomePage$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.HomePage$1,onClick,com/hala/mywebapp/HomePage.java,46,0
+this$01_98_g$,com.hala.mywebapp.HomePage$1::this$01,com.hala.mywebapp.HomePage$1,this$01,com/hala/mywebapp/HomePage.java,45,-1
+HomePage$2_0_g$,,com.hala.mywebapp.HomePage$2,,com/hala/mywebapp/HomePage.java,52,-1
+Njf_g$,com.hala.mywebapp.HomePage$2::$clinit()V,com.hala.mywebapp.HomePage$2,$clinit,com/hala/mywebapp/HomePage.java,52,0
+Ojf_g$,com.hala.mywebapp.HomePage$2::$init()V,com.hala.mywebapp.HomePage$2,$init,com/hala/mywebapp/HomePage.java,52,0
+Pjf_g$,com.hala.mywebapp.HomePage$2::HomePage$2(Lcom/hala/mywebapp/HomePage;) <init>,com.hala.mywebapp.HomePage$2,HomePage$2,com/hala/mywebapp/HomePage.java,52,0
+Qjf_g$,com.hala.mywebapp.HomePage$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.HomePage$2,onClick,com/hala/mywebapp/HomePage.java,54,0
+this$01_99_g$,com.hala.mywebapp.HomePage$2::this$01,com.hala.mywebapp.HomePage$2,this$01,com/hala/mywebapp/HomePage.java,52,-1
 Login_0_g$,,com.hala.mywebapp.Login,,com/hala/mywebapp/Login.java,15,-1
-lif_g$,com.hala.mywebapp.Login::$clinit()V,com.hala.mywebapp.Login,$clinit,com/hala/mywebapp/Login.java,15,0
-mif_g$,com.hala.mywebapp.Login::$init()V,com.hala.mywebapp.Login,$init,com/hala/mywebapp/Login.java,15,0
-nif_g$,com.hala.mywebapp.Login::Login() <init>,com.hala.mywebapp.Login,Login,com/hala/mywebapp/Login.java,21,0
-oif_g$,com.hala.mywebapp.Login::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.Login,asWidget,com/hala/mywebapp/Login.java,84,0
+Dhf_g$,com.hala.mywebapp.Login::$clinit()V,com.hala.mywebapp.Login,$clinit,com/hala/mywebapp/Login.java,15,0
+Ehf_g$,com.hala.mywebapp.Login::$init()V,com.hala.mywebapp.Login,$init,com/hala/mywebapp/Login.java,15,0
+Fhf_g$,com.hala.mywebapp.Login::Login() <init>,com.hala.mywebapp.Login,Login,com/hala/mywebapp/Login.java,21,0
+Ghf_g$,com.hala.mywebapp.Login::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.Login,asWidget,com/hala/mywebapp/Login.java,86,0
 hALAServiceAsync_2_g$,com.hala.mywebapp.Login::hALAServiceAsync,com.hala.mywebapp.Login,hALAServiceAsync,com/hala/mywebapp/Login.java,18,-1
-pif_g$,com.hala.mywebapp.Login::initWidget()V,com.hala.mywebapp.Login,initWidget,com/hala/mywebapp/Login.java,26,0
+Hhf_g$,com.hala.mywebapp.Login::initWidget()V,com.hala.mywebapp.Login,initWidget,com/hala/mywebapp/Login.java,26,0
 mainPanel_3_g$,com.hala.mywebapp.Login::mainPanel,com.hala.mywebapp.Login,mainPanel,com/hala/mywebapp/Login.java,17,-1
 utenteAttivo_0_g$,com.hala.mywebapp.Login::utenteAttivo,com.hala.mywebapp.Login,utenteAttivo,com/hala/mywebapp/Login.java,19,-1
 Login$1_0_g$,,com.hala.mywebapp.Login$1,,com/hala/mywebapp/Login.java,46,-1
-qif_g$,com.hala.mywebapp.Login$1::$clinit()V,com.hala.mywebapp.Login$1,$clinit,com/hala/mywebapp/Login.java,46,0
-rif_g$,com.hala.mywebapp.Login$1::$init()V,com.hala.mywebapp.Login$1,$init,com/hala/mywebapp/Login.java,46,0
-sif_g$,com.hala.mywebapp.Login$1::Login$1(Lcom/hala/mywebapp/Login;) <init>,com.hala.mywebapp.Login$1,Login$1,com/hala/mywebapp/Login.java,46,0
-tif_g$,com.hala.mywebapp.Login$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Login$1,onClick,com/hala/mywebapp/Login.java,47,0
+Ihf_g$,com.hala.mywebapp.Login$1::$clinit()V,com.hala.mywebapp.Login$1,$clinit,com/hala/mywebapp/Login.java,46,0
+Jhf_g$,com.hala.mywebapp.Login$1::$init()V,com.hala.mywebapp.Login$1,$init,com/hala/mywebapp/Login.java,46,0
+Khf_g$,com.hala.mywebapp.Login$1::Login$1(Lcom/hala/mywebapp/Login;) <init>,com.hala.mywebapp.Login$1,Login$1,com/hala/mywebapp/Login.java,46,0
+Lhf_g$,com.hala.mywebapp.Login$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Login$1,onClick,com/hala/mywebapp/Login.java,47,0
 this$01_90_g$,com.hala.mywebapp.Login$1::this$01,com.hala.mywebapp.Login$1,this$01,com/hala/mywebapp/Login.java,46,-1
 val$messageLabel4_1_g$,com.hala.mywebapp.Login$1::val$messageLabel4,com.hala.mywebapp.Login$1,val$messageLabel4,com/hala/mywebapp/Login.java,46,-1
 val$passwordField3_1_g$,com.hala.mywebapp.Login$1::val$passwordField3,com.hala.mywebapp.Login$1,val$passwordField3,com/hala/mywebapp/Login.java,46,-1
 val$usernameField2_1_g$,com.hala.mywebapp.Login$1::val$usernameField2,com.hala.mywebapp.Login$1,val$usernameField2,com/hala/mywebapp/Login.java,46,-1
 Login$1$1_0_g$,,com.hala.mywebapp.Login$1$1,,com/hala/mywebapp/Login.java,51,-1
-uif_g$,com.hala.mywebapp.Login$1$1::$clinit()V,com.hala.mywebapp.Login$1$1,$clinit,com/hala/mywebapp/Login.java,51,0
-vif_g$,com.hala.mywebapp.Login$1$1::$init()V,com.hala.mywebapp.Login$1$1,$init,com/hala/mywebapp/Login.java,51,0
-wif_g$,com.hala.mywebapp.Login$1$1::Login$1$1(Lcom/hala/mywebapp/Login$1;) <init>,com.hala.mywebapp.Login$1$1,Login$1$1,com/hala/mywebapp/Login.java,51,0
-xif_g$,com.hala.mywebapp.Login$1$1::onFailure(Ljava/lang/Throwable;)V,com.hala.mywebapp.Login$1$1,onFailure,com/hala/mywebapp/Login.java,54,0
-yif_g$,com.hala.mywebapp.Login$1$1::onSuccess(Ljava/lang/Boolean;)V,com.hala.mywebapp.Login$1$1,onSuccess,com/hala/mywebapp/Login.java,60,0
-zif_g$,com.hala.mywebapp.Login$1$1::onSuccess(Ljava/lang/Object;)V,com.hala.mywebapp.Login$1$1,onSuccess,com/hala/mywebapp/Login.java,60,0
+Mhf_g$,com.hala.mywebapp.Login$1$1::$clinit()V,com.hala.mywebapp.Login$1$1,$clinit,com/hala/mywebapp/Login.java,51,0
+Nhf_g$,com.hala.mywebapp.Login$1$1::$init()V,com.hala.mywebapp.Login$1$1,$init,com/hala/mywebapp/Login.java,51,0
+Ohf_g$,com.hala.mywebapp.Login$1$1::Login$1$1(Lcom/hala/mywebapp/Login$1;) <init>,com.hala.mywebapp.Login$1$1,Login$1$1,com/hala/mywebapp/Login.java,51,0
+Phf_g$,com.hala.mywebapp.Login$1$1::onFailure(Ljava/lang/Throwable;)V,com.hala.mywebapp.Login$1$1,onFailure,com/hala/mywebapp/Login.java,54,0
+Qhf_g$,com.hala.mywebapp.Login$1$1::onSuccess(Ljava/lang/Boolean;)V,com.hala.mywebapp.Login$1$1,onSuccess,com/hala/mywebapp/Login.java,60,0
+Rhf_g$,com.hala.mywebapp.Login$1$1::onSuccess(Ljava/lang/Object;)V,com.hala.mywebapp.Login$1$1,onSuccess,com/hala/mywebapp/Login.java,60,0
 this$11_9_g$,com.hala.mywebapp.Login$1$1::this$11,com.hala.mywebapp.Login$1$1,this$11,com/hala/mywebapp/Login.java,51,-1
 val$messageLabel2_1_g$,com.hala.mywebapp.Login$1$1::val$messageLabel2,com.hala.mywebapp.Login$1$1,val$messageLabel2,com/hala/mywebapp/Login.java,51,-1
 val$username3_0_g$,com.hala.mywebapp.Login$1$1::val$username3,com.hala.mywebapp.Login$1$1,val$username3,com/hala/mywebapp/Login.java,51,-1
-Login$2_0_g$,,com.hala.mywebapp.Login$2,,com/hala/mywebapp/Login.java,72,-1
-Aif_g$,com.hala.mywebapp.Login$2::$clinit()V,com.hala.mywebapp.Login$2,$clinit,com/hala/mywebapp/Login.java,72,0
-Bif_g$,com.hala.mywebapp.Login$2::$init()V,com.hala.mywebapp.Login$2,$init,com/hala/mywebapp/Login.java,72,0
-Cif_g$,com.hala.mywebapp.Login$2::Login$2(Lcom/hala/mywebapp/Login;) <init>,com.hala.mywebapp.Login$2,Login$2,com/hala/mywebapp/Login.java,72,0
-Dif_g$,com.hala.mywebapp.Login$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Login$2,onClick,com/hala/mywebapp/Login.java,74,0
-this$01_91_g$,com.hala.mywebapp.Login$2::this$01,com.hala.mywebapp.Login$2,this$01,com/hala/mywebapp/Login.java,72,-1
+Login$2_0_g$,,com.hala.mywebapp.Login$2,,com/hala/mywebapp/Login.java,74,-1
+Zhf_g$,com.hala.mywebapp.Login$2::$clinit()V,com.hala.mywebapp.Login$2,$clinit,com/hala/mywebapp/Login.java,74,0
+$hf_g$,com.hala.mywebapp.Login$2::$init()V,com.hala.mywebapp.Login$2,$init,com/hala/mywebapp/Login.java,74,0
+_hf_g$,com.hala.mywebapp.Login$2::Login$2(Lcom/hala/mywebapp/Login;) <init>,com.hala.mywebapp.Login$2,Login$2,com/hala/mywebapp/Login.java,74,0
+aif_g$,com.hala.mywebapp.Login$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Login$2,onClick,com/hala/mywebapp/Login.java,76,0
+this$01_92_g$,com.hala.mywebapp.Login$2::this$01,com.hala.mywebapp.Login$2,this$01,com/hala/mywebapp/Login.java,74,-1
 Logout_0_g$,,com.hala.mywebapp.Logout,,com/hala/mywebapp/Logout.java,15,-1
-ojf_g$,com.hala.mywebapp.Logout::$clinit()V,com.hala.mywebapp.Logout,$clinit,com/hala/mywebapp/Logout.java,15,0
-pjf_g$,com.hala.mywebapp.Logout::$init()V,com.hala.mywebapp.Logout,$init,com/hala/mywebapp/Logout.java,15,0
-qjf_g$,com.hala.mywebapp.Logout::Logout() <init>,com.hala.mywebapp.Logout,Logout,com/hala/mywebapp/Logout.java,20,0
-rjf_g$,com.hala.mywebapp.Logout::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.Logout,asWidget,com/hala/mywebapp/Logout.java,82,0
+djf_g$,com.hala.mywebapp.Logout::$clinit()V,com.hala.mywebapp.Logout,$clinit,com/hala/mywebapp/Logout.java,15,-1
+fjf_g$,com.hala.mywebapp.Logout::Logout() <init>,com.hala.mywebapp.Logout,Logout,com/hala/mywebapp/Logout.java,20,-1
 hALAServiceAsync_3_g$,com.hala.mywebapp.Logout::hALAServiceAsync,com.hala.mywebapp.Logout,hALAServiceAsync,com/hala/mywebapp/Logout.java,18,-1
-sjf_g$,com.hala.mywebapp.Logout::initWidget()V,com.hala.mywebapp.Logout,initWidget,com/hala/mywebapp/Logout.java,25,0
-mainPanel_4_g$,com.hala.mywebapp.Logout::mainPanel,com.hala.mywebapp.Logout,mainPanel,com/hala/mywebapp/Logout.java,17,-1
 Logout$1_0_g$,,com.hala.mywebapp.Logout$1,,com/hala/mywebapp/Logout.java,40,-1
-tjf_g$,com.hala.mywebapp.Logout$1::$clinit()V,com.hala.mywebapp.Logout$1,$clinit,com/hala/mywebapp/Logout.java,40,0
-ujf_g$,com.hala.mywebapp.Logout$1::$init()V,com.hala.mywebapp.Logout$1,$init,com/hala/mywebapp/Logout.java,40,0
-vjf_g$,com.hala.mywebapp.Logout$1::Logout$1(Lcom/hala/mywebapp/Logout;) <init>,com.hala.mywebapp.Logout$1,Logout$1,com/hala/mywebapp/Logout.java,40,0
-wjf_g$,com.hala.mywebapp.Logout$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Logout$1,onClick,com/hala/mywebapp/Logout.java,41,0
+ijf_g$,com.hala.mywebapp.Logout$1::$clinit()V,com.hala.mywebapp.Logout$1,$clinit,com/hala/mywebapp/Logout.java,40,0
+jjf_g$,com.hala.mywebapp.Logout$1::$init()V,com.hala.mywebapp.Logout$1,$init,com/hala/mywebapp/Logout.java,40,0
+kjf_g$,com.hala.mywebapp.Logout$1::Logout$1(Lcom/hala/mywebapp/Logout;) <init>,com.hala.mywebapp.Logout$1,Logout$1,com/hala/mywebapp/Logout.java,40,0
+ljf_g$,com.hala.mywebapp.Logout$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Logout$1,onClick,com/hala/mywebapp/Logout.java,41,0
 this$01_94_g$,com.hala.mywebapp.Logout$1::this$01,com.hala.mywebapp.Logout$1,this$01,com/hala/mywebapp/Logout.java,40,-1
 val$messageLabel2_2_g$,com.hala.mywebapp.Logout$1::val$messageLabel2,com.hala.mywebapp.Logout$1,val$messageLabel2,com/hala/mywebapp/Logout.java,40,-1
 Logout$1$1_0_g$,,com.hala.mywebapp.Logout$1$1,,com/hala/mywebapp/Logout.java,43,-1
-xjf_g$,com.hala.mywebapp.Logout$1$1::$clinit()V,com.hala.mywebapp.Logout$1$1,$clinit,com/hala/mywebapp/Logout.java,43,0
-yjf_g$,com.hala.mywebapp.Logout$1$1::$init()V,com.hala.mywebapp.Logout$1$1,$init,com/hala/mywebapp/Logout.java,43,0
-zjf_g$,com.hala.mywebapp.Logout$1$1::Logout$1$1(Lcom/hala/mywebapp/Logout$1;) <init>,com.hala.mywebapp.Logout$1$1,Logout$1$1,com/hala/mywebapp/Logout.java,43,0
-Ajf_g$,com.hala.mywebapp.Logout$1$1::onFailure(Ljava/lang/Throwable;)V,com.hala.mywebapp.Logout$1$1,onFailure,com/hala/mywebapp/Logout.java,46,0
-Bjf_g$,com.hala.mywebapp.Logout$1$1::onSuccess(Ljava/lang/Boolean;)V,com.hala.mywebapp.Logout$1$1,onSuccess,com/hala/mywebapp/Logout.java,52,0
-Cjf_g$,com.hala.mywebapp.Logout$1$1::onSuccess(Ljava/lang/Object;)V,com.hala.mywebapp.Logout$1$1,onSuccess,com/hala/mywebapp/Logout.java,52,0
-this$11_10_g$,com.hala.mywebapp.Logout$1$1::this$11,com.hala.mywebapp.Logout$1$1,this$11,com/hala/mywebapp/Logout.java,43,-1
-val$messageLabel2_3_g$,com.hala.mywebapp.Logout$1$1::val$messageLabel2,com.hala.mywebapp.Logout$1$1,val$messageLabel2,com/hala/mywebapp/Logout.java,43,-1
+ojf_g$,com.hala.mywebapp.Logout$1$1::Logout$1$1(Lcom/hala/mywebapp/Logout$1;) <init>,com.hala.mywebapp.Logout$1$1,Logout$1$1,com/hala/mywebapp/Logout.java,43,-1
 Logout$2_0_g$,,com.hala.mywebapp.Logout$2,,com/hala/mywebapp/Logout.java,64,-1
-Djf_g$,com.hala.mywebapp.Logout$2::$clinit()V,com.hala.mywebapp.Logout$2,$clinit,com/hala/mywebapp/Logout.java,64,0
-Ejf_g$,com.hala.mywebapp.Logout$2::$init()V,com.hala.mywebapp.Logout$2,$init,com/hala/mywebapp/Logout.java,64,0
-Fjf_g$,com.hala.mywebapp.Logout$2::Logout$2(Lcom/hala/mywebapp/Logout;) <init>,com.hala.mywebapp.Logout$2,Logout$2,com/hala/mywebapp/Logout.java,64,0
-Gjf_g$,com.hala.mywebapp.Logout$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Logout$2,onClick,com/hala/mywebapp/Logout.java,65,0
+sjf_g$,com.hala.mywebapp.Logout$2::$clinit()V,com.hala.mywebapp.Logout$2,$clinit,com/hala/mywebapp/Logout.java,64,0
+tjf_g$,com.hala.mywebapp.Logout$2::$init()V,com.hala.mywebapp.Logout$2,$init,com/hala/mywebapp/Logout.java,64,0
+ujf_g$,com.hala.mywebapp.Logout$2::Logout$2(Lcom/hala/mywebapp/Logout;) <init>,com.hala.mywebapp.Logout$2,Logout$2,com/hala/mywebapp/Logout.java,64,0
+vjf_g$,com.hala.mywebapp.Logout$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Logout$2,onClick,com/hala/mywebapp/Logout.java,65,0
 this$01_95_g$,com.hala.mywebapp.Logout$2::this$01,com.hala.mywebapp.Logout$2,this$01,com/hala/mywebapp/Logout.java,64,-1
 Logout$3_0_g$,,com.hala.mywebapp.Logout$3,,com/hala/mywebapp/Logout.java,71,-1
-Hjf_g$,com.hala.mywebapp.Logout$3::$clinit()V,com.hala.mywebapp.Logout$3,$clinit,com/hala/mywebapp/Logout.java,71,0
-Ijf_g$,com.hala.mywebapp.Logout$3::$init()V,com.hala.mywebapp.Logout$3,$init,com/hala/mywebapp/Logout.java,71,0
-Jjf_g$,com.hala.mywebapp.Logout$3::Logout$3(Lcom/hala/mywebapp/Logout;) <init>,com.hala.mywebapp.Logout$3,Logout$3,com/hala/mywebapp/Logout.java,71,0
-Kjf_g$,com.hala.mywebapp.Logout$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Logout$3,onClick,com/hala/mywebapp/Logout.java,73,0
+wjf_g$,com.hala.mywebapp.Logout$3::$clinit()V,com.hala.mywebapp.Logout$3,$clinit,com/hala/mywebapp/Logout.java,71,0
+xjf_g$,com.hala.mywebapp.Logout$3::$init()V,com.hala.mywebapp.Logout$3,$init,com/hala/mywebapp/Logout.java,71,0
+yjf_g$,com.hala.mywebapp.Logout$3::Logout$3(Lcom/hala/mywebapp/Logout;) <init>,com.hala.mywebapp.Logout$3,Logout$3,com/hala/mywebapp/Logout.java,71,0
+zjf_g$,com.hala.mywebapp.Logout$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Logout$3,onClick,com/hala/mywebapp/Logout.java,73,0
 this$01_96_g$,com.hala.mywebapp.Logout$3::this$01,com.hala.mywebapp.Logout$3,this$01,com/hala/mywebapp/Logout.java,71,-1
+ScriviStoria_0_g$,,com.hala.mywebapp.ScriviStoria,,com/hala/mywebapp/ScriviStoria.java,15,-1
+Tjf_g$,com.hala.mywebapp.ScriviStoria::$clinit()V,com.hala.mywebapp.ScriviStoria,$clinit,com/hala/mywebapp/ScriviStoria.java,15,0
+Ujf_g$,com.hala.mywebapp.ScriviStoria::$init()V,com.hala.mywebapp.ScriviStoria,$init,com/hala/mywebapp/ScriviStoria.java,15,0
+Vjf_g$,com.hala.mywebapp.ScriviStoria::ScriviStoria() <init>,com.hala.mywebapp.ScriviStoria,ScriviStoria,com/hala/mywebapp/ScriviStoria.java,21,0
+Wjf_g$,com.hala.mywebapp.ScriviStoria::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.ScriviStoria,asWidget,com/hala/mywebapp/ScriviStoria.java,86,0
+hALAServiceAsync_5_g$,com.hala.mywebapp.ScriviStoria::hALAServiceAsync,com.hala.mywebapp.ScriviStoria,hALAServiceAsync,com/hala/mywebapp/ScriviStoria.java,18,-1
+Xjf_g$,com.hala.mywebapp.ScriviStoria::initWidget()V,com.hala.mywebapp.ScriviStoria,initWidget,com/hala/mywebapp/ScriviStoria.java,26,0
+mainPanel_6_g$,com.hala.mywebapp.ScriviStoria::mainPanel,com.hala.mywebapp.ScriviStoria,mainPanel,com/hala/mywebapp/ScriviStoria.java,17,-1
+utenteAttivo_2_g$,com.hala.mywebapp.ScriviStoria::utenteAttivo,com.hala.mywebapp.ScriviStoria,utenteAttivo,com/hala/mywebapp/ScriviStoria.java,19,-1
+ScriviStoria$1_0_g$,,com.hala.mywebapp.ScriviStoria$1,,com/hala/mywebapp/ScriviStoria.java,55,-1
+Yjf_g$,com.hala.mywebapp.ScriviStoria$1::$clinit()V,com.hala.mywebapp.ScriviStoria$1,$clinit,com/hala/mywebapp/ScriviStoria.java,55,0
+Zjf_g$,com.hala.mywebapp.ScriviStoria$1::$init()V,com.hala.mywebapp.ScriviStoria$1,$init,com/hala/mywebapp/ScriviStoria.java,55,0
+$jf_g$,com.hala.mywebapp.ScriviStoria$1::ScriviStoria$1(Lcom/hala/mywebapp/ScriviStoria;) <init>,com.hala.mywebapp.ScriviStoria$1,ScriviStoria$1,com/hala/mywebapp/ScriviStoria.java,55,0
+_jf_g$,com.hala.mywebapp.ScriviStoria$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.ScriviStoria$1,onClick,com/hala/mywebapp/ScriviStoria.java,56,0
+this$01_100_g$,com.hala.mywebapp.ScriviStoria$1::this$01,com.hala.mywebapp.ScriviStoria$1,this$01,com/hala/mywebapp/ScriviStoria.java,55,-1
+val$vp2_0_g$,com.hala.mywebapp.ScriviStoria$1::val$vp2,com.hala.mywebapp.ScriviStoria$1,val$vp2,com/hala/mywebapp/ScriviStoria.java,55,-1
+ScriviStoria$2_0_g$,,com.hala.mywebapp.ScriviStoria$2,,com/hala/mywebapp/ScriviStoria.java,64,-1
+akf_g$,com.hala.mywebapp.ScriviStoria$2::$clinit()V,com.hala.mywebapp.ScriviStoria$2,$clinit,com/hala/mywebapp/ScriviStoria.java,64,0
+bkf_g$,com.hala.mywebapp.ScriviStoria$2::$init()V,com.hala.mywebapp.ScriviStoria$2,$init,com/hala/mywebapp/ScriviStoria.java,64,0
+ckf_g$,com.hala.mywebapp.ScriviStoria$2::ScriviStoria$2(Lcom/hala/mywebapp/ScriviStoria;) <init>,com.hala.mywebapp.ScriviStoria$2,ScriviStoria$2,com/hala/mywebapp/ScriviStoria.java,64,0
+dkf_g$,com.hala.mywebapp.ScriviStoria$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.ScriviStoria$2,onClick,com/hala/mywebapp/ScriviStoria.java,65,0
+this$01_101_g$,com.hala.mywebapp.ScriviStoria$2::this$01,com.hala.mywebapp.ScriviStoria$2,this$01,com/hala/mywebapp/ScriviStoria.java,64,-1
+val$vp2_1_g$,com.hala.mywebapp.ScriviStoria$2::val$vp2,com.hala.mywebapp.ScriviStoria$2,val$vp2,com/hala/mywebapp/ScriviStoria.java,64,-1
+ScriviStoria$3_0_g$,,com.hala.mywebapp.ScriviStoria$3,,com/hala/mywebapp/ScriviStoria.java,74,-1
+ekf_g$,com.hala.mywebapp.ScriviStoria$3::$clinit()V,com.hala.mywebapp.ScriviStoria$3,$clinit,com/hala/mywebapp/ScriviStoria.java,74,0
+fkf_g$,com.hala.mywebapp.ScriviStoria$3::$init()V,com.hala.mywebapp.ScriviStoria$3,$init,com/hala/mywebapp/ScriviStoria.java,74,0
+gkf_g$,com.hala.mywebapp.ScriviStoria$3::ScriviStoria$3(Lcom/hala/mywebapp/ScriviStoria;) <init>,com.hala.mywebapp.ScriviStoria$3,ScriviStoria$3,com/hala/mywebapp/ScriviStoria.java,74,0
+hkf_g$,com.hala.mywebapp.ScriviStoria$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.ScriviStoria$3,onClick,com/hala/mywebapp/ScriviStoria.java,76,0
+this$01_102_g$,com.hala.mywebapp.ScriviStoria$3::this$01,com.hala.mywebapp.ScriviStoria$3,this$01,com/hala/mywebapp/ScriviStoria.java,74,-1
 SignIn_0_g$,,com.hala.mywebapp.SignIn,,com/hala/mywebapp/SignIn.java,17,-1
-Jwd_g$,com.hala.mywebapp.SignIn::$clinit()V,com.hala.mywebapp.SignIn,$clinit,com/hala/mywebapp/SignIn.java,17,0
-Kwd_g$,com.hala.mywebapp.SignIn::$init()V,com.hala.mywebapp.SignIn,$init,com/hala/mywebapp/SignIn.java,17,0
-Lwd_g$,com.hala.mywebapp.SignIn::SignIn() <init>,com.hala.mywebapp.SignIn,SignIn,com/hala/mywebapp/SignIn.java,22,0
-Mwd_g$,com.hala.mywebapp.SignIn::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.SignIn,asWidget,com/hala/mywebapp/SignIn.java,81,0
-hALAServiceAsync_0_g$,com.hala.mywebapp.SignIn::hALAServiceAsync,com.hala.mywebapp.SignIn,hALAServiceAsync,com/hala/mywebapp/SignIn.java,20,-1
-Nwd_g$,com.hala.mywebapp.SignIn::initWidget()V,com.hala.mywebapp.SignIn,initWidget,com/hala/mywebapp/SignIn.java,27,0
-mainPanel_1_g$,com.hala.mywebapp.SignIn::mainPanel,com.hala.mywebapp.SignIn,mainPanel,com/hala/mywebapp/SignIn.java,19,-1
+wGd_g$,com.hala.mywebapp.SignIn::SignIn() <init>,com.hala.mywebapp.SignIn,SignIn,com/hala/mywebapp/SignIn.java,22,-1
 SignIn$1_0_g$,,com.hala.mywebapp.SignIn$1,,com/hala/mywebapp/SignIn.java,47,-1
-Fgf_g$,com.hala.mywebapp.SignIn$1::$clinit()V,com.hala.mywebapp.SignIn$1,$clinit,com/hala/mywebapp/SignIn.java,47,0
-Ggf_g$,com.hala.mywebapp.SignIn$1::$init()V,com.hala.mywebapp.SignIn$1,$init,com/hala/mywebapp/SignIn.java,47,0
-Hgf_g$,com.hala.mywebapp.SignIn$1::SignIn$1(Lcom/hala/mywebapp/SignIn;) <init>,com.hala.mywebapp.SignIn$1,SignIn$1,com/hala/mywebapp/SignIn.java,47,0
-Igf_g$,com.hala.mywebapp.SignIn$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.SignIn$1,onClick,com/hala/mywebapp/SignIn.java,48,0
-this$01_88_g$,com.hala.mywebapp.SignIn$1::this$01,com.hala.mywebapp.SignIn$1,this$01,com/hala/mywebapp/SignIn.java,47,-1
-val$messageLabel4_0_g$,com.hala.mywebapp.SignIn$1::val$messageLabel4,com.hala.mywebapp.SignIn$1,val$messageLabel4,com/hala/mywebapp/SignIn.java,47,-1
-val$passwordField3_0_g$,com.hala.mywebapp.SignIn$1::val$passwordField3,com.hala.mywebapp.SignIn$1,val$passwordField3,com/hala/mywebapp/SignIn.java,47,-1
-val$usernameField2_0_g$,com.hala.mywebapp.SignIn$1::val$usernameField2,com.hala.mywebapp.SignIn$1,val$usernameField2,com/hala/mywebapp/SignIn.java,47,-1
 SignIn$1$1_0_g$,,com.hala.mywebapp.SignIn$1$1,,com/hala/mywebapp/SignIn.java,52,-1
-Jgf_g$,com.hala.mywebapp.SignIn$1$1::$clinit()V,com.hala.mywebapp.SignIn$1$1,$clinit,com/hala/mywebapp/SignIn.java,52,0
-Kgf_g$,com.hala.mywebapp.SignIn$1$1::$init()V,com.hala.mywebapp.SignIn$1$1,$init,com/hala/mywebapp/SignIn.java,52,0
-Lgf_g$,com.hala.mywebapp.SignIn$1$1::SignIn$1$1(Lcom/hala/mywebapp/SignIn$1;) <init>,com.hala.mywebapp.SignIn$1$1,SignIn$1$1,com/hala/mywebapp/SignIn.java,52,0
-Mgf_g$,com.hala.mywebapp.SignIn$1$1::onFailure(Ljava/lang/Throwable;)V,com.hala.mywebapp.SignIn$1$1,onFailure,com/hala/mywebapp/SignIn.java,54,0
-Ngf_g$,com.hala.mywebapp.SignIn$1$1::onSuccess(Ljava/lang/Boolean;)V,com.hala.mywebapp.SignIn$1$1,onSuccess,com/hala/mywebapp/SignIn.java,60,0
-Ogf_g$,com.hala.mywebapp.SignIn$1$1::onSuccess(Ljava/lang/Object;)V,com.hala.mywebapp.SignIn$1$1,onSuccess,com/hala/mywebapp/SignIn.java,60,0
-this$11_8_g$,com.hala.mywebapp.SignIn$1$1::this$11,com.hala.mywebapp.SignIn$1$1,this$11,com/hala/mywebapp/SignIn.java,52,-1
-val$messageLabel2_0_g$,com.hala.mywebapp.SignIn$1$1::val$messageLabel2,com.hala.mywebapp.SignIn$1$1,val$messageLabel2,com/hala/mywebapp/SignIn.java,52,-1
 SignIn$2_0_g$,,com.hala.mywebapp.SignIn$2,,com/hala/mywebapp/SignIn.java,70,-1
-Eif_g$,com.hala.mywebapp.SignIn$2::$clinit()V,com.hala.mywebapp.SignIn$2,$clinit,com/hala/mywebapp/SignIn.java,70,0
-Fif_g$,com.hala.mywebapp.SignIn$2::$init()V,com.hala.mywebapp.SignIn$2,$init,com/hala/mywebapp/SignIn.java,70,0
-Gif_g$,com.hala.mywebapp.SignIn$2::SignIn$2(Lcom/hala/mywebapp/SignIn;) <init>,com.hala.mywebapp.SignIn$2,SignIn$2,com/hala/mywebapp/SignIn.java,70,0
-Hif_g$,com.hala.mywebapp.SignIn$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.SignIn$2,onClick,com/hala/mywebapp/SignIn.java,72,0
-this$01_92_g$,com.hala.mywebapp.SignIn$2::this$01,com.hala.mywebapp.SignIn$2,this$01,com/hala/mywebapp/SignIn.java,70,-1
+bif_g$,com.hala.mywebapp.SignIn$2::$clinit()V,com.hala.mywebapp.SignIn$2,$clinit,com/hala/mywebapp/SignIn.java,70,0
+cif_g$,com.hala.mywebapp.SignIn$2::$init()V,com.hala.mywebapp.SignIn$2,$init,com/hala/mywebapp/SignIn.java,70,0
+dif_g$,com.hala.mywebapp.SignIn$2::SignIn$2(Lcom/hala/mywebapp/SignIn;) <init>,com.hala.mywebapp.SignIn$2,SignIn$2,com/hala/mywebapp/SignIn.java,70,0
+eif_g$,com.hala.mywebapp.SignIn$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.SignIn$2,onClick,com/hala/mywebapp/SignIn.java,72,0
+this$01_93_g$,com.hala.mywebapp.SignIn$2::this$01,com.hala.mywebapp.SignIn$2,this$01,com/hala/mywebapp/SignIn.java,70,-1
 Starter_0_g$,,com.hala.mywebapp.Starter,,com/hala/mywebapp/Starter.java,16,-1
-Owd_g$,com.hala.mywebapp.Starter::$clinit()V,com.hala.mywebapp.Starter,$clinit,com/hala/mywebapp/Starter.java,16,0
-Pwd_g$,com.hala.mywebapp.Starter::$init()V,com.hala.mywebapp.Starter,$init,com/hala/mywebapp/Starter.java,16,0
-Qwd_g$,com.hala.mywebapp.Starter::Starter() <init>,com.hala.mywebapp.Starter,Starter,com/hala/mywebapp/Starter.java,20,0
-Rwd_g$,com.hala.mywebapp.Starter::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.Starter,asWidget,com/hala/mywebapp/Starter.java,69,0
-Swd_g$,com.hala.mywebapp.Starter::initWidget()V,com.hala.mywebapp.Starter,initWidget,com/hala/mywebapp/Starter.java,25,0
+JGd_g$,com.hala.mywebapp.Starter::$clinit()V,com.hala.mywebapp.Starter,$clinit,com/hala/mywebapp/Starter.java,16,0
+KGd_g$,com.hala.mywebapp.Starter::$init()V,com.hala.mywebapp.Starter,$init,com/hala/mywebapp/Starter.java,16,0
+LGd_g$,com.hala.mywebapp.Starter::Starter() <init>,com.hala.mywebapp.Starter,Starter,com/hala/mywebapp/Starter.java,20,0
+MGd_g$,com.hala.mywebapp.Starter::asWidget()Lcom/google/gwt/user/client/ui/Widget;,com.hala.mywebapp.Starter,asWidget,com/hala/mywebapp/Starter.java,69,0
+NGd_g$,com.hala.mywebapp.Starter::initWidget()V,com.hala.mywebapp.Starter,initWidget,com/hala/mywebapp/Starter.java,25,0
 mainPanel_2_g$,com.hala.mywebapp.Starter::mainPanel,com.hala.mywebapp.Starter,mainPanel,com/hala/mywebapp/Starter.java,18,-1
 Starter$1_0_g$,,com.hala.mywebapp.Starter$1,,com/hala/mywebapp/Starter.java,44,-1
-Twd_g$,com.hala.mywebapp.Starter$1::$clinit()V,com.hala.mywebapp.Starter$1,$clinit,com/hala/mywebapp/Starter.java,44,0
-Uwd_g$,com.hala.mywebapp.Starter$1::$init()V,com.hala.mywebapp.Starter$1,$init,com/hala/mywebapp/Starter.java,44,0
-Vwd_g$,com.hala.mywebapp.Starter$1::Starter$1(Lcom/hala/mywebapp/Starter;) <init>,com.hala.mywebapp.Starter$1,Starter$1,com/hala/mywebapp/Starter.java,44,0
-Wwd_g$,com.hala.mywebapp.Starter$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Starter$1,onClick,com/hala/mywebapp/Starter.java,45,0
-this$01_45_g$,com.hala.mywebapp.Starter$1::this$01,com.hala.mywebapp.Starter$1,this$01,com/hala/mywebapp/Starter.java,44,-1
+OGd_g$,com.hala.mywebapp.Starter$1::$clinit()V,com.hala.mywebapp.Starter$1,$clinit,com/hala/mywebapp/Starter.java,44,0
+PGd_g$,com.hala.mywebapp.Starter$1::$init()V,com.hala.mywebapp.Starter$1,$init,com/hala/mywebapp/Starter.java,44,0
+QGd_g$,com.hala.mywebapp.Starter$1::Starter$1(Lcom/hala/mywebapp/Starter;) <init>,com.hala.mywebapp.Starter$1,Starter$1,com/hala/mywebapp/Starter.java,44,0
+RGd_g$,com.hala.mywebapp.Starter$1::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Starter$1,onClick,com/hala/mywebapp/Starter.java,45,0
+this$01_51_g$,com.hala.mywebapp.Starter$1::this$01,com.hala.mywebapp.Starter$1,this$01,com/hala/mywebapp/Starter.java,44,-1
 Starter$2_0_g$,,com.hala.mywebapp.Starter$2,,com/hala/mywebapp/Starter.java,51,-1
-Iif_g$,com.hala.mywebapp.Starter$2::$clinit()V,com.hala.mywebapp.Starter$2,$clinit,com/hala/mywebapp/Starter.java,51,0
-Jif_g$,com.hala.mywebapp.Starter$2::$init()V,com.hala.mywebapp.Starter$2,$init,com/hala/mywebapp/Starter.java,51,0
-Kif_g$,com.hala.mywebapp.Starter$2::Starter$2(Lcom/hala/mywebapp/Starter;) <init>,com.hala.mywebapp.Starter$2,Starter$2,com/hala/mywebapp/Starter.java,51,0
-Lif_g$,com.hala.mywebapp.Starter$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Starter$2,onClick,com/hala/mywebapp/Starter.java,52,0
-this$01_93_g$,com.hala.mywebapp.Starter$2::this$01,com.hala.mywebapp.Starter$2,this$01,com/hala/mywebapp/Starter.java,51,-1
+Shf_g$,com.hala.mywebapp.Starter$2::$clinit()V,com.hala.mywebapp.Starter$2,$clinit,com/hala/mywebapp/Starter.java,51,0
+Thf_g$,com.hala.mywebapp.Starter$2::$init()V,com.hala.mywebapp.Starter$2,$init,com/hala/mywebapp/Starter.java,51,0
+Uhf_g$,com.hala.mywebapp.Starter$2::Starter$2(Lcom/hala/mywebapp/Starter;) <init>,com.hala.mywebapp.Starter$2,Starter$2,com/hala/mywebapp/Starter.java,51,0
+Vhf_g$,com.hala.mywebapp.Starter$2::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Starter$2,onClick,com/hala/mywebapp/Starter.java,52,0
+this$01_91_g$,com.hala.mywebapp.Starter$2::this$01,com.hala.mywebapp.Starter$2,this$01,com/hala/mywebapp/Starter.java,51,-1
 Starter$3_0_g$,,com.hala.mywebapp.Starter$3,,com/hala/mywebapp/Starter.java,58,-1
-Ljf_g$,com.hala.mywebapp.Starter$3::$clinit()V,com.hala.mywebapp.Starter$3,$clinit,com/hala/mywebapp/Starter.java,58,0
-Mjf_g$,com.hala.mywebapp.Starter$3::$init()V,com.hala.mywebapp.Starter$3,$init,com/hala/mywebapp/Starter.java,58,0
-Njf_g$,com.hala.mywebapp.Starter$3::Starter$3(Lcom/hala/mywebapp/Starter;) <init>,com.hala.mywebapp.Starter$3,Starter$3,com/hala/mywebapp/Starter.java,58,0
-Ojf_g$,com.hala.mywebapp.Starter$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Starter$3,onClick,com/hala/mywebapp/Starter.java,59,0
+Ajf_g$,com.hala.mywebapp.Starter$3::$clinit()V,com.hala.mywebapp.Starter$3,$clinit,com/hala/mywebapp/Starter.java,58,0
+Bjf_g$,com.hala.mywebapp.Starter$3::$init()V,com.hala.mywebapp.Starter$3,$init,com/hala/mywebapp/Starter.java,58,0
+Cjf_g$,com.hala.mywebapp.Starter$3::Starter$3(Lcom/hala/mywebapp/Starter;) <init>,com.hala.mywebapp.Starter$3,Starter$3,com/hala/mywebapp/Starter.java,58,0
+Djf_g$,com.hala.mywebapp.Starter$3::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,com.hala.mywebapp.Starter$3,onClick,com/hala/mywebapp/Starter.java,59,0
 this$01_97_g$,com.hala.mywebapp.Starter$3::this$01,com.hala.mywebapp.Starter$3,this$01,com/hala/mywebapp/Starter.java,58,-1
-Xwd_g$,com.hala.mywebapp.Starter$MyResources::$clinit()V,com.hala.mywebapp.Starter$MyResources,$clinit,com/hala/mywebapp/Starter.java,73,0
+SGd_g$,com.hala.mywebapp.Starter$MyResources::$clinit()V,com.hala.mywebapp.Starter$MyResources,$clinit,com/hala/mywebapp/Starter.java,73,0
 Starter_MyResources_default_InlineClientBundleGenerator_0_g$,,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,-1
-Ywd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::$clinit()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,$clinit,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,0
-Zwd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::$init()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,$init,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,0
-$wd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::Starter_MyResources_default_InlineClientBundleGenerator() <init>,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,Starter_MyResources_default_InlineClientBundleGenerator,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,0
+TGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::$clinit()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,$clinit,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,0
+UGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::$init()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,$init,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,0
+VGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::Starter_MyResources_default_InlineClientBundleGenerator() <init>,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,Starter_MyResources_default_InlineClientBundleGenerator,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,6,0
 _instance0_3_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::_instance0,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,_instance0,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,7,-1
 externalImage_3_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::externalImage,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,externalImage,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,27,-1
-_wd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::getResource(Ljava/lang/String;)Lcom/google/gwt/resources/client/ResourcePrototype;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,getResource,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,35,0
-axd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::getResourceNative(Ljava/lang/String;)Lcom/google/gwt/resources/client/ResourcePrototype;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,getResourceNative,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,46,0
-bxd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::getResources()[Lcom/google/gwt/resources/client/ResourcePrototype;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,getResources,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,30,0
+WGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::getResource(Ljava/lang/String;)Lcom/google/gwt/resources/client/ResourcePrototype;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,getResource,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,35,0
+XGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::getResourceNative(Ljava/lang/String;)Lcom/google/gwt/resources/client/ResourcePrototype;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,getResourceNative,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,46,0
+YGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::getResources()[Lcom/google/gwt/resources/client/ResourcePrototype;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,getResources,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,30,0
 immagineStart_0_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::immagineStart,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,immagineStart,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,28,-1
-cxd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::immagineStart()Lcom/google/gwt/resources/client/ImageResource;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,immagineStart,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,23,0
-dxd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::immagineStartInitializer()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,immagineStartInitializer,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,8,0
+ZGd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::immagineStart()Lcom/google/gwt/resources/client/ImageResource;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,immagineStart,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,23,0
+$Gd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::immagineStartInitializer()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,immagineStartInitializer,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,8,0
 resourceMap_3_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator::resourceMap,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator,resourceMap,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,26,-1
 Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer_0_g$,,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,-1
-exd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::$clinit()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,$clinit,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,0
-fxd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::$init()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,$init,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,0
-gxd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer() <init>,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,0
-hxd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::get()Lcom/google/gwt/resources/client/ImageResource;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,get,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,19,0
+_Gd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::$clinit()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,$clinit,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,0
+aHd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::$init()V,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,$init,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,0
+bHd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer() <init>,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,15,0
+cHd_g$,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer::get()Lcom/google/gwt/resources/client/ImageResource;,com.hala.mywebapp.Starter_MyResources_default_InlineClientBundleGenerator$immagineStartInitializer,get,gen/com/hala/mywebapp/Starter_MyResources_default_InlineClientBundleGenerator.java,19,0
 Utente_0_g$,,com.hala.mywebapp.Utente,,com/hala/mywebapp/Utente.java,5,-1
-Xif_g$,com.hala.mywebapp.Utente::Utente(Ljava/lang/String;Ljava/lang/String;) <init>,com.hala.mywebapp.Utente,Utente,com/hala/mywebapp/Utente.java,10,-1
+Lif_g$,com.hala.mywebapp.Utente::Utente(Ljava/lang/String;Ljava/lang/String;) <init>,com.hala.mywebapp.Utente,Utente,com/hala/mywebapp/Utente.java,10,-1
 int[]_0_g$,,int[],,Unknown,0,-1
 IOException_0_g$,,java.io.IOException,,com/google/gwt/emul/java/io/IOException.java,23,-1
 java.io.Serializable[]_0_g$,,java.io.Serializable[],,Unknown,0,-1
@@ -407,7 +369,7 @@ UnsupportedEncodingException_0_g$,,java.io.UnsupportedEncodingException,,com/goo
 AbstractStringBuilder_0_g$,,java.lang.AbstractStringBuilder,,com/google/gwt/emul/java/lang/AbstractStringBuilder.java,26,-1
 AssertionError_0_g$,,java.lang.AssertionError,,com/google/gwt/emul/java/lang/AssertionError.java,21,-1
 Boolean_0_g$,,java.lang.Boolean,,com/google/gwt/emul/java/lang/Boolean.java,29,-1
-zzd_g$,java.lang.Boolean::booleanValue__Z__devirtual$(Ljava/lang/Boolean;)Z,java.lang.Boolean,booleanValue__Z__devirtual$,com/google/gwt/emul/java/lang/Boolean.java,91,-1
+uJd_g$,java.lang.Boolean::booleanValue__Z__devirtual$(Ljava/lang/Boolean;)Z,java.lang.Boolean,booleanValue__Z__devirtual$,com/google/gwt/emul/java/lang/Boolean.java,91,-1
 Byte_0_g$,,java.lang.Byte,,com/google/gwt/emul/java/lang/Byte.java,21,-1
 Byte$BoxedValues_0_g$,,java.lang.Byte$BoxedValues,,com/google/gwt/emul/java/lang/Byte.java,32,-1
 CharSequence$1_0_g$,,java.lang.CharSequence$1,,com/google/gwt/emul/java/lang/CharSequence.java,45,-1
@@ -417,9 +379,9 @@ Character_0_g$,,java.lang.Character,,com/google/gwt/emul/java/lang/Character.jav
 Character$BoxedValues_0_g$,,java.lang.Character$BoxedValues,,com/google/gwt/emul/java/lang/Character.java,105,-1
 Character$CharSequenceAdapter_0_g$,,java.lang.Character$CharSequenceAdapter,,com/google/gwt/emul/java/lang/Character.java,70,-1
 Class_0_g$,,java.lang.Class,,com/google/gwt/emul/java/lang/Class.java,33,-1
-CCd_g$,java.lang.Class::createForClass(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/Class;)Ljava/lang/Class;,java.lang.Class,createForClass,com/google/gwt/emul/java/lang/Class.java,73,-1
-ECd_g$,java.lang.Class::createForInterface(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Class;,java.lang.Class,createForInterface,com/google/gwt/emul/java/lang/Class.java,105,-1
-FCd_g$,java.lang.Class::createForPrimitive(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)Ljava/lang/Class;,java.lang.Class,createForPrimitive,com/google/gwt/emul/java/lang/Class.java,117,-1
+xMd_g$,java.lang.Class::createForClass(Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;Ljava/lang/Class;)Ljava/lang/Class;,java.lang.Class,createForClass,com/google/gwt/emul/java/lang/Class.java,73,-1
+zMd_g$,java.lang.Class::createForInterface(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Class;,java.lang.Class,createForInterface,com/google/gwt/emul/java/lang/Class.java,105,-1
+AMd_g$,java.lang.Class::createForPrimitive(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)Ljava/lang/Class;,java.lang.Class,createForPrimitive,com/google/gwt/emul/java/lang/Class.java,117,-1
 ClassCastException_0_g$,,java.lang.ClassCastException,,com/google/gwt/emul/java/lang/ClassCastException.java,21,-1
 java.lang.Comparable[]_0_g$,,java.lang.Comparable[],,Unknown,0,-1
 Double_0_g$,,java.lang.Double,,com/google/gwt/emul/java/lang/Double.java,26,-1
@@ -441,7 +403,6 @@ NumberFormatException_0_g$,,java.lang.NumberFormatException,,com/google/gwt/emul
 Object_0_g$,,java.lang.Object,,com/google/gwt/emul/java/lang/Object.java,27,-1
 a_g$,java.lang.Object::$clinit()V,java.lang.Object,$clinit,com/google/gwt/emul/java/lang/Object.java,27,-1
 i_g$,java.lang.Object::Object() <init>,java.lang.Object,Object,com/google/gwt/emul/java/lang/Object.java,27,-1
-___clazz_0_g$,java.lang.Object::___clazz,java.lang.Object,___clazz,com/google/gwt/emul/java/lang/Object.java,33,-1
 java.lang.Object[]_0_g$,,java.lang.Object[],,Unknown,0,-1
 RuntimeException_0_g$,,java.lang.RuntimeException,,com/google/gwt/emul/java/lang/RuntimeException.java,23,-1
 Short_0_g$,,java.lang.Short,,com/google/gwt/emul/java/lang/Short.java,23,-1
@@ -477,7 +438,7 @@ Comparator$lambda$2$Type_0_g$,,java.util.Comparator$lambda$2$Type,,com/google/gw
 Comparator$lambda$3$Type_0_g$,,java.util.Comparator$lambda$3$Type,,com/google/gwt/emul/java/util/Comparator.java,96,-1
 Comparator$lambda$4$Type_0_g$,,java.util.Comparator$lambda$4$Type,,com/google/gwt/emul/java/util/Comparator.java,102,-1
 HashMap_0_g$,,java.util.HashMap,,com/google/gwt/emul/java/util/HashMap.java,30,-1
-t6d_g$,java.util.HashMap::HashMap() <init>,java.util.HashMap,HashMap,com/google/gwt/emul/java/util/HashMap.java,47,-1
+oge_g$,java.util.HashMap::HashMap() <init>,java.util.HashMap,HashMap,com/google/gwt/emul/java/util/HashMap.java,47,-1
 HashSet_0_g$,,java.util.HashSet,,com/google/gwt/emul/java/util/HashSet.java,27,-1
 Locale_0_g$,,java.util.Locale,,com/google/gwt/emul/java/util/Locale.java,25,-1
 Locale$1_0_g$,,java.util.Locale$1,,com/google/gwt/emul/java/util/Locale.java,27,-1

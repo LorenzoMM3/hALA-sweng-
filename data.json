@@ -29,6 +29,18 @@
     "isLogged": false
   }
 ,
+  "lollo": {
+    "username": "lollo",
+    "password": "lollo",
+    "isLogged": true
+  }
+,
+  "evvai": {
+    "username": "evvai",
+    "password": "evvai",
+    "isLogged": false
+  }
+,
   "CiaoNano": {
     "username": "CiaoNano",
     "password": "CiaoNano",
