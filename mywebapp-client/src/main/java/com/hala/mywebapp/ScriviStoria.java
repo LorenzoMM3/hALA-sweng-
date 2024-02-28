@@ -4,22 +4,16 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 
 public class ScriviStoria implements IsWidget {
 
-    public VerticalPanel mainPanel;
+    public HorizontalPanel mainPanel;
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     protected static String utenteAttivo = "";
 
     public ScriviStoria() {
-       mainPanel = GWT.create(VerticalPanel.class) ;
+       mainPanel = GWT.create(HorizontalPanel.class) ;
        initWidget();
     }
 
@@ -39,25 +33,32 @@ public class ScriviStoria implements IsWidget {
         Button backButton = new Button("Back");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
+        VerticalPanel vpIniziale = GWT.create(VerticalPanel.class);
+        VerticalPanel vpIntermedio = GWT.create(VerticalPanel.class);
+        VerticalPanel vpFinale = GWT.create(VerticalPanel.class);
         vp.add(storyLabel);
         vp.add(storyField);
-        vp.add(scenarioInizialeLabel);
-        vp.add(scenarioInizialeField);
-		vp.add(primoScenarioLabel);
-        vp.add(primoScenarioField);
-        vp.add(aggiungiIntermedio);
-        vp.add(scenarioFinaleLabel);
-        vp.add(scenarioFinaleField);
-        vp.add(aggiungiFinale);
+        vpIniziale.add(scenarioInizialeLabel);
+        vpIniziale.add(scenarioInizialeField);
+		vpIntermedio.add(primoScenarioLabel);
+        vpIntermedio.add(primoScenarioField);
+        vpIntermedio.add(aggiungiIntermedio);
+        vpFinale.add(scenarioFinaleLabel);
+        vpFinale.add(scenarioFinaleField);
+        vpFinale.add(aggiungiFinale);
         vp.add(backButton);
+
         mainPanel.add(vp);
+        mainPanel.add(vpIniziale);
+        mainPanel.add(vpIntermedio);
+        mainPanel.add(vpFinale);
         
 		aggiungiIntermedio.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                TextBox newTextBox = new TextBox();
                 
                 // Aggiungi la casella di testo al pannello radice della pagina
-                vp.add(newTextBox);
+                vpIntermedio.add(newTextBox);
             }
         });
 
@@ -66,7 +67,7 @@ public class ScriviStoria implements IsWidget {
                TextBox newTextBox = new TextBox();
                 
                 // Aggiungi la casella di testo al pannello radice della pagina
-                vp.add(newTextBox);
+                vpFinale.add(newTextBox);
             }
         });
 
