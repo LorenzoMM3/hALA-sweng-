@@ -40,7 +40,7 @@ public class ScriviStoria implements IsWidget {
         vp.add(storyField);
         vpIniziale.add(scenarioInizialeLabel);
         vpIniziale.add(scenarioInizialeField);
-		vpIntermedio.add(primoScenarioLabel);
+        vpIntermedio.add(primoScenarioLabel);
         vpIntermedio.add(primoScenarioField);
         vpIntermedio.add(aggiungiIntermedio);
         vpFinale.add(scenarioFinaleLabel);
@@ -48,10 +48,16 @@ public class ScriviStoria implements IsWidget {
         vpFinale.add(aggiungiFinale);
         vp.add(backButton);
 
+        vp.setSpacing(30); //Spazio tra bottoni
+        vpIniziale.setSpacing(30); //Spazio tra bottoni
+        vpIntermedio.setSpacing(30); //Spazio tra bottoni
+        vpFinale.setSpacing(30); //Spazio tra bottoni
+
         mainPanel.add(vp);
         mainPanel.add(vpIniziale);
         mainPanel.add(vpIntermedio);
         mainPanel.add(vpFinale);
+        mainPanel.setSpacing(100); //Spazio tra i bottoni
         
 		aggiungiIntermedio.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
