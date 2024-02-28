@@ -41,6 +41,12 @@
     "isLogged": false
   }
 ,
+  "e": {
+    "username": "e",
+    "password": "e",
+    "isLogged": true
+  }
+,
   "CiaoNano": {
     "username": "CiaoNano",
     "password": "CiaoNano",

@@ -1,0 +1,13 @@
+binding: user.agent=safari
+Compiling module com.hala.mywebapp.App
+   Unification traversed 952 fields and methods and 541 types. 13 are considered part of the current module and 21 had all of their fields and methods traversed.
+   Compiling 1 permutation
+      Compiling permutation 0...
+      Linking per-type JS with 13 new/changed types.
+      Source Maps Enabled
+   Compile of permutations succeeded
+   Compilation succeeded -- 2,978s
+Linking into C:\Users\Lorenzo\OneDrive - Alma Mater Studiorum Università di Bologna\Desktop\hALA-sweng-\target\gwt\codeserver\com.hala.mywebapp.App\compile-2\war\MyWebApp; Writing extras to C:\Users\Lorenzo\OneDrive - Alma Mater Studiorum Università di Bologna\Desktop\hALA-sweng-\target\gwt\codeserver\com.hala.mywebapp.App\compile-2\extras\MyWebApp
+   Link succeeded
+   Linking succeeded -- 0,468s
+3,932s total -- Compile completed

@@ -1,4 +1,4 @@
-var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = '359A8B521099BA6C1FB48FA361AFF371';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
+var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = 'C926E817ED3E0113A21D5304B0D7E99C';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
 function _vc_g$(){
   if (!(permutationId_0_g$ != -1)) {
     debugger;
@@ -25287,7 +25287,7 @@ function Vjf_g$(){
   Tjf_g$();
   i_g$.call(this);
   this.$init_1465_g$();
-  this.mainPanel_6_g$ = _uc_g$(new EBd_g$, 1394);
+  this.mainPanel_6_g$ = _uc_g$(new Wed_g$, 1247);
   this.initWidget_6_g$();
 }
 
@@ -25302,7 +25302,7 @@ _.asWidget_0_g$ = function Wjf_g$(){
 ;
 _.initWidget_6_g$ = function Xjf_g$(){
   Tjf_g$();
-  var aggiungiFinale_0_g$, aggiungiIntermedio_0_g$, backButton_0_g$, messageLabel_0_g$, primoScenarioField_0_g$, primoScenarioLabel_0_g$, scenarioFinaleField_0_g$, scenarioFinaleLabel_0_g$, scenarioInizialeField_0_g$, scenarioInizialeLabel_0_g$, storyField_0_g$, storyLabel_0_g$, vp_0_g$;
+  var aggiungiFinale_0_g$, aggiungiIntermedio_0_g$, backButton_0_g$, messageLabel_0_g$, primoScenarioField_0_g$, primoScenarioLabel_0_g$, scenarioFinaleField_0_g$, scenarioFinaleLabel_0_g$, scenarioInizialeField_0_g$, scenarioInizialeLabel_0_g$, storyField_0_g$, storyLabel_0_g$, vp_0_g$, vpFinale_0_g$, vpIniziale_0_g$, vpIntermedio_0_g$;
   storyLabel_0_g$ = new Bad_g$('Scrivi il titolo della storia:');
   storyField_0_g$ = new Vwd_g$;
   scenarioInizialeLabel_0_g$ = new Bad_g$('Scrivi lo scenario iniziale:');
@@ -25316,20 +25316,26 @@ _.initWidget_6_g$ = function Xjf_g$(){
   messageLabel_0_g$ = new zad_g$;
   backButton_0_g$ = new t2c_g$('Back');
   vp_0_g$ = _uc_g$(new EBd_g$, 1394);
+  vpIniziale_0_g$ = _uc_g$(new EBd_g$, 1394);
+  vpIntermedio_0_g$ = _uc_g$(new EBd_g$, 1394);
+  vpFinale_0_g$ = _uc_g$(new EBd_g$, 1394);
   vp_0_g$.add_4_g$(storyLabel_0_g$);
   vp_0_g$.add_4_g$(storyField_0_g$);
-  vp_0_g$.add_4_g$(scenarioInizialeLabel_0_g$);
-  vp_0_g$.add_4_g$(scenarioInizialeField_0_g$);
-  vp_0_g$.add_4_g$(primoScenarioLabel_0_g$);
-  vp_0_g$.add_4_g$(primoScenarioField_0_g$);
-  vp_0_g$.add_4_g$(aggiungiIntermedio_0_g$);
-  vp_0_g$.add_4_g$(scenarioFinaleLabel_0_g$);
-  vp_0_g$.add_4_g$(scenarioFinaleField_0_g$);
-  vp_0_g$.add_4_g$(aggiungiFinale_0_g$);
+  vpIniziale_0_g$.add_4_g$(scenarioInizialeLabel_0_g$);
+  vpIniziale_0_g$.add_4_g$(scenarioInizialeField_0_g$);
+  vpIntermedio_0_g$.add_4_g$(primoScenarioLabel_0_g$);
+  vpIntermedio_0_g$.add_4_g$(primoScenarioField_0_g$);
+  vpIntermedio_0_g$.add_4_g$(aggiungiIntermedio_0_g$);
+  vpFinale_0_g$.add_4_g$(scenarioFinaleLabel_0_g$);
+  vpFinale_0_g$.add_4_g$(scenarioFinaleField_0_g$);
+  vpFinale_0_g$.add_4_g$(aggiungiFinale_0_g$);
   vp_0_g$.add_4_g$(backButton_0_g$);
   this.mainPanel_6_g$.add_4_g$(vp_0_g$);
-  aggiungiIntermedio_0_g$.addClickHandler_0_g$(new $jf_g$(this, vp_0_g$));
-  aggiungiFinale_0_g$.addClickHandler_0_g$(new ckf_g$(this, vp_0_g$));
+  this.mainPanel_6_g$.add_4_g$(vpIniziale_0_g$);
+  this.mainPanel_6_g$.add_4_g$(vpIntermedio_0_g$);
+  this.mainPanel_6_g$.add_4_g$(vpFinale_0_g$);
+  aggiungiIntermedio_0_g$.addClickHandler_0_g$(new $jf_g$(this, vpIntermedio_0_g$));
+  aggiungiFinale_0_g$.addClickHandler_0_g$(new ckf_g$(this, vpFinale_0_g$));
   backButton_0_g$.addClickHandler_0_g$(new gkf_g$(this));
 }
 ;
@@ -25340,10 +25346,10 @@ function Yjf_g$(){
   a_g$();
 }
 
-function $jf_g$(this$0_0_g$, val$vp_0_g$){
+function $jf_g$(this$0_0_g$, val$vpIntermedio_0_g$){
   Yjf_g$();
   this.this$01_100_g$ = this$0_0_g$;
-  this.val$vp2_0_g$ = val$vp_0_g$;
+  this.val$vpIntermedio2_0_g$ = val$vpIntermedio_0_g$;
   i_g$.call(this);
   this.$init_1466_g$();
 }
@@ -25356,7 +25362,7 @@ _.$init_1466_g$ = function Zjf_g$(){
 _.onClick_0_g$ = function _jf_g$(event_0_g$){
   var newTextBox_0_g$;
   newTextBox_0_g$ = new Vwd_g$;
-  this.val$vp2_0_g$.add_4_g$(newTextBox_0_g$);
+  this.val$vpIntermedio2_0_g$.add_4_g$(newTextBox_0_g$);
 }
 ;
 var Lcom_hala_mywebapp_ScriviStoria$1_2_classLit_0_g$ = xMd_g$('com.hala.mywebapp', 'ScriviStoria/1', 2125, Ljava_lang_Object_2_classLit_0_g$);
@@ -25365,10 +25371,10 @@ function akf_g$(){
   a_g$();
 }
 
-function ckf_g$(this$0_0_g$, val$vp_0_g$){
+function ckf_g$(this$0_0_g$, val$vpFinale_0_g$){
   akf_g$();
   this.this$01_101_g$ = this$0_0_g$;
-  this.val$vp2_1_g$ = val$vp_0_g$;
+  this.val$vpFinale2_0_g$ = val$vpFinale_0_g$;
   i_g$.call(this);
   this.$init_1467_g$();
 }
@@ -25381,7 +25387,7 @@ _.$init_1467_g$ = function bkf_g$(){
 _.onClick_0_g$ = function dkf_g$(event_0_g$){
   var newTextBox_0_g$;
   newTextBox_0_g$ = new Vwd_g$;
-  this.val$vp2_1_g$.add_4_g$(newTextBox_0_g$);
+  this.val$vpFinale2_0_g$.add_4_g$(newTextBox_0_g$);
 }
 ;
 var Lcom_hala_mywebapp_ScriviStoria$2_2_classLit_0_g$ = xMd_g$('com.hala.mywebapp', 'ScriviStoria/2', 2126, Ljava_lang_Object_2_classLit_0_g$);
@@ -25569,21 +25575,49 @@ _.asWidget_0_g$ = function MGd_g$(){
 ;
 _.initWidget_2_g$ = function NGd_g$(){
   JGd_g$();
-  var buttonPanel_0_g$, immStart_0_g$, loginButton_0_g$, logoutButton_0_g$, resources_0_g$, signInButton_0_g$, visualizzaButton_0_g$;
+  var buttonPanel_0_g$, imagePanel_0_g$, immStart1_0_g$, immStart2_0_g$, loginButton_0_g$, logoutButton_0_g$, resources_0_g$, signInButton_0_g$, visualizzaButton_0_g$;
   signInButton_0_g$ = new t2c_g$('SignIn');
   loginButton_0_g$ = new t2c_g$('Login');
   visualizzaButton_0_g$ = new t2c_g$('Visualizza storie');
   logoutButton_0_g$ = new t2c_g$('LogOut');
+  DLb_g$(rgb_g$(signInButton_0_g$.getElement_0_g$()), 'background', '#ADD8E6');
+  _Kb_g$(rgb_g$(signInButton_0_g$.getElement_0_g$()), 'white');
+  DLb_g$(rgb_g$(loginButton_0_g$.getElement_0_g$()), 'background', '#ADD8E6');
+  _Kb_g$(rgb_g$(loginButton_0_g$.getElement_0_g$()), 'white');
+  DLb_g$(rgb_g$(visualizzaButton_0_g$.getElement_0_g$()), 'background', '#ADD8E6');
+  _Kb_g$(rgb_g$(visualizzaButton_0_g$.getElement_0_g$()), 'white');
+  DLb_g$(rgb_g$(logoutButton_0_g$.getElement_0_g$()), 'background', '#ADD8E6');
+  _Kb_g$(rgb_g$(logoutButton_0_g$.getElement_0_g$()), 'white');
   resources_0_g$ = _uc_g$(new VGd_g$, 1445);
-  immStart_0_g$ = new kfd_g$(resources_0_g$.immagineStart_1_g$());
-  immStart_0_g$.setSize_1_g$('10%', '10%');
-  buttonPanel_0_g$ = _uc_g$(new Wed_g$, 1247);
+  immStart1_0_g$ = new kfd_g$(resources_0_g$.immagineStart_1_g$());
+  immStart1_0_g$.setSize_1_g$('50%', '50%');
+  immStart2_0_g$ = new kfd_g$(resources_0_g$.immagineStart_1_g$());
+  immStart2_0_g$.setSize_1_g$('50%', '50%');
+  buttonPanel_0_g$ = new EBd_g$;
+  buttonPanel_0_g$.setSpacing_0_g$(10);
+  buttonPanel_0_g$.setHorizontalAlignment_0_g$((ved_g$() , ALIGN_CENTER_0_g$));
+  DLb_g$(rgb_g$(signInButton_0_g$.getElement_0_g$()), 'width', '200px');
+  DLb_g$(rgb_g$(loginButton_0_g$.getElement_0_g$()), 'width', '200px');
+  DLb_g$(rgb_g$(visualizzaButton_0_g$.getElement_0_g$()), 'width', '200px');
+  DLb_g$(rgb_g$(logoutButton_0_g$.getElement_0_g$()), 'width', '200px');
+  DLb_g$(rgb_g$(signInButton_0_g$.getElement_0_g$()), 'height', '60px');
+  DLb_g$(rgb_g$(loginButton_0_g$.getElement_0_g$()), 'height', '60px');
+  DLb_g$(rgb_g$(visualizzaButton_0_g$.getElement_0_g$()), 'height', '60px');
+  DLb_g$(rgb_g$(logoutButton_0_g$.getElement_0_g$()), 'height', '60px');
   buttonPanel_0_g$.add_4_g$(signInButton_0_g$);
   buttonPanel_0_g$.add_4_g$(loginButton_0_g$);
   buttonPanel_0_g$.add_4_g$(visualizzaButton_0_g$);
   buttonPanel_0_g$.add_4_g$(logoutButton_0_g$);
-  this.mainPanel_2_g$.add_4_g$(buttonPanel_0_g$);
-  this.mainPanel_2_g$.add_4_g$(immStart_0_g$);
+  buttonPanel_0_g$.setWidth_1_g$('100%');
+  DLb_g$(rgb_g$(buttonPanel_0_g$.getElement_0_g$()), 'margin', 'auto');
+  imagePanel_0_g$ = new Wed_g$;
+  imagePanel_0_g$.setWidth_1_g$('100%');
+  imagePanel_0_g$.setHorizontalAlignment_0_g$((ved_g$() , ALIGN_CENTER_0_g$));
+  imagePanel_0_g$.add_4_g$(immStart1_0_g$);
+  imagePanel_0_g$.add_4_g$(buttonPanel_0_g$);
+  imagePanel_0_g$.add_4_g$(immStart2_0_g$);
+  this.mainPanel_2_g$.add_4_g$(imagePanel_0_g$);
+  UKb_g$(rgb_g$(this.mainPanel_2_g$.getElement_0_g$()), '#00008B');
   signInButton_0_g$.addClickHandler_0_g$(new QGd_g$(this));
   loginButton_0_g$.addClickHandler_0_g$(new Uhf_g$(this));
   logoutButton_0_g$.addClickHandler_0_g$(new Cjf_g$(this));
@@ -35342,6 +35376,6 @@ var gwtOnLoad = gwtOnLoad = xxc_g$;
 vxc_g$(eyc_g$);
 zxc_g$('permProps', [[['locale', 'default'], ['user.agent', 'safari']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);$sendStats('moduleStartup', 'end');$gwt && $gwt.permProps && __gwtModuleFunction.__moduleStartupDone($gwt.permProps);
-//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/359A8B521099BA6C1FB48FA361AFF371_sourcemap.json 
+//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/C926E817ED3E0113A21D5304B0D7E99C_sourcemap.json 
 //# sourceURL=MyWebApp-0.js
 
