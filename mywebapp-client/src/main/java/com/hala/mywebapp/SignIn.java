@@ -1,69 +1,67 @@
 package com.hala.mywebapp;
 
-
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.hala.mywebapp.Starter.StarterUiBinder;
 
-public class SignIn implements IsWidget {
+public class SignIn extends Composite implements IsWidget {
 
-    public VerticalPanel mainPanel;
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
-    
+    private static final SignInUiBinder UiB = GWT.create(SignInUiBinder.class);
+
+    interface SignInUiBinder extends UiBinder<Widget, SignIn> {}
+
+    @UiField
+    TextBox usernameField;
+
+    @UiField
+    TextBox passwordField;
+
+    @UiField
+    Button sendButton;
+
+    @UiField
+    Button backButton;
+
+    @UiField
+    Label messageLabel;
+
     public SignIn() {
-       mainPanel = GWT.create(VerticalPanel.class) ;
-       initWidget();
-    }
+        initWidget(UiB.createAndBindUi(this));
 
-    private void initWidget() {
-        Label usernameLabel = new Label("Username:");
-        TextBox usernameField = new TextBox();
-        Label passwordLabel = new Label("Password:");
-        TextBox passwordField = new TextBox();
-        Button sendButton = new Button("signIn");
-        Label messageLabel = new Label();
-        Button backButton = new Button("Back");
-        sendButton.addStyleName("SignIn");
-
-        VerticalPanel vp = GWT.create(VerticalPanel.class);
-        vp.add(usernameLabel);
-        vp.add(usernameField);
-        vp.add(passwordLabel);
-        vp.add(passwordField);
-		vp.add(sendButton);
-        vp.add(backButton);
-		vp.add(messageLabel);
-        mainPanel.add(vp);
-        
-		sendButton.addClickHandler(new ClickHandler() {
+        sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
                 Utente utente = new Utente(username, password);
                 hALAServiceAsync.signIn(utente, new AsyncCallback<Boolean>() {
-                @Override
-                public void onFailure(Throwable throwable) {
-                    messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
-                    GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable); //da cancellare
-                }
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
+                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+                    }
 
-                @Override
-                public void onSuccess(Boolean verifica) {
-                    if (verifica) {
-                        messageLabel.setText("Registrazione effettuata! Benvenuto!");
-                    } else
-                        messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
-                }
-            });
+                    @Override
+                    public void onSuccess(Boolean verifica) {
+                        if (verifica) {
+                            messageLabel.setText("Registrazione effettuata! Benvenuto!");
+                        } else {
+                            messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
+                        }
+                    }
+                });
             }
         });
 
@@ -74,12 +72,10 @@ public class SignIn implements IsWidget {
                 RootPanel.get("startTable").add(new Starter());
             }
         });
-        
     }
 
     @Override
     public Widget asWidget() {
-        return mainPanel;
-     }
-    
+        return this;
+    }
 }
