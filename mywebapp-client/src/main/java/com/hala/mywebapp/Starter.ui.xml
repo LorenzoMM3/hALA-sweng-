@@ -3,9 +3,6 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-    <ui:style>
-
-    </ui:style>
 
     <g:HTMLPanel>
         <div id="bottoni">

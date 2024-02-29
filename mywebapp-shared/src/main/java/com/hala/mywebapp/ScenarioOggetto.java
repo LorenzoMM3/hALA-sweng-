@@ -1,21 +1,26 @@
 package com.hala.mywebapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ScenarioOggetto extends Scenario{
+public class ScenarioOggetto extends Scenario implements Serializable {
     
     protected String oggettoNecessario;
 
     public ScenarioOggetto(){
-        super();
+        
+    }
+    
+    public ScenarioOggetto(String titolo){
+        super(titolo);
         oggettoNecessario = "";
     }
 
-    public void setOggetto(String oggetto){ //Cambiare input in base a cosa si può usare in gwt
+    public void setOggetto(String oggetto){ // Cambiare input in base a cosa si può usare in gwt
         this.oggettoNecessario = oggetto;
     }
 
-    public void setSceltaGiocatore(ArrayList<String> oggettiPosseduti){ //Se gwt non permette liste si possono scrivere tutti gli oggetti in formato "ogg1;ogg2;ogg3;..." e fare lo split
+    public void setSceltaGiocatore(ArrayList<String> oggettiPosseduti){ // Se gwt non permette liste si possono scrivere tutti gli oggetti in formato "ogg1;ogg2;ogg3;..." e fare lo split
         if (oggettiPosseduti.contains(oggettoNecessario)){
             this.sceltaGiocatore = true;
         } else {

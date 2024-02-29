@@ -3,45 +3,44 @@ package com.hala.mywebapp;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.hala.mywebapp.SignIn.SignInUiBinder;
 
-public class Login implements IsWidget {
+public class Login extends Composite implements IsWidget {
 
-    public VerticalPanel mainPanel;
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
+    private static final LoginUiBinder UiB = GWT.create(LoginUiBinder.class);
     protected static String utenteAttivo = "";
 
+    interface LoginUiBinder extends UiBinder<Widget, Login> {}
+
+    @UiField
+    TextBox usernameField;
+
+    @UiField
+    TextBox passwordField;
+
+    @UiField
+    Button backButton;
+
+    @UiField
+    Button loginButton;
+
+    @UiField
+    Label messageLabel;
+
     public Login() {
-       mainPanel = GWT.create(VerticalPanel.class) ;
-       initWidget();
-    }
-
-    private void initWidget() {
-        Label usernameLabel = new Label("Username:");
-        TextBox usernameField = new TextBox();
-        Label passwordLabel = new Label("Password:");
-        TextBox passwordField = new TextBox();
-        Button loginButton = new Button("Login");
-        Label messageLabel = new Label();
-        Button backButton = new Button("Back");
-        loginButton.addStyleName("Login");
-
-        VerticalPanel vp = GWT.create(VerticalPanel.class);
-        vp.add(usernameLabel);
-        vp.add(usernameField);
-        vp.add(passwordLabel);
-        vp.add(passwordField);
-		vp.add(loginButton);
-        vp.add(backButton);
-		vp.add(messageLabel);
-        mainPanel.add(vp);
+        initWidget(UiB.createAndBindUi(this));
         
 		loginButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -84,6 +83,7 @@ public class Login implements IsWidget {
 
     @Override
     public Widget asWidget() {
-        return mainPanel;
+        return this;
      }
+
 }

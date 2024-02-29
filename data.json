@@ -1,4 +1,10 @@
 {
+  "lollol": {
+    "username": "lollol",
+    "password": "lollol",
+    "isLogged": true
+  }
+,
   "Ale": {
     "username": "Ale",
     "password": "a",
@@ -27,6 +33,12 @@
     "username": "Altea",
     "password": "altea",
     "isLogged": false
+  }
+,
+  "u": {
+    "username": "u",
+    "password": "u",
+    "isLogged": true
   }
 ,
   "lollo": {

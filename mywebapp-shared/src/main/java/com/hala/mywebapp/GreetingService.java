@@ -12,4 +12,6 @@ public interface GreetingService extends RemoteService {
 	public boolean signIn(Utente utente);
 	public boolean logIn(Utente utente);
 	public boolean logOut(String username);
+	public Utente ottieniUtenteAttuale();
+	public boolean creaNuovaStoria(Storia nuovaStoria);
 }

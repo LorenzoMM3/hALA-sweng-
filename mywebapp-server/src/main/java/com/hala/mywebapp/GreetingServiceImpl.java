@@ -14,7 +14,9 @@ import java.util.Map;
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
     private DB db;
-    private Map<String, Utente> data;
+    private Map<String, Utente> utentiNelSito;
+    private Map<String, Storia> storieNelSito;
+    public Utente utenteAttuale;
 
     @Override
     public void initData() {
@@ -24,7 +26,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private void openDB() {
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
-            data = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();        }
+            utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();   
+            storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();    }
     }
 
     @Override
@@ -32,14 +35,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
         String username = utente.getUsername();
         String password = utente.getPassword();
-        for (String user : data.keySet()) { //Si dovrebbe poter togliere il for
-            if (data.containsKey(username)) {
+        for (String user : utentiNelSito.keySet()) { //Si dovrebbe poter togliere il for
+            if (utentiNelSito.containsKey(username)) {
                 return false; // Non si può registrare
             }
         }
-        data.put(username, utente);
+        utentiNelSito.put(username, utente);
         db.commit();
-        convertToJson();
+        convertToJsonUtenti();
         return true; // Si può registrare
     }
 
@@ -49,27 +52,28 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         String username = utente.getUsername();
         String password = utente.getPassword();
     
-        Utente utenteSalvato = data.get(username);
+        Utente utenteSalvato = utentiNelSito.get(username);
     
         if (utenteSalvato != null && utenteSalvato.getPassword().equals(password)) {
             utenteSalvato.setIsLogged(true);
-            data.put(utenteSalvato.getUsername(), utenteSalvato);
+            utentiNelSito.put(utenteSalvato.getUsername(), utenteSalvato);
             db.commit();
-            convertToJson();
+            convertToJsonUtenti();
+            utenteAttuale = utenteSalvato;
             return true; // Credenziali corrette
         }
         
         return false; // Credenziali errate
     }
 
-    private void convertToJson() {
+    private void convertToJsonUtenti() {
         openDB();
     
-        try (PrintWriter pW = new PrintWriter(new FileWriter("data.json"))) {
+        try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
             pW.println("{");
 
             boolean firstEntry = true;
-            for (Map.Entry<String, Utente> entry : data.entrySet()) {
+            for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
                 if (!firstEntry) {
                     pW.println(",");
                 }
@@ -91,11 +95,57 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
 	@Override
 	public boolean logOut(String username) {
-		Utente utenteSalvato = data.get(username);
+		Utente utenteSalvato = utentiNelSito.get(username);
         utenteSalvato.setIsLogged(false);
-        data.put(utenteSalvato.getUsername(), utenteSalvato);
+        utentiNelSito.put(utenteSalvato.getUsername(), utenteSalvato);
         db.commit();
-        convertToJson();
+        convertToJsonUtenti();
         return true;
 	}
+    @Override
+    public Utente ottieniUtenteAttuale(){
+        return utenteAttuale;
+    }
+
+    @Override
+    public boolean creaNuovaStoria(Storia nuovaStoria) {
+        //Se il nome è già presente non si può creare
+        openDB();
+        String nomeStoria = nuovaStoria.getNome();
+        if (storieNelSito.containsKey(nomeStoria)) {
+            return false; // Non si può registrare
+        }
+        
+        storieNelSito.put(nomeStoria, nuovaStoria);
+        db.commit();
+        convertToJsonStorie();
+        return true; // Si può registrare
+    }
+
+    private void convertToJsonStorie() {
+        openDB();
+    
+        try (PrintWriter pW = new PrintWriter(new FileWriter("storieNelSito.json"))) {
+            pW.println("{");
+
+            boolean firstEntry = true;
+            for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+                if (!firstEntry) {
+                    pW.println(",");
+                }
+                pW.println("  \"" + entry.getKey() + "\": {");
+                pW.println("    \"nome\": \"" + entry.getValue().getNome() + "\",");
+                pW.println("    \"creatore\": \"" + entry.getValue().getUtente().getUsername() + "\",");
+                pW.println("    \"iniziata\": " + entry.getValue().getIniziata());
+                pW.println("  }");
+
+                firstEntry = false;
+            }
+
+            pW.println("}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

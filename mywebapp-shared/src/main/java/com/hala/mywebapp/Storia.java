@@ -1,15 +1,24 @@
 package com.hala.mywebapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Storia implements StoriaI{
+
+public class Storia implements StoriaI, Serializable{
+    public Utente creatore;
     public String nome;
     public boolean iniziata;
     public Scenario scenarioIniziale;
     // public ArrayList<Scenario> scenari;    boh potrebbe essere un'idea ma non credo sia molto corretto
 
-    public Storia(String nome){
+   
+    public Storia(){
+
+    }
+
+    public Storia(String nome, Utente utente){
         this.nome = nome;
+        this.creatore = utente;
         this.iniziata = false;
     }
 
@@ -17,6 +26,10 @@ public class Storia implements StoriaI{
         return this.nome;
     }
 
+    public Utente getUtente(){
+        return creatore;
+    }
+    
     public boolean getIniziata(){
         return this.iniziata;
     }

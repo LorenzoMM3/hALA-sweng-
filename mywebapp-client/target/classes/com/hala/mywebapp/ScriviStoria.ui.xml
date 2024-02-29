@@ -1,0 +1,64 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <ui:style>
+
+    </ui:style>
+
+
+    <g:HorizontalPanel spacing="100">
+        <g:VerticalPanel spacing="30" ui:field="titoloS">
+            <g:Label>Scrivi il titolo della storia:</g:Label>
+            <g:TextBox ui:field="titoloStoria"/>
+            <g:Button ui:field="inserisciStoria">Crea</g:Button>
+            <g:Label ui:field="messageLabelCreate"></g:Label>
+        </g:VerticalPanel>
+
+        <g:VerticalPanel spacing="30" ui:field="vpScenario">
+            <g:Label>Scrivi lo scenario:</g:Label>
+            <g:Label>Che scenario vuoi inserire?</g:Label>
+            <g:ListBox ui:field="menuSceltaScenario">
+                <g:item>Scenario iniziale</g:item>
+                <g:item>Scenario intermedio</g:item>
+                <g:item>Scenario finale</g:item>
+            </g:ListBox>
+            <g:Label>Che tipologia?</g:Label>
+            <g:ListBox ui:field="menuTipoScenario">
+                <g:item>Scenario a scelta</g:item>
+                <g:item>Scenario con indovinello</g:item>
+                <g:item>Scenario con oggetto</g:item>
+            </g:ListBox>
+            
+            <g:Label ui:field="labelTestoScenarioAScelta">Inserisci testo scenario:</g:Label>
+            <g:TextBox ui:field="testoScenarioFieldAScelta"/>
+            <g:Label ui:field="labelDomandaAScelta">Inserisci domanda per il cambio di scenario:</g:Label>
+            <g:TextBox ui:field="domandaFieldAScelta"/>
+            <g:Label ui:field="labelSceltaUno">Inserisci scelta uno:</g:Label>
+            <g:TextBox ui:field="sceltaUnoField"/>
+            <g:Label ui:field="labelSceltaDue">Inserisci scelta due:</g:Label>
+            <g:TextBox ui:field="sceltaDueField"/>
+            <g:Button ui:field="creaScenarioAScelta">Crea</g:Button>
+
+            <g:Label ui:field="labelTestoScenarioIndovinello">Inserisci testo scenario:</g:Label>
+            <g:TextBox ui:field="testoScenarioFieldIndovinello"/>
+            <g:Label ui:field="labelDomandaIndovinello">Inserisci l'indovinello per il cambio di scenario:</g:Label>
+            <g:TextBox ui:field="domandaFieldIndovinello"/>
+            <g:Label ui:field="labelRispostaIndovinello">Inserisci risposta corretta:</g:Label>
+            <g:TextBox ui:field="rispostaIndovinelloField"/>
+            <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
+
+            <g:Label ui:field="labelTestoScenarioOggetto">Inserisci testo scenario:</g:Label>
+            <g:TextBox ui:field="testoScenarioFieldOggetto"/>
+            <g:Label ui:field="labelOggetto">Inserisci l'oggetto necessario per il cambio di scenario:</g:Label>
+            <g:TextBox ui:field="oggettoNecessario"/>
+            <g:Button ui:field="creaScenarioOggetto">Crea</g:Button>
+
+        </g:VerticalPanel>
+        
+        
+        <g:Label ui:field="messageLabel"/>
+        <g:Button ui:field="backButton">Back</g:Button>
+    </g:HorizontalPanel>
+</ui:UiBinder>

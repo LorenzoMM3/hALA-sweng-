@@ -1,0 +1,12 @@
+binding: user.agent=safari
+Compiling module com.hala.mywebapp.App
+   Computing all possible rebind results for 'com.hala.mywebapp.Login.LoginUiBinder'
+      Rebinding com.hala.mywebapp.Login.LoginUiBinder
+         Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+            [ERROR] Template com/hala/mywebapp/Login.ui.xml has no ui:field attribute for com.hala.mywebapp.Login#loginButton
+   [ERROR] Errors in 'com/hala/mywebapp/Login.java'
+      [ERROR] Line 22: Failed to resolve 'com.hala.mywebapp.Login.LoginUiBinder' via deferred binding
+   [WARN] For the following type(s), generated source was never committed (did you forget to call commit()?)
+      [WARN] com.hala.mywebapp.Login_LoginUiBinderImpl
+   Unification traversed 692 fields and methods and 376 types. 8 are considered part of the current module and 16 had all of their fields and methods traversed.
+[ERROR] Compiler returned false

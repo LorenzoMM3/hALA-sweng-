@@ -1,14 +1,25 @@
 package com.hala.mywebapp;
 
-public class Scenario implements ScenarioI{
+import java.io.Serializable;
+
+public class Scenario implements ScenarioI, Serializable{
     protected String testoScena;
     protected String domandaCambioScenario;
     protected boolean sceltaGiocatore;
-
+    protected TipologiaScenario tipologia;
     // Rappresenta lo scenario in cui si esce decidendo una delle due strade
     
     public Scenario(){
+
+    }
+    
+    public Scenario(String tipologia){
         testoScena = "";
+        try {
+            this.tipologia = TipologiaScenario.valueOf(tipologia.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            System.err.println("Errore: Tipologia non esistente");
+        }
         // sceltaGiocatore = "false" Non lo metterei perchè se dopo non si imposta la risposta va in automatico
     }   
 

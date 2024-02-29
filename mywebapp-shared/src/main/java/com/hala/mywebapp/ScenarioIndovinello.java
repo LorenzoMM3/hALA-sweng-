@@ -1,11 +1,17 @@
 package com.hala.mywebapp;
 
-public class ScenarioIndovinello extends Scenario{
+import java.io.Serializable;
+
+public class ScenarioIndovinello extends Scenario implements Serializable{
     
     protected String rispostaIndovinello;
 
     public ScenarioIndovinello(){
-        super();
+
+    }
+    
+    public ScenarioIndovinello(String titolo){
+        super(titolo);
         rispostaIndovinello = "";
     }
 
