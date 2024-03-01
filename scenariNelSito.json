@@ -1,1 +1,133 @@
 {
+  "FUNZIONERA": {
+    "Nome Storia di appartenenza": "FUNZIONERA",
+    "Testo Scenario": "funzia",
+    "Domanda scelta": "funzia",
+    "Opzioni scelta": "[funzia]"
+  }
+,
+  "WED": {
+    "Nome Storia di appartenenza": "WED",
+    "Testo Scenario": "dsa",
+    "Domanda Indovinello": "come va?",
+    "Risposta Indovinello": "male"
+  }
+,
+  "UUUUUUUUUUUUUUUUUU": {
+    "Nome Storia di appartenenza": "UUUUUUUUUUUUUUUUUU",
+    "Testo Scenario": "eeee",
+    "Oggetto Necessario": "hhhhh"
+  }
+,
+  "WEI": {
+    "Nome Storia di appartenenza": "WEI",
+    "Testo Scenario": "ciao",
+    "Domanda scelta": "come va?",
+    "Opzioni scelta": "[bene]"
+  }
+,
+  "333": {
+    "Nome Storia di appartenenza": "333",
+    "Testo Scenario": "33",
+    "Domanda Indovinello": "33",
+    "Risposta Indovinello": "33"
+  }
+,
+  "SI COMINCIA": {
+    "Nome Storia di appartenenza": "SI COMINCIA",
+    "Testo Scenario": "ora non capisco",
+    "Oggetto Necessario": "perche non funziona"
+  }
+,
+  "WWWWWWW": {
+    "Nome Storia di appartenenza": "WWWWWWW",
+    "Testo Scenario": "tre",
+    "Oggetto Necessario": "tre"
+  }
+,
+  "000000": {
+    "Nome Storia di appartenenza": "000000",
+    "Testo Scenario": "000000",
+    "Domanda Indovinello": "000000",
+    "Risposta Indovinello": "000000"
+  }
+,
+  "0000": {
+    "Nome Storia di appartenenza": "0000",
+    "Testo Scenario": "123",
+    "Domanda Indovinello": "123",
+    "Risposta Indovinello": "123"
+  }
+,
+  "CIAUU": {
+    "Nome Storia di appartenenza": "CIAUU",
+    "Testo Scenario": "daiiiiiiii",
+    "Domanda Indovinello": "disaiiiiii",
+    "Risposta Indovinello": "disagi"
+  }
+,
+  "DAI": {
+    "Nome Storia di appartenenza": "DAI",
+    "Testo Scenario": "dai",
+    "Domanda Indovinello": "dai",
+    "Risposta Indovinello": "ok"
+  }
+,
+  "FINAAALMENTEEEEE": {
+    "Nome Storia di appartenenza": "FINAAALMENTEEEEE",
+    "Testo Scenario": "quetso",
+    "Oggetto Necessario": "bottiglia"
+  }
+,
+  "ULTIMISSIMISSIMISSIMA": {
+    "Nome Storia di appartenenza": "ULTIMISSIMISSIMISSIMA",
+    "Testo Scenario": "uuuu",
+    "Domanda Indovinello": "uuuu",
+    "Risposta Indovinello": "uuuu"
+  }
+,
+  "UUUUU": {
+    "Nome Storia di appartenenza": "UUUUU",
+    "Testo Scenario": "eeeeeeee",
+    "Domanda Indovinello": "eeeeeeeee",
+    "Risposta Indovinello": "eeeee"
+  }
+,
+  "UNO": {
+    "Nome Storia di appartenenza": "UNO",
+    "Testo Scenario": "",
+    "Domanda Indovinello": "",
+    "Risposta Indovinello": ""
+  }
+,
+  "YYYYYYYYYYYYYYYY": {
+    "Nome Storia di appartenenza": "YYYYYYYYYYYYYYYY",
+    "Testo Scenario": "yyyyyyyyy",
+    "Oggetto Necessario": "yyyyyyyyy"
+  }
+,
+  "ECCOCI": {
+    "Nome Storia di appartenenza": "ECCOCI",
+    "Testo Scenario": "serve lollo",
+    "Oggetto Necessario": "lollo"
+  }
+,
+  "ULTIMISSIMA": {
+    "Nome Storia di appartenenza": "ULTIMISSIMA",
+    "Testo Scenario": "ora ti serve un oggetto",
+    "Oggetto Necessario": "mouse"
+  }
+,
+  "A2A": {
+    "Nome Storia di appartenenza": "A2A",
+    "Testo Scenario": "gli serviva pero un oggetto",
+    "Oggetto Necessario": "pen... no scherzavo"
+  }
+,
+  "WW": {
+    "Nome Storia di appartenenza": "WW",
+    "Testo Scenario": "ww",
+    "Domanda Indovinello": "ww",
+    "Risposta Indovinello": "ww"
+  }
+}

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
-
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
@@ -28,9 +27,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private void openDB() {
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
-            utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();   
-            storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();  
-            scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();  
+            utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
+            storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
+            scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
         }
     }
 
@@ -39,7 +38,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
         String username = utente.getUsername();
         String password = utente.getPassword();
-        for (String user : utentiNelSito.keySet()) { //Si dovrebbe poter togliere il for
+        for (String user : utentiNelSito.keySet()) { // Si dovrebbe poter togliere il for
             if (utentiNelSito.containsKey(username)) {
                 return false; // Non si può registrare
             }
@@ -55,9 +54,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
         String username = utente.getUsername();
         String password = utente.getPassword();
-    
+
         Utente utenteSalvato = utentiNelSito.get(username);
-    
+
         if (utenteSalvato != null && utenteSalvato.getPassword().equals(password)) {
             utenteSalvato.setIsLogged(true);
             utentiNelSito.put(utenteSalvato.getUsername(), utenteSalvato);
@@ -66,33 +65,34 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             utenteAttuale = utenteSalvato;
             return true; // Credenziali corrette
         }
-        
+
         return false; // Credenziali errate
     }
 
-	@Override
-	public boolean logOut(String username) {
-		Utente utenteSalvato = utentiNelSito.get(username);
+    @Override
+    public boolean logOut(String username) {
+        Utente utenteSalvato = utentiNelSito.get(username);
         utenteSalvato.setIsLogged(false);
         utentiNelSito.put(utenteSalvato.getUsername(), utenteSalvato);
         db.commit();
         convertToJsonUtenti();
         return true;
-	}
+    }
+
     @Override
-    public Utente ottieniUtenteAttuale(){
+    public Utente ottieniUtenteAttuale() {
         return utenteAttuale;
     }
 
     @Override
     public boolean creaNuovaStoria(Storia nuovaStoria) {
-        //Se il nome è già presente non si può creare
+        // Se il nome è già presente non si può creare
         openDB();
         String nomeStoria = nuovaStoria.getNome();
         if (storieNelSito.containsKey(nomeStoria)) {
             return false; // Non si può registrare
         }
-        
+
         storieNelSito.put(nomeStoria, nuovaStoria);
         db.commit();
         convertToJsonStorie();
@@ -100,9 +100,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     /*
-     * Per creare il metodo ricorda che è necessario aggiungerlo al "GreetingService" e al "GreetingServiceAsync"
+     * Per creare il metodo ricorda che è necessario aggiungerlo al
+     * "GreetingService" e al "GreetingServiceAsync"
      */
-    public boolean aggiungiScenarioAScelta(Scenario scenario){
+    public boolean aggiungiScenarioAScelta(Scenario scenario) {
         openDB();
         String nomeStoria = scenario.getNomeStoria();
         scenariNelSito.put(nomeStoria, scenario);
@@ -111,7 +112,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
-    public boolean aggiungiScenarioIndovinello(Scenario scenario){
+    public boolean aggiungiScenarioIndovinello(Scenario scenario) {
         openDB();
         String nomeStoria = scenario.getNomeStoria();
         scenariNelSito.put(nomeStoria, scenario);
@@ -120,7 +121,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
-    public boolean aggiungiScenarioOggetto(Scenario scenario){
+    public boolean aggiungiScenarioOggetto(Scenario scenario) {
         openDB();
         String nomeStoria = scenario.getNomeStoria();
         scenariNelSito.put(nomeStoria, scenario);
@@ -129,16 +130,16 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
-    //Per convertire in json gli scenari: va completato con quelli mancanti
+    // Per convertire in json gli scenari: va completato con quelli mancanti
     private void convertToJsonScenari() {
         openDB();
-    
+
         try (PrintWriter pW = new PrintWriter(new FileWriter("scenariNelSito.json"))) {
             pW.println("{");
 
             boolean firstEntry = true;
             for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-                String tipologiaTemp = entry.getValue().getTipologia() + "";
+                String tipologiaTemp = entry.getValue().getTipologia().toString();
                 if (!firstEntry) {
                     pW.println(",");
                 }
@@ -146,20 +147,20 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 pW.println("    \"Nome Storia di appartenenza\": \"" + entry.getValue().getNomeStoria() + "\",");
                 pW.println("    \"Testo Scenario\": \"" + entry.getValue().getTestoScena() + "\",");
 
-                if (tipologiaTemp.equalsIgnoreCase("ASCELTA")){
+                if (tipologiaTemp.equalsIgnoreCase("ASCELTA")) {
                     ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry.getValue();
-                    pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getDomandaCambioScenario() + "\"");
+                    pW.println("    \"Domanda scelta\": \"" + scenarioTemp.getDomandaCambioScenario() + "\",");
                     pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() + "\"");
                 }
 
-                if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")){
+                if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
                     ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry.getValue();
                     pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
                     pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\"");
                 }
-                if (tipologiaTemp.equalsIgnoreCase("OGGETTO")){
+                if (tipologiaTemp.equalsIgnoreCase("OGGETTO")) {
                     ScenarioOggetto scenarioTemp = (ScenarioOggetto) entry.getValue();
-                    pW.println("    \"Oggetto Necessario\": \""+ scenarioTemp.getOggetto() + "\"");
+                    pW.println("    \"Oggetto Necessario\": \"" + scenarioTemp.getOggetto() + "\"");
                 }
 
                 pW.println("  }");
@@ -176,7 +177,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     private void convertToJsonStorie() {
         openDB();
-    
+
         try (PrintWriter pW = new PrintWriter(new FileWriter("storieNelSito.json"))) {
             pW.println("{");
 
@@ -203,7 +204,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     private void convertToJsonUtenti() {
         openDB();
-    
+
         try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
             pW.println("{");
 

@@ -4,38 +4,38 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
-public class Scenario implements ScenarioI, Serializable{
+public class Scenario implements ScenarioI, Serializable {
     protected String domandaCambioScenario;
     protected String testoScena;
     protected String nomeStoria;
     protected TipologiaScenario tipologiaScenario;
-    
-    
-    /* 
-    public Scenario(String tipologia){
-        testoScena = "";
-        try {
-            this.tipologia = TipologiaScenario.valueOf(tipologia.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            System.err.println("Errore: Tipologia non esistente");
-        }
-        // sceltaGiocatore = "false" Non lo metterei perchè se dopo non si imposta la risposta va in automatico
-    } */
-    
 
-    public Scenario(){
+    /*
+     * public Scenario(String tipologia){
+     * testoScena = "";
+     * try {
+     * this.tipologia = TipologiaScenario.valueOf(tipologia.toUpperCase());
+     * } catch (IllegalArgumentException e) {
+     * System.err.println("Errore: Tipologia non esistente");
+     * }
+     * // sceltaGiocatore = "false" Non lo metterei perchè se dopo non si imposta la
+     * risposta va in automatico
+     * }
+     */
+
+    public Scenario() {
 
     }
 
-    public void setDomandaCambioScenario(String domanda){
+    public void setDomandaCambioScenario(String domanda) {
         this.domandaCambioScenario = domanda;
     }
 
-    public String getDomandaCambioScenario(){
+    public String getDomandaCambioScenario() {
         return this.domandaCambioScenario;
     }
 
-    public Scenario(String nomeStoria){
+    public Scenario(String nomeStoria) {
         this.nomeStoria = nomeStoria;
         testoScena = "";
         tipologiaScenario = null;
@@ -46,15 +46,15 @@ public class Scenario implements ScenarioI, Serializable{
         this.testoScena = testo;
     }
 
-    public String getTestoScena(){
+    public String getTestoScena() {
         return this.testoScena;
     }
 
-    public String getNomeStoria(){
+    public String getNomeStoria() {
         return nomeStoria;
     }
 
-    public TipologiaScenario getTipologia(){
+    public TipologiaScenario getTipologia() {
         return tipologiaScenario;
     }
 
