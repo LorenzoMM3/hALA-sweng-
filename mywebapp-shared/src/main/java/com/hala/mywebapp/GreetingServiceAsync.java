@@ -14,4 +14,5 @@ public interface GreetingServiceAsync {
 	public void ottieniUtenteAttuale(AsyncCallback<Utente> callback);
 	public void aggiungiScenarioAScelta(Scenario scenario, AsyncCallback<Boolean> callback);
 	public void aggiungiScenarioIndovinello(Scenario scenario, AsyncCallback<Boolean> callback);
+	public void aggiungiScenarioOggetto(Scenario scenario, AsyncCallback<Boolean> callback);
 }

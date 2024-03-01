@@ -8,7 +8,9 @@ import com.google.gwt.user.client.rpc.impl.ReflectionHelper;
 @SuppressWarnings("deprecation")
 public class ScenarioIndovinello_FieldSerializer implements com.google.gwt.user.client.rpc.impl.TypeHandler {
   public static void deserialize(SerializationStreamReader streamReader, com.hala.mywebapp.ScenarioIndovinello instance) throws SerializationException {
+    instance.domandaIndovinello = streamReader.readString();
     instance.rispostaIndovinello = streamReader.readString();
+    instance.tipologiaScenario = (com.hala.mywebapp.TipologiaScenario) streamReader.readObject();
     
     com.hala.mywebapp.Scenario_FieldSerializer.deserialize(streamReader, instance);
   }
@@ -18,7 +20,9 @@ public class ScenarioIndovinello_FieldSerializer implements com.google.gwt.user.
   }
   
   public static void serialize(SerializationStreamWriter streamWriter, com.hala.mywebapp.ScenarioIndovinello instance) throws SerializationException {
+    streamWriter.writeString(instance.domandaIndovinello);
     streamWriter.writeString(instance.rispostaIndovinello);
+    streamWriter.writeObject(instance.tipologiaScenario);
     
     com.hala.mywebapp.Scenario_FieldSerializer.serialize(streamWriter, instance);
   }

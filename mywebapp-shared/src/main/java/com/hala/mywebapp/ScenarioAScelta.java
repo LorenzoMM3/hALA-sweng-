@@ -3,11 +3,12 @@ package com.hala.mywebapp;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ScenarioAScelta extends Scenario implements Serializable{
+public class ScenarioAScelta extends Scenario implements Serializable {
 
+    
     protected ArrayList<String> opzioniScelta;
     protected TipologiaScenario tipologiaScenario;
-    protected int sceltaGiocatore; //Indice dell'array    
+    protected int sceltaGiocatore;      // Indice dell'array    
 
     public ScenarioAScelta(){
         super();
@@ -32,10 +33,6 @@ public class ScenarioAScelta extends Scenario implements Serializable{
 
     public ArrayList<String> getOpzioniScelta(){
         return opzioniScelta;
-    }
-
-    public String getDomandaScenario(){
-        return domandaCambioScenario;
     }
 
 }

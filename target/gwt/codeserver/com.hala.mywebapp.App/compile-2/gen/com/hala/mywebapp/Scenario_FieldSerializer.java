@@ -9,9 +9,9 @@ import com.google.gwt.user.client.rpc.impl.ReflectionHelper;
 public class Scenario_FieldSerializer implements com.google.gwt.user.client.rpc.impl.TypeHandler {
   public static void deserialize(SerializationStreamReader streamReader, com.hala.mywebapp.Scenario instance) throws SerializationException {
     instance.domandaCambioScenario = streamReader.readString();
-    instance.sceltaGiocatore = streamReader.readBoolean();
+    instance.nomeStoria = streamReader.readString();
     instance.testoScena = streamReader.readString();
-    instance.tipologia = (com.hala.mywebapp.TipologiaScenario) streamReader.readObject();
+    instance.tipologiaScenario = (com.hala.mywebapp.TipologiaScenario) streamReader.readObject();
     
   }
   
@@ -21,9 +21,9 @@ public class Scenario_FieldSerializer implements com.google.gwt.user.client.rpc.
   
   public static void serialize(SerializationStreamWriter streamWriter, com.hala.mywebapp.Scenario instance) throws SerializationException {
     streamWriter.writeString(instance.domandaCambioScenario);
-    streamWriter.writeBoolean(instance.sceltaGiocatore);
+    streamWriter.writeString(instance.nomeStoria);
     streamWriter.writeString(instance.testoScena);
-    streamWriter.writeObject(instance.tipologia);
+    streamWriter.writeObject(instance.tipologiaScenario);
     
   }
   

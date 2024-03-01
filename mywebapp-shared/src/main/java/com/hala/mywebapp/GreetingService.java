@@ -16,4 +16,5 @@ public interface GreetingService extends RemoteService {
 	public boolean creaNuovaStoria(Storia nuovaStoria);
 	public boolean aggiungiScenarioAScelta(Scenario scenario);
 	public boolean aggiungiScenarioIndovinello(Scenario scenario);
+	public boolean aggiungiScenarioOggetto(Scenario scenario);
 }

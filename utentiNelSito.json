@@ -1,8 +1,20 @@
 {
+  "n": {
+    "username": "n",
+    "password": "n",
+    "isLogged": true
+  }
+,
   "lollol": {
     "username": "lollol",
     "password": "lollol",
     "isLogged": true
+  }
+,
+  "erttr": {
+    "username": "erttr",
+    "password": "ertert",
+    "isLogged": false
   }
 ,
   "Ale": {
@@ -15,6 +27,12 @@
     "username": "Lorenzo",
     "password": "lore",
     "isLogged": false
+  }
+,
+  "lo": {
+    "username": "lo",
+    "password": "lo",
+    "isLogged": true
   }
 ,
   "Alessia": {
@@ -32,6 +50,12 @@
   "Altea": {
     "username": "Altea",
     "password": "altea",
+    "isLogged": false
+  }
+,
+  "t": {
+    "username": "t",
+    "password": "t",
     "isLogged": false
   }
 ,
@@ -68,7 +92,7 @@
   "w": {
     "username": "w",
     "password": "w",
-    "isLogged": false
+    "isLogged": true
   }
 ,
   "Prova1": {

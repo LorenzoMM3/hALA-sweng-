@@ -9,6 +9,7 @@ import com.google.gwt.user.client.rpc.impl.ReflectionHelper;
 public class ScenarioOggetto_FieldSerializer implements com.google.gwt.user.client.rpc.impl.TypeHandler {
   public static void deserialize(SerializationStreamReader streamReader, com.hala.mywebapp.ScenarioOggetto instance) throws SerializationException {
     instance.oggettoNecessario = streamReader.readString();
+    instance.tipologiaScenario = (com.hala.mywebapp.TipologiaScenario) streamReader.readObject();
     
     com.hala.mywebapp.Scenario_FieldSerializer.deserialize(streamReader, instance);
   }
@@ -19,6 +20,7 @@ public class ScenarioOggetto_FieldSerializer implements com.google.gwt.user.clie
   
   public static void serialize(SerializationStreamWriter streamWriter, com.hala.mywebapp.ScenarioOggetto instance) throws SerializationException {
     streamWriter.writeString(instance.oggettoNecessario);
+    streamWriter.writeObject(instance.tipologiaScenario);
     
     com.hala.mywebapp.Scenario_FieldSerializer.serialize(streamWriter, instance);
   }

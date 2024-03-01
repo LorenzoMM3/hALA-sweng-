@@ -173,18 +173,18 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                //Creazione nuovo scenario
+                // Creazione nuovo scenario
                 ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
-                //E' necessario settare tutti gli attributi prelevandoli dai textField
-                //Iniziamo con gli attributi comuni a tutti gli scenari:
+                // E' necessario settare tutti gli attributi prelevandoli dai textField
+                // Iniziamo con gli attributi comuni a tutti gli scenari:
                 scenario.setTestoScena(testoScenarioField.getText());
-                scenario.setDomanda(domandaFieldAScelta.getText());
-                //Attributi aggiuntivi:
+                scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
+                // Attributi aggiuntivi:
                 scenario.setOpzioniScelte(opzioniSceltaTemp);
 
-                //E' necessario ora richiamare il server per poter effettuare metodi su questo scenario:
-                //La struttura è sempre simile.
-                //Ricorda l'asyncallback vuole i due metodi onfailure e onsuccess che partono in base a se il metodo nel server si conclude con successo o meno
+                // E' necessario ora richiamare il server per poter effettuare metodi su questo scenario:
+                // La struttura è sempre simile
+                // Ricorda l'asyncallback vuole i due metodi onfailure e onsuccess che partono in base a se il metodo nel server si conclude con successo o meno
                 hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
                     @Override
                     public void onFailure(Throwable caught) {}
@@ -197,11 +197,11 @@ public class ScriviStoria extends Composite implements IsWidget {
                         }
                     }
                 });
-                //Resetto i field così da liberarli per la creazione di un nuovo scenario
+                // Resetto i field così da liberarli per la creazione di un nuovo scenario
                 testoScenarioField.setText("");
                 domandaFieldAScelta.setText("");
                 scelta.setText("");
-                //Libero l'array di scelte
+                // Libero l'array di scelte
                 opzioniSceltaTemp.clear();
             }
         });
@@ -218,7 +218,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
                 scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
 
-                hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
+                hALAServiceAsync.aggiungiScenarioIndovinello(scenario, new AsyncCallback<Boolean>() {
                     @Override
                     public void onFailure(Throwable caught) {}
                     public void onSuccess(Boolean verifica){
@@ -247,7 +247,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 scenario.setTestoScena(testoScenarioField.getText());
                 scenario.setOggetto(oggettoNecessario.getText());
         
-                hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
+                hALAServiceAsync.aggiungiScenarioOggetto(scenario, new AsyncCallback<Boolean>() {
                     @Override
                     public void onFailure(Throwable caught) {}
                     public void onSuccess(Boolean verifica){

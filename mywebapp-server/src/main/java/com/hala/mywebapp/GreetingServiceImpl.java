@@ -120,6 +120,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
+    public boolean aggiungiScenarioOggetto(Scenario scenario){
+        openDB();
+        String nomeStoria = scenario.getNomeStoria();
+        scenariNelSito.put(nomeStoria, scenario);
+        db.commit();
+        convertToJsonScenari();
+        return true;
+    }
+
     //Per convertire in json gli scenari: va completato con quelli mancanti
     private void convertToJsonScenari() {
         openDB();
@@ -136,18 +145,21 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 pW.println("  \"" + entry.getKey() + "\": {");
                 pW.println("    \"Nome Storia di appartenenza\": \"" + entry.getValue().getNomeStoria() + "\",");
                 pW.println("    \"Testo Scenario\": \"" + entry.getValue().getTestoScena() + "\",");
-                pW.println("    \"Domanda cambio scenario\": \"" + entry.getValue().getDomandaScenario() + "\",");
 
                 if (tipologiaTemp.equalsIgnoreCase("ASCELTA")){
-                    ScenarioAScelta scenarioASceltaTempp = (ScenarioAScelta) entry.getValue();
-                    pW.println("    \"Opzioni scelta\": \"" + scenarioASceltaTempp.getOpzioniScelta() + "\"");
+                    ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry.getValue();
+                    pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getDomandaCambioScenario() + "\"");
+                    pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() + "\"");
                 }
 
                 if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")){
-                    
+                    ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry.getValue();
+                    pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
+                    pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\"");
                 }
                 if (tipologiaTemp.equalsIgnoreCase("OGGETTO")){
-                    
+                    ScenarioOggetto scenarioTemp = (ScenarioOggetto) entry.getValue();
+                    pW.println("    \"Oggetto Necessario\": \""+ scenarioTemp.getOggetto() + "\"");
                 }
 
                 pW.println("  }");
@@ -215,4 +227,5 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             e.printStackTrace();
         }
     }
+
 }

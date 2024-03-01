@@ -1,9 +1,7 @@
 package com.hala.mywebapp;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-@SuppressWarnings("serial")
 public class ScenarioIndovinello extends Scenario implements Serializable{
     
     protected String domandaIndovinello;
@@ -11,7 +9,7 @@ public class ScenarioIndovinello extends Scenario implements Serializable{
     protected TipologiaScenario tipologiaScenario;
     
     public ScenarioIndovinello(){
-
+        super();
     }
 
     public ScenarioIndovinello(String nome){
@@ -33,6 +31,14 @@ public class ScenarioIndovinello extends Scenario implements Serializable{
 
     public void setRispostaIndovinello(String opzioniSceltaTemp){
         this.rispostaIndovinello = opzioniSceltaTemp;
+    }
+
+    public String getDomandaIndovinello(){
+        return this.domandaIndovinello;
+    }
+
+    public String getRispostaIndovinello(){
+        return this.rispostaIndovinello;
     }
 
     public boolean verificaRisposta(String scelta){

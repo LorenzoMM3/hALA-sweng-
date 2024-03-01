@@ -9,7 +9,7 @@ public class ScenarioOggetto extends Scenario implements Serializable {
     protected TipologiaScenario tipologiaScenario;
 
     public ScenarioOggetto(){
-
+        super();
     }
 
     public ScenarioOggetto(String nome){
@@ -27,6 +27,11 @@ public class ScenarioOggetto extends Scenario implements Serializable {
     public void setOggetto(String oggetto){ // Cambiare input in base a cosa si può usare in gwt
         this.oggettoNecessario = oggetto;
     }
+
+    public String getOggetto(){
+        return this.oggettoNecessario;
+    }
+
 
     public boolean verificaOggetto(ArrayList<String> oggettiPosseduti){ // Se gwt non permette liste si possono scrivere tutti gli oggetti in formato "ogg1;ogg2;ogg3;..." e fare lo split
         if (oggettiPosseduti.contains(oggettoNecessario)){

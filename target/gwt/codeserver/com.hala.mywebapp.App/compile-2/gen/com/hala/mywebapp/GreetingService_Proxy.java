@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.impl.RpcStatsContext;
 
 public class GreetingService_Proxy extends RemoteServiceProxy implements com.hala.mywebapp.GreetingServiceAsync {
   private static final String REMOTE_SERVICE_INTERFACE_NAME = "com.hala.mywebapp.GreetingService";
-  private static final String SERIALIZATION_POLICY ="AB561ADA99BF7AE1A6A18570C3C27668";
+  private static final String SERIALIZATION_POLICY ="4C87C42CCD2964CB35E974A0EE0C1FA0";
   private static final com.hala.mywebapp.GreetingService_TypeSerializer SERIALIZER = new com.hala.mywebapp.GreetingService_TypeSerializer();
   
   public GreetingService_Proxy() {
@@ -21,6 +21,54 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements com.hal
       "greet", 
       SERIALIZATION_POLICY, 
       SERIALIZER);
+  }
+  
+  public void aggiungiScenarioAScelta(com.hala.mywebapp.Scenario scenario, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "aggiungiScenarioAScelta");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      streamWriter.writeString("com.hala.mywebapp.Scenario/1122198369");
+      streamWriter.writeObject(scenario);
+      helper.finish(callback, ResponseReader.BOOLEAN);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void aggiungiScenarioIndovinello(com.hala.mywebapp.Scenario scenario, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "aggiungiScenarioIndovinello");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      streamWriter.writeString("com.hala.mywebapp.Scenario/1122198369");
+      streamWriter.writeObject(scenario);
+      helper.finish(callback, ResponseReader.BOOLEAN);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void aggiungiScenarioOggetto(com.hala.mywebapp.Scenario scenario, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "aggiungiScenarioOggetto");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      streamWriter.writeString("com.hala.mywebapp.Scenario/1122198369");
+      streamWriter.writeObject(scenario);
+      helper.finish(callback, ResponseReader.BOOLEAN);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void creaNuovaStoria(com.hala.mywebapp.Storia nuovaStoria, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "creaNuovaStoria");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 1);
+      streamWriter.writeString("com.hala.mywebapp.Storia/702985664");
+      streamWriter.writeObject(nuovaStoria);
+      helper.finish(callback, ResponseReader.BOOLEAN);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
   }
   
   public void initData(com.google.gwt.user.client.rpc.AsyncCallback callback) {
@@ -52,6 +100,16 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements com.hal
       streamWriter.writeString("java.lang.String/2004016611");
       streamWriter.writeString(username);
       helper.finish(callback, ResponseReader.BOOLEAN);
+    } catch (SerializationException ex) {
+      callback.onFailure(ex);
+    }
+  }
+  
+  public void ottieniUtenteAttuale(com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "ottieniUtenteAttuale");
+    try {
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 0);
+      helper.finish(callback, ResponseReader.OBJECT);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
     }

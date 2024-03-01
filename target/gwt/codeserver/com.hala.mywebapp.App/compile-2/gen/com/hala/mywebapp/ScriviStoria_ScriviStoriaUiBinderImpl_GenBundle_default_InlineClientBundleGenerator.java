@@ -20,10 +20,7 @@ public class ScriviStoria_ScriviStoriaUiBinderImpl_GenBundle_default_InlineClien
         return "style";
       }
       public String getText() {
-        return (".com-hala-mywebapp-ScriviStoria_ScriviStoriaUiBinderImpl_GenCss_style-formPanel {\n  display : " + ("flex")  + ";\n  flex-direction : " + ("column")  + ";\n}\n");
-      }
-      public java.lang.String formPanel() {
-        return "com-hala-mywebapp-ScriviStoria_ScriviStoriaUiBinderImpl_GenCss_style-formPanel";
+        return ("");
       }
     }
     ;

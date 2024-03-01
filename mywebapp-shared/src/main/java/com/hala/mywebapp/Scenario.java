@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class Scenario implements ScenarioI, Serializable{
-    protected String testoScena;
     protected String domandaCambioScenario;
+    protected String testoScena;
     protected String nomeStoria;
     protected TipologiaScenario tipologiaScenario;
     
@@ -27,15 +27,18 @@ public class Scenario implements ScenarioI, Serializable{
 
     }
 
+    public void setDomandaCambioScenario(String domanda){
+        this.domandaCambioScenario = domanda;
+    }
+
+    public String getDomandaCambioScenario(){
+        return this.domandaCambioScenario;
+    }
+
     public Scenario(String nomeStoria){
         this.nomeStoria = nomeStoria;
         testoScena = "";
-        domandaCambioScenario = "";
         tipologiaScenario = null;
-    }
-
-    public void setDomanda(String domanda){
-        this.domandaCambioScenario = domanda;
     }
 
     @Override
@@ -45,10 +48,6 @@ public class Scenario implements ScenarioI, Serializable{
 
     public String getTestoScena(){
         return this.testoScena;
-    }
-
-    public String getDomandaScenario(){
-        return domandaCambioScenario;
     }
 
     public String getNomeStoria(){

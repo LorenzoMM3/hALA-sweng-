@@ -37,9 +37,45 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
         @com.google.gwt.user.client.rpc.XsrfToken_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/google/gwt/user/client/rpc/XsrfToken;)
       ];
     
+    result["com.hala.mywebapp.Scenario/1122198369"] = [
+        ,
+        ,
+        @com.hala.mywebapp.Scenario_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/Scenario;)
+      ];
+    
+    result["com.hala.mywebapp.ScenarioAScelta/1042920824"] = [
+        ,
+        ,
+        @com.hala.mywebapp.ScenarioAScelta_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/ScenarioAScelta;)
+      ];
+    
+    result["com.hala.mywebapp.ScenarioIndovinello/583431578"] = [
+        ,
+        ,
+        @com.hala.mywebapp.ScenarioIndovinello_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/ScenarioIndovinello;)
+      ];
+    
+    result["com.hala.mywebapp.ScenarioOggetto/1812643983"] = [
+        ,
+        ,
+        @com.hala.mywebapp.ScenarioOggetto_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/ScenarioOggetto;)
+      ];
+    
+    result["com.hala.mywebapp.Storia/702985664"] = [
+        ,
+        ,
+        @com.hala.mywebapp.Storia_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/Storia;)
+      ];
+    
+    result["com.hala.mywebapp.TipologiaScenario/2742218769"] = [
+        ,
+        ,
+        @com.hala.mywebapp.TipologiaScenario_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/TipologiaScenario;)
+      ];
+    
     result["com.hala.mywebapp.Utente/3312155184"] = [
-        ,
-        ,
+        @com.hala.mywebapp.Utente_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
+        @com.hala.mywebapp.Utente_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lcom/hala/mywebapp/Utente;),
         @com.hala.mywebapp.Utente_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/Utente;)
       ];
     
@@ -47,6 +83,12 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
         @com.google.gwt.user.client.rpc.core.java.lang.String_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
         @com.google.gwt.user.client.rpc.core.java.lang.String_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/lang/String;),
         @com.google.gwt.user.client.rpc.core.java.lang.String_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/lang/String;)
+      ];
+    
+    result["java.util.ArrayList/4159755760"] = [
+        ,
+        ,
+        @com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/ArrayList;)
       ];
     
     return result;
@@ -59,8 +101,15 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException::class)] = "com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.google.gwt.user.client.rpc.RpcTokenException::class)] = "com.google.gwt.user.client.rpc.RpcTokenException/2345075298";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.google.gwt.user.client.rpc.XsrfToken::class)] = "com.google.gwt.user.client.rpc.XsrfToken/4254043109";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.Scenario::class)] = "com.hala.mywebapp.Scenario/1122198369";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.ScenarioAScelta::class)] = "com.hala.mywebapp.ScenarioAScelta/1042920824";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.ScenarioIndovinello::class)] = "com.hala.mywebapp.ScenarioIndovinello/583431578";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.ScenarioOggetto::class)] = "com.hala.mywebapp.ScenarioOggetto/1812643983";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.Storia::class)] = "com.hala.mywebapp.Storia/702985664";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.TipologiaScenario::class)] = "com.hala.mywebapp.TipologiaScenario/2742218769";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.Utente::class)] = "com.hala.mywebapp.Utente/3312155184";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.lang.String::class)] = "java.lang.String/2004016611";
+    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.util.ArrayList::class)] = "java.util.ArrayList/4159755760";
     return result;
   }-*/;
   
