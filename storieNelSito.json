@@ -1,6 +1,48 @@
 {
+  "AAA": {
+    "nome": "AAA",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
+  "ALTRAPROVA": {
+    "nome": "ALTRAPROVA",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
+  "AAAAA": {
+    "nome": "AAAAA",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
+  "YY": {
+    "nome": "YY",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
   "PROVA1": {
     "nome": "PROVA1",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
+  "WWW": {
+    "nome": "WWW",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
+  "WWWW": {
+    "nome": "WWWW",
+    "creatore": "w",
+    "iniziata": false
+  }
+,
+  "DUE": {
+    "nome": "DUE",
     "creatore": "w",
     "iniziata": false
   }

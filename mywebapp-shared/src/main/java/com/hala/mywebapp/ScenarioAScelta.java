@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class ScenarioAScelta extends Scenario implements Serializable{
 
     protected ArrayList<String> opzioniScelta;
+    protected TipologiaScenario tipologiaScenario;
     protected int sceltaGiocatore; //Indice dell'array    
-    private static final long serialVersionUID = 123456789L;
 
     public ScenarioAScelta(){
         super();

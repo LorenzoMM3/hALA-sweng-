@@ -111,6 +111,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
+    public boolean aggiungiScenarioIndovinello(Scenario scenario){
+        openDB();
+        String nomeStoria = scenario.getNomeStoria();
+        scenariNelSito.put(nomeStoria, scenario);
+        db.commit();
+        convertToJsonScenari();
+        return true;
+    }
+
     //Per convertire in json gli scenari: va completato con quelli mancanti
     private void convertToJsonScenari() {
         openDB();

@@ -38,7 +38,7 @@
             <g:Label ui:field="labelDomandaIndovinello">Inserisci l'indovinello per il cambio di scenario:</g:Label>
             <g:TextBox ui:field="domandaFieldIndovinello"/>
             <g:Label ui:field="labelRispostaIndovinello">Inserisci risposta corretta:</g:Label>
-            <g:TextBox ui:field="rispostaIndovinelloField"/>
+            <g:TextBox ui:field="rispostaFieldIndovinello"/>
             <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
 
             

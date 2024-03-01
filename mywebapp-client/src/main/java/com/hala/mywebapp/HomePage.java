@@ -31,14 +31,12 @@ public class HomePage implements IsWidget {
         Button visualizza = new Button("Visualizza storie");
         Button gioca = new Button("Gioca ad una storia");
         Button scrivi = new Button("Scrivi una storia");
-        Button backButton = new Button("Back");
         Button logOut = new Button("LogOut");
 
         VerticalPanel vp = GWT.create(VerticalPanel.class);
         vp.add(visualizza);
         vp.add(gioca);
         vp.add(scrivi);
-        vp.add(backButton);
 		vp.add(logOut);
         mainPanel.add(vp);
         
@@ -49,11 +47,11 @@ public class HomePage implements IsWidget {
             }
         });
 
-        backButton.addClickHandler(new ClickHandler() {
+        logOut.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Starter());
+                RootPanel.get("startTable").add(new Logout());
             }
         });
 

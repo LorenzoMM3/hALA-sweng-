@@ -82,7 +82,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     Label labelRispostaIndovinello;
 
     @UiField
-    TextBox rispostaIndovinelloField;
+    TextBox rispostaFieldIndovinello;
 
     @UiField
     Button creaScenarioIndovinello;
@@ -182,7 +182,6 @@ public class ScriviStoria extends Composite implements IsWidget {
                 //Attributi aggiuntivi:
                 scenario.setOpzioniScelte(opzioniSceltaTemp);
 
-
                 //E' necessario ora richiamare il server per poter effettuare metodi su questo scenario:
                 //La struttura è sempre simile.
                 //Ricorda l'asyncallback vuole i due metodi onfailure e onsuccess che partono in base a se il metodo nel server si conclude con successo o meno
@@ -191,10 +190,10 @@ public class ScriviStoria extends Composite implements IsWidget {
                     public void onFailure(Throwable caught) {}
                     public void onSuccess(Boolean verifica){
                         if (verifica){
-                            message.setText("Storia creata con successo");
+                            message.setText("Scenario a scelta creato con successo");
                         }
                         else{
-                            message.setText("Errore nella creazione della storia");
+                            message.setText("Errore nella creazione dello scenario a scelta");
                         }
                     }
                 });
@@ -207,28 +206,71 @@ public class ScriviStoria extends Composite implements IsWidget {
             }
         });
 
+
+
         creaScenarioIndovinello.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                ScenarioIndovinello scenario = new ScenarioIndovinello(nomeStoriaTemp);
+
+                scenario.setTestoScena(testoScenarioField.getText());
+
+                scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
+                scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
+
+                hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
+                    @Override
+                    public void onFailure(Throwable caught) {}
+                    public void onSuccess(Boolean verifica){
+                        if (verifica){
+                            message.setText("Scenario Indovinello creato con successo");
+                        }
+                        else{
+                            message.setText("Errore nella creazione dello scenario indovinello");
+                        }
+                    }
+                });
+                // Resetto i field così da liberarli per la creazione di un nuovo scenario
                 testoScenarioField.setText("");
                 domandaFieldIndovinello.setText("");
-                rispostaIndovinelloField.setText("");
+                rispostaFieldIndovinello.setText("");
             }
         });
+
+
 
         creaScenarioOggetto.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                ScenarioOggetto scenario = new ScenarioOggetto(nomeStoriaTemp);
+        
+                scenario.setTestoScena(testoScenarioField.getText());
+                scenario.setOggetto(oggettoNecessario.getText());
+        
+                hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
+                    @Override
+                    public void onFailure(Throwable caught) {}
+                    public void onSuccess(Boolean verifica){
+                        if (verifica){
+                            message.setText("Scenario Oggetto creato con successo");
+                        }
+                        else{
+                            message.setText("Errore nella creazione dello scenario oggetto");
+                        }
+                    }
+                });
+                // Resetto i field così da liberarli per la creazione di un nuovo scenario
                 testoScenarioField.setText("");
                 oggettoNecessario.setText("");
             }
         });
+        
 
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Login());
+                RootPanel.get("startTable").add(new HomePage());
             }
         });
     }
@@ -248,7 +290,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         labelDomandaIndovinello.setVisible(false);
         domandaFieldIndovinello.setVisible(false);
         labelRispostaIndovinello.setVisible(false);
-        rispostaIndovinelloField.setVisible(false);
+        rispostaFieldIndovinello.setVisible(false);
         creaScenarioIndovinello.setVisible(false);
         labelOggetto.setVisible(false);
         oggettoNecessario.setVisible(false);
@@ -270,7 +312,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         labelDomandaIndovinello.setVisible(true);
         domandaFieldIndovinello.setVisible(true);
         labelRispostaIndovinello.setVisible(true);
-        rispostaIndovinelloField.setVisible(true);
+        rispostaFieldIndovinello.setVisible(true);
         creaScenarioIndovinello.setVisible(true);
         labelOggetto.setVisible(true);
         oggettoNecessario.setVisible(true);
@@ -306,7 +348,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.add(labelDomandaIndovinello);
         vpScenario.add(domandaFieldIndovinello);
         vpScenario.add(labelRispostaIndovinello);
-        vpScenario.add(rispostaIndovinelloField);
+        vpScenario.add(rispostaFieldIndovinello);
         vpScenario.add(creaScenarioIndovinello);
     }
     
@@ -314,7 +356,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(labelDomandaIndovinello);
         vpScenario.remove(domandaFieldIndovinello);
         vpScenario.remove(labelRispostaIndovinello);
-        vpScenario.remove(rispostaIndovinelloField);
+        vpScenario.remove(rispostaFieldIndovinello);
         vpScenario.remove(creaScenarioIndovinello);
     }
     
