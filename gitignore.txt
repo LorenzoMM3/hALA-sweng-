@@ -1,0 +1,6 @@
+.idea/
+db
+**/target
+**/.settings
+**/.classpath
+**/.project

@@ -1,0 +1,14 @@
+binding: user.agent=safari
+Compiling module com.hala.mywebapp.App
+   Computing all possible rebind results for 'com.hala.mywebapp.Logout.LogoutUiBinder'
+      Rebinding com.hala.mywebapp.Logout.LogoutUiBinder
+         Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
+            [ERROR] Premature end of file.
+            [ERROR] Error parsing XML (line -1): Premature end of file.
+   [ERROR] Errors in 'com/hala/mywebapp/Logout.java'
+      [ERROR] Line 21: Failed to resolve 'com.hala.mywebapp.Logout.LogoutUiBinder' via deferred binding
+   [WARN] For the following type(s), generated source was never committed (did you forget to call commit()?)
+      [WARN] com.hala.mywebapp.Logout_LogoutUiBinderImpl
+   Unification traversed 762 fields and methods and 404 types. 14 are considered part of the current module and 22 had all of their fields and methods traversed.
+   [WARN] Some stale types ([com.hala.mywebapp.Logout$3]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
+[ERROR] Compiler returned false
