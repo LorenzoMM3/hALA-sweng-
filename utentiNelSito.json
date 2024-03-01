@@ -1,0 +1,79 @@
+{
+  "lollol": {
+    "username": "lollol",
+    "password": "lollol",
+    "isLogged": true
+  }
+,
+  "Ale": {
+    "username": "Ale",
+    "password": "a",
+    "isLogged": false
+  }
+,
+  "Lorenzo": {
+    "username": "Lorenzo",
+    "password": "lore",
+    "isLogged": false
+  }
+,
+  "Alessia": {
+    "username": "Alessia",
+    "password": "ale",
+    "isLogged": false
+  }
+,
+  "CiaoAmici": {
+    "username": "CiaoAmici",
+    "password": "CiaoAmici",
+    "isLogged": true
+  }
+,
+  "Altea": {
+    "username": "Altea",
+    "password": "altea",
+    "isLogged": false
+  }
+,
+  "u": {
+    "username": "u",
+    "password": "u",
+    "isLogged": true
+  }
+,
+  "lollo": {
+    "username": "lollo",
+    "password": "lollo",
+    "isLogged": true
+  }
+,
+  "evvai": {
+    "username": "evvai",
+    "password": "evvai",
+    "isLogged": false
+  }
+,
+  "e": {
+    "username": "e",
+    "password": "e",
+    "isLogged": true
+  }
+,
+  "CiaoNano": {
+    "username": "CiaoNano",
+    "password": "CiaoNano",
+    "isLogged": false
+  }
+,
+  "w": {
+    "username": "w",
+    "password": "w",
+    "isLogged": true
+  }
+,
+  "Prova1": {
+    "username": "Prova1",
+    "password": "1",
+    "isLogged": false
+  }
+}

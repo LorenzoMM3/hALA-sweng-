@@ -17,44 +17,36 @@
         </g:VerticalPanel>
 
         <g:VerticalPanel spacing="30" ui:field="vpScenario">
-            <g:Label>Scrivi lo scenario:</g:Label>
-            <g:Label>Che scenario vuoi inserire?</g:Label>
-            <g:ListBox ui:field="menuSceltaScenario">
-                <g:item>Scenario iniziale</g:item>
-                <g:item>Scenario intermedio</g:item>
-                <g:item>Scenario finale</g:item>
-            </g:ListBox>
-            <g:Label>Che tipologia?</g:Label>
+            <g:Label ui:field="scriviScenarioLabel">Scrivi lo scenario:</g:Label>
+            <g:Label ui:field="tipologiaLabel">Che tipologia di scenario vuoi inserire?</g:Label>
             <g:ListBox ui:field="menuTipoScenario">
                 <g:item>Scenario a scelta</g:item>
                 <g:item>Scenario con indovinello</g:item>
                 <g:item>Scenario con oggetto</g:item>
             </g:ListBox>
             
-            <g:Label ui:field="labelTestoScenarioAScelta">Inserisci testo scenario:</g:Label>
-            <g:TextBox ui:field="testoScenarioFieldAScelta"/>
+            <g:Label ui:field="labelTestoScenario">Inserisci testo scenario:</g:Label>
+            <g:TextBox ui:field="testoScenarioField"/>
+
             <g:Label ui:field="labelDomandaAScelta">Inserisci domanda per il cambio di scenario:</g:Label>
             <g:TextBox ui:field="domandaFieldAScelta"/>
-            <g:Label ui:field="labelSceltaUno">Inserisci scelta uno:</g:Label>
-            <g:TextBox ui:field="sceltaUnoField"/>
-            <g:Label ui:field="labelSceltaDue">Inserisci scelta due:</g:Label>
-            <g:TextBox ui:field="sceltaDueField"/>
+            <g:Label ui:field="labelScelta">Inserisci opzione scelta:</g:Label>
+            <g:TextBox ui:field="scelta"/>
+            <g:Button ui:field="altraScelta">Aggiungi scelta</g:Button>
             <g:Button ui:field="creaScenarioAScelta">Crea</g:Button>
 
-            <g:Label ui:field="labelTestoScenarioIndovinello">Inserisci testo scenario:</g:Label>
-            <g:TextBox ui:field="testoScenarioFieldIndovinello"/>
             <g:Label ui:field="labelDomandaIndovinello">Inserisci l'indovinello per il cambio di scenario:</g:Label>
             <g:TextBox ui:field="domandaFieldIndovinello"/>
             <g:Label ui:field="labelRispostaIndovinello">Inserisci risposta corretta:</g:Label>
             <g:TextBox ui:field="rispostaIndovinelloField"/>
             <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
 
-            <g:Label ui:field="labelTestoScenarioOggetto">Inserisci testo scenario:</g:Label>
-            <g:TextBox ui:field="testoScenarioFieldOggetto"/>
+            
             <g:Label ui:field="labelOggetto">Inserisci l'oggetto necessario per il cambio di scenario:</g:Label>
             <g:TextBox ui:field="oggettoNecessario"/>
             <g:Button ui:field="creaScenarioOggetto">Crea</g:Button>
 
+            <g:Label ui:field="message"></g:Label>
         </g:VerticalPanel>
         
         

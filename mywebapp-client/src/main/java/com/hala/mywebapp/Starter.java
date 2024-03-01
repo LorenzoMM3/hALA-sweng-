@@ -22,7 +22,7 @@ public class Starter extends Composite implements IsWidget {
 
     @UiField
     Button signinButton;
-
+    
     @UiField
     Button logoutButton;
 

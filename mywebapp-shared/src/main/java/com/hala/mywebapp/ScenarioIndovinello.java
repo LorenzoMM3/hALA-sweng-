@@ -2,24 +2,34 @@ package com.hala.mywebapp;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class ScenarioIndovinello extends Scenario implements Serializable{
     
     protected String rispostaIndovinello;
-
+    protected TipologiaScenario tipologiaScenario;
+    
     public ScenarioIndovinello(){
 
     }
+
+    public ScenarioIndovinello(String nome){
+        super(nome);
+        rispostaIndovinello = "";
+        tipologiaScenario = TipologiaScenario.INDOVINELLO;
+    }
     
+    /* 
     public ScenarioIndovinello(String titolo){
         super(titolo);
         rispostaIndovinello = "";
     }
+    */
 
-    public void setSceltaGiocatore(String scelta){
+    public boolean verificaRisposta(String scelta){
         if (this.rispostaIndovinello.equalsIgnoreCase(scelta)){
-            this.sceltaGiocatore = true;
+            return true;
         } else {
-            this.sceltaGiocatore = false;
+            return false;
         }
         // Se true prosegue, se false continua a rispondere
     }

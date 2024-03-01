@@ -12,4 +12,5 @@ public interface GreetingServiceAsync {
 	public void logOut(String username, AsyncCallback<Boolean> callback);
 	public void creaNuovaStoria(Storia nuovaStoria, AsyncCallback<Boolean> callback);
 	public void ottieniUtenteAttuale(AsyncCallback<Utente> callback);
+	public void aggiungiScenarioAScelta(Scenario scenario, AsyncCallback<Boolean> callback);
 }

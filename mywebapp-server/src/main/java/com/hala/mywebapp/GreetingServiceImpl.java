@@ -16,6 +16,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private DB db;
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
+    private Map<String, Scenario> scenariNelSito;
+
     public Utente utenteAttuale;
 
     @Override
@@ -27,7 +29,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();   
-            storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();    }
+            storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();  
+            scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();  
+        }
     }
 
     @Override
@@ -66,33 +70,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false; // Credenziali errate
     }
 
-    private void convertToJsonUtenti() {
-        openDB();
-    
-        try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
-            pW.println("{");
-
-            boolean firstEntry = true;
-            for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
-                if (!firstEntry) {
-                    pW.println(",");
-                }
-                pW.println("  \"" + entry.getKey() + "\": {");
-                pW.println("    \"username\": \"" + entry.getValue().getUsername() + "\",");
-                pW.println("    \"password\": \"" + entry.getValue().getPassword() + "\",");
-                pW.println("    \"isLogged\": " + entry.getValue().getIsLogged());
-                pW.println("  }");
-
-                firstEntry = false;
-            }
-
-            pW.println("}");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 	@Override
 	public boolean logOut(String username) {
 		Utente utenteSalvato = utentiNelSito.get(username);
@@ -122,6 +99,60 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true; // Si può registrare
     }
 
+    /*
+     * Per creare il metodo ricorda che è necessario aggiungerlo al "GreetingService" e al "GreetingServiceAsync"
+     */
+    public boolean aggiungiScenarioAScelta(Scenario scenario){
+        openDB();
+        String nomeStoria = scenario.getNomeStoria();
+        scenariNelSito.put(nomeStoria, scenario);
+        db.commit();
+        convertToJsonScenari();
+        return true;
+    }
+
+    //Per convertire in json gli scenari: va completato con quelli mancanti
+    private void convertToJsonScenari() {
+        openDB();
+    
+        try (PrintWriter pW = new PrintWriter(new FileWriter("scenariNelSito.json"))) {
+            pW.println("{");
+
+            boolean firstEntry = true;
+            for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+                String tipologiaTemp = entry.getValue().getTipologia() + "";
+                if (!firstEntry) {
+                    pW.println(",");
+                }
+                pW.println("  \"" + entry.getKey() + "\": {");
+                pW.println("    \"Nome Storia di appartenenza\": \"" + entry.getValue().getNomeStoria() + "\",");
+                pW.println("    \"Testo Scenario\": \"" + entry.getValue().getTestoScena() + "\",");
+                pW.println("    \"Domanda cambio scenario\": \"" + entry.getValue().getDomandaScenario() + "\",");
+
+                if (tipologiaTemp.equalsIgnoreCase("ASCELTA")){
+                    ScenarioAScelta scenarioASceltaTempp = (ScenarioAScelta) entry.getValue();
+                    pW.println("    \"Opzioni scelta\": \"" + scenarioASceltaTempp.getOpzioniScelta() + "\"");
+                }
+
+                if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")){
+                    
+                }
+                if (tipologiaTemp.equalsIgnoreCase("OGGETTO")){
+                    
+                }
+
+                pW.println("  }");
+
+                firstEntry = false;
+            }
+
+            pW.println("}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void convertToJsonStorie() {
         openDB();
     
@@ -137,6 +168,33 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 pW.println("    \"nome\": \"" + entry.getValue().getNome() + "\",");
                 pW.println("    \"creatore\": \"" + entry.getValue().getUtente().getUsername() + "\",");
                 pW.println("    \"iniziata\": " + entry.getValue().getIniziata());
+                pW.println("  }");
+
+                firstEntry = false;
+            }
+
+            pW.println("}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void convertToJsonUtenti() {
+        openDB();
+    
+        try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
+            pW.println("{");
+
+            boolean firstEntry = true;
+            for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
+                if (!firstEntry) {
+                    pW.println(",");
+                }
+                pW.println("  \"" + entry.getKey() + "\": {");
+                pW.println("    \"username\": \"" + entry.getValue().getUsername() + "\",");
+                pW.println("    \"password\": \"" + entry.getValue().getPassword() + "\",");
+                pW.println("    \"isLogged\": " + entry.getValue().getIsLogged());
                 pW.println("  }");
 
                 firstEntry = false;
