@@ -6,6 +6,13 @@
     "Opzioni scelta": "[funzia]"
   }
 ,
+  "STORIA": {
+    "Nome Storia di appartenenza": "STORIA",
+    "Testo Scenario": "scenario2",
+    "Domanda Indovinello": "indovinello2",
+    "Risposta Indovinello": "risposta2"
+  }
+,
   "WED": {
     "Nome Storia di appartenenza": "WED",
     "Testo Scenario": "dsa",
@@ -52,6 +59,13 @@
     "Risposta Indovinello": "000000"
   }
 ,
+  " BHJ": {
+    "Nome Storia di appartenenza": " BHJ",
+    "Testo Scenario": "efve",
+    "Domanda Indovinello": "evv",
+    "Risposta Indovinello": "vv"
+  }
+,
   "0000": {
     "Nome Storia di appartenenza": "0000",
     "Testo Scenario": "123",
@@ -66,11 +80,25 @@
     "Risposta Indovinello": "disagi"
   }
 ,
+  "RISTORIA": {
+    "Nome Storia di appartenenza": "RISTORIA",
+    "Testo Scenario": "testo scenario",
+    "Domanda Indovinello": "cambia scenario",
+    "Risposta Indovinello": "risposya"
+  }
+,
   "DAI": {
     "Nome Storia di appartenenza": "DAI",
     "Testo Scenario": "dai",
     "Domanda Indovinello": "dai",
     "Risposta Indovinello": "ok"
+  }
+,
+  "47": {
+    "Nome Storia di appartenenza": "ORA",
+    "Testo Scenario": "balliamo",
+    "Domanda Indovinello": "quando",
+    "Risposta Indovinello": "e dove"
   }
 ,
   "FINAAALMENTEEEEE": {
@@ -106,6 +134,13 @@
     "Oggetto Necessario": "yyyyyyyyy"
   }
 ,
+  "72": {
+    "Nome Storia di appartenenza": "ORA",
+    "Testo Scenario": "che",
+    "Domanda Indovinello": "numero",
+    "Risposta Indovinello": "ore"
+  }
+,
   "ECCOCI": {
     "Nome Storia di appartenenza": "ECCOCI",
     "Testo Scenario": "serve lollo",
@@ -129,5 +164,12 @@
     "Testo Scenario": "ww",
     "Domanda Indovinello": "ww",
     "Risposta Indovinello": "ww"
+  }
+,
+  "23": {
+    "Nome Storia di appartenenza": "ORA",
+    "Testo Scenario": "che si fa",
+    "Domanda Indovinello": "indovina",
+    "Risposta Indovinello": "giochiamo"
   }
 }

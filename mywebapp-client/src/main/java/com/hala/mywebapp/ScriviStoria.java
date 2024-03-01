@@ -19,7 +19,8 @@ public class ScriviStoria extends Composite implements IsWidget {
     private ArrayList<String> opzioniSceltaTemp;
     private String nomeStoriaTemp;
 
-    interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {}
+    interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
+    }
 
     @UiField
     VerticalPanel titoloS;
@@ -108,18 +109,21 @@ public class ScriviStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 nomeStoriaTemp = titoloStoria.getText().toUpperCase();
-                
+
                 hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught){
+                    public void onFailure(Throwable caught) {
                         System.err.println("Errore qui");
                     };
-                    public void onSuccess(Utente utente){
+
+                    public void onSuccess(Utente utente) {
                         final Utente utenteAttuale = utente;
                         Storia nuovaStoria = new Storia(nomeStoriaTemp, utenteAttuale);
                         hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
-                            public void onFailure(Throwable caught) {};
-                            public void onSuccess(Boolean verifica){
-                                if (verifica){
+                            public void onFailure(Throwable caught) {
+                            };
+
+                            public void onSuccess(Boolean verifica) {
+                                if (verifica) {
                                     messageLabelCreate.setText("Storia creata con successo");
                                     titoloS.remove(inserisciStoria);
                                     attivaTutto();
@@ -131,12 +135,13 @@ public class ScriviStoria extends Composite implements IsWidget {
                     };
 
                 });
-                
+
             }
-            
+
         });
-        
+
         menuTipoScenario.addChangeHandler(event -> {
+
             if ("Scenario a scelta".equals(menuTipoScenario.getSelectedValue())) {
                 showAdditionalFieldsAScelta();
                 opzioniSceltaTemp = new ArrayList<>();
@@ -164,11 +169,12 @@ public class ScriviStoria extends Composite implements IsWidget {
                 opzioniSceltaTemp.add(scelta.getText());
                 scelta.setText("");
             }
-            
+
         });
-        
+
         /*
-         * Evento per il bottone "creaScenarioAScelta" che permette di creare un nuovo scenario
+         * Evento per il bottone "creaScenarioAScelta" che permette di creare un nuovo
+         * scenario
          */
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
@@ -182,17 +188,20 @@ public class ScriviStoria extends Composite implements IsWidget {
                 // Attributi aggiuntivi:
                 scenario.setOpzioniScelte(opzioniSceltaTemp);
 
-                // E' necessario ora richiamare il server per poter effettuare metodi su questo scenario:
+                // E' necessario ora richiamare il server per poter effettuare metodi su questo
+                // scenario:
                 // La struttura è sempre simile
-                // Ricorda l'asyncallback vuole i due metodi onfailure e onsuccess che partono in base a se il metodo nel server si conclude con successo o meno
+                // Ricorda l'asyncallback vuole i due metodi onfailure e onsuccess che partono
+                // in base a se il metodo nel server si conclude con successo o meno
                 hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
                     @Override
-                    public void onFailure(Throwable caught) {}
-                    public void onSuccess(Boolean verifica){
-                        if (verifica){
+                    public void onFailure(Throwable caught) {
+                    }
+
+                    public void onSuccess(Boolean verifica) {
+                        if (verifica) {
                             message.setText("Scenario a scelta creato con successo");
-                        }
-                        else{
+                        } else {
                             message.setText("Errore nella creazione dello scenario a scelta");
                         }
                     }
@@ -206,8 +215,6 @@ public class ScriviStoria extends Composite implements IsWidget {
             }
         });
 
-
-
         creaScenarioIndovinello.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -220,12 +227,13 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                 hALAServiceAsync.aggiungiScenarioIndovinello(scenario, new AsyncCallback<Boolean>() {
                     @Override
-                    public void onFailure(Throwable caught) {}
-                    public void onSuccess(Boolean verifica){
-                        if (verifica){
+                    public void onFailure(Throwable caught) {
+                    }
+
+                    public void onSuccess(Boolean verifica) {
+                        if (verifica) {
                             message.setText("Scenario Indovinello creato con successo");
-                        }
-                        else{
+                        } else {
                             message.setText("Errore nella creazione dello scenario indovinello");
                         }
                     }
@@ -237,24 +245,23 @@ public class ScriviStoria extends Composite implements IsWidget {
             }
         });
 
-
-
         creaScenarioOggetto.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 ScenarioOggetto scenario = new ScenarioOggetto(nomeStoriaTemp);
-        
+
                 scenario.setTestoScena(testoScenarioField.getText());
                 scenario.setOggetto(oggettoNecessario.getText());
-        
+
                 hALAServiceAsync.aggiungiScenarioOggetto(scenario, new AsyncCallback<Boolean>() {
                     @Override
-                    public void onFailure(Throwable caught) {}
-                    public void onSuccess(Boolean verifica){
-                        if (verifica){
+                    public void onFailure(Throwable caught) {
+                    }
+
+                    public void onSuccess(Boolean verifica) {
+                        if (verifica) {
                             message.setText("Scenario Oggetto creato con successo");
-                        }
-                        else{
+                        } else {
                             message.setText("Errore nella creazione dello scenario oggetto");
                         }
                     }
@@ -264,7 +271,6 @@ public class ScriviStoria extends Composite implements IsWidget {
                 oggettoNecessario.setText("");
             }
         });
-        
 
         backButton.addClickHandler(new ClickHandler() {
             @Override
@@ -275,7 +281,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         });
     }
 
-    private void disabilitaTutto(){
+    private void disabilitaTutto() {
         scriviScenarioLabel.setVisible(false);
         tipologiaLabel.setVisible(false);
         menuTipoScenario.setVisible(false);
@@ -297,7 +303,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioOggetto.setVisible(false);
     }
 
-    private void attivaTutto(){
+    private void attivaTutto() {
         scriviScenarioLabel.setVisible(true);
         tipologiaLabel.setVisible(true);
         menuTipoScenario.setVisible(true);
@@ -320,7 +326,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
     }
 
-    private void hideAdditionalFields(){
+    private void hideAdditionalFields() {
         hideAdditionalFieldsAScelta();
         hideAdditionalFieldsIndovinello();
         hideAdditionalFieldsOggetto();
@@ -334,7 +340,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.add(altraScelta);
         vpScenario.add(creaScenarioAScelta);
     }
-    
+
     private void hideAdditionalFieldsAScelta() {
         vpScenario.remove(labelDomandaAScelta);
         vpScenario.remove(domandaFieldAScelta);
@@ -343,7 +349,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(altraScelta);
         vpScenario.remove(creaScenarioAScelta);
     }
-    
+
     private void showAdditionalFieldsIndovinello() {
         vpScenario.add(labelDomandaIndovinello);
         vpScenario.add(domandaFieldIndovinello);
@@ -351,7 +357,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.add(rispostaFieldIndovinello);
         vpScenario.add(creaScenarioIndovinello);
     }
-    
+
     private void hideAdditionalFieldsIndovinello() {
         vpScenario.remove(labelDomandaIndovinello);
         vpScenario.remove(domandaFieldIndovinello);
@@ -359,19 +365,18 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(rispostaFieldIndovinello);
         vpScenario.remove(creaScenarioIndovinello);
     }
-    
+
     private void showAdditionalFieldsOggetto() {
         vpScenario.add(labelOggetto);
         vpScenario.add(oggettoNecessario);
         vpScenario.add(creaScenarioOggetto);
     }
-    
+
     private void hideAdditionalFieldsOggetto() {
         vpScenario.remove(labelOggetto);
         vpScenario.remove(oggettoNecessario);
         vpScenario.remove(creaScenarioOggetto);
-    
+
     }
-    
-    
+
 }

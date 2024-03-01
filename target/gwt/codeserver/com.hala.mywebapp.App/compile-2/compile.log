@@ -6,8 +6,8 @@ Compiling module com.hala.mywebapp.App
       Linking per-type JS with 0 new/changed types.
       Source Maps Enabled
    Compile of permutations succeeded
-   Compilation succeeded -- 2,011s
+   Compilation succeeded -- 1,366s
 Linking into C:\Users\Altea\Desktop\hALA-sweng-\target\gwt\codeserver\com.hala.mywebapp.App\compile-2\war\MyWebApp; Writing extras to C:\Users\Altea\Desktop\hALA-sweng-\target\gwt\codeserver\com.hala.mywebapp.App\compile-2\extras\MyWebApp
    Link succeeded
-   Linking succeeded -- 0,432s
-3,046s total -- Compile completed
+   Linking succeeded -- 0,230s
+2,007s total -- Compile completed

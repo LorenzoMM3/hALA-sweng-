@@ -11,6 +11,12 @@
     "iniziata": false
   }
 ,
+  "STORIA": {
+    "nome": "STORIA",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "WED": {
     "nome": "WED",
     "creatore": "e",
@@ -47,6 +53,12 @@
     "iniziata": false
   }
 ,
+  "ADESSO": {
+    "nome": "ADESSO",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "WWWWWWW": {
     "nome": "WWWWWWW",
     "creatore": "w",
@@ -71,9 +83,21 @@
     "iniziata": false
   }
 ,
+  " BHJ": {
+    "nome": " BHJ",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "0000": {
     "nome": "0000",
     "creatore": "w",
+    "iniziata": false
+  }
+,
+  "ALLORA": {
+    "nome": "ALLORA",
+    "creatore": "e",
     "iniziata": false
   }
 ,
@@ -89,8 +113,20 @@
     "iniziata": false
   }
 ,
+  "RISTORIA": {
+    "nome": "RISTORIA",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "DAI": {
     "nome": "DAI",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
+  "ORA": {
+    "nome": "ORA",
     "creatore": "e",
     "iniziata": false
   }

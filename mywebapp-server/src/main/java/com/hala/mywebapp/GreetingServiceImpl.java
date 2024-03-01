@@ -16,6 +16,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
+    private int numeroScenari = 0;
+    private String numeroScenari2;
 
     public Utente utenteAttuale;
 
@@ -105,8 +107,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
      */
     public boolean aggiungiScenarioAScelta(Scenario scenario) {
         openDB();
-        String nomeStoria = scenario.getNomeStoria();
-        scenariNelSito.put(nomeStoria, scenario);
+        // String nomeStoria = scenario.getNomeStoria();
+        numeroScenari2 = contaScenari();
+        scenariNelSito.put(numeroScenari2, scenario);
         db.commit();
         convertToJsonScenari();
         return true;
@@ -114,8 +117,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     public boolean aggiungiScenarioIndovinello(Scenario scenario) {
         openDB();
-        String nomeStoria = scenario.getNomeStoria();
-        scenariNelSito.put(nomeStoria, scenario);
+        // String nomeStoria = scenario.getNomeStoria();
+        numeroScenari2 = contaScenari();
+        scenariNelSito.put(numeroScenari2, scenario);
         db.commit();
         convertToJsonScenari();
         return true;
@@ -123,8 +127,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     public boolean aggiungiScenarioOggetto(Scenario scenario) {
         openDB();
-        String nomeStoria = scenario.getNomeStoria();
-        scenariNelSito.put(nomeStoria, scenario);
+        // String nomeStoria = scenario.getNomeStoria();
+        numeroScenari2 = contaScenari();
+        scenariNelSito.put(numeroScenari2, scenario);
         db.commit();
         convertToJsonScenari();
         return true;
@@ -227,6 +232,16 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String contaScenari() {
+        openDB();
+        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+            numeroScenari++;
+        }
+        String numSc2 = Integer.toString(numeroScenari);
+        return numSc2;
+
     }
 
 }
