@@ -13,6 +13,13 @@
     "Opzioni scelta": "{opzione=penna}"
   }
 ,
+  "6": {
+    "Nome Storia di appartenenza": "ALTEA",
+    "Testo Scenario": "come va",
+    "Domanda scelta": "male?",
+    "Opzioni scelta": "{no bene=sorriso}"
+  }
+,
   "3": {
     "Nome Storia di appartenenza": "YUPPIII",
     "Testo Scenario": "testo scenario 3",

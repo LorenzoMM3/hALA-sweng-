@@ -1,5 +1,7 @@
 package com.hala.mywebapp;
 
+import java.util.Map;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -23,4 +25,6 @@ public interface GreetingService extends RemoteService {
 	public boolean aggiungiScenarioAScelta(Scenario scenario);
 
 	public boolean aggiungiScenarioIndovinello(Scenario scenario);
+
+	public Map<String, Scenario> ritornaScenari();
 }

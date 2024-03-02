@@ -1,5 +1,7 @@
 package com.hala.mywebapp;
 
+import java.util.Map;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -21,4 +23,6 @@ public interface GreetingServiceAsync {
 	public void aggiungiScenarioAScelta(Scenario scenario, AsyncCallback<Boolean> callback);
 
 	public void aggiungiScenarioIndovinello(Scenario scenario, AsyncCallback<Boolean> callback);
+
+	public void ritornaScenari(AsyncCallback<Map<String, Scenario>> callback);
 }

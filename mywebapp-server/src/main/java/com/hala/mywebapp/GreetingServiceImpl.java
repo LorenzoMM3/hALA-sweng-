@@ -230,4 +230,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     }
 
+    public Map<String, Scenario> ritornaScenari() {
+        openDB();
+        return scenariNelSito;
+
+    }
+
 }

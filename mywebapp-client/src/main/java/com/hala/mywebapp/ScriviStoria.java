@@ -1,6 +1,7 @@
 package com.hala.mywebapp;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.checkerframework.checker.guieffect.qual.UI;
 
@@ -12,6 +13,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.hala.mywebapp.GreetingServiceAsync;
+import com.hala.mywebapp.GreetingService;
 
 public class ScriviStoria extends Composite implements IsWidget {
 
@@ -20,6 +23,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     private ArrayList<String> opzioniSceltaTemp;
     private String nomeStoriaTemp;
     private int numeroScen = 0;
+    private Map<String, Scenario> scenariNelSito;
 
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
@@ -269,8 +273,17 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaCollegamenti.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                hALAServiceAsync.ritornaScenari(new AsyncCallback<Map<String, Scenario>>() {
+                    public void onFailure(Throwable caught) {
+                    }
+
+                    public void onSuccess(Map<String, Scenario> mapScenari) {
+                        scenariNelSito = mapScenari;
+                    }
+
+                });
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Collegamenti());
+                RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariNelSito));
             }
         });
     }

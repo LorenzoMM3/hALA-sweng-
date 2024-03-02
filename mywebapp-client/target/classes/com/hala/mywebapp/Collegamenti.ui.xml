@@ -14,7 +14,7 @@
            
             </g:VerticalPanel>
             <g:VerticalPanel spacing="30" ui:field="ScenariDaCollegare">
-            
+                <g:CellList ui:field="cellList" />
             </g:VerticalPanel>
         </g:VerticalPanel>
 
