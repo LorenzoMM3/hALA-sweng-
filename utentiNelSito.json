@@ -1,7 +1,13 @@
 {
+  "": {
+    "username": "",
+    "password": "",
+    "isLogged": false
+  }
+,
   "e": {
     "username": "e",
     "password": "e",
-    "isLogged": true
+    "isLogged": false
   }
 }

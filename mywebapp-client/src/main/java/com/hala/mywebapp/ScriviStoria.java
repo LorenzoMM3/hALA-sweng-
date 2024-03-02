@@ -283,7 +283,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                 });
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariNelSito));
+                RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariNelSito)); // togliere gli input !!!
             }
         });
     }

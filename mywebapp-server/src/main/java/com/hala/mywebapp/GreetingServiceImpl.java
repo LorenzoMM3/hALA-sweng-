@@ -227,7 +227,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
         String numSc2 = Integer.toString(numeroScenari);
         return numSc2;
-
     }
 
     public Map<String, Scenario> ritornaScenari() {

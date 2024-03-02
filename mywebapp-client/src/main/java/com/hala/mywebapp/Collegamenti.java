@@ -67,30 +67,33 @@ public class Collegamenti extends Composite implements IsWidget {
     @UiField
     ListBox menuScenari;
     @UiField
+    ListBox menuScenariSinistra;
+    @UiField
     ListBox menuAltriScenari;
     @UiField
     ListBox nodo2;
 
-    @UiField(provided = true)
-    CellList<String> cellList;
 
     public Collegamenti(String nomeStoria, Map<String, Scenario> scenariNelSito) {
-        this.scenariNelSito = scenariNelSito;
-        this.nomeStoria = nomeStoria;
-        selezionaScenari();
-        cellList = new CellList<>(new TextCell());
-        cellList.setRowData(scenariStoria);
 
         initWidget(uiBinder.createAndBindUi(this));
         facciataIniziale();
+
+        this.scenariNelSito = scenariNelSito;
+        this.nomeStoria = nomeStoria;
+        selezionaScenari();
+        menuScenariSinistra.setVisibleItemCount(10);
+
 
         buttonIniziale.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 testoScenarioIniziale.setVisible(true);
                 menuAltriScenari.setVisible(true);
+                menuScenariSinistra.setVisible(true);
                 buttonSuccessivo.setVisible(true);
                 buttonIniziale.setVisible(false);
+                
             }
         });
 
