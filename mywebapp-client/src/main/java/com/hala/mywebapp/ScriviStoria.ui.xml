@@ -21,10 +21,9 @@
             <g:Label ui:field="tipologiaLabel">Che tipologia di scenario vuoi inserire?</g:Label>
             <g:ListBox ui:field="menuTipoScenario">
                 <g:item>Scenario a scelta</g:item>
-                <g:item>Scenario con indovinello</g:item>
-                <g:item>Scenario con oggetto</g:item>
-            </g:ListBox>
-            
+                <g:item>Scenario con indovinello</g:item>             
+           </g:ListBox>
+        
             <g:Label ui:field="labelTestoScenario">Inserisci testo scenario:</g:Label>
             <g:TextBox ui:field="testoScenarioField"/>
 
@@ -32,6 +31,8 @@
             <g:TextBox ui:field="domandaFieldAScelta"/>
             <g:Label ui:field="labelScelta">Inserisci opzione scelta:</g:Label>
             <g:TextBox ui:field="scelta"/>
+            <g:Label ui:field="labelSceltaOggetto">Inserisci oggetto (se necessario):</g:Label>
+            <g:TextBox ui:field="oggetto"/>
             <g:Button ui:field="altraScelta">Aggiungi scelta</g:Button>
             <g:Button ui:field="creaScenarioAScelta">Crea</g:Button>
 
@@ -41,10 +42,6 @@
             <g:TextBox ui:field="rispostaFieldIndovinello"/>
             <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
 
-            
-            <g:Label ui:field="labelOggetto">Inserisci l'oggetto necessario per il cambio di scenario:</g:Label>
-            <g:TextBox ui:field="oggettoNecessario"/>
-            <g:Button ui:field="creaScenarioOggetto">Crea</g:Button>
 
             <g:Label ui:field="message"></g:Label>
         </g:VerticalPanel>

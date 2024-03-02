@@ -1,4 +1,4 @@
-var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = 'D4428114F22C7404F34640E07735BFDC';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
+var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = 'D87A512C34D6ABD93FBA6FA72A1E0C16';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
 function Dwc_g$(){
   if (!(permutationId_0_g$ != -1)) {
     debugger;
@@ -18085,87 +18085,162 @@ _.serial_0_g$ = function pXc_g$(writer_0_g$, object_0_g$){
 }
 ;
 var Lcom_google_gwt_user_client_rpc_core_java_lang_Throwable_1FieldSerializer_2_classLit_0_g$ = AZd_g$('com.google.gwt.user.client.rpc.core.java.lang', 'Throwable_FieldSerializer', 1144, Ljava_lang_Object_2_classLit_0_g$);
-function sXc_g$(){
-  sXc_g$ = Object;
+function Kyf_g$(){
+  Kyf_g$ = Object;
   TUc_g$();
 }
 
-function uXc_g$(){
-  sXc_g$();
+function Myf_g$(){
+  Kyf_g$();
   VUc_g$.call(this);
-  this.$init_728_g$();
+  this.$init_1536_g$();
 }
 
-function vXc_g$(streamReader_0_g$, instance_0_g$){
-  sXc_g$();
-  EXc_g$(streamReader_0_g$, instance_0_g$);
+function Nyf_g$(streamReader_0_g$, instance_0_g$){
+  Kyf_g$();
+  jzf_g$(streamReader_0_g$, instance_0_g$);
 }
 
-function yXc_g$(streamWriter_0_g$, instance_0_g$){
-  sXc_g$();
-  FXc_g$(streamWriter_0_g$, instance_0_g$);
+function Qyf_g$(streamWriter_0_g$, instance_0_g$){
+  Kyf_g$();
+  kzf_g$(streamWriter_0_g$, instance_0_g$);
 }
 
-hyc_g$(1145, 1120, {1120:1, 1145:1, 1:1}, uXc_g$);
-_.$init_728_g$ = function tXc_g$(){
-  sXc_g$();
+hyc_g$(2232, 1120, {1120:1, 2232:1, 1:1}, Myf_g$);
+_.$init_1536_g$ = function Lyf_g$(){
+  Kyf_g$();
 }
 ;
-_.deserializeInstance_0_g$ = function wXc_g$(streamReader_0_g$, instance_0_g$){
-  this.deserializeInstance_2_g$(streamReader_0_g$, Dvc_g$(instance_0_g$, 1689));
+_.deserializeInstance_0_g$ = function Oyf_g$(streamReader_0_g$, instance_0_g$){
+  this.deserializeInstance_3_g$(streamReader_0_g$, Dvc_g$(instance_0_g$, 1742));
 }
 ;
-_.serializeInstance_0_g$ = function zXc_g$(streamWriter_0_g$, instance_0_g$){
-  this.serializeInstance_2_g$(streamWriter_0_g$, Dvc_g$(instance_0_g$, 1689));
+_.serializeInstance_0_g$ = function Ryf_g$(streamWriter_0_g$, instance_0_g$){
+  this.serializeInstance_3_g$(streamWriter_0_g$, Dvc_g$(instance_0_g$, 1742));
 }
 ;
-_.deserializeInstance_2_g$ = function xXc_g$(streamReader_0_g$, instance_0_g$){
-  vXc_g$(streamReader_0_g$, instance_0_g$);
+_.deserializeInstance_3_g$ = function Pyf_g$(streamReader_0_g$, instance_0_g$){
+  Nyf_g$(streamReader_0_g$, instance_0_g$);
 }
 ;
-_.serializeInstance_2_g$ = function AXc_g$(streamWriter_0_g$, instance_0_g$){
-  yXc_g$(streamWriter_0_g$, instance_0_g$);
+_.serializeInstance_3_g$ = function Syf_g$(streamWriter_0_g$, instance_0_g$){
+  Qyf_g$(streamWriter_0_g$, instance_0_g$);
 }
 ;
-var Lcom_google_gwt_user_client_rpc_core_java_util_ArrayList_1CustomFieldSerializer_2_classLit_0_g$ = AZd_g$('com.google.gwt.user.client.rpc.core.java.util', 'ArrayList_CustomFieldSerializer', 1145, Lcom_google_gwt_user_client_rpc_CustomFieldSerializer_2_classLit_0_g$);
-function BXc_g$(){
-  BXc_g$ = Object;
+var Lcom_google_gwt_user_client_rpc_core_java_util_HashMap_1CustomFieldSerializer_2_classLit_0_g$ = AZd_g$('com.google.gwt.user.client.rpc.core.java.util', 'HashMap_CustomFieldSerializer', 2232, Lcom_google_gwt_user_client_rpc_CustomFieldSerializer_2_classLit_0_g$);
+function Tyf_g$(){
+  Tyf_g$ = Object;
+  TUc_g$();
+}
+
+function Vyf_g$(){
+  Tyf_g$();
+  VUc_g$.call(this);
+  this.$init_1537_g$();
+}
+
+function Wyf_g$(streamReader_0_g$, instance_0_g$){
+  Tyf_g$();
+  jzf_g$(streamReader_0_g$, instance_0_g$);
+}
+
+function Zyf_g$(instance_0_g$){
+  Tyf_g$();
+  return instance_0_g$.accessOrder_1_g$;
+}
+
+function $yf_g$(instance_0_g$){
+  Tyf_g$();
+  return Zyf_g$(instance_0_g$);
+}
+
+function azf_g$(streamReader_0_g$){
+  Tyf_g$();
+  var accessOrder_0_g$;
+  accessOrder_0_g$ = streamReader_0_g$.readBoolean_0_g$();
+  return new Fve_g$(16, 0.75, accessOrder_0_g$);
+}
+
+function dzf_g$(streamWriter_0_g$, instance_0_g$){
+  Tyf_g$();
+  streamWriter_0_g$.writeBoolean_0_g$(Zyf_g$(instance_0_g$));
+  kzf_g$(streamWriter_0_g$, instance_0_g$);
+}
+
+hyc_g$(2233, 1120, {1120:1, 2233:1, 1:1}, Vyf_g$);
+_.$init_1537_g$ = function Uyf_g$(){
+  Tyf_g$();
+}
+;
+_.deserializeInstance_0_g$ = function Xyf_g$(streamReader_0_g$, instance_0_g$){
+  this.deserializeInstance_4_g$(streamReader_0_g$, Dvc_g$(instance_0_g$, 1757));
+}
+;
+_.instantiateInstance_0_g$ = function bzf_g$(streamReader_0_g$){
+  return this.instantiateInstance_2_g$(streamReader_0_g$);
+}
+;
+_.serializeInstance_0_g$ = function ezf_g$(streamWriter_0_g$, instance_0_g$){
+  this.serializeInstance_4_g$(streamWriter_0_g$, Dvc_g$(instance_0_g$, 1757));
+}
+;
+_.deserializeInstance_4_g$ = function Yyf_g$(streamReader_0_g$, instance_0_g$){
+  Wyf_g$(streamReader_0_g$, instance_0_g$);
+}
+;
+_.hasCustomInstantiateInstance_0_g$ = function _yf_g$(){
+  return true;
+}
+;
+_.instantiateInstance_2_g$ = function czf_g$(streamReader_0_g$){
+  return azf_g$(streamReader_0_g$);
+}
+;
+_.serializeInstance_4_g$ = function fzf_g$(streamWriter_0_g$, instance_0_g$){
+  dzf_g$(streamWriter_0_g$, instance_0_g$);
+}
+;
+var Lcom_google_gwt_user_client_rpc_core_java_util_LinkedHashMap_1CustomFieldSerializer_2_classLit_0_g$ = AZd_g$('com.google.gwt.user.client.rpc.core.java.util', 'LinkedHashMap_CustomFieldSerializer', 2233, Lcom_google_gwt_user_client_rpc_CustomFieldSerializer_2_classLit_0_g$);
+function gzf_g$(){
+  gzf_g$ = Object;
   a_g$();
 }
 
-function DXc_g$(){
-  BXc_g$();
+function izf_g$(){
+  gzf_g$();
   i_g$.call(this);
-  this.$init_729_g$();
+  this.$init_1538_g$();
 }
 
-function EXc_g$(streamReader_0_g$, instance_0_g$){
-  BXc_g$();
-  var i_0_g$, obj_0_g$, size_0_g$;
+function jzf_g$(streamReader_0_g$, instance_0_g$){
+  gzf_g$();
+  var i_0_g$, key_0_g$, size_0_g$, value_0_g$;
   size_0_g$ = streamReader_0_g$.readInt_0_g$();
   for (i_0_g$ = 0; i_0_g$ < size_0_g$; ++i_0_g$) {
-    obj_0_g$ = streamReader_0_g$.readObject_0_g$();
-    instance_0_g$.add_10_g$(obj_0_g$);
+    key_0_g$ = streamReader_0_g$.readObject_0_g$();
+    value_0_g$ = streamReader_0_g$.readObject_0_g$();
+    instance_0_g$.put_4_g$(key_0_g$, value_0_g$);
   }
 }
 
-function FXc_g$(streamWriter_0_g$, instance_0_g$){
-  BXc_g$();
-  var obj_0_g$, obj$iterator_0_g$, size_0_g$;
+function kzf_g$(streamWriter_0_g$, instance_0_g$){
+  gzf_g$();
+  var entry_0_g$, entry$iterator_0_g$, size_0_g$;
   size_0_g$ = instance_0_g$.size_8_g$();
   streamWriter_0_g$.writeInt_0_g$(size_0_g$);
-  for (obj$iterator_0_g$ = instance_0_g$.iterator_0_g$(); obj$iterator_0_g$.hasNext_2_g$();) {
-    obj_0_g$ = obj$iterator_0_g$.next_23_g$();
-    streamWriter_0_g$.writeObject_0_g$(obj_0_g$);
+  for (entry$iterator_0_g$ = Dvc_g$(instance_0_g$.entrySet_1_g$(), 1792).iterator_0_g$(); entry$iterator_0_g$.hasNext_2_g$();) {
+    entry_0_g$ = Dvc_g$(entry$iterator_0_g$.next_23_g$(), 1770);
+    streamWriter_0_g$.writeObject_0_g$(entry_0_g$.getKey_0_g$());
+    streamWriter_0_g$.writeObject_0_g$(entry_0_g$.getValue_1_g$());
   }
 }
 
-hyc_g$(1146, 1, {1146:1, 1:1}, DXc_g$);
-_.$init_729_g$ = function CXc_g$(){
-  BXc_g$();
+hyc_g$(2234, 1, {2234:1, 1:1}, izf_g$);
+_.$init_1538_g$ = function hzf_g$(){
+  gzf_g$();
 }
 ;
-var Lcom_google_gwt_user_client_rpc_core_java_util_Collection_1CustomFieldSerializerBase_2_classLit_0_g$ = AZd_g$('com.google.gwt.user.client.rpc.core.java.util', 'Collection_CustomFieldSerializerBase', 1146, Ljava_lang_Object_2_classLit_0_g$);
+var Lcom_google_gwt_user_client_rpc_core_java_util_Map_1CustomFieldSerializerBase_2_classLit_0_g$ = AZd_g$('com.google.gwt.user.client.rpc.core.java.util', 'Map_CustomFieldSerializerBase', 2234, Ljava_lang_Object_2_classLit_0_g$);
 function GXc_g$(){
   GXc_g$ = Object;
   a_g$();
@@ -24863,7 +24938,7 @@ function GId_g$(){
 
 function IId_g$(){
   GId_g$();
-  kZc_g$.call(this, OA_g$(), 'greet', Ovc_g$('4C87C42CCD2964CB35E974A0EE0C1FA0'), SERIALIZER_0_g$);
+  kZc_g$.call(this, OA_g$(), 'greet', Ovc_g$('ABFC5DEE8CC6F7AFDCCDABFD5DCA873A'), SERIALIZER_0_g$);
   this.$init_939_g$();
 }
 
@@ -24895,26 +24970,6 @@ _.aggiungiScenarioAScelta_0_g$ = function JId_g$(scenario_0_g$, callback_0_g$){
 _.aggiungiScenarioIndovinello_0_g$ = function KId_g$(scenario_0_g$, callback_0_g$){
   var ex_0_g$, helper_0_g$, streamWriter_0_g$;
   helper_0_g$ = new MZc_g$(this, 'GreetingService_Proxy', 'aggiungiScenarioIndovinello');
-  try {
-    streamWriter_0_g$ = helper_0_g$.start_5_g$(Ovc_g$('com.hala.mywebapp.GreetingService'), 1);
-    streamWriter_0_g$.writeString_0_g$('com.hala.mywebapp.Scenario/1122198369');
-    streamWriter_0_g$.writeObject_0_g$(scenario_0_g$);
-    helper_0_g$.finish_2_g$(callback_0_g$, (WZc_g$() , BOOLEAN_0_g$));
-  }
-   catch ($e0_0_g$) {
-    $e0_0_g$ = Swc_g$($e0_0_g$);
-    if (Tvc_g$($e0_0_g$, 1132)) {
-      ex_0_g$ = $e0_0_g$;
-      callback_0_g$.onFailure_1_g$(ex_0_g$);
-    }
-     else 
-      throw Twc_g$($e0_0_g$);
-  }
-}
-;
-_.aggiungiScenarioOggetto_0_g$ = function Ttf_g$(scenario_0_g$, callback_0_g$){
-  var ex_0_g$, helper_0_g$, streamWriter_0_g$;
-  helper_0_g$ = new MZc_g$(this, 'GreetingService_Proxy', 'aggiungiScenarioOggetto');
   try {
     streamWriter_0_g$ = helper_0_g$.start_5_g$(Ovc_g$('com.hala.mywebapp.GreetingService'), 1);
     streamWriter_0_g$.writeString_0_g$('com.hala.mywebapp.Scenario/1122198369');
@@ -25063,7 +25118,7 @@ _.signIn_0_g$ = function SId_g$(utente_0_g$, callback_0_g$){
   }
 }
 ;
-var REMOTE_SERVICE_INTERFACE_NAME_0_g$ = 'com.hala.mywebapp.GreetingService', SERIALIZATION_POLICY_0_g$ = '4C87C42CCD2964CB35E974A0EE0C1FA0', SERIALIZER_0_g$;
+var REMOTE_SERVICE_INTERFACE_NAME_0_g$ = 'com.hala.mywebapp.GreetingService', SERIALIZATION_POLICY_0_g$ = 'ABFC5DEE8CC6F7AFDCCDABFD5DCA873A', SERIALIZER_0_g$;
 var Lcom_hala_mywebapp_GreetingService_1Proxy_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'GreetingService_Proxy', 1457, Lcom_google_gwt_user_client_rpc_impl_RemoteServiceProxy_2_classLit_0_g$);
 function TId_g$(){
   TId_g$ = Object;
@@ -25087,14 +25142,14 @@ function WId_g$(){
   result_0_g$['com.google.gwt.user.client.rpc.RpcTokenException/2345075298'] = [SVc_g$, RVc_g$];
   result_0_g$['com.google.gwt.user.client.rpc.XsrfToken/4254043109'] = [undefined, undefined, CWc_g$];
   result_0_g$['com.hala.mywebapp.Scenario/1122198369'] = [undefined, undefined, gNd_g$];
-  result_0_g$['com.hala.mywebapp.ScenarioAScelta/1042920824'] = [undefined, undefined, tMd_g$];
+  result_0_g$['com.hala.mywebapp.ScenarioAScelta/2177547446'] = [undefined, undefined, tMd_g$];
   result_0_g$['com.hala.mywebapp.ScenarioIndovinello/583431578'] = [undefined, undefined, KMd_g$];
-  result_0_g$['com.hala.mywebapp.ScenarioOggetto/1812643983'] = [undefined, undefined, ZMd_g$];
   result_0_g$['com.hala.mywebapp.Storia/702985664'] = [undefined, undefined, ATd_g$];
-  result_0_g$['com.hala.mywebapp.TipologiaScenario/2742218769'] = [undefined, undefined, PTd_g$];
+  result_0_g$['com.hala.mywebapp.TipologiaScenario/2870396318'] = [undefined, undefined, PTd_g$];
   result_0_g$['com.hala.mywebapp.Utente/3312155184'] = [dUd_g$, cUd_g$, fUd_g$];
   result_0_g$['java.lang.String/2004016611'] = [bXc_g$, ZWc_g$, eXc_g$];
-  result_0_g$['java.util.ArrayList/4159755760'] = [undefined, undefined, yXc_g$];
+  result_0_g$['java.util.HashMap/1797211028'] = [undefined, undefined, Qyf_g$];
+  result_0_g$['java.util.LinkedHashMap/3008245022'] = [undefined, undefined, dzf_g$];
   return result_0_g$;
 }
 
@@ -25105,14 +25160,14 @@ function XId_g$(){
   result_0_g$[nqf_g$(Lcom_google_gwt_user_client_rpc_RpcTokenException_2_classLit_0_g$)] = 'com.google.gwt.user.client.rpc.RpcTokenException/2345075298';
   result_0_g$[nqf_g$(Lcom_google_gwt_user_client_rpc_XsrfToken_2_classLit_0_g$)] = 'com.google.gwt.user.client.rpc.XsrfToken/4254043109';
   result_0_g$[nqf_g$(Lcom_hala_mywebapp_Scenario_2_classLit_0_g$)] = 'com.hala.mywebapp.Scenario/1122198369';
-  result_0_g$[nqf_g$(Lcom_hala_mywebapp_ScenarioAScelta_2_classLit_0_g$)] = 'com.hala.mywebapp.ScenarioAScelta/1042920824';
+  result_0_g$[nqf_g$(Lcom_hala_mywebapp_ScenarioAScelta_2_classLit_0_g$)] = 'com.hala.mywebapp.ScenarioAScelta/2177547446';
   result_0_g$[nqf_g$(Lcom_hala_mywebapp_ScenarioIndovinello_2_classLit_0_g$)] = 'com.hala.mywebapp.ScenarioIndovinello/583431578';
-  result_0_g$[nqf_g$(Lcom_hala_mywebapp_ScenarioOggetto_2_classLit_0_g$)] = 'com.hala.mywebapp.ScenarioOggetto/1812643983';
   result_0_g$[nqf_g$(Lcom_hala_mywebapp_Storia_2_classLit_0_g$)] = 'com.hala.mywebapp.Storia/702985664';
-  result_0_g$[nqf_g$(Lcom_hala_mywebapp_TipologiaScenario_2_classLit_0_g$)] = 'com.hala.mywebapp.TipologiaScenario/2742218769';
+  result_0_g$[nqf_g$(Lcom_hala_mywebapp_TipologiaScenario_2_classLit_0_g$)] = 'com.hala.mywebapp.TipologiaScenario/2870396318';
   result_0_g$[nqf_g$(Lcom_hala_mywebapp_Utente_2_classLit_0_g$)] = 'com.hala.mywebapp.Utente/3312155184';
   result_0_g$[nqf_g$(Ljava_lang_String_2_classLit_0_g$)] = 'java.lang.String/2004016611';
-  result_0_g$[nqf_g$(Ljava_util_ArrayList_2_classLit_0_g$)] = 'java.util.ArrayList/4159755760';
+  result_0_g$[nqf_g$(Ljava_util_HashMap_2_classLit_0_g$)] = 'java.util.HashMap/1797211028';
+  result_0_g$[nqf_g$(Ljava_util_LinkedHashMap_2_classLit_0_g$)] = 'java.util.LinkedHashMap/3008245022';
   return result_0_g$;
 }
 
@@ -26184,8 +26239,7 @@ function gMd_g$(nome_0_g$){
   dMd_g$();
   YLd_g$.call(this, nome_0_g$);
   this.$init_965_g$();
-  this.opzioniScelta_0_g$ = new Jjd_g$;
-  this.sceltaGiocatore_0_g$ = -1;
+  this.opzioniScelta_0_g$ = new rte_g$;
   this.tipologiaScenario_0_g$ = (BTd_g$() , ASCELTA_0_g$);
 }
 
@@ -26194,7 +26248,7 @@ _.$init_965_g$ = function eMd_g$(){
   dMd_g$();
 }
 ;
-_.getOpzioniScelta_0_g$ = function iMd_g$(){
+_.getOpzioniScelta_1_g$ = function qzf_g$(){
   return this.opzioniScelta_0_g$;
 }
 ;
@@ -26203,16 +26257,19 @@ _.getTipologia_0_g$ = function fwf_g$(){
 }
 ;
 _.setOpzioniScelte_0_g$ = function jMd_g$(opzioni_0_g$){
-  this.opzioniScelta_0_g$ = opzioni_0_g$;
-}
-;
-_.setSceltaGiocatore_0_g$ = function kMd_g$(scelta_0_g$){
-  if (scelta_0_g$ >= 0 && scelta_0_g$ < this.opzioniScelta_0_g$.size_8_g$()) {
-    this.sceltaGiocatore_0_g$ = scelta_0_g$;
+  var op_0_g$, op$iterator_0_g$, temp_0_g$;
+  for (op$iterator_0_g$ = opzioni_0_g$.iterator_0_g$(); op$iterator_0_g$.hasNext_2_g$();) {
+    op_0_g$ = Ovc_g$(op$iterator_0_g$.next_23_g$());
+    temp_0_g$ = A7d_g$(op_0_g$, ';');
+    if (mwc_g$(temp_0_g$[1], null)) {
+      this.opzioniScelta_0_g$.put_4_g$(temp_0_g$[0], temp_0_g$[1]);
+    }
+     else {
+      this.opzioniScelta_0_g$.put_4_g$(temp_0_g$[0], '');
+    }
   }
 }
 ;
-_.sceltaGiocatore_0_g$ = 0;
 var Lcom_hala_mywebapp_ScenarioAScelta_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScenarioAScelta', 1491, Lcom_hala_mywebapp_Scenario_2_classLit_0_g$);
 function lMd_g$(){
   lMd_g$ = Object;
@@ -26227,8 +26284,7 @@ function nMd_g$(){
 
 function qMd_g$(streamReader_0_g$, instance_0_g$){
   lMd_g$();
-  instance_0_g$.opzioniScelta_0_g$ = Dvc_g$(streamReader_0_g$.readObject_0_g$(), 1689);
-  instance_0_g$.sceltaGiocatore_0_g$ = streamReader_0_g$.readInt_0_g$();
+  instance_0_g$.opzioniScelta_0_g$ = Dvc_g$(streamReader_0_g$.readObject_0_g$(), 1742);
   instance_0_g$.tipologiaScenario_0_g$ = Dvc_g$(streamReader_0_g$.readObject_0_g$(), 1550);
   dNd_g$(streamReader_0_g$, instance_0_g$);
 }
@@ -26241,7 +26297,6 @@ function rMd_g$(streamReader_0_g$){
 function tMd_g$(streamWriter_0_g$, instance_0_g$){
   lMd_g$();
   streamWriter_0_g$.writeObject_0_g$(instance_0_g$.opzioniScelta_0_g$);
-  streamWriter_0_g$.writeInt_0_g$(instance_0_g$.sceltaGiocatore_0_g$);
   streamWriter_0_g$.writeObject_0_g$(instance_0_g$.tipologiaScenario_0_g$);
   gNd_g$(streamWriter_0_g$, instance_0_g$);
 }
@@ -26373,100 +26428,6 @@ _.serial_0_g$ = function JMd_g$(writer_0_g$, object_0_g$){
 }
 ;
 var Lcom_hala_mywebapp_ScenarioIndovinello_1FieldSerializer_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScenarioIndovinello_FieldSerializer', 1495, Ljava_lang_Object_2_classLit_0_g$);
-function LMd_g$(){
-  LMd_g$ = Object;
-  VLd_g$();
-}
-
-function NMd_g$(){
-  LMd_g$();
-  XLd_g$.call(this);
-  this.$init_969_g$();
-}
-
-function OMd_g$(nome_0_g$){
-  LMd_g$();
-  YLd_g$.call(this, nome_0_g$);
-  this.$init_969_g$();
-  this.oggettoNecessario_2_g$ = '';
-  this.tipologiaScenario_2_g$ = (BTd_g$() , OGGETTO_0_g$);
-}
-
-hyc_g$(1496, 1490, {1490:1, 1493:1, 1496:1, 1568:1, 1:1}, NMd_g$, OMd_g$);
-_.$init_969_g$ = function MMd_g$(){
-  LMd_g$();
-}
-;
-_.getOggetto_0_g$ = function cuf_g$(){
-  return this.oggettoNecessario_2_g$;
-}
-;
-_.getTipologia_0_g$ = function hwf_g$(){
-  return this.tipologiaScenario_2_g$;
-}
-;
-_.setOggetto_0_g$ = function PMd_g$(oggetto_0_g$){
-  this.oggettoNecessario_2_g$ = oggetto_0_g$;
-}
-;
-_.verificaOggetto_0_g$ = function QMd_g$(oggettiPosseduti_0_g$){
-  if (oggettiPosseduti_0_g$.contains_0_g$(this.oggettoNecessario_2_g$)) {
-    return true;
-  }
-   else {
-    return false;
-  }
-}
-;
-var Lcom_hala_mywebapp_ScenarioOggetto_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScenarioOggetto', 1496, Lcom_hala_mywebapp_Scenario_2_classLit_0_g$);
-function RMd_g$(){
-  RMd_g$ = Object;
-  a_g$();
-}
-
-function TMd_g$(){
-  RMd_g$();
-  i_g$.call(this);
-  this.$init_970_g$();
-}
-
-function WMd_g$(streamReader_0_g$, instance_0_g$){
-  RMd_g$();
-  instance_0_g$.oggettoNecessario_2_g$ = streamReader_0_g$.readString_0_g$();
-  instance_0_g$.tipologiaScenario_2_g$ = Dvc_g$(streamReader_0_g$.readObject_0_g$(), 1550);
-  dNd_g$(streamReader_0_g$, instance_0_g$);
-}
-
-function XMd_g$(streamReader_0_g$){
-  RMd_g$();
-  return new NMd_g$;
-}
-
-function ZMd_g$(streamWriter_0_g$, instance_0_g$){
-  RMd_g$();
-  streamWriter_0_g$.writeString_0_g$(instance_0_g$.oggettoNecessario_2_g$);
-  streamWriter_0_g$.writeObject_0_g$(instance_0_g$.tipologiaScenario_2_g$);
-  gNd_g$(streamWriter_0_g$, instance_0_g$);
-}
-
-hyc_g$(1497, 1, {1174:1, 1497:1, 1:1}, TMd_g$);
-_.$init_970_g$ = function SMd_g$(){
-  RMd_g$();
-}
-;
-_.create_1_g$ = function UMd_g$(reader_0_g$){
-  return XMd_g$(reader_0_g$);
-}
-;
-_.deserial_0_g$ = function VMd_g$(reader_0_g$, object_0_g$){
-  WMd_g$(reader_0_g$, Dvc_g$(object_0_g$, 1496));
-}
-;
-_.serial_0_g$ = function YMd_g$(writer_0_g$, object_0_g$){
-  ZMd_g$(writer_0_g$, Dvc_g$(object_0_g$, 1496));
-}
-;
-var Lcom_hala_mywebapp_ScenarioOggetto_1FieldSerializer_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScenarioOggetto_FieldSerializer', 1497, Ljava_lang_Object_2_classLit_0_g$);
 function $Md_g$(){
   $Md_g$ = Object;
   a_g$();
@@ -26536,9 +26497,8 @@ function jNd_g$(){
   this.altraScelta_1_g$.addClickHandler_0_g$(new MNd_g$(this));
   this.creaScenarioAScelta_1_g$.addClickHandler_0_g$(new QNd_g$(this));
   this.creaScenarioIndovinello_1_g$.addClickHandler_0_g$(new $Nd_g$(this));
-  this.creaScenarioOggetto_1_g$.addClickHandler_0_g$(new iOd_g$(this));
-  this.backButton_3_g$.addClickHandler_0_g$(new sOd_g$(this));
-  this.creaCollegamenti_1_g$.addClickHandler_0_g$(new ryf_g$(this));
+  this.backButton_3_g$.addClickHandler_0_g$(new iOd_g$(this));
+  this.creaCollegamenti_1_g$.addClickHandler_0_g$(new sOd_g$(this));
 }
 
 hyc_g$(1499, 1190, {866:1, 889:1, 1088:1, 1190:1, 1260:1, 1277:1, 1279:1, 1400:1, 1414:1, 1499:1, 1:1}, jNd_g$);
@@ -26550,6 +26510,7 @@ _.$init_972_g$ = function iNd_g$(){
 _.lambda$0_0_g$ = function qNd_g$(event_0_0_g$){
   hNd_g$();
   {
+    this.message_3_g$.setText_0_g$('');
     if (r6d_g$('Scenario a scelta', this.menuTipoScenario_1_g$.getSelectedValue_0_g$())) {
       this.showAdditionalFieldsAScelta_0_g$();
       this.opzioniSceltaTemp_1_g$ = new Jjd_g$;
@@ -26562,12 +26523,6 @@ _.lambda$0_0_g$ = function qNd_g$(event_0_0_g$){
     }
      else {
       this.hideAdditionalFieldsIndovinello_0_g$();
-    }
-    if (r6d_g$('Scenario con oggetto', this.menuTipoScenario_1_g$.getSelectedValue_0_g$())) {
-      this.showAdditionalFieldsOggetto_0_g$();
-    }
-     else {
-      this.hideAdditionalFieldsOggetto_0_g$();
     }
   }
 }
@@ -26590,9 +26545,8 @@ _.attivaTutto_0_g$ = function kNd_g$(){
   this.labelRispostaIndovinello_1_g$.setVisible_0_g$(true);
   this.rispostaFieldIndovinello_1_g$.setVisible_0_g$(true);
   this.creaScenarioIndovinello_1_g$.setVisible_0_g$(true);
-  this.labelOggetto_1_g$.setVisible_0_g$(true);
-  this.oggettoNecessario_1_g$.setVisible_0_g$(true);
-  this.creaScenarioOggetto_1_g$.setVisible_0_g$(true);
+  this.labelSceltaOggetto_1_g$.setVisible_0_g$(true);
+  this.oggetto_1_g$.setVisible_0_g$(true);
 }
 ;
 _.disabilitaTutto_0_g$ = function lNd_g$(){
@@ -26613,16 +26567,14 @@ _.disabilitaTutto_0_g$ = function lNd_g$(){
   this.labelRispostaIndovinello_1_g$.setVisible_0_g$(false);
   this.rispostaFieldIndovinello_1_g$.setVisible_0_g$(false);
   this.creaScenarioIndovinello_1_g$.setVisible_0_g$(false);
-  this.labelOggetto_1_g$.setVisible_0_g$(false);
-  this.oggettoNecessario_1_g$.setVisible_0_g$(false);
-  this.creaScenarioOggetto_1_g$.setVisible_0_g$(false);
+  this.labelSceltaOggetto_1_g$.setVisible_0_g$(false);
+  this.oggetto_1_g$.setVisible_0_g$(false);
 }
 ;
 _.hideAdditionalFields_0_g$ = function mNd_g$(){
   hNd_g$();
   this.hideAdditionalFieldsAScelta_0_g$();
   this.hideAdditionalFieldsIndovinello_0_g$();
-  this.hideAdditionalFieldsOggetto_0_g$();
 }
 ;
 _.hideAdditionalFieldsAScelta_0_g$ = function nNd_g$(){
@@ -26633,6 +26585,8 @@ _.hideAdditionalFieldsAScelta_0_g$ = function nNd_g$(){
   this.vpScenario_1_g$.remove_5_g$(this.scelta_1_g$);
   this.vpScenario_1_g$.remove_5_g$(this.altraScelta_1_g$);
   this.vpScenario_1_g$.remove_5_g$(this.creaScenarioAScelta_1_g$);
+  this.vpScenario_1_g$.remove_5_g$(this.labelSceltaOggetto_1_g$);
+  this.vpScenario_1_g$.remove_5_g$(this.oggetto_1_g$);
 }
 ;
 _.hideAdditionalFieldsIndovinello_0_g$ = function oNd_g$(){
@@ -26644,19 +26598,14 @@ _.hideAdditionalFieldsIndovinello_0_g$ = function oNd_g$(){
   this.vpScenario_1_g$.remove_5_g$(this.creaScenarioIndovinello_1_g$);
 }
 ;
-_.hideAdditionalFieldsOggetto_0_g$ = function pNd_g$(){
-  hNd_g$();
-  this.vpScenario_1_g$.remove_5_g$(this.labelOggetto_1_g$);
-  this.vpScenario_1_g$.remove_5_g$(this.oggettoNecessario_1_g$);
-  this.vpScenario_1_g$.remove_5_g$(this.creaScenarioOggetto_1_g$);
-}
-;
 _.showAdditionalFieldsAScelta_0_g$ = function rNd_g$(){
   hNd_g$();
   this.vpScenario_1_g$.add_4_g$(this.labelDomandaAScelta_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.domandaFieldAScelta_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.labelScelta_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.scelta_1_g$);
+  this.vpScenario_1_g$.add_4_g$(this.labelSceltaOggetto_1_g$);
+  this.vpScenario_1_g$.add_4_g$(this.oggetto_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.altraScelta_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.creaScenarioAScelta_1_g$);
 }
@@ -26668,13 +26617,6 @@ _.showAdditionalFieldsIndovinello_0_g$ = function sNd_g$(){
   this.vpScenario_1_g$.add_4_g$(this.labelRispostaIndovinello_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.rispostaFieldIndovinello_1_g$);
   this.vpScenario_1_g$.add_4_g$(this.creaScenarioIndovinello_1_g$);
-}
-;
-_.showAdditionalFieldsOggetto_0_g$ = function tNd_g$(){
-  hNd_g$();
-  this.vpScenario_1_g$.add_4_g$(this.labelOggetto_1_g$);
-  this.vpScenario_1_g$.add_4_g$(this.oggettoNecessario_1_g$);
-  this.vpScenario_1_g$.add_4_g$(this.creaScenarioOggetto_1_g$);
 }
 ;
 _.numeroScen_0_g$ = 0;
@@ -26765,6 +26707,9 @@ _.onSuccess_3_g$ = function INd_g$(verifica_0_g$){
     this.this$21_0_g$.this$11_6_g$.this$01_60_g$.messageLabelCreate_1_g$.setText_0_g$('Storia creata con successo');
     this.this$21_0_g$.this$11_6_g$.this$01_60_g$.titoloS_1_g$.remove_5_g$(this.this$21_0_g$.this$11_6_g$.this$01_60_g$.inserisciStoria_1_g$);
     this.this$21_0_g$.this$11_6_g$.this$01_60_g$.attivaTutto_0_g$();
+    this.this$21_0_g$.this$11_6_g$.this$01_60_g$.menuTipoScenario_1_g$.setSelectedIndex_0_g$(0);
+    this.this$21_0_g$.this$11_6_g$.this$01_60_g$.showAdditionalFieldsAScelta_0_g$();
+    this.this$21_0_g$.this$11_6_g$.this$01_60_g$.opzioniSceltaTemp_1_g$ = new Jjd_g$;
   }
    else {
     this.this$21_0_g$.this$11_6_g$.this$01_60_g$.messageLabelCreate_1_g$.setText_0_g$('Nome gi\xE0 esistente, riprova');
@@ -26790,7 +26735,10 @@ _.$init_976_g$ = function LNd_g$(){
 }
 ;
 _.onClick_0_g$ = function NNd_g$(event_0_g$){
-  this.this$01_61_g$.opzioniSceltaTemp_1_g$.add_10_g$(this.this$01_61_g$.scelta_1_g$.getText_0_g$());
+  var oggettoTemp_0_g$;
+  oggettoTemp_0_g$ = this.this$01_61_g$.oggetto_1_g$.getText_0_g$();
+  this.this$01_61_g$.opzioniSceltaTemp_1_g$.add_10_g$(this.this$01_61_g$.scelta_1_g$.getText_0_g$() + ';' + oggettoTemp_0_g$);
+  this.this$01_61_g$.oggetto_1_g$.setText_0_g$('');
   this.this$01_61_g$.scelta_1_g$.setText_0_g$('');
 }
 ;
@@ -26818,6 +26766,8 @@ _.onClick_0_g$ = function RNd_g$(event_0_g$){
   scenario_0_g$.setTestoScena_0_g$(this.this$01_62_g$.testoScenarioField_1_g$.getText_0_g$());
   scenario_0_g$.setDomandaCambioScenario_0_g$(this.this$01_62_g$.domandaFieldAScelta_1_g$.getText_0_g$());
   scenario_0_g$.setOpzioniScelte_0_g$(this.this$01_62_g$.opzioniSceltaTemp_1_g$);
+  this.this$01_62_g$.message_3_g$.setText_0_g$('');
+  this.this$01_62_g$.vpScenario_1_g$.add_4_g$(this.this$01_62_g$.message_3_g$);
   (hNd_g$() , hALAServiceAsync_4_g$).aggiungiScenarioAScelta_0_g$(scenario_0_g$, new UNd_g$(this));
   this.this$01_62_g$.testoScenarioField_1_g$.setText_0_g$('');
   this.this$01_62_g$.domandaFieldAScelta_1_g$.setText_0_g$('');
@@ -26883,6 +26833,8 @@ _.onClick_0_g$ = function _Nd_g$(event_0_g$){
   scenario_0_g$.setTestoScena_0_g$(this.this$01_63_g$.testoScenarioField_1_g$.getText_0_g$());
   scenario_0_g$.setDomandaIndovinello_0_g$(this.this$01_63_g$.domandaFieldIndovinello_1_g$.getText_0_g$());
   scenario_0_g$.setRispostaIndovinello_0_g$(this.this$01_63_g$.rispostaFieldIndovinello_1_g$.getText_0_g$());
+  this.this$01_63_g$.message_3_g$.setText_0_g$('');
+  this.this$01_63_g$.vpScenario_1_g$.add_4_g$(this.this$01_63_g$.message_3_g$);
   (hNd_g$() , hALAServiceAsync_4_g$).aggiungiScenarioIndovinello_0_g$(scenario_0_g$, new cOd_g$(this));
   this.this$01_63_g$.testoScenarioField_1_g$.setText_0_g$('');
   this.this$01_63_g$.domandaFieldIndovinello_1_g$.setText_0_g$('');
@@ -26942,50 +26894,11 @@ _.$init_981_g$ = function hOd_g$(){
 }
 ;
 _.onClick_0_g$ = function jOd_g$(event_0_g$){
-  var scenario_0_g$;
-  scenario_0_g$ = new OMd_g$(this.this$01_64_g$.nomeStoriaTemp_0_g$);
-  scenario_0_g$.setTestoScena_0_g$(this.this$01_64_g$.testoScenarioField_1_g$.getText_0_g$());
-  scenario_0_g$.setOggetto_0_g$(this.this$01_64_g$.oggettoNecessario_1_g$.getText_0_g$());
-  (hNd_g$() , hALAServiceAsync_4_g$).aggiungiScenarioOggetto_0_g$(scenario_0_g$, new mOd_g$(this));
-  this.this$01_64_g$.testoScenarioField_1_g$.setText_0_g$('');
-  this.this$01_64_g$.oggettoNecessario_1_g$.setText_0_g$('');
+  Ysd_g$('startTable').clear_0_g$();
+  Ysd_g$('startTable').add_3_g$(new $Id_g$);
 }
 ;
 var Lcom_hala_mywebapp_ScriviStoria$5_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/5', 1508, Ljava_lang_Object_2_classLit_0_g$);
-function kOd_g$(){
-  kOd_g$ = Object;
-  a_g$();
-}
-
-function mOd_g$(this$1_0_g$){
-  kOd_g$();
-  this.this$11_9_g$ = this$1_0_g$;
-  i_g$.call(this);
-  this.$init_982_g$();
-}
-
-hyc_g$(1509, 1, {1119:1, 1509:1, 1:1}, mOd_g$);
-_.$init_982_g$ = function lOd_g$(){
-  kOd_g$();
-}
-;
-_.onSuccess_0_g$ = function pOd_g$(verifica_0_g$){
-  this.onSuccess_3_g$(Gvc_g$(verifica_0_g$));
-}
-;
-_.onFailure_1_g$ = function nOd_g$(caught_0_g$){
-}
-;
-_.onSuccess_3_g$ = function oOd_g$(verifica_0_g$){
-  if (xWd_g$(verifica_0_g$)) {
-    this.this$11_9_g$.this$01_64_g$.message_3_g$.setText_0_g$('Scenario Oggetto creato con successo');
-  }
-   else {
-    this.this$11_9_g$.this$01_64_g$.message_3_g$.setText_0_g$('Errore nella creazione dello scenario oggetto');
-  }
-}
-;
-var Lcom_hala_mywebapp_ScriviStoria$5$1_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/5/1', 1509, Ljava_lang_Object_2_classLit_0_g$);
 function qOd_g$(){
   qOd_g$ = Object;
   a_g$();
@@ -27005,33 +26918,10 @@ _.$init_983_g$ = function rOd_g$(){
 ;
 _.onClick_0_g$ = function tOd_g$(event_0_g$){
   Ysd_g$('startTable').clear_0_g$();
-  Ysd_g$('startTable').add_3_g$(new $Id_g$);
-}
-;
-var Lcom_hala_mywebapp_ScriviStoria$6_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/6', 1510, Ljava_lang_Object_2_classLit_0_g$);
-function pyf_g$(){
-  pyf_g$ = Object;
-  a_g$();
-}
-
-function ryf_g$(this$0_0_g$){
-  pyf_g$();
-  this.this$01_114_g$ = this$0_0_g$;
-  i_g$.call(this);
-  this.$init_1533_g$();
-}
-
-hyc_g$(2229, 1, {748:1, 882:1, 2229:1, 1:1}, ryf_g$);
-_.$init_1533_g$ = function qyf_g$(){
-  pyf_g$();
-}
-;
-_.onClick_0_g$ = function syf_g$(event_0_g$){
-  Ysd_g$('startTable').clear_0_g$();
   Ysd_g$('startTable').add_4_g$(new zwf_g$);
 }
 ;
-var Lcom_hala_mywebapp_ScriviStoria$7_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/7', 2229, Ljava_lang_Object_2_classLit_0_g$);
+var Lcom_hala_mywebapp_ScriviStoria$6_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/6', 1510, Ljava_lang_Object_2_classLit_0_g$);
 function uOd_g$(){
   uOd_g$ = Object;
 }
@@ -27119,7 +27009,7 @@ _.build_backButton_2_g$ = function JOd_g$(){
   FOd_g$();
   var backButton_0_g$;
   backButton_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
-  backButton_0_g$.setHTML_1_g$(this.template_html6_0_g$().asString_0_g$());
+  backButton_0_g$.setHTML_1_g$(this.template_html5_0_g$().asString_0_g$());
   this.owner_3_g$.backButton_3_g$ = backButton_0_g$;
   return backButton_0_g$;
 }
@@ -27135,7 +27025,7 @@ _.build_creaCollegamenti_0_g$ = function qwf_g$(){
   FOd_g$();
   var creaCollegamenti_0_g$;
   creaCollegamenti_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
-  creaCollegamenti_0_g$.setHTML_1_g$(this.template_html7_0_g$().asString_0_g$());
+  creaCollegamenti_0_g$.setHTML_1_g$(this.template_html6_0_g$().asString_0_g$());
   this.owner_3_g$.creaCollegamenti_1_g$ = creaCollegamenti_0_g$;
   return creaCollegamenti_0_g$;
 }
@@ -27156,15 +27046,6 @@ _.build_creaScenarioIndovinello_0_g$ = function MOd_g$(){
   creaScenarioIndovinello_0_g$.setHTML_1_g$(this.template_html4_0_g$().asString_0_g$());
   this.owner_3_g$.creaScenarioIndovinello_1_g$ = creaScenarioIndovinello_0_g$;
   return creaScenarioIndovinello_0_g$;
-}
-;
-_.build_creaScenarioOggetto_0_g$ = function NOd_g$(){
-  FOd_g$();
-  var creaScenarioOggetto_0_g$;
-  creaScenarioOggetto_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
-  creaScenarioOggetto_0_g$.setHTML_1_g$(this.template_html5_0_g$().asString_0_g$());
-  this.owner_3_g$.creaScenarioOggetto_1_g$ = creaScenarioOggetto_0_g$;
-  return creaScenarioOggetto_0_g$;
 }
 ;
 _.build_domandaFieldAScelta_0_g$ = function OOd_g$(){
@@ -27231,15 +27112,6 @@ _.build_labelDomandaIndovinello_0_g$ = function UOd_g$(){
   return labelDomandaIndovinello_0_g$;
 }
 ;
-_.build_labelOggetto_0_g$ = function VOd_g$(){
-  FOd_g$();
-  var labelOggetto_0_g$;
-  labelOggetto_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
-  labelOggetto_0_g$.setText_0_g$("Inserisci l'oggetto necessario per il cambio di scenario:");
-  this.owner_3_g$.labelOggetto_1_g$ = labelOggetto_0_g$;
-  return labelOggetto_0_g$;
-}
-;
 _.build_labelRispostaIndovinello_0_g$ = function WOd_g$(){
   FOd_g$();
   var labelRispostaIndovinello_0_g$;
@@ -27258,6 +27130,15 @@ _.build_labelScelta_0_g$ = function XOd_g$(){
   return labelScelta_0_g$;
 }
 ;
+_.build_labelSceltaOggetto_0_g$ = function rzf_g$(){
+  FOd_g$();
+  var labelSceltaOggetto_0_g$;
+  labelSceltaOggetto_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
+  labelSceltaOggetto_0_g$.setText_0_g$('Inserisci oggetto (se necessario):');
+  this.owner_3_g$.labelSceltaOggetto_1_g$ = labelSceltaOggetto_0_g$;
+  return labelSceltaOggetto_0_g$;
+}
+;
 _.build_labelTestoScenario_0_g$ = function YOd_g$(){
   FOd_g$();
   var labelTestoScenario_0_g$;
@@ -27273,7 +27154,6 @@ _.build_menuTipoScenario_0_g$ = function ZOd_g$(){
   menuTipoScenario_0_g$ = Dvc_g$(Dvc_g$(new wkd_g$, 1285), 1285);
   menuTipoScenario_0_g$.addItem_5_g$('Scenario a scelta');
   menuTipoScenario_0_g$.addItem_5_g$('Scenario con indovinello');
-  menuTipoScenario_0_g$.addItem_5_g$('Scenario con oggetto');
   this.owner_3_g$.menuTipoScenario_1_g$ = menuTipoScenario_0_g$;
   return menuTipoScenario_0_g$;
 }
@@ -27301,12 +27181,12 @@ _.build_messageLabelCreate_0_g$ = function aPd_g$(){
   return messageLabelCreate_0_g$;
 }
 ;
-_.build_oggettoNecessario_0_g$ = function bPd_g$(){
+_.build_oggetto_0_g$ = function szf_g$(){
   FOd_g$();
-  var oggettoNecessario_0_g$;
-  oggettoNecessario_0_g$ = Dvc_g$(Dvc_g$(new szd_g$, 1385), 1385);
-  this.owner_3_g$.oggettoNecessario_1_g$ = oggettoNecessario_0_g$;
-  return oggettoNecessario_0_g$;
+  var oggetto_0_g$;
+  oggetto_0_g$ = Dvc_g$(Dvc_g$(new szd_g$, 1385), 1385);
+  this.owner_3_g$.oggetto_1_g$ = oggetto_0_g$;
+  return oggetto_0_g$;
 }
 ;
 _.build_rispostaFieldIndovinello_0_g$ = function cPd_g$(){
@@ -27393,6 +27273,8 @@ _.build_vpScenario_0_g$ = function kPd_g$(){
   vpScenario_0_g$.add_4_g$(this.get_domandaFieldAScelta_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_labelScelta_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_scelta_0_g$());
+  vpScenario_0_g$.add_4_g$(this.get_labelSceltaOggetto_0_g$());
+  vpScenario_0_g$.add_4_g$(this.get_oggetto_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_altraScelta_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_creaScenarioAScelta_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_labelDomandaIndovinello_0_g$());
@@ -27400,9 +27282,6 @@ _.build_vpScenario_0_g$ = function kPd_g$(){
   vpScenario_0_g$.add_4_g$(this.get_labelRispostaIndovinello_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_rispostaFieldIndovinello_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_creaScenarioIndovinello_0_g$());
-  vpScenario_0_g$.add_4_g$(this.get_labelOggetto_0_g$());
-  vpScenario_0_g$.add_4_g$(this.get_oggettoNecessario_0_g$());
-  vpScenario_0_g$.add_4_g$(this.get_creaScenarioOggetto_0_g$());
   vpScenario_0_g$.add_4_g$(this.get_message_0_g$());
   vpScenario_0_g$.setSpacing_0_g$(30);
   this.owner_3_g$.vpScenario_1_g$ = vpScenario_0_g$;
@@ -27437,11 +27316,6 @@ _.get_creaScenarioAScelta_0_g$ = function oPd_g$(){
 _.get_creaScenarioIndovinello_0_g$ = function pPd_g$(){
   FOd_g$();
   return this.build_creaScenarioIndovinello_0_g$();
-}
-;
-_.get_creaScenarioOggetto_0_g$ = function qPd_g$(){
-  FOd_g$();
-  return this.build_creaScenarioOggetto_0_g$();
 }
 ;
 _.get_domandaFieldAScelta_0_g$ = function rPd_g$(){
@@ -27479,11 +27353,6 @@ _.get_labelDomandaIndovinello_0_g$ = function xPd_g$(){
   return this.build_labelDomandaIndovinello_0_g$();
 }
 ;
-_.get_labelOggetto_0_g$ = function yPd_g$(){
-  FOd_g$();
-  return this.build_labelOggetto_0_g$();
-}
-;
 _.get_labelRispostaIndovinello_0_g$ = function zPd_g$(){
   FOd_g$();
   return this.build_labelRispostaIndovinello_0_g$();
@@ -27492,6 +27361,11 @@ _.get_labelRispostaIndovinello_0_g$ = function zPd_g$(){
 _.get_labelScelta_0_g$ = function APd_g$(){
   FOd_g$();
   return this.build_labelScelta_0_g$();
+}
+;
+_.get_labelSceltaOggetto_0_g$ = function tzf_g$(){
+  FOd_g$();
+  return this.build_labelSceltaOggetto_0_g$();
 }
 ;
 _.get_labelTestoScenario_0_g$ = function BPd_g$(){
@@ -27519,9 +27393,9 @@ _.get_messageLabelCreate_0_g$ = function FPd_g$(){
   return this.build_messageLabelCreate_0_g$();
 }
 ;
-_.get_oggettoNecessario_0_g$ = function GPd_g$(){
+_.get_oggetto_0_g$ = function uzf_g$(){
   FOd_g$();
-  return this.build_oggettoNecessario_0_g$();
+  return this.build_oggetto_0_g$();
 }
 ;
 _.get_rispostaFieldIndovinello_0_g$ = function HPd_g$(){
@@ -27591,10 +27465,6 @@ _.template_html5_0_g$ = function UPd_g$(){
 ;
 _.template_html6_0_g$ = function VPd_g$(){
   return this.this$01_66_g$.template_3_g$.html6_0_g$();
-}
-;
-_.template_html7_0_g$ = function swf_g$(){
-  return this.this$01_66_g$.template_3_g$.html7_0_g$();
 }
 ;
 var Lcom_hala_mywebapp_ScriviStoria_1ScriviStoriaUiBinderImpl$Widgets_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria_ScriviStoriaUiBinderImpl/Widgets', 1515, Ljava_lang_Object_2_classLit_0_g$);
@@ -27770,18 +27640,11 @@ _.html4_0_g$ = function uQd_g$(){
 _.html5_0_g$ = function vQd_g$(){
   var sb_0_g$;
   sb_0_g$ = new j9d_g$;
-  sb_0_g$.append_34_g$('Crea');
-  return new hDc_g$(sb_0_g$.toString_1_g$());
-}
-;
-_.html6_0_g$ = function wQd_g$(){
-  var sb_0_g$;
-  sb_0_g$ = new j9d_g$;
   sb_0_g$.append_34_g$('Back');
   return new hDc_g$(sb_0_g$.toString_1_g$());
 }
 ;
-_.html7_0_g$ = function twf_g$(){
+_.html6_0_g$ = function wQd_g$(){
   var sb_0_g$;
   sb_0_g$ = new j9d_g$;
   sb_0_g$.append_34_g$('Crea collegamenti');
@@ -28768,7 +28631,6 @@ function BTd_g$(){
   Fd_g$();
   ASCELTA_0_g$ = new DTd_g$('ASCELTA', 0);
   INDOVINELLO_0_g$ = new DTd_g$('INDOVINELLO', 1);
-  OGGETTO_0_g$ = new DTd_g$('OGGETTO', 2);
 }
 
 function DTd_g$(enum$name_0_g$, enum$ordinal_0_g$){
@@ -28784,7 +28646,7 @@ function ETd_g$(name_0_g$){
 
 function FTd_g$(){
   BTd_g$();
-  return luc_g$(Xtc_g$(Lcom_hala_mywebapp_TipologiaScenario_2_classLit_0_g$, 1), {1552:1, 1568:1, 1569:1, 1596:1, 1599:1, 1602:1, 1:1, 1632:1}, 1550, 0, [ASCELTA_0_g$, INDOVINELLO_0_g$, OGGETTO_0_g$]);
+  return luc_g$(Xtc_g$(Lcom_hala_mywebapp_TipologiaScenario_2_classLit_0_g$, 1), {1552:1, 1568:1, 1569:1, 1596:1, 1599:1, 1602:1, 1:1, 1632:1}, 1550, 0, [ASCELTA_0_g$, INDOVINELLO_0_g$]);
 }
 
 hyc_g$(1550, 1601, {1550:1, 1568:1, 1598:1, 1601:1, 1:1}, DTd_g$);
@@ -28792,7 +28654,7 @@ _.$init_1011_g$ = function CTd_g$(){
   BTd_g$();
 }
 ;
-var ASCELTA_0_g$, INDOVINELLO_0_g$, OGGETTO_0_g$;
+var ASCELTA_0_g$, INDOVINELLO_0_g$;
 var Lcom_hala_mywebapp_TipologiaScenario_2_classLit_0_g$ = BZd_g$('com.hala.mywebapp', 'TipologiaScenario', 1550, Ljava_lang_Enum_2_classLit_0_g$, FTd_g$, ETd_g$);
 function GTd_g$(){
   GTd_g$ = Object;
@@ -36536,6 +36398,148 @@ function xve_g$(this$static_0_g$){
 }
 
 var Ljava_util_Iterator_2_classLit_0_g$ = CZd_g$('java.util', 'Iterator');
+function Ave_g$(){
+  Ave_g$ = Object;
+  pte_g$();
+  oxe_g$();
+}
+
+function Cve_g$(){
+  Ave_g$();
+  rte_g$.call(this);
+  this.$init_1151_g$();
+  this.resetChainEntries_0_g$();
+}
+
+function Dve_g$(ignored_0_g$){
+  Ave_g$();
+  Eve_g$.call(this, ignored_0_g$, 0);
+}
+
+function Eve_g$(ignored_0_g$, alsoIgnored_0_g$){
+  Ave_g$();
+  tte_g$.call(this, ignored_0_g$, alsoIgnored_0_g$);
+  this.$init_1151_g$();
+  this.resetChainEntries_0_g$();
+}
+
+function Fve_g$(ignored_0_g$, alsoIgnored_0_g$, accessOrder_0_g$){
+  Ave_g$();
+  tte_g$.call(this, ignored_0_g$, alsoIgnored_0_g$);
+  this.$init_1151_g$();
+  this.accessOrder_1_g$ = accessOrder_0_g$;
+  this.resetChainEntries_0_g$();
+}
+
+function Gve_g$(toBeCopied_0_g$){
+  Ave_g$();
+  rte_g$.call(this);
+  this.$init_1151_g$();
+  this.resetChainEntries_0_g$();
+  this.putAll_0_g$(toBeCopied_0_g$);
+}
+
+hyc_g$(1757, 1742, {1568:1, 1596:1, 1:1, 1664:1, 1671:1, 1742:1, 1757:1, 1769:1}, Cve_g$, Dve_g$, Eve_g$, Fve_g$, Gve_g$);
+_.$init_1151_g$ = function Bve_g$(){
+  Ave_g$();
+  this.head_2_g$ = new Vve_g$(this);
+  this.map_6_g$ = new rte_g$;
+}
+;
+_.clear_0_g$ = function Hve_g$(){
+  this.map_6_g$.clear_0_g$();
+  this.resetChainEntries_0_g$();
+}
+;
+_.clone_1_g$ = function Ive_g$(){
+  return new Gve_g$(this);
+}
+;
+_.containsKey_0_g$ = function Jve_g$(key_0_g$){
+  return this.map_6_g$.containsKey_0_g$(key_0_g$);
+}
+;
+_.containsValue_0_g$ = function Kve_g$(value_0_g$){
+  var node_0_g$;
+  node_0_g$ = this.head_2_g$.next_3_g$;
+  while (mwc_g$(node_0_g$, this.head_2_g$)) {
+    if (Mye_g$(node_0_g$.getValue_1_g$(), value_0_g$)) {
+      return true;
+    }
+    node_0_g$ = node_0_g$.next_3_g$;
+  }
+  return false;
+}
+;
+_.entrySet_1_g$ = function Lve_g$(){
+  return new _ve_g$(this);
+}
+;
+_.get_16_g$ = function Mve_g$(key_0_g$){
+  var entry_0_g$;
+  entry_0_g$ = Dvc_g$(this.map_6_g$.get_16_g$(key_0_g$), 1758);
+  if (jwc_g$(entry_0_g$)) {
+    this.recordAccess_0_g$(entry_0_g$);
+    return entry_0_g$.getValue_1_g$();
+  }
+  return null;
+}
+;
+_.put_4_g$ = function Nve_g$(key_0_g$, value_0_g$){
+  var eldest_0_g$, newEntry_0_g$, old_0_g$, oldValue_0_g$;
+  old_0_g$ = Dvc_g$(this.map_6_g$.get_16_g$(key_0_g$), 1758);
+  if (kwc_g$(old_0_g$)) {
+    newEntry_0_g$ = new Wve_g$(this, key_0_g$, value_0_g$);
+    this.map_6_g$.put_4_g$(key_0_g$, newEntry_0_g$);
+    newEntry_0_g$.addToEnd_0_g$();
+    eldest_0_g$ = this.head_2_g$.next_3_g$;
+    if (this.removeEldestEntry_0_g$(eldest_0_g$)) {
+      eldest_0_g$.remove_7_g$();
+      this.map_6_g$.remove_11_g$(eldest_0_g$.getKey_0_g$());
+    }
+    return null;
+  }
+   else {
+    oldValue_0_g$ = old_0_g$.setValue_5_g$(value_0_g$);
+    this.recordAccess_0_g$(old_0_g$);
+    return oldValue_0_g$;
+  }
+}
+;
+_.recordAccess_0_g$ = function Ove_g$(entry_0_g$){
+  Ave_g$();
+  if (this.accessOrder_1_g$) {
+    entry_0_g$.remove_7_g$();
+    entry_0_g$.addToEnd_0_g$();
+  }
+}
+;
+_.remove_11_g$ = function Pve_g$(key_0_g$){
+  var entry_0_g$;
+  entry_0_g$ = Dvc_g$(this.map_6_g$.remove_11_g$(key_0_g$), 1758);
+  if (jwc_g$(entry_0_g$)) {
+    entry_0_g$.remove_7_g$();
+    return entry_0_g$.getValue_1_g$();
+  }
+  return null;
+}
+;
+_.removeEldestEntry_0_g$ = function Qve_g$(eldest_0_g$){
+  return false;
+}
+;
+_.resetChainEntries_0_g$ = function Rve_g$(){
+  Ave_g$();
+  this.head_2_g$.prev_1_g$ = this.head_2_g$;
+  this.head_2_g$.next_3_g$ = this.head_2_g$;
+}
+;
+_.size_8_g$ = function Sve_g$(){
+  return this.map_6_g$.size_8_g$();
+}
+;
+_.accessOrder_1_g$ = false;
+var Ljava_util_LinkedHashMap_2_classLit_0_g$ = AZd_g$('java.util', 'LinkedHashMap', 1757, Ljava_util_HashMap_2_classLit_0_g$);
 function nwe_g$(){
   nwe_g$ = Object;
 }
@@ -38330,6 +38334,20 @@ _.$init_1523_g$ = function Drf_g$(){
 }
 ;
 var Ljavaemul_internal_LongUtils_2_classLit_0_g$ = AZd_g$('javaemul.internal', 'LongUtils', 2211, Ljava_lang_Object_2_classLit_0_g$);
+function Hrf_g$(){
+  Hrf_g$ = Object;
+  a_g$();
+}
+
+function Irf_g$(){
+  Irf_g$ = Object;
+}
+
+function Jrf_g$(this$static_0_g$){
+  Irf_g$();
+  return urf_g$(this$static_0_g$);
+}
+
 var Z_classLit_0_g$ = DZd_g$('boolean', 'Z');
 var B_classLit_0_g$ = DZd_g$('byte', 'B');
 var C_classLit_0_g$ = DZd_g$('char', 'C');
@@ -38344,6 +38362,6 @@ var gwtOnLoad = gwtOnLoad = _xc_g$;
 Zxc_g$(Iyc_g$);
 byc_g$('permProps', [[['locale', 'default'], ['user.agent', 'safari']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);$sendStats('moduleStartup', 'end');$gwt && $gwt.permProps && __gwtModuleFunction.__moduleStartupDone($gwt.permProps);
-//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/D4428114F22C7404F34640E07735BFDC_sourcemap.json 
+//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/D87A512C34D6ABD93FBA6FA72A1E0C16_sourcemap.json 
 //# sourceURL=MyWebApp-0.js
 

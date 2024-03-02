@@ -3,7 +3,6 @@ package com.hala.mywebapp;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@SuppressWarnings("serial")
 public class Scenario implements ScenarioI, Serializable {
     protected String domandaCambioScenario;
     protected String testoScena;

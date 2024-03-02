@@ -125,16 +125,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
-    public boolean aggiungiScenarioOggetto(Scenario scenario) {
-        openDB();
-        // String nomeStoria = scenario.getNomeStoria();
-        numeroScenari2 = contaScenari();
-        scenariNelSito.put(numeroScenari2, scenario);
-        db.commit();
-        convertToJsonScenari();
-        return true;
-    }
-
     // Per convertire in json gli scenari: va completato con quelli mancanti
     private void convertToJsonScenari() {
         openDB();
@@ -162,10 +152,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                     ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry.getValue();
                     pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
                     pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\"");
-                }
-                if (tipologiaTemp.equalsIgnoreCase("OGGETTO")) {
-                    ScenarioOggetto scenarioTemp = (ScenarioOggetto) entry.getValue();
-                    pW.println("    \"Oggetto Necessario\": \"" + scenarioTemp.getOggetto() + "\"");
                 }
 
                 pW.println("  }");

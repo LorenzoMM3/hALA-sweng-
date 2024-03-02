@@ -2,12 +2,12 @@ package com.hala.mywebapp;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ScenarioAScelta extends Scenario implements Serializable {
 
-    protected ArrayList<String> opzioniScelta;
+    protected HashMap<String, String> opzioniScelta; // Oggetto, se non presente è null
     protected TipologiaScenario tipologiaScenario;
-    protected int sceltaGiocatore; // Indice dell'array
 
     public ScenarioAScelta() {
         super();
@@ -15,22 +15,23 @@ public class ScenarioAScelta extends Scenario implements Serializable {
 
     public ScenarioAScelta(String nome) {
         super(nome);
-        opzioniScelta = new ArrayList<>();
-        sceltaGiocatore = -1;
+        opzioniScelta = new HashMap<>();
         this.tipologiaScenario = TipologiaScenario.ASCELTA;
     }
 
     public void setOpzioniScelte(ArrayList<String> opzioni) {
-        this.opzioniScelta = opzioni;
-    }
+        for (String op : opzioni) {
+            String[] temp = op.split(";");
+            if (temp[1] != null) {
+                this.opzioniScelta.put(temp[0], temp[1]);
 
-    public void setSceltaGiocatore(int scelta) {
-        if (scelta >= 0 && scelta < opzioniScelta.size()) {
-            this.sceltaGiocatore = scelta;
+            } else {
+                this.opzioniScelta.put(temp[0], "");
+            }
         }
     }
 
-    public ArrayList<String> getOpzioniScelta() {
+    public HashMap<String, String> getOpzioniScelta() {
         return opzioniScelta;
     }
 
