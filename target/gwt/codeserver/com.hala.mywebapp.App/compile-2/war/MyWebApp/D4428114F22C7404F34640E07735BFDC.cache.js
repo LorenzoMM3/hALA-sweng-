@@ -1,4 +1,4 @@
-var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = 'F985BC1BF6AF6F8DDD9F36D3AD4CA50F';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
+var $wnd = $wnd || window.parent;var __gwtModuleFunction = $wnd.MyWebApp;var $sendStats = __gwtModuleFunction.__sendStats;$sendStats('moduleStartup', 'moduleEvalStart');var $gwt_version = "2.11.0";var $strongName = 'D4428114F22C7404F34640E07735BFDC';var $gwt = {};var $doc = $wnd.document;var $moduleName, $moduleBase;function __gwtStartLoadingFragment(frag) {var fragFile = 'deferredjs/' + $strongName + '/' + frag + '.cache.js';return __gwtModuleFunction.__startLoadingFragment(fragFile);}function __gwtInstallCode(code) {return __gwtModuleFunction.__installRunAsyncCode(code);}function __gwt_isKnownPropertyValue(propName, propValue) {return __gwtModuleFunction.__gwt_isKnownPropertyValue(propName, propValue);}function __gwt_getMetaProperty(name) {return __gwtModuleFunction.__gwt_getMetaProperty(name);}var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);} : null;var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;var _, prototypesByTypeId_1_g$, initFnList_1_g$, PERMUTATION_NOT_SET_0_g$ = -1, permutationId_0_g$ = -1;
 function Dwc_g$(){
   if (!(permutationId_0_g$ != -1)) {
     debugger;
@@ -24162,6 +24162,694 @@ _.onSuccess_3_g$ = function DId_g$(verifica_0_g$){
 }
 ;
 var Lcom_hala_mywebapp_App$1_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'App/1', 1455, Ljava_lang_Object_2_classLit_0_g$);
+function xwf_g$(){
+  xwf_g$ = Object;
+  n4c_g$();
+  hALAServiceAsync_6_g$ = Dvc_g$(new IId_g$, 1456);
+  uiBinder_2_g$ = Dvc_g$(new Jwf_g$, 2219);
+}
+
+function zwf_g$(){
+  xwf_g$();
+  p4c_g$.call(this);
+  this.$init_1525_g$();
+  this.initWidget_0_g$(Dvc_g$(uiBinder_2_g$.createAndBindUi_0_g$(this), 1414));
+  this.facciataIniziale_0_g$();
+  this.buttonIniziale_1_g$.addClickHandler_0_g$(new Ewf_g$(this));
+  this.buttonSuccessivo_1_g$.addClickHandler_0_g$(new Eyf_g$(this));
+  this.backButton_5_g$.addClickHandler_0_g$(new Iyf_g$(this));
+}
+
+hyc_g$(2217, 1190, {866:1, 889:1, 1088:1, 1190:1, 1260:1, 1277:1, 1279:1, 1400:1, 1414:1, 2217:1, 1:1}, zwf_g$);
+_.$init_1525_g$ = function ywf_g$(){
+  xwf_g$();
+}
+;
+_.facciataIniziale_0_g$ = function Awf_g$(){
+  xwf_g$();
+  this.altriScenariPanel_1_g$.setVisible_0_g$(false);
+  this.testoScenarioIniziale_1_g$.setVisible_0_g$(false);
+  this.menuAltriScenari_1_g$.setVisible_0_g$(false);
+}
+;
+_.facciataSecondaria_0_g$ = function Bwf_g$(){
+  xwf_g$();
+  this.altriScenariPanel_1_g$.setVisible_0_g$(true);
+  this.testoScenarioIniziale_1_g$.setVisible_0_g$(false);
+  this.menuAltriScenari_1_g$.setVisible_0_g$(false);
+  this.ScenarioInizialePanel_1_g$.setVisible_0_g$(false);
+}
+;
+var hALAServiceAsync_6_g$, uiBinder_2_g$;
+var Lcom_hala_mywebapp_Collegamenti_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti', 2217, Lcom_google_gwt_user_client_ui_Composite_2_classLit_0_g$);
+function Cwf_g$(){
+  Cwf_g$ = Object;
+  a_g$();
+}
+
+function Ewf_g$(this$0_0_g$){
+  Cwf_g$();
+  this.this$01_111_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1526_g$();
+}
+
+hyc_g$(2218, 1, {748:1, 882:1, 2218:1, 1:1}, Ewf_g$);
+_.$init_1526_g$ = function Dwf_g$(){
+  Cwf_g$();
+}
+;
+_.onClick_0_g$ = function Fwf_g$(event_0_g$){
+  this.this$01_111_g$.testoScenarioIniziale_1_g$.setVisible_0_g$(true);
+  this.this$01_111_g$.menuAltriScenari_1_g$.setVisible_0_g$(true);
+  this.this$01_111_g$.buttonSuccessivo_1_g$.setVisible_0_g$(true);
+}
+;
+var Lcom_hala_mywebapp_Collegamenti$1_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti/1', 2218, Ljava_lang_Object_2_classLit_0_g$);
+function Cyf_g$(){
+  Cyf_g$ = Object;
+  a_g$();
+}
+
+function Eyf_g$(this$0_0_g$){
+  Cyf_g$();
+  this.this$01_115_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1534_g$();
+}
+
+hyc_g$(2230, 1, {748:1, 882:1, 2230:1, 1:1}, Eyf_g$);
+_.$init_1534_g$ = function Dyf_g$(){
+  Cyf_g$();
+}
+;
+_.onClick_0_g$ = function Fyf_g$(event_0_g$){
+  this.this$01_115_g$.facciataSecondaria_0_g$();
+}
+;
+var Lcom_hala_mywebapp_Collegamenti$2_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti/2', 2230, Ljava_lang_Object_2_classLit_0_g$);
+function Gyf_g$(){
+  Gyf_g$ = Object;
+  a_g$();
+}
+
+function Iyf_g$(this$0_0_g$){
+  Gyf_g$();
+  this.this$01_116_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1535_g$();
+}
+
+hyc_g$(2231, 1, {748:1, 882:1, 2231:1, 1:1}, Iyf_g$);
+_.$init_1535_g$ = function Hyf_g$(){
+  Gyf_g$();
+}
+;
+_.onClick_0_g$ = function Jyf_g$(event_0_g$){
+  Ysd_g$('startTable').clear_0_g$();
+  Ysd_g$('startTable').add_3_g$(new $Id_g$);
+}
+;
+var Lcom_hala_mywebapp_Collegamenti$3_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti/3', 2231, Ljava_lang_Object_2_classLit_0_g$);
+function Gwf_g$(){
+  Gwf_g$ = Object;
+}
+
+var Lcom_hala_mywebapp_Collegamenti$CollegamentiUiBinder_2_classLit_0_g$ = CZd_g$('com.hala.mywebapp', 'Collegamenti/CollegamentiUiBinder');
+function Hwf_g$(){
+  Hwf_g$ = Object;
+  a_g$();
+}
+
+function Jwf_g$(){
+  Hwf_g$();
+  i_g$.call(this);
+  this.$init_1527_g$();
+}
+
+hyc_g$(2220, 1, {1067:1, 2219:1, 2220:1, 1:1}, Jwf_g$);
+_.$init_1527_g$ = function Iwf_g$(){
+  Hwf_g$();
+  this.template_6_g$ = Dvc_g$(new iyf_g$, 2221);
+}
+;
+_.createAndBindUi_0_g$ = function Lwf_g$(owner_0_g$){
+  return this.createAndBindUi_6_g$(Dvc_g$(owner_0_g$, 2217));
+}
+;
+_.createAndBindUi_6_g$ = function Kwf_g$(owner_0_g$){
+  return (new Pwf_g$(this, owner_0_g$)).get_f_HorizontalPanel1_1_g$();
+}
+;
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl', 2220, Ljava_lang_Object_2_classLit_0_g$);
+function Mwf_g$(){
+  Mwf_g$ = Object;
+}
+
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl$Template_2_classLit_0_g$ = CZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl/Template');
+function Nwf_g$(){
+  Nwf_g$ = Object;
+  a_g$();
+}
+
+function Pwf_g$(this$0_0_g$, owner_0_g$){
+  Nwf_g$();
+  this.this$01_112_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1528_g$();
+  this.owner_6_g$ = owner_0_g$;
+  this.build_style_4_g$();
+}
+
+hyc_g$(2222, 1, {2222:1, 1:1}, Pwf_g$);
+_.$init_1528_g$ = function Owf_g$(){
+  Nwf_g$();
+}
+;
+_.build_Scenari_0_g$ = function Qwf_g$(){
+  Nwf_g$();
+  var Scenari_0_g$;
+  Scenari_0_g$ = Dvc_g$(Dvc_g$(new bEd_g$, 1413), 1413);
+  Scenari_0_g$.add_4_g$(this.get_ScenariCollegati_0_g$());
+  Scenari_0_g$.add_4_g$(this.get_ScenariDaCollegare_0_g$());
+  Scenari_0_g$.setSpacing_0_g$(30);
+  this.owner_6_g$.Scenari_1_g$ = Scenari_0_g$;
+  return Scenari_0_g$;
+}
+;
+_.build_ScenariCollegati_0_g$ = function Rwf_g$(){
+  Nwf_g$();
+  var ScenariCollegati_0_g$;
+  ScenariCollegati_0_g$ = Dvc_g$(Dvc_g$(new bEd_g$, 1413), 1413);
+  ScenariCollegati_0_g$.setSpacing_0_g$(30);
+  this.owner_6_g$.ScenariCollegati_1_g$ = ScenariCollegati_0_g$;
+  return ScenariCollegati_0_g$;
+}
+;
+_.build_ScenariDaCollegare_0_g$ = function Swf_g$(){
+  Nwf_g$();
+  var ScenariDaCollegare_0_g$;
+  ScenariDaCollegare_0_g$ = Dvc_g$(Dvc_g$(new bEd_g$, 1413), 1413);
+  ScenariDaCollegare_0_g$.setSpacing_0_g$(30);
+  this.owner_6_g$.ScenariDaCollegare_1_g$ = ScenariDaCollegare_0_g$;
+  return ScenariDaCollegare_0_g$;
+}
+;
+_.build_ScenarioInizialePanel_0_g$ = function Twf_g$(){
+  Nwf_g$();
+  var ScenarioInizialePanel_0_g$;
+  ScenarioInizialePanel_0_g$ = Dvc_g$(Dvc_g$(new bEd_g$, 1413), 1413);
+  ScenarioInizialePanel_0_g$.add_4_g$(this.get_scenarioIniziale_0_g$());
+  ScenarioInizialePanel_0_g$.add_4_g$(this.get_menuScenari_0_g$());
+  ScenarioInizialePanel_0_g$.add_4_g$(this.get_buttonIniziale_0_g$());
+  ScenarioInizialePanel_0_g$.add_4_g$(this.get_testoScenarioIniziale_0_g$());
+  ScenarioInizialePanel_0_g$.add_4_g$(this.get_menuAltriScenari_0_g$());
+  ScenarioInizialePanel_0_g$.setSpacing_0_g$(30);
+  this.owner_6_g$.ScenarioInizialePanel_1_g$ = ScenarioInizialePanel_0_g$;
+  return ScenarioInizialePanel_0_g$;
+}
+;
+_.build_ScenarioSucc_0_g$ = function Uwf_g$(){
+  Nwf_g$();
+  var ScenarioSucc_0_g$;
+  ScenarioSucc_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
+  ScenarioSucc_0_g$.setHTML_1_g$(this.template_html4_0_g$().asString_0_g$());
+  this.owner_6_g$.ScenarioSucc_1_g$ = ScenarioSucc_0_g$;
+  return ScenarioSucc_0_g$;
+}
+;
+_.build_altriScenari_0_g$ = function Vwf_g$(){
+  Nwf_g$();
+  var altriScenari_0_g$;
+  altriScenari_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
+  altriScenari_0_g$.setText_0_g$('Scegli il seguente scenario:');
+  this.owner_6_g$.altriScenari_1_g$ = altriScenari_0_g$;
+  return altriScenari_0_g$;
+}
+;
+_.build_altriScenariPanel_0_g$ = function Wwf_g$(){
+  Nwf_g$();
+  var altriScenariPanel_0_g$;
+  altriScenariPanel_0_g$ = Dvc_g$(Dvc_g$(new bEd_g$, 1413), 1413);
+  altriScenariPanel_0_g$.add_4_g$(this.get_altriScenari_0_g$());
+  altriScenariPanel_0_g$.add_4_g$(this.get_testoScenario1_0_g$());
+  altriScenariPanel_0_g$.add_4_g$(this.get_nodo2_0_g$());
+  altriScenariPanel_0_g$.add_4_g$(this.get_buttonPrecedente_0_g$());
+  altriScenariPanel_0_g$.setSpacing_0_g$(30);
+  this.owner_6_g$.altriScenariPanel_1_g$ = altriScenariPanel_0_g$;
+  return altriScenariPanel_0_g$;
+}
+;
+_.build_backButton_4_g$ = function Xwf_g$(){
+  Nwf_g$();
+  var backButton_0_g$;
+  backButton_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
+  backButton_0_g$.setHTML_1_g$(this.template_html5_0_g$().asString_0_g$());
+  this.owner_6_g$.backButton_5_g$ = backButton_0_g$;
+  return backButton_0_g$;
+}
+;
+_.build_buttonIniziale_0_g$ = function Ywf_g$(){
+  Nwf_g$();
+  var buttonIniziale_0_g$;
+  buttonIniziale_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
+  buttonIniziale_0_g$.setHTML_1_g$(this.template_html1_0_g$().asString_0_g$());
+  this.owner_6_g$.buttonIniziale_1_g$ = buttonIniziale_0_g$;
+  return buttonIniziale_0_g$;
+}
+;
+_.build_buttonPrecedente_0_g$ = function Zwf_g$(){
+  Nwf_g$();
+  var buttonPrecedente_0_g$;
+  buttonPrecedente_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
+  buttonPrecedente_0_g$.setHTML_1_g$(this.template_html2_0_g$().asString_0_g$());
+  this.owner_6_g$.buttonPrecedente_1_g$ = buttonPrecedente_0_g$;
+  return buttonPrecedente_0_g$;
+}
+;
+_.build_buttonSuccessivo_0_g$ = function $wf_g$(){
+  Nwf_g$();
+  var buttonSuccessivo_0_g$;
+  buttonSuccessivo_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
+  buttonSuccessivo_0_g$.setHTML_1_g$(this.template_html3_0_g$().asString_0_g$());
+  this.owner_6_g$.buttonSuccessivo_1_g$ = buttonSuccessivo_0_g$;
+  return buttonSuccessivo_0_g$;
+}
+;
+_.build_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_5_g$ = function axf_g$(){
+  Nwf_g$();
+  var clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_0_g$;
+  clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_0_g$ = Dvc_g$(Dvc_g$(new Rxf_g$, 2223), 2223);
+  return clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_0_g$;
+}
+;
+_.build_f_HorizontalPanel1_1_g$ = function bxf_g$(){
+  Nwf_g$();
+  var f_HorizontalPanel1_0_g$;
+  f_HorizontalPanel1_0_g$ = Dvc_g$(Dvc_g$(new Cgd_g$, 1265), 1265);
+  f_HorizontalPanel1_0_g$.add_4_g$(this.get_Scenari_0_g$());
+  f_HorizontalPanel1_0_g$.add_4_g$(this.get_vpCollegamenti_0_g$());
+  f_HorizontalPanel1_0_g$.add_4_g$(this.get_ScenarioSucc_0_g$());
+  f_HorizontalPanel1_0_g$.add_4_g$(this.get_messageLabel_4_g$());
+  f_HorizontalPanel1_0_g$.add_4_g$(this.get_backButton_4_g$());
+  f_HorizontalPanel1_0_g$.setSpacing_0_g$(100);
+  return f_HorizontalPanel1_0_g$;
+}
+;
+_.build_menuAltriScenari_0_g$ = function cxf_g$(){
+  Nwf_g$();
+  var menuAltriScenari_0_g$;
+  menuAltriScenari_0_g$ = Dvc_g$(Dvc_g$(new wkd_g$, 1285), 1285);
+  menuAltriScenari_0_g$.addItem_5_g$('Scenario a scelta');
+  menuAltriScenari_0_g$.addItem_5_g$('Scenario con indovinello');
+  menuAltriScenari_0_g$.addItem_5_g$('Scenario con oggetto');
+  this.owner_6_g$.menuAltriScenari_1_g$ = menuAltriScenari_0_g$;
+  return menuAltriScenari_0_g$;
+}
+;
+_.build_menuScenari_0_g$ = function dxf_g$(){
+  Nwf_g$();
+  var menuScenari_0_g$;
+  menuScenari_0_g$ = Dvc_g$(Dvc_g$(new wkd_g$, 1285), 1285);
+  menuScenari_0_g$.addItem_5_g$('Scenario a scelta');
+  menuScenari_0_g$.addItem_5_g$('Scenario con indovinello');
+  menuScenari_0_g$.addItem_5_g$('Scenario con oggetto');
+  this.owner_6_g$.menuScenari_1_g$ = menuScenari_0_g$;
+  return menuScenari_0_g$;
+}
+;
+_.build_messageLabel_4_g$ = function exf_g$(){
+  Nwf_g$();
+  var messageLabel_0_g$;
+  messageLabel_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
+  this.owner_6_g$.messageLabel_4_g$ = messageLabel_0_g$;
+  return messageLabel_0_g$;
+}
+;
+_.build_nodo2_0_g$ = function fxf_g$(){
+  Nwf_g$();
+  var nodo2_0_g$;
+  nodo2_0_g$ = Dvc_g$(Dvc_g$(new wkd_g$, 1285), 1285);
+  nodo2_0_g$.addItem_5_g$('Scenario a scelta');
+  nodo2_0_g$.addItem_5_g$('Scenario con indovinello');
+  nodo2_0_g$.addItem_5_g$('Scenario con oggetto');
+  this.owner_6_g$.nodo2_1_g$ = nodo2_0_g$;
+  return nodo2_0_g$;
+}
+;
+_.build_scenarioIniziale_0_g$ = function gxf_g$(){
+  Nwf_g$();
+  var scenarioIniziale_0_g$;
+  scenarioIniziale_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
+  scenarioIniziale_0_g$.setText_0_g$('Scegli lo scenario iniziale:');
+  this.owner_6_g$.scenarioIniziale_2_g$ = scenarioIniziale_0_g$;
+  return scenarioIniziale_0_g$;
+}
+;
+_.build_style_4_g$ = function hxf_g$(){
+  Nwf_g$();
+  var style_0_g$;
+  style_0_g$ = this.get_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_5_g$().style_11_g$();
+  style_0_g$.ensureInjected_0_g$();
+  return style_0_g$;
+}
+;
+_.build_testoScenario1_0_g$ = function ixf_g$(){
+  Nwf_g$();
+  var testoScenario1_0_g$;
+  testoScenario1_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
+  this.owner_6_g$.testoScenario1_1_g$ = testoScenario1_0_g$;
+  return testoScenario1_0_g$;
+}
+;
+_.build_testoScenarioIniziale_0_g$ = function jxf_g$(){
+  Nwf_g$();
+  var testoScenarioIniziale_0_g$;
+  testoScenarioIniziale_0_g$ = Dvc_g$(Dvc_g$(new Obd_g$, 1283), 1283);
+  this.owner_6_g$.testoScenarioIniziale_1_g$ = testoScenarioIniziale_0_g$;
+  return testoScenarioIniziale_0_g$;
+}
+;
+_.build_vpCollegamenti_0_g$ = function tyf_g$(){
+  Nwf_g$();
+  var vpCollegamenti_0_g$;
+  vpCollegamenti_0_g$ = Dvc_g$(Dvc_g$(new bEd_g$, 1413), 1413);
+  vpCollegamenti_0_g$.add_4_g$(this.get_ScenarioInizialePanel_0_g$());
+  vpCollegamenti_0_g$.add_4_g$(this.get_altriScenariPanel_0_g$());
+  vpCollegamenti_0_g$.add_4_g$(this.get_buttonSuccessivo_0_g$());
+  vpCollegamenti_0_g$.setSpacing_0_g$(30);
+  this.owner_6_g$.vpCollegamenti_1_g$ = vpCollegamenti_0_g$;
+  return vpCollegamenti_0_g$;
+}
+;
+_.get_Scenari_0_g$ = function lxf_g$(){
+  Nwf_g$();
+  return this.build_Scenari_0_g$();
+}
+;
+_.get_ScenariCollegati_0_g$ = function mxf_g$(){
+  Nwf_g$();
+  return this.build_ScenariCollegati_0_g$();
+}
+;
+_.get_ScenariDaCollegare_0_g$ = function nxf_g$(){
+  Nwf_g$();
+  return this.build_ScenariDaCollegare_0_g$();
+}
+;
+_.get_ScenarioInizialePanel_0_g$ = function oxf_g$(){
+  Nwf_g$();
+  return this.build_ScenarioInizialePanel_0_g$();
+}
+;
+_.get_ScenarioSucc_0_g$ = function pxf_g$(){
+  Nwf_g$();
+  return this.build_ScenarioSucc_0_g$();
+}
+;
+_.get_altriScenari_0_g$ = function qxf_g$(){
+  Nwf_g$();
+  return this.build_altriScenari_0_g$();
+}
+;
+_.get_altriScenariPanel_0_g$ = function rxf_g$(){
+  Nwf_g$();
+  return this.build_altriScenariPanel_0_g$();
+}
+;
+_.get_backButton_4_g$ = function sxf_g$(){
+  Nwf_g$();
+  return this.build_backButton_4_g$();
+}
+;
+_.get_buttonIniziale_0_g$ = function txf_g$(){
+  Nwf_g$();
+  return this.build_buttonIniziale_0_g$();
+}
+;
+_.get_buttonPrecedente_0_g$ = function uxf_g$(){
+  Nwf_g$();
+  return this.build_buttonPrecedente_0_g$();
+}
+;
+_.get_buttonSuccessivo_0_g$ = function vxf_g$(){
+  Nwf_g$();
+  return this.build_buttonSuccessivo_0_g$();
+}
+;
+_.get_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_5_g$ = function xxf_g$(){
+  Nwf_g$();
+  return this.build_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_5_g$();
+}
+;
+_.get_f_HorizontalPanel1_1_g$ = function yxf_g$(){
+  Nwf_g$();
+  return this.build_f_HorizontalPanel1_1_g$();
+}
+;
+_.get_menuAltriScenari_0_g$ = function zxf_g$(){
+  Nwf_g$();
+  return this.build_menuAltriScenari_0_g$();
+}
+;
+_.get_menuScenari_0_g$ = function Axf_g$(){
+  Nwf_g$();
+  return this.build_menuScenari_0_g$();
+}
+;
+_.get_messageLabel_4_g$ = function Bxf_g$(){
+  Nwf_g$();
+  return this.build_messageLabel_4_g$();
+}
+;
+_.get_nodo2_0_g$ = function Cxf_g$(){
+  Nwf_g$();
+  return this.build_nodo2_0_g$();
+}
+;
+_.get_scenarioIniziale_0_g$ = function Dxf_g$(){
+  Nwf_g$();
+  return this.build_scenarioIniziale_0_g$();
+}
+;
+_.get_style_4_g$ = function Exf_g$(){
+  Nwf_g$();
+  return this.build_style_4_g$();
+}
+;
+_.get_testoScenario1_0_g$ = function Fxf_g$(){
+  Nwf_g$();
+  return this.build_testoScenario1_0_g$();
+}
+;
+_.get_testoScenarioIniziale_0_g$ = function Gxf_g$(){
+  Nwf_g$();
+  return this.build_testoScenarioIniziale_0_g$();
+}
+;
+_.get_vpCollegamenti_0_g$ = function uyf_g$(){
+  Nwf_g$();
+  return this.build_vpCollegamenti_0_g$();
+}
+;
+_.template_html1_0_g$ = function Ixf_g$(){
+  return this.this$01_112_g$.template_6_g$.html1_0_g$();
+}
+;
+_.template_html2_0_g$ = function Jxf_g$(){
+  return this.this$01_112_g$.template_6_g$.html2_0_g$();
+}
+;
+_.template_html3_0_g$ = function Kxf_g$(){
+  return this.this$01_112_g$.template_6_g$.html3_0_g$();
+}
+;
+_.template_html4_0_g$ = function Lxf_g$(){
+  return this.this$01_112_g$.template_6_g$.html4_0_g$();
+}
+;
+_.template_html5_0_g$ = function Mxf_g$(){
+  return this.this$01_112_g$.template_6_g$.html5_0_g$();
+}
+;
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl$Widgets_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl/Widgets', 2222, Ljava_lang_Object_2_classLit_0_g$);
+function Oxf_g$(){
+  Oxf_g$ = Object;
+}
+
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_1GenBundle_2_classLit_0_g$ = CZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl_GenBundle');
+function Pxf_g$(){
+  Pxf_g$ = Object;
+  a_g$();
+  _instance0_8_g$ = new Rxf_g$;
+}
+
+function Rxf_g$(){
+  Pxf_g$();
+  i_g$.call(this);
+  this.$init_1529_g$();
+}
+
+hyc_g$(2224, 1, {1000:1, 2223:1, 2224:1, 1:1}, Rxf_g$);
+_.$init_1529_g$ = function Qxf_g$(){
+  Pxf_g$();
+}
+;
+_.getResource_0_g$ = function Sxf_g$(name_0_g$){
+  if (YA_g$()) {
+    return this.getResourceNative_8_g$(name_0_g$);
+  }
+   else {
+    if (kwc_g$(resourceMap_8_g$)) {
+      resourceMap_8_g$ = new rte_g$;
+      resourceMap_8_g$.put_4_g$('style', this.style_11_g$());
+    }
+    return Dvc_g$(resourceMap_8_g$.get_16_g$(name_0_g$), 1015);
+  }
+}
+;
+_.getResourceNative_8_g$ = function Txf_g$(name_0_g$){
+  Pxf_g$();
+  switch (name_0_g$) {
+    case 'style':
+      return this.style_11_g$();
+  }
+  return null;
+}
+;
+_.getResources_0_g$ = function Uxf_g$(){
+  return luc_g$(Xtc_g$(Lcom_google_gwt_resources_client_ResourcePrototype_2_classLit_0_g$, 1), {1016:1, 1568:1, 1596:1, 1:1, 1632:1}, 1015, 0, [this.style_11_g$()]);
+}
+;
+_.style_11_g$ = function Vxf_g$(){
+  return eyf_g$();
+}
+;
+_.styleInitializer_4_g$ = function Wxf_g$(){
+  Pxf_g$();
+  style_10_g$ = new Zxf_g$(this);
+}
+;
+var _instance0_8_g$, resourceMap_8_g$, style_10_g$;
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_1GenBundle_1default_1InlineClientBundleGenerator_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl_GenBundle_default_InlineClientBundleGenerator', 2224, Ljava_lang_Object_2_classLit_0_g$);
+function Xxf_g$(){
+  Xxf_g$ = Object;
+  a_g$();
+}
+
+function Zxf_g$(this$0_0_g$){
+  Xxf_g$();
+  this.this$01_113_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1530_g$();
+}
+
+hyc_g$(2225, 1, {1002:1, 1009:1, 1015:1, 2225:1, 2227:1, 1:1}, Zxf_g$);
+_.$init_1530_g$ = function Yxf_g$(){
+  Xxf_g$();
+}
+;
+_.ensureInjected_0_g$ = function $xf_g$(){
+  if (!this.injected_4_g$) {
+    this.injected_4_g$ = true;
+    q_b_g$(this.getText_0_g$());
+    return true;
+  }
+  return false;
+}
+;
+_.getName_0_g$ = function _xf_g$(){
+  return 'style';
+}
+;
+_.getText_0_g$ = function ayf_g$(){
+  return '';
+}
+;
+_.injected_4_g$ = false;
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_1GenBundle_1default_1InlineClientBundleGenerator$1_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl_GenBundle_default_InlineClientBundleGenerator/1', 2225, Ljava_lang_Object_2_classLit_0_g$);
+function byf_g$(){
+  byf_g$ = Object;
+  a_g$();
+  {
+    (Pxf_g$() , _instance0_8_g$).styleInitializer_4_g$();
+  }
+}
+
+function dyf_g$(){
+  byf_g$();
+  i_g$.call(this);
+  this.$init_1531_g$();
+}
+
+function eyf_g$(){
+  byf_g$();
+  return Pxf_g$() , style_10_g$;
+}
+
+hyc_g$(2226, 1, {2226:1, 1:1}, dyf_g$);
+_.$init_1531_g$ = function cyf_g$(){
+  byf_g$();
+}
+;
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_1GenBundle_1default_1InlineClientBundleGenerator$styleInitializer_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl_GenBundle_default_InlineClientBundleGenerator/styleInitializer', 2226, Ljava_lang_Object_2_classLit_0_g$);
+function fyf_g$(){
+  fyf_g$ = Object;
+}
+
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_1GenCss_1style_2_classLit_0_g$ = CZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl_GenCss_style');
+function gyf_g$(){
+  gyf_g$ = Object;
+  a_g$();
+}
+
+function iyf_g$(){
+  gyf_g$();
+  i_g$.call(this);
+  this.$init_1532_g$();
+}
+
+hyc_g$(2228, 1, {1026:1, 2221:1, 2228:1, 1:1}, iyf_g$);
+_.$init_1532_g$ = function hyf_g$(){
+  gyf_g$();
+}
+;
+_.html1_0_g$ = function jyf_g$(){
+  var sb_0_g$;
+  sb_0_g$ = new j9d_g$;
+  sb_0_g$.append_34_g$('Setta scenario iniziale');
+  return new hDc_g$(sb_0_g$.toString_1_g$());
+}
+;
+_.html2_0_g$ = function kyf_g$(){
+  var sb_0_g$;
+  sb_0_g$ = new j9d_g$;
+  sb_0_g$.append_34_g$('Setta scome precedente');
+  return new hDc_g$(sb_0_g$.toString_1_g$());
+}
+;
+_.html3_0_g$ = function lyf_g$(){
+  var sb_0_g$;
+  sb_0_g$ = new j9d_g$;
+  sb_0_g$.append_34_g$('Setta come successivo');
+  return new hDc_g$(sb_0_g$.toString_1_g$());
+}
+;
+_.html4_0_g$ = function myf_g$(){
+  var sb_0_g$;
+  sb_0_g$ = new j9d_g$;
+  sb_0_g$.append_34_g$('Passa allo scenario successivo');
+  return new hDc_g$(sb_0_g$.toString_1_g$());
+}
+;
+_.html5_0_g$ = function nyf_g$(){
+  var sb_0_g$;
+  sb_0_g$ = new j9d_g$;
+  sb_0_g$.append_34_g$('Back');
+  return new hDc_g$(sb_0_g$.toString_1_g$());
+}
+;
+var Lcom_hala_mywebapp_Collegamenti_1CollegamentiUiBinderImpl_1TemplateImpl_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'Collegamenti_CollegamentiUiBinderImpl_TemplateImpl', 2228, Ljava_lang_Object_2_classLit_0_g$);
 function FId_g$(){
   FId_g$ = Object;
 }
@@ -25850,11 +26538,13 @@ function jNd_g$(){
   this.creaScenarioIndovinello_1_g$.addClickHandler_0_g$(new $Nd_g$(this));
   this.creaScenarioOggetto_1_g$.addClickHandler_0_g$(new iOd_g$(this));
   this.backButton_3_g$.addClickHandler_0_g$(new sOd_g$(this));
+  this.creaCollegamenti_1_g$.addClickHandler_0_g$(new ryf_g$(this));
 }
 
 hyc_g$(1499, 1190, {866:1, 889:1, 1088:1, 1190:1, 1260:1, 1277:1, 1279:1, 1400:1, 1414:1, 1499:1, 1:1}, jNd_g$);
 _.$init_972_g$ = function iNd_g$(){
   hNd_g$();
+  this.numeroScen_0_g$ = 0;
 }
 ;
 _.lambda$0_0_g$ = function qNd_g$(event_0_0_g$){
@@ -25987,6 +26677,7 @@ _.showAdditionalFieldsOggetto_0_g$ = function tNd_g$(){
   this.vpScenario_1_g$.add_4_g$(this.creaScenarioOggetto_1_g$);
 }
 ;
+_.numeroScen_0_g$ = 0;
 var hALAServiceAsync_4_g$, uiBinder_0_g$;
 var Lcom_hala_mywebapp_ScriviStoria_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria', 1499, Lcom_google_gwt_user_client_ui_Composite_2_classLit_0_g$);
 function uNd_g$(){
@@ -26318,6 +27009,29 @@ _.onClick_0_g$ = function tOd_g$(event_0_g$){
 }
 ;
 var Lcom_hala_mywebapp_ScriviStoria$6_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/6', 1510, Ljava_lang_Object_2_classLit_0_g$);
+function pyf_g$(){
+  pyf_g$ = Object;
+  a_g$();
+}
+
+function ryf_g$(this$0_0_g$){
+  pyf_g$();
+  this.this$01_114_g$ = this$0_0_g$;
+  i_g$.call(this);
+  this.$init_1533_g$();
+}
+
+hyc_g$(2229, 1, {748:1, 882:1, 2229:1, 1:1}, ryf_g$);
+_.$init_1533_g$ = function qyf_g$(){
+  pyf_g$();
+}
+;
+_.onClick_0_g$ = function syf_g$(event_0_g$){
+  Ysd_g$('startTable').clear_0_g$();
+  Ysd_g$('startTable').add_4_g$(new zwf_g$);
+}
+;
+var Lcom_hala_mywebapp_ScriviStoria$7_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria/7', 2229, Ljava_lang_Object_2_classLit_0_g$);
 function uOd_g$(){
   uOd_g$ = Object;
 }
@@ -26417,6 +27131,15 @@ _.build_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_2_g$ = 
   return clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_0_g$;
 }
 ;
+_.build_creaCollegamenti_0_g$ = function qwf_g$(){
+  FOd_g$();
+  var creaCollegamenti_0_g$;
+  creaCollegamenti_0_g$ = Dvc_g$(Dvc_g$(new E3c_g$, 1183), 1183);
+  creaCollegamenti_0_g$.setHTML_1_g$(this.template_html7_0_g$().asString_0_g$());
+  this.owner_3_g$.creaCollegamenti_1_g$ = creaCollegamenti_0_g$;
+  return creaCollegamenti_0_g$;
+}
+;
 _.build_creaScenarioAScelta_0_g$ = function LOd_g$(){
   FOd_g$();
   var creaScenarioAScelta_0_g$;
@@ -26468,6 +27191,7 @@ _.build_f_HorizontalPanel1_0_g$ = function QOd_g$(){
   f_HorizontalPanel1_0_g$.add_4_g$(this.get_vpScenario_0_g$());
   f_HorizontalPanel1_0_g$.add_4_g$(this.get_messageLabel_2_g$());
   f_HorizontalPanel1_0_g$.add_4_g$(this.get_backButton_2_g$());
+  f_HorizontalPanel1_0_g$.add_4_g$(this.get_creaCollegamenti_0_g$());
   f_HorizontalPanel1_0_g$.setSpacing_0_g$(100);
   return f_HorizontalPanel1_0_g$;
 }
@@ -26700,6 +27424,11 @@ _.get_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_2_g$ = fu
   return this.build_clientBundleFieldNameUnlikelyToCollideWithUserSpecifiedFieldOkay_2_g$();
 }
 ;
+_.get_creaCollegamenti_0_g$ = function rwf_g$(){
+  FOd_g$();
+  return this.build_creaCollegamenti_0_g$();
+}
+;
 _.get_creaScenarioAScelta_0_g$ = function oPd_g$(){
   FOd_g$();
   return this.build_creaScenarioAScelta_0_g$();
@@ -26862,6 +27591,10 @@ _.template_html5_0_g$ = function UPd_g$(){
 ;
 _.template_html6_0_g$ = function VPd_g$(){
   return this.this$01_66_g$.template_3_g$.html6_0_g$();
+}
+;
+_.template_html7_0_g$ = function swf_g$(){
+  return this.this$01_66_g$.template_3_g$.html7_0_g$();
 }
 ;
 var Lcom_hala_mywebapp_ScriviStoria_1ScriviStoriaUiBinderImpl$Widgets_2_classLit_0_g$ = AZd_g$('com.hala.mywebapp', 'ScriviStoria_ScriviStoriaUiBinderImpl/Widgets', 1515, Ljava_lang_Object_2_classLit_0_g$);
@@ -27045,6 +27778,13 @@ _.html6_0_g$ = function wQd_g$(){
   var sb_0_g$;
   sb_0_g$ = new j9d_g$;
   sb_0_g$.append_34_g$('Back');
+  return new hDc_g$(sb_0_g$.toString_1_g$());
+}
+;
+_.html7_0_g$ = function twf_g$(){
+  var sb_0_g$;
+  sb_0_g$ = new j9d_g$;
+  sb_0_g$.append_34_g$('Crea collegamenti');
   return new hDc_g$(sb_0_g$.toString_1_g$());
 }
 ;
@@ -37604,6 +38344,6 @@ var gwtOnLoad = gwtOnLoad = _xc_g$;
 Zxc_g$(Iyc_g$);
 byc_g$('permProps', [[['locale', 'default'], ['user.agent', 'safari']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);$sendStats('moduleStartup', 'end');$gwt && $gwt.permProps && __gwtModuleFunction.__moduleStartupDone($gwt.permProps);
-//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/F985BC1BF6AF6F8DDD9F36D3AD4CA50F_sourcemap.json 
+//# sourceMappingURL=http://127.0.0.1:9876/sourcemaps/MyWebApp/D4428114F22C7404F34640E07735BFDC_sourcemap.json 
 //# sourceURL=MyWebApp-0.js
 

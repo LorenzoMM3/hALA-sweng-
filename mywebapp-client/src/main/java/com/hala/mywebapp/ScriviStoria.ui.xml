@@ -52,5 +52,6 @@
         
         <g:Label ui:field="messageLabel"/>
         <g:Button ui:field="backButton">Back</g:Button>
+        <g:Button ui:field="creaCollegamenti">Crea collegamenti</g:Button>
     </g:HorizontalPanel>
 </ui:UiBinder>

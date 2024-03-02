@@ -18,6 +18,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     private static final ScriviStoriaUiBinder uiBinder = GWT.create(ScriviStoriaUiBinder.class);
     private ArrayList<String> opzioniSceltaTemp;
     private String nomeStoriaTemp;
+    private int numeroScen = 0;
 
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
@@ -99,6 +100,9 @@ public class ScriviStoria extends Composite implements IsWidget {
 
     @UiField
     Label message;
+
+    @UiField
+    Button creaCollegamenti;
 
     public ScriviStoria() {
         initWidget(uiBinder.createAndBindUi(this));
@@ -187,6 +191,12 @@ public class ScriviStoria extends Composite implements IsWidget {
                 scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
                 // Attributi aggiuntivi:
                 scenario.setOpzioniScelte(opzioniSceltaTemp);
+                /*
+                 * numeroScen++;
+                 * if (numeroScen > 1) {
+                 * creaCollegamenti.setVisible(true);
+                 * }
+                 */
 
                 // E' necessario ora richiamare il server per poter effettuare metodi su questo
                 // scenario:
@@ -201,11 +211,13 @@ public class ScriviStoria extends Composite implements IsWidget {
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
                             message.setText("Scenario a scelta creato con successo");
+
                         } else {
                             message.setText("Errore nella creazione dello scenario a scelta");
                         }
                     }
                 });
+
                 // Resetto i field così da liberarli per la creazione di un nuovo scenario
                 testoScenarioField.setText("");
                 domandaFieldAScelta.setText("");
@@ -279,6 +291,14 @@ public class ScriviStoria extends Composite implements IsWidget {
                 RootPanel.get("startTable").add(new HomePage());
             }
         });
+
+        creaCollegamenti.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Collegamenti());
+            }
+        });
     }
 
     private void disabilitaTutto() {
@@ -301,6 +321,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         labelOggetto.setVisible(false);
         oggettoNecessario.setVisible(false);
         creaScenarioOggetto.setVisible(false);
+        // creaCollegamenti.setVisible(false);
     }
 
     private void attivaTutto() {

@@ -26,6 +26,13 @@
     "Oggetto Necessario": "hhhhh"
   }
 ,
+  "53": {
+    "Nome Storia di appartenenza": "BELLA",
+    "Testo Scenario": "blabla2",
+    "Domanda Indovinello": "indovina2",
+    "Risposta Indovinello": "esatto2"
+  }
+,
   "WEI": {
     "Nome Storia di appartenenza": "WEI",
     "Testo Scenario": "ciao",
@@ -38,6 +45,13 @@
     "Testo Scenario": "33",
     "Domanda Indovinello": "33",
     "Risposta Indovinello": "33"
+  }
+,
+  "87": {
+    "Nome Storia di appartenenza": "VABENE",
+    "Testo Scenario": "rqe",
+    "Domanda Indovinello": "eqkb",
+    "Risposta Indovinello": "erjfh"
   }
 ,
   "SI COMINCIA": {
@@ -59,6 +73,13 @@
     "Risposta Indovinello": "000000"
   }
 ,
+  "200": {
+    "Nome Storia di appartenenza": "WKVME",
+    "Testo Scenario": "nm",
+    "Domanda Indovinello": "kn",
+    "Risposta Indovinello": "ko"
+  }
+,
   " BHJ": {
     "Nome Storia di appartenenza": " BHJ",
     "Testo Scenario": "efve",
@@ -66,11 +87,46 @@
     "Risposta Indovinello": "vv"
   }
 ,
+  "29": {
+    "Nome Storia di appartenenza": "ANCORA",
+    "Testo Scenario": "fswed",
+    "Domanda Indovinello": "da",
+    "Risposta Indovinello": "fad"
+  }
+,
+  "81": {
+    "Nome Storia di appartenenza": "BELLA",
+    "Testo Scenario": "fkjwp",
+    "Domanda Indovinello": "kfjwo",
+    "Risposta Indovinello": "wkfn"
+  }
+,
   "0000": {
     "Nome Storia di appartenenza": "0000",
     "Testo Scenario": "123",
     "Domanda Indovinello": "123",
     "Risposta Indovinello": "123"
+  }
+,
+  "43": {
+    "Nome Storia di appartenenza": "VABENE",
+    "Testo Scenario": "cdowic",
+    "Domanda Indovinello": "wqjbf",
+    "Risposta Indovinello": "wqrkjbf"
+  }
+,
+  "155": {
+    "Nome Storia di appartenenza": "ANCORA",
+    "Testo Scenario": "",
+    "Domanda Indovinello": "",
+    "Risposta Indovinello": ""
+  }
+,
+  "260": {
+    "Nome Storia di appartenenza": "ANCORA23",
+    "Testo Scenario": "va benee",
+    "Domanda Indovinello": "va ebbbee",
+    "Risposta Indovinello": "va beenne"
   }
 ,
   "CIAUU": {
@@ -94,11 +150,39 @@
     "Risposta Indovinello": "ok"
   }
 ,
+  "77": {
+    "Nome Storia di appartenenza": "WKVME",
+    "Testo Scenario": "rgb",
+    "Domanda Indovinello": "rb",
+    "Risposta Indovinello": "swrgfb"
+  }
+,
+  "189": {
+    "Nome Storia di appartenenza": "ANCORA",
+    "Testo Scenario": "",
+    "Domanda Indovinello": "",
+    "Risposta Indovinello": ""
+  }
+,
   "47": {
     "Nome Storia di appartenenza": "ORA",
     "Testo Scenario": "balliamo",
     "Domanda Indovinello": "quando",
     "Risposta Indovinello": "e dove"
+  }
+,
+  "90": {
+    "Nome Storia di appartenenza": "ANCORA",
+    "Testo Scenario": "dflr",
+    "Domanda Indovinello": "mdfm",
+    "Risposta Indovinello": "mdsw"
+  }
+,
+  "38": {
+    "Nome Storia di appartenenza": "WKVME",
+    "Testo Scenario": "vrs",
+    "Domanda Indovinello": "saf",
+    "Risposta Indovinello": "bgr"
   }
 ,
   "FINAAALMENTEEEEE": {
@@ -112,6 +196,13 @@
     "Testo Scenario": "uuuu",
     "Domanda Indovinello": "uuuu",
     "Risposta Indovinello": "uuuu"
+  }
+,
+  "26": {
+    "Nome Storia di appartenenza": "BELLA",
+    "Testo Scenario": "blabla",
+    "Domanda Indovinello": "indovina",
+    "Risposta Indovinello": "esatto"
   }
 ,
   "UUUUU": {
@@ -128,6 +219,13 @@
     "Risposta Indovinello": ""
   }
 ,
+  "59": {
+    "Nome Storia di appartenenza": "ANCORA",
+    "Testo Scenario": "sdf",
+    "Domanda Indovinello": "wFF",
+    "Risposta Indovinello": "sfv"
+  }
+,
   "YYYYYYYYYYYYYYYY": {
     "Nome Storia di appartenenza": "YYYYYYYYYYYYYYYY",
     "Testo Scenario": "yyyyyyyyy",
@@ -139,6 +237,13 @@
     "Testo Scenario": "che",
     "Domanda Indovinello": "numero",
     "Risposta Indovinello": "ore"
+  }
+,
+  "158": {
+    "Nome Storia di appartenenza": "WKVME",
+    "Testo Scenario": "",
+    "Domanda Indovinello": "",
+    "Risposta Indovinello": ""
   }
 ,
   "ECCOCI": {
@@ -153,10 +258,24 @@
     "Oggetto Necessario": "mouse"
   }
 ,
+  "224": {
+    "Nome Storia di appartenenza": "ANCORA23",
+    "Testo Scenario": "ciaoooo",
+    "Domanda Indovinello": "ciaooo",
+    "Risposta Indovinello": "ciaoooo"
+  }
+,
   "A2A": {
     "Nome Storia di appartenenza": "A2A",
     "Testo Scenario": "gli serviva pero un oggetto",
     "Oggetto Necessario": "pen... no scherzavo"
+  }
+,
+  "117": {
+    "Nome Storia di appartenenza": "WKVME",
+    "Testo Scenario": "rsgfb",
+    "Domanda Indovinello": "srb",
+    "Risposta Indovinello": "sg"
   }
 ,
   "WW": {
@@ -164,6 +283,20 @@
     "Testo Scenario": "ww",
     "Domanda Indovinello": "ww",
     "Risposta Indovinello": "ww"
+  }
+,
+  "297": {
+    "Nome Storia di appartenenza": "ANCORA23",
+    "Testo Scenario": "ffjf",
+    "Domanda Indovinello": "uffi",
+    "Risposta Indovinello": "ufoo"
+  }
+,
+  "122": {
+    "Nome Storia di appartenenza": "ANCORA",
+    "Testo Scenario": "",
+    "Domanda Indovinello": "",
+    "Risposta Indovinello": ""
   }
 ,
   "23": {

@@ -1,4 +1,10 @@
 {
+  "": {
+    "nome": "",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "AAA": {
     "nome": "AAA",
     "creatore": "w",
@@ -38,6 +44,12 @@
   "ALTRAPROVA": {
     "nome": "ALTRAPROVA",
     "creatore": "w",
+    "iniziata": false
+  }
+,
+  "BELLA": {
+    "nome": "BELLA",
+    "creatore": "e",
     "iniziata": false
   }
 ,
@@ -119,6 +131,12 @@
     "iniziata": false
   }
 ,
+  "VA BENE ": {
+    "nome": "VA BENE ",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "DAI": {
     "nome": "DAI",
     "creatore": "e",
@@ -127,6 +145,12 @@
 ,
   "ORA": {
     "nome": "ORA",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
+  "VABENE": {
+    "nome": "VABENE",
     "creatore": "e",
     "iniziata": false
   }
@@ -143,9 +167,21 @@
     "iniziata": false
   }
 ,
+  "ANCORA": {
+    "nome": "ANCORA",
+    "creatore": "e",
+    "iniziata": false
+  }
+,
   "UUUUU": {
     "nome": "UUUUU",
     "creatore": "w",
+    "iniziata": false
+  }
+,
+  "WKVME": {
+    "nome": "WKVME",
+    "creatore": "e",
     "iniziata": false
   }
 ,
@@ -212,6 +248,12 @@
   "DUE": {
     "nome": "DUE",
     "creatore": "w",
+    "iniziata": false
+  }
+,
+  "ANCORA23": {
+    "nome": "ANCORA23",
+    "creatore": "e",
     "iniziata": false
   }
 }
