@@ -1,5 +1,6 @@
 # Module MyWebApp
 # RPC service class, partial path of RPC policy file
+com.hala.mywebapp.GreetingService, ABFC5DEE8CC6F7AFDCCDABFD5DCA873A.gwt.rpc
 com.hala.mywebapp.GreetingService, 8913FC39EA73E5842950623BECFFF942.gwt.rpc
 com.hala.mywebapp.GreetingService, 729EC279277D77B1E429B25347B0BC69.gwt.rpc
 com.hala.mywebapp.GreetingService, 5268640F3C33CB306A62E5A1F0AA59A1.gwt.rpc

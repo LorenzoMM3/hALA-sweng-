@@ -9,6 +9,7 @@
     
 
             <g:VerticalPanel spacing="30" ui:field="ScenariDaCollegare">
+                    <g:Label ui:field="MenuLateraleScenari">Menu Scenari:</g:Label>
                     <g:ListBox ui:field="listaScenari"></g:ListBox>
             </g:VerticalPanel>
             

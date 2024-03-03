@@ -229,4 +229,16 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return numSc2;
     }
 
+    public boolean settaScenarioIniziale(String nomeStoria, Scenario scenario){
+        openDB();
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            if(nomeStoria.equals(entry.getValue().getNome())){
+                Storia storia = entry.getValue();
+                storia.setScenarioIniziale(scenario);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

@@ -38,20 +38,20 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
       ];
     
     result["com.hala.mywebapp.Scenario/1122198369"] = [
-        @com.hala.mywebapp.Scenario_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.hala.mywebapp.Scenario_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lcom/hala/mywebapp/Scenario;),
+        ,
+        ,
         @com.hala.mywebapp.Scenario_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/Scenario;)
       ];
     
     result["com.hala.mywebapp.ScenarioAScelta/2177547446"] = [
-        @com.hala.mywebapp.ScenarioAScelta_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.hala.mywebapp.ScenarioAScelta_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lcom/hala/mywebapp/ScenarioAScelta;),
+        ,
+        ,
         @com.hala.mywebapp.ScenarioAScelta_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/ScenarioAScelta;)
       ];
     
     result["com.hala.mywebapp.ScenarioIndovinello/583431578"] = [
-        @com.hala.mywebapp.ScenarioIndovinello_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.hala.mywebapp.ScenarioIndovinello_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lcom/hala/mywebapp/ScenarioIndovinello;),
+        ,
+        ,
         @com.hala.mywebapp.ScenarioIndovinello_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/ScenarioIndovinello;)
       ];
     
@@ -62,8 +62,8 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
       ];
     
     result["com.hala.mywebapp.TipologiaScenario/2870396318"] = [
-        @com.hala.mywebapp.TipologiaScenario_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.hala.mywebapp.TipologiaScenario_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lcom/hala/mywebapp/TipologiaScenario;),
+        ,
+        ,
         @com.hala.mywebapp.TipologiaScenario_FieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Lcom/hala/mywebapp/TipologiaScenario;)
       ];
     
@@ -79,31 +79,16 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
         @com.google.gwt.user.client.rpc.core.java.lang.String_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/lang/String;)
       ];
     
-    result["java.util.Collections$EmptyMap/4174664486"] = [
-        @com.google.gwt.user.client.rpc.core.java.util.Collections.EmptyMap_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.google.gwt.user.client.rpc.core.java.util.Collections.EmptyMap_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/Map;),
-      ];
-    
     result["java.util.HashMap/1797211028"] = [
-        @com.google.gwt.user.client.rpc.core.java.util.HashMap_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.google.gwt.user.client.rpc.core.java.util.HashMap_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/HashMap;),
+        ,
+        ,
         @com.google.gwt.user.client.rpc.core.java.util.HashMap_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/HashMap;)
       ];
     
-    result["java.util.IdentityHashMap/1839153020"] = [
-        @com.google.gwt.user.client.rpc.core.java.util.IdentityHashMap_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.google.gwt.user.client.rpc.core.java.util.IdentityHashMap_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/IdentityHashMap;),
-      ];
-    
     result["java.util.LinkedHashMap/3008245022"] = [
-        @com.google.gwt.user.client.rpc.core.java.util.LinkedHashMap_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.google.gwt.user.client.rpc.core.java.util.LinkedHashMap_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/LinkedHashMap;),
+        ,
+        ,
         @com.google.gwt.user.client.rpc.core.java.util.LinkedHashMap_CustomFieldSerializer::serialize(Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;Ljava/util/LinkedHashMap;)
-      ];
-    
-    result["java.util.TreeMap/1493889780"] = [
-        @com.google.gwt.user.client.rpc.core.java.util.TreeMap_CustomFieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;),
-        @com.google.gwt.user.client.rpc.core.java.util.TreeMap_CustomFieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Ljava/util/TreeMap;),
       ];
     
     return result;
@@ -123,11 +108,8 @@ public class GreetingService_TypeSerializer extends com.google.gwt.user.client.r
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.TipologiaScenario::class)] = "com.hala.mywebapp.TipologiaScenario/2870396318";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@com.hala.mywebapp.Utente::class)] = "com.hala.mywebapp.Utente/3312155184";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.lang.String::class)] = "java.lang.String/2004016611";
-    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.util.Collections.EmptyMap::class)] = "java.util.Collections$EmptyMap/4174664486";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.util.HashMap::class)] = "java.util.HashMap/1797211028";
-    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.util.IdentityHashMap::class)] = "java.util.IdentityHashMap/1839153020";
     result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.util.LinkedHashMap::class)] = "java.util.LinkedHashMap/3008245022";
-    result[@javaemul.internal.HashCodes::getObjectIdentityHashCode(*)(@java.util.TreeMap::class)] = "java.util.TreeMap/1493889780";
     return result;
   }-*/;
   

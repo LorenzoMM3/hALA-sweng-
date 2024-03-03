@@ -24,4 +24,6 @@ public interface GreetingServiceAsync {
 
 	public void aggiungiScenarioIndovinello(Scenario scenario, AsyncCallback<Boolean> callback);
 
+	public void settaScenarioIniziale(String nomeStoria, Scenario scenario, AsyncCallback<Boolean> callback);
+
 }

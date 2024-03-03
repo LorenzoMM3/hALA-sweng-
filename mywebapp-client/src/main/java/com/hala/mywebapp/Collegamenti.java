@@ -46,6 +46,9 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Label scenarioIniziale;
+    
+    @UiField
+    Label MenuLateraleScenari;
 
     @UiField
     HorizontalPanel pagina;
@@ -76,21 +79,37 @@ public class Collegamenti extends Composite implements IsWidget {
         buttonSettaScenarioIniziale.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                // TODO: Creare metodo di collegamento con il server che setta lo scenario come
-                // iniziale
-                messageLabel.setText("Operazione completata"); // Da aggiungere i metodi per farla
-                facciataSecondaria();
+                int index = listaScenari.getSelectedIndex();
+                if (index != -1) {  // controllo che sia stato selezionato uno scenario
+                    Scenario scenarioIniziale = scenariStoria.get(index);
+                    hALAServiceAsync.settaScenarioIniziale(nomeStoria, scenarioIniziale, new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+                        }
+                        @Override
+                        public void onSuccess(Boolean result) {
+                            if (result) {
+                                messageLabel.setText("Scenario iniziale impostato con successo");
+                                facciataSecondaria();
+                            } else {
+                                messageLabel.setText("Impossibile impostare lo scenario iniziale");
+                            }
+                        }
+                    });
+                } else {
+                    messageLabel.setText("Selezionare uno scenario per impostarlo come iniziale");
+                }
             }
         });
+        
 
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new ScriviStoria());
+                RootPanel.get("startTable").add(new ScriviStoria());    // secondo me servira fare in modo che si torna alla creazione scenari
             }
         });
-
     }
 
     private void setScenaIniziale() {
@@ -102,7 +121,7 @@ public class Collegamenti extends Composite implements IsWidget {
         riempiLista(listaScenari);
         listaScenari.setVisibleItemCount(scenariStoria.size());
         riempiLista(menuScenari);
-
+        menuScenari.setVisibleItemCount(scenariStoria.size());
     }
 
     private void facciataSecondaria() {
@@ -113,7 +132,6 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.add(CollegamentiPanel);
         pagina.add(ScenarioSucc);
         pagina.add(backButton);
-
     }
 
     private void riempiLista(ListBox lb) {
@@ -121,7 +139,6 @@ public class Collegamenti extends Composite implements IsWidget {
             lb.addItem(temp.getTestoScena());
         }
         lb.setSize("200px", "200px");
-
     }
 
 }

@@ -29,12 +29,12 @@ public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingS
 }
 
 /*
- * mvn gwt:codeserver -pl *-client -am
- * mvn jetty:run -pl *-server -am -Denv=dev
- * http://localhost:8080
- * 
- * netstat -ano | find "9876"
- * taskkill /F /PID 14728
+mvn gwt:codeserver -pl *-client -am
+mvn jetty:run -pl *-server -am -Denv=dev
+http://localhost:8080
+ 
+netstat -ano | find "9876"
+taskkill /F /PID 14728
  */
 
  

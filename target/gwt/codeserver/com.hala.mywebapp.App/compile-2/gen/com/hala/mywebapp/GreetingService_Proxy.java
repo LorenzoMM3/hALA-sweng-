@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.impl.RpcStatsContext;
 
 public class GreetingService_Proxy extends RemoteServiceProxy implements com.hala.mywebapp.GreetingServiceAsync {
   private static final String REMOTE_SERVICE_INTERFACE_NAME = "com.hala.mywebapp.GreetingService";
-  private static final String SERIALIZATION_POLICY ="753E3A1C748177F69B9DE89831881D9C";
+  private static final String SERIALIZATION_POLICY ="ABFC5DEE8CC6F7AFDCCDABFD5DCA873A";
   private static final com.hala.mywebapp.GreetingService_TypeSerializer SERIALIZER = new com.hala.mywebapp.GreetingService_TypeSerializer();
   
   public GreetingService_Proxy() {
@@ -103,11 +103,15 @@ public class GreetingService_Proxy extends RemoteServiceProxy implements com.hal
     }
   }
   
-  public void ritornaScenari(com.google.gwt.user.client.rpc.AsyncCallback callback) {
-    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "ritornaScenari");
+  public void settaScenarioIniziale(java.lang.String nomeStoria, com.hala.mywebapp.Scenario scenario, com.google.gwt.user.client.rpc.AsyncCallback callback) {
+    com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper helper = new com.google.gwt.user.client.rpc.impl.RemoteServiceProxy.ServiceHelper("GreetingService_Proxy", "settaScenarioIniziale");
     try {
-      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 0);
-      helper.finish(callback, ResponseReader.OBJECT);
+      SerializationStreamWriter streamWriter = helper.start(REMOTE_SERVICE_INTERFACE_NAME, 2);
+      streamWriter.writeString("java.lang.String/2004016611");
+      streamWriter.writeString("com.hala.mywebapp.Scenario/1122198369");
+      streamWriter.writeString(nomeStoria);
+      streamWriter.writeObject(scenario);
+      helper.finish(callback, ResponseReader.BOOLEAN);
     } catch (SerializationException ex) {
       callback.onFailure(ex);
     }
