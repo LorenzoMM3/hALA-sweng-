@@ -8,22 +8,60 @@ public class Scenario implements ScenarioI, Serializable {
     protected String testoScena;
     protected String nomeStoria;
     protected TipologiaScenario tipologiaScenario;
-
-    /*
-     * public Scenario(String tipologia){
-     * testoScena = "";
-     * try {
-     * this.tipologia = TipologiaScenario.valueOf(tipologia.toUpperCase());
-     * } catch (IllegalArgumentException e) {
-     * System.err.println("Errore: Tipologia non esistente");
-     * }
-     * // sceltaGiocatore = "false" Non lo metterei perchè se dopo non si imposta la
-     * risposta va in automatico
-     * }
-     */
+    // protected String id;
+    protected ArrayList<String> precedente;
+    protected ArrayList<String> successivo;
 
     public Scenario() {
+        domandaCambioScenario = "";
+        testoScena = "";
+        nomeStoria = "";
+        // id = "-1";
+        precedente = new ArrayList<>();
+        successivo = new ArrayList<>();
+    }
 
+    public Scenario(String nomeStoria) {
+        // id = "-1";
+        this.nomeStoria = nomeStoria;
+        domandaCambioScenario = "";
+        testoScena = "";
+        tipologiaScenario = null;
+        precedente = new ArrayList<>();
+        successivo = new ArrayList<>();
+    }
+
+    /*
+     * public void setId(String id) {
+     * this.id = id;
+     * }
+     * 
+     * public String getId() {
+     * return this.id;
+     * }
+     */
+    public void setPrecedente(ArrayList<String> precedente) {
+        this.precedente = precedente;
+    }
+
+    public void setSuccessivo(ArrayList<String> successivo) {
+        this.successivo = successivo;
+    }
+
+    public ArrayList<String> getPrecedente() {
+        return this.precedente;
+    }
+
+    public ArrayList<String> getSuccessivo() {
+        return this.successivo;
+    }
+
+    public void addPrecedente(String precedente) {
+        this.precedente.add(precedente);
+    }
+
+    public void addSuccessivo(String successivo) {
+        this.successivo.add(successivo);
     }
 
     public void setDomandaCambioScenario(String domanda) {
@@ -32,12 +70,6 @@ public class Scenario implements ScenarioI, Serializable {
 
     public String getDomandaCambioScenario() {
         return this.domandaCambioScenario;
-    }
-
-    public Scenario(String nomeStoria) {
-        this.nomeStoria = nomeStoria;
-        testoScena = "";
-        tipologiaScenario = null;
     }
 
     @Override

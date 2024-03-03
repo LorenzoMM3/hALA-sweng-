@@ -26,6 +26,12 @@ public interface GreetingService extends RemoteService {
 
 	public boolean aggiungiScenarioIndovinello(Scenario scenario);
 
-	public boolean settaScenarioIniziale(String nomeStoria, Scenario scenario);
+	public boolean settaScenarioIniziale(Scenario scenario);
 
+	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
+	// collegamento);
+
+	public void settaCollegamentoSuccessivo(Scenario scenario, Scenario collegamento);
+
+	public boolean salvaSuFileScenari(String nomeStoria);
 }

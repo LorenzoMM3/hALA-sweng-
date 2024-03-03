@@ -1,5 +1,6 @@
 package com.hala.mywebapp;
 
+import org.checkerframework.checker.units.qual.A;
 import org.mapdb.*;
 
 import com.google.gwt.user.server.rpc.jakarta.RemoteServiceServlet;
@@ -7,6 +8,7 @@ import com.google.gwt.user.server.rpc.jakarta.RemoteServiceServlet;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Map;
 
 @SuppressWarnings("serial")
@@ -16,6 +18,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
+    private Map<String, Scenario> scenariPresenti; // Vorrei sostituire scenariNelSito ma ne creo due per assicurarmi
+                                                   // che funzioni
     private int numeroScenari = 0;
     private String numeroScenari2;
 
@@ -32,6 +36,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
+            scenariPresenti = (Map<String, Scenario>) db.hashMap("scenariPresenti").createOrOpen();
         }
     }
 
@@ -109,9 +114,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
         // String nomeStoria = scenario.getNomeStoria();
         numeroScenari2 = contaScenari();
+        // scenario.setId(numeroScenari2);
         scenariNelSito.put(numeroScenari2, scenario);
         db.commit();
-        convertToJsonScenari();
+        // convertToJsonScenari();
         return true;
     }
 
@@ -119,6 +125,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
         // String nomeStoria = scenario.getNomeStoria();
         numeroScenari2 = contaScenari();
+        // scenario.setId(numeroScenari2);
         scenariNelSito.put(numeroScenari2, scenario);
         db.commit();
         convertToJsonScenari();
@@ -229,16 +236,166 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return numSc2;
     }
 
-    public boolean settaScenarioIniziale(String nomeStoria, Scenario scenario){
-        openDB();
-        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
-            if(nomeStoria.equals(entry.getValue().getNome())){
-                Storia storia = entry.getValue();
-                storia.setScenarioIniziale(scenario);
+    public boolean settaScenarioIniziale(Scenario scenario) {
+        // openDB();
+        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+            if (scenario.getNomeStoria().equals(entry.getValue().getNomeStoria())) {
+                entry.getKey(); // ID scenario
+                entry.getValue().addPrecedente("-1");
                 return true;
             }
+
         }
         return false;
     }
 
+    /*
+     * public void settaCollegamentoPrecedente(Scenario attuale, Scenario
+     * daCollegare){
+     * String keyAttuale = "-1";
+     * String keyDaCollegare = "-1";
+     * for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+     * if(attuale.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())
+     * ){
+     * keyAttuale = entry.getKey(); //ID scenario attuale
+     * 
+     * }
+     * 
+     * if(daCollegare.getTestoScena().equalsIgnoreCase(entry.getValue().
+     * getTestoScena())){
+     * keyDaCollegare = entry.getKey(); //ID scenario da Collegare
+     * 
+     * }
+     * }
+     * scenariNelSito.get(keyAttuale).addPrecedente(Integer.parseInt(keyDaCollegare)
+     * );
+     * scenariNelSito.get(keyDaCollegare).addSuccessivo(Integer.parseInt(keyAttuale)
+     * );
+     * }
+     */
+    public void settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
+        String keyAttuale = "-1";
+        String keyDaCollegare = "-1";
+        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+            if (attuale.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
+                keyAttuale = entry.getKey(); // ID scenario attuale
+
+            }
+
+            if (daCollegare.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
+                keyDaCollegare = entry.getKey(); // ID scenario da Collegare
+
+            }
+        }
+        scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare);
+        scenariNelSito.get(keyDaCollegare).addPrecedente(keyAttuale);
+    }
+
+    public boolean salvaSuFileScenari(String nomeStoria) {
+        ArrayList<Scenario> temp = new ArrayList<Scenario>();
+        boolean trovato = false;
+        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+            if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
+                temp.add(entry.getValue());
+
+            }
+        }
+
+        if (trovato) {
+            try (PrintWriter pW = new PrintWriter(new FileWriter("scenariCollegati.json"))) {
+                pW.println("{");
+
+                boolean firstEntry = true;
+                for (Map.Entry<String, Scenario> entry2 : scenariNelSito.entrySet()) {
+                    String tipologiaTemp = entry2.getValue().getTipologia().toString();
+                    if (!firstEntry) {
+                        pW.println(",");
+                    }
+                    pW.println("  \"" + entry2.getKey() + "\": {");
+                    // pW.println(" \"Id\": \"" + entry2.getValue().getId() + "\",");
+                    pW.println("    \"Nome Storia di appartenenza\": \"" + entry2.getValue().getNomeStoria() + "\",");
+                    pW.println("    \"Testo Scenario\": \"" + entry2.getValue().getTestoScena() + "\",");
+
+                    if (tipologiaTemp.equalsIgnoreCase("ASCELTA")) {
+                        ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry2.getValue();
+                        pW.println("    \"Domanda scelta\": \"" + scenarioTemp.getDomandaCambioScenario() + "\",");
+                        pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() + "\"");
+                    }
+
+                    if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
+                        ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry2.getValue();
+                        pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
+                        pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\"");
+                    }
+
+                    pW.println("    \"Scenari precedenti\": \"" + entry2.getValue().getPrecedente() + "\",");
+                    pW.println("    \"Scenari successivi\": \"" + entry2.getValue().getSuccessivo() + "\",");
+                    pW.println("}");
+
+                    firstEntry = false;
+                }
+
+                pW.println("}");
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+
+    }
+    /*
+     * public void convertToJsonScenariCollegati(){
+     * openDB();
+     * 
+     * try (PrintWriter pW = new PrintWriter(new
+     * FileWriter("scenariCollegati.json"))) {
+     * pW.println("{");
+     * 
+     * boolean firstEntry = true;
+     * for (Map.Entry<String, Scenario> entry : scenariPresenti.entrySet()) {
+     * String tipologiaTemp = entry.getValue().getTipologia().toString();
+     * if (!firstEntry) {
+     * pW.println(",");
+     * }
+     * pW.println("  \"" + entry.getKey() + "\": {");
+     * pW.println("    \"Nome Storia di appartenenza\": \"" +
+     * entry.getValue().getNomeStoria() + "\",");
+     * pW.println("    \"Testo Scenario\": \"" + entry.getValue().getTestoScena() +
+     * "\",");
+     * 
+     * if (tipologiaTemp.equalsIgnoreCase("ASCELTA")) {
+     * ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry.getValue();
+     * pW.println("    \"Domanda scelta\": \"" +
+     * scenarioTemp.getDomandaCambioScenario() + "\",");
+     * pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() +
+     * "\"");
+     * }
+     * 
+     * if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
+     * ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry.getValue();
+     * pW.println("    \"Domanda Indovinello\": \"" +
+     * scenarioTemp.getDomandaIndovinello() + "\",");
+     * pW.println("    \"Risposta Indovinello\": \"" +
+     * scenarioTemp.getRispostaIndovinello() + "\"");
+     * }
+     * 
+     * pW.println("    \"Scenari precedenti\": \"" +
+     * entry.getValue().getPrecedente() + "\",");
+     * pW.println("    \"Scenari successivi\": \"" +
+     * entry.getValue().getSuccessivo() + "\",");
+     * pW.println("  }");
+     * 
+     * firstEntry = false;
+     * }
+     * 
+     * pW.println("}");
+     * 
+     * } catch (IOException e) {
+     * e.printStackTrace();
+     * }
+     * }
+     */
+
+    /* togliere precedenti e inserire chiave attuale */
 }

@@ -24,6 +24,12 @@ public interface GreetingServiceAsync {
 
 	public void aggiungiScenarioIndovinello(Scenario scenario, AsyncCallback<Boolean> callback);
 
-	public void settaScenarioIniziale(String nomeStoria, Scenario scenario, AsyncCallback<Boolean> callback);
+	public void settaScenarioIniziale(Scenario scenario, AsyncCallback<Boolean> callback);
+	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
+	// collegamento, AsyncCallback<Void> callback);
+
+	public void settaCollegamentoSuccessivo(Scenario scenario, Scenario collegamento, AsyncCallback<Void> callback);
+
+	public void salvaSuFileScenari(String nomeStoria, AsyncCallback<Boolean> callback);
 
 }

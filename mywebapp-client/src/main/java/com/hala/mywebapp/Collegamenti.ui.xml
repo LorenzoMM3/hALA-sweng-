@@ -25,15 +25,13 @@
                 
                 <g:Label>Collega il seguente scenario:</g:Label>
                 <g:Label ui:field="testoScenarioDaCollegare"></g:Label>
-                <g:ListBox ui:field="scenariConCuiCollegare"></g:ListBox>
-                <g:Button ui:field="settaPrecedente">Setta come precedente</g:Button>
+                <g:ListBox ui:field="menuScenariCollegamenti"></g:ListBox>
                 <g:Button ui:field="settaSuccessivo">Setta come successivo</g:Button>
-
             </g:VerticalPanel>
 
         
         
-        <g:Button ui:field="ScenarioSucc">Passa allo scenario successivo</g:Button>
+        <g:Button ui:field="terminaButton">Termina</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>
     </g:HorizontalPanel>
 </ui:UiBinder>

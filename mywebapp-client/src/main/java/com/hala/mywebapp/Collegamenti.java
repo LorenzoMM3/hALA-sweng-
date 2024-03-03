@@ -46,7 +46,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Label scenarioIniziale;
-    
+
     @UiField
     Label MenuLateraleScenari;
 
@@ -60,18 +60,20 @@ public class Collegamenti extends Composite implements IsWidget {
     Label testoScenarioDaCollegare;
 
     @UiField
-    ListBox scenariConCuiCollegare;
-
-    @UiField
-    Button settaPrecedente;
-
-    @UiField
     Button settaSuccessivo;
 
     @UiField
-    Button ScenarioSucc;
+    Button terminaButton;
+    // @UiField
+    // Button ScenarioSucc;
+
+    @UiField
+    ListBox menuScenariCollegamenti;
+
+    // int indice = 0;
 
     public Collegamenti(String nomeStoria, ArrayList<Scenario> scenari) {
+
         initWidget(uiBinder.createAndBindUi(this));
         scenariStoria = scenari;
         setScenaIniziale();
@@ -80,12 +82,13 @@ public class Collegamenti extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 int index = listaScenari.getSelectedIndex();
-                if (index != -1) {  // controllo che sia stato selezionato uno scenario
+                if (index != -1) { // controllo che sia stato selezionato uno scenario
                     Scenario scenarioIniziale = scenariStoria.get(index);
-                    hALAServiceAsync.settaScenarioIniziale(nomeStoria, scenarioIniziale, new AsyncCallback<Boolean>() {
+                    hALAServiceAsync.settaScenarioIniziale(scenarioIniziale, new AsyncCallback<Boolean>() {
                         @Override
                         public void onFailure(Throwable caught) {
                         }
+
                         @Override
                         public void onSuccess(Boolean result) {
                             if (result) {
@@ -101,13 +104,118 @@ public class Collegamenti extends Composite implements IsWidget {
                 }
             }
         });
-        
+
+        /*
+         * settaPrecedente.addClickHandler(new ClickHandler() {
+         * public void onClick(ClickEvent event){
+         * int index = listaScenari.getSelectedIndex();
+         * if (index != -1) { // controllo che sia stato selezionato uno scenario
+         * Scenario attuale = scenariStoria.get(indice); //!!
+         * Scenario scenarioDaCollegare= scenariStoria.get(index);
+         * hALAServiceAsync.settaCollegamentoPrecedente(attuale, scenarioDaCollegare,
+         * new AsyncCallback<Void>() {
+         * 
+         * @Override
+         * public void onFailure(Throwable caught) {
+         * }
+         * 
+         * @Override
+         * public void onSuccess(Void result) {
+         * messageLabel.setText("Collegamento precedente impostato con successo");
+         * }
+         * });
+         * } else {
+         * messageLabel.setText("Selezionare uno scenario");
+         * }
+         * }
+         * });
+         */
+
+        settaSuccessivo.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                int indexAttuale = listaScenari.getSelectedIndex();
+                int indexCollegamento = menuScenariCollegamenti.getSelectedIndex();
+                if (indexAttuale != -1 && indexCollegamento != -1) { // controllo che sia stato selezionato uno scenario
+                    // Scenario attuale = scenariStoria.get(indice); //!!
+                    Scenario attuale = scenariStoria.get(indexAttuale);
+                    Scenario scenarioDaCollegare = scenariStoria.get(indexCollegamento);
+                    hALAServiceAsync.settaCollegamentoSuccessivo(attuale, scenarioDaCollegare,
+                            new AsyncCallback<Void>() {
+                                @Override
+                                public void onFailure(Throwable caught) {
+                                }
+
+                                @Override
+                                public void onSuccess(Void result) {
+                                    messageLabel.setText("Collegamento successivo impostato con successo");
+                                }
+                            });
+                } else {
+                    messageLabel.setText("Selezionare uno scenario");
+                }
+            }
+        });
+
+        /*
+         * ScenarioSucc.addClickHandler(new ClickHandler() {
+         * 
+         * @Override
+         * public void onClick(ClickEvent event) {
+         * 
+         * indice++;
+         * 
+         * if (indice == scenariStoria.size()) {
+         * hALAServiceAsync.salvaSuFileScenari(nomeStoria, new AsyncCallback<Boolean>()
+         * {
+         * 
+         * @Override
+         * public void onFailure(Throwable caught) {
+         * }
+         * 
+         * @Override
+         * public void onSuccess(Boolean result) {
+         * if (result) {
+         * messageLabel.setText("Storia creata con successo");
+         * } else {
+         * messageLabel.setText("Impossibile creare la storia");
+         * }
+         * }
+         * 
+         * });
+         * }
+         * else{
+         * testoScenarioDaCollegare.setText(scenariStoria.get(indice).getTestoScena());
+         * }
+         * }
+         * });
+         */
+
+        terminaButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                hALAServiceAsync.salvaSuFileScenari(nomeStoria, new AsyncCallback<Boolean>() {
+                    @Override
+                    public void onFailure(Throwable caught) {
+                    }
+
+                    @Override
+                    public void onSuccess(Boolean result) {
+                        if (result) {
+                            messageLabel.setText("Storia creata con successo");
+                        } else {
+                            messageLabel.setText("Impossibile creare la storia");
+                        }
+                    }
+                });
+            }
+        });
 
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new ScriviStoria());    // secondo me servira fare in modo che si torna alla creazione scenari
+                RootPanel.get("startTable").add(new ScriviStoria()); // secondo me servira fare in modo che si torna
+                                                                     // alla creazione scenari
             }
         });
     }
@@ -122,16 +230,23 @@ public class Collegamenti extends Composite implements IsWidget {
         listaScenari.setVisibleItemCount(scenariStoria.size());
         riempiLista(menuScenari);
         menuScenari.setVisibleItemCount(scenariStoria.size());
+        // pagina.remove(ScenarioSucc);
+        pagina.remove(terminaButton);
     }
 
     private void facciataSecondaria() {
         messageLabel.setText("");
         pagina.remove(ScenarioInizialePanel);
-        pagina.remove(ScenarioSucc);
+        // pagina.remove(ScenarioSucc);
         pagina.remove(backButton);
         pagina.add(CollegamentiPanel);
-        pagina.add(ScenarioSucc);
+        // pagina.add(ScenarioSucc);
         pagina.add(backButton);
+        // testoScenarioDaCollegare.setText(scenariStoria.get(indice).getTestoScena());
+        riempiLista(menuScenariCollegamenti);
+        // indice++;
+        pagina.add(terminaButton);
+
     }
 
     private void riempiLista(ListBox lb) {
