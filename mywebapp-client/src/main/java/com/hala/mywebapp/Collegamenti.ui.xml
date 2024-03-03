@@ -3,56 +3,36 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
+    
+    <g:HorizontalPanel spacing="100" ui:field="pagina">
+        
+    
 
-
-    <g:HorizontalPanel spacing="100">
-        <g:VerticalPanel spacing="30" ui:field="Scenari">
-            <g:VerticalPanel spacing="30" ui:field="ScenariCollegati">
-           
-            </g:VerticalPanel>
             <g:VerticalPanel spacing="30" ui:field="ScenariDaCollegare">
-                <g:ListBox ui:field="menuScenariSinistra">
-                    <g:item>Scenario uno</g:item>
-                    <g:item>Scenario due</g:item>
-                </g:ListBox>
+                    <g:ListBox ui:field="listaScenari"></g:ListBox>
             </g:VerticalPanel>
-        </g:VerticalPanel>
-
-        <g:VerticalPanel spacing="30" ui:field="vpCollegamenti">
+            
             <g:VerticalPanel spacing="30" ui:field="ScenarioInizialePanel">
                 <g:Label ui:field="scenarioIniziale">Scegli lo scenario iniziale:</g:Label>
-                <g:ListBox ui:field="menuScenari">
-                    <g:item>Scenario a scelta</g:item>
-                    <g:item>Scenario con indovinello</g:item>
-                </g:ListBox>
-                <g:Button ui:field="buttonIniziale">Setta scenario iniziale</g:Button>
-
-                <g:Label ui:field="testoScenarioIniziale"/>
-                <g:ListBox ui:field="menuAltriScenari">
-                    <g:item>Scenario a scelta</g:item>
-                    <g:item>Scenario con indovinello</g:item>
-                </g:ListBox>
-
+                <g:ListBox ui:field="menuScenari"></g:ListBox>
+                <g:Button ui:field="buttonSettaScenarioIniziale">Setta scenario iniziale</g:Button>
+                <g:Label ui:field="messageLabel"></g:Label>
             </g:VerticalPanel>
 
-            <g:VerticalPanel spacing="30" ui:field="altriScenariPanel">
-                <g:Label ui:field="altriScenari">Scegli il seguente scenario:</g:Label>
-                <g:Label ui:field="testoScenario1"/>
-            
-                <g:ListBox ui:field="nodo2">
-                    <g:item>Scenario a scelta</g:item>
-                    <g:item>Scenario con indovinello</g:item>
-                </g:ListBox>
-                <g:Button ui:field="buttonPrecedente">Setta scome precedente</g:Button>
-                
-                
-            </g:VerticalPanel>
-            <g:Button ui:field="buttonSuccessivo">Setta come successivo</g:Button>
-
-        </g:VerticalPanel>
         
-         <g:Button ui:field="ScenarioSucc">Passa allo scenario successivo</g:Button>
-        <g:Label ui:field="messageLabel"/>
+            <g:VerticalPanel spacing="30" ui:field="CollegamentiPanel">
+                
+                <g:Label>Collega il seguente scenario:</g:Label>
+                <g:Label ui:field="testoScenarioDaCollegare"></g:Label>
+                <g:ListBox ui:field="scenariConCuiCollegare"></g:ListBox>
+                <g:Button ui:field="settaPrecedente">Setta come precedente</g:Button>
+                <g:Button ui:field="settaSuccessivo">Setta come successivo</g:Button>
+
+            </g:VerticalPanel>
+
+        
+        
+        <g:Button ui:field="ScenarioSucc">Passa allo scenario successivo</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>
     </g:HorizontalPanel>
 </ui:UiBinder>

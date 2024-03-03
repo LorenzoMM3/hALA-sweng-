@@ -21,6 +21,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final ScriviStoriaUiBinder uiBinder = GWT.create(ScriviStoriaUiBinder.class);
     private ArrayList<String> opzioniSceltaTemp;
+    private ArrayList<Scenario> scenariCreati;
     private String nomeStoriaTemp;
     private int numeroScen = 0;
     private Map<String, Scenario> scenariNelSito;
@@ -110,6 +111,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         initWidget(uiBinder.createAndBindUi(this));
         hideAdditionalFields();
         disabilitaTutto();
+        scenariCreati = new ArrayList<>();
 
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
@@ -177,33 +179,14 @@ public class ScriviStoria extends Composite implements IsWidget {
 
         });
 
-        /*
-         * Evento per il bottone "creaScenarioAScelta" che permette di creare un nuovo
-         * scenario
-         */
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                // Creazione nuovo scenario
                 ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
-                // E' necessario settare tutti gli attributi prelevandoli dai textField
-                // Iniziamo con gli attributi comuni a tutti gli scenari:
                 scenario.setTestoScena(testoScenarioField.getText());
                 scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
-                // Attributi aggiuntivi:
                 scenario.setOpzioniScelte(opzioniSceltaTemp);
-                /*
-                 * numeroScen++;
-                 * if (numeroScen > 1) {
-                 * creaCollegamenti.setVisible(true);
-                 * }
-                 */
 
-                // E' necessario ora richiamare il server per poter effettuare metodi su questo
-                // scenario:
-                // La struttura è sempre simile
-                // Ricorda l'asyncallback vuole i due metodi onfailure e onsuccess che partono
-                // in base a se il metodo nel server si conclude con successo o meno
                 message.setText("");
                 vpScenario.add(message);
                 hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
@@ -214,6 +197,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
                             message.setText("Scenario a scelta creato con successo");
+                            scenariCreati.add(scenario);
 
                         } else {
                             message.setText("Errore nella creazione dello scenario a scelta");
@@ -251,6 +235,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
                             message.setText("Scenario Indovinello creato con successo");
+                            scenariCreati.add(scenario);
                         } else {
                             message.setText("Errore nella creazione dello scenario indovinello");
                         }
@@ -273,17 +258,8 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaCollegamenti.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ritornaScenari(new AsyncCallback<Map<String, Scenario>>() {
-                    public void onFailure(Throwable caught) {
-                    }
-
-                    public void onSuccess(Map<String, Scenario> mapScenari) {
-                        scenariNelSito = mapScenari;
-                    }
-
-                });
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariNelSito)); // togliere gli input !!!
+                RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariCreati));
             }
         });
     }

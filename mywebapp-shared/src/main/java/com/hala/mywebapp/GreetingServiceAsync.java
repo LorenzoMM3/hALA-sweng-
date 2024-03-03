@@ -24,5 +24,4 @@ public interface GreetingServiceAsync {
 
 	public void aggiungiScenarioIndovinello(Scenario scenario, AsyncCallback<Boolean> callback);
 
-	public void ritornaScenari(AsyncCallback<Map<String, Scenario>> callback);
 }

@@ -26,5 +26,4 @@ public interface GreetingService extends RemoteService {
 
 	public boolean aggiungiScenarioIndovinello(Scenario scenario);
 
-	public Map<String, Scenario> ritornaScenari();
 }

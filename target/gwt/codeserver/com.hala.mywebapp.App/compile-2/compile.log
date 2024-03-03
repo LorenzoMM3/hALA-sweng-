@@ -1,12 +1,13 @@
 binding: user.agent=safari
 Compiling module com.hala.mywebapp.App
-   Computing all possible rebind results for 'com.hala.mywebapp.Collegamenti.CollegamentiUiBinder'
-      Rebinding com.hala.mywebapp.Collegamenti.CollegamentiUiBinder
-         Invoking generator com.google.gwt.uibinder.rebind.UiBinderGenerator
-            [ERROR] The element type "g:VerticalPanel" must be terminated by the matching end-tag "</g:VerticalPanel>".
-            [ERROR] Error parsing XML (line 52): The element type "g:VerticalPanel" must be terminated by the matching end-tag "</g:VerticalPanel>".
-   [ERROR] Errors in 'com/hala/mywebapp/Collegamenti.java'
-      [ERROR] Line 27: Failed to resolve 'com.hala.mywebapp.Collegamenti.CollegamentiUiBinder' via deferred binding
-   Unification traversed 1398 fields and methods and 596 types. 57 are considered part of the current module and 65 had all of their fields and methods traversed.
-   [WARN] Some stale types ([com.hala.mywebapp.ScenarioOggetto, com.hala.mywebapp.ScenarioOggetto_FieldSerializer, com.hala.mywebapp.ScriviStoria$5$1]) were not reprocessed as was expected. This is either a compiler bug or a Generator has legitimately stopped creating these types.
-[ERROR] Compiler returned false
+   Unification traversed 1659 fields and methods and 544 types. 86 are considered part of the current module and 94 had all of their fields and methods traversed.
+   Compiling 1 permutation
+      Compiling permutation 0...
+      Linking per-type JS with 86 new/changed types.
+      Source Maps Enabled
+   Compile of permutations succeeded
+   Compilation succeeded -- 6,968s
+Linking into C:\Users\Altea\Desktop\hALA-sweng-\target\gwt\codeserver\com.hala.mywebapp.App\compile-2\war\MyWebApp; Writing extras to C:\Users\Altea\Desktop\hALA-sweng-\target\gwt\codeserver\com.hala.mywebapp.App\compile-2\extras\MyWebApp
+   Link succeeded
+   Linking succeeded -- 0,455s
+8,706s total -- Compile completed
