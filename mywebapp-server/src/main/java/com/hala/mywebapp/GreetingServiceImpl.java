@@ -297,7 +297,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
                 temp.add(entry.getValue());
-
+                trovato = true;
             }
         }
 
@@ -319,17 +319,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                     if (tipologiaTemp.equalsIgnoreCase("ASCELTA")) {
                         ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry2.getValue();
                         pW.println("    \"Domanda scelta\": \"" + scenarioTemp.getDomandaCambioScenario() + "\",");
-                        pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() + "\"");
+                        pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() + "\",");
                     }
 
                     if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
                         ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry2.getValue();
                         pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
-                        pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\"");
+                        pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\",");
                     }
 
                     pW.println("    \"Scenari precedenti\": \"" + entry2.getValue().getPrecedente() + "\",");
-                    pW.println("    \"Scenari successivi\": \"" + entry2.getValue().getSuccessivo() + "\",");
+                    pW.println("    \"Scenari successivi\": \"" + entry2.getValue().getSuccessivo() + "\"");
                     pW.println("}");
 
                     firstEntry = false;

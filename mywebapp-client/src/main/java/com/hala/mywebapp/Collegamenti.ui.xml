@@ -14,23 +14,23 @@
             </g:VerticalPanel>
             
             <g:VerticalPanel spacing="30" ui:field="ScenarioInizialePanel">
-                <g:Label ui:field="scenarioIniziale">Scegli lo scenario iniziale:</g:Label>
+                <g:Label ui:field="LscenarioIniziale">Scegli lo scenario iniziale:</g:Label>
                 <g:ListBox ui:field="menuScenari"></g:ListBox>
                 <g:Button ui:field="buttonSettaScenarioIniziale">Setta scenario iniziale</g:Button>
-                <g:Label ui:field="messageLabel"></g:Label>
+                
             </g:VerticalPanel>
 
         
             <g:VerticalPanel spacing="30" ui:field="CollegamentiPanel">
                 
                 <g:Label>Collega il seguente scenario:</g:Label>
-                <g:Label ui:field="testoScenarioDaCollegare"></g:Label>
+                <g:Label ui:field="testoScenarioDaCollegare"/>
                 <g:ListBox ui:field="menuScenariCollegamenti"></g:ListBox>
                 <g:Button ui:field="settaSuccessivo">Setta come successivo</g:Button>
             </g:VerticalPanel>
 
         
-        
+        <g:Label ui:field="messageLabel"></g:Label>
         <g:Button ui:field="terminaButton">Termina</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>
     </g:HorizontalPanel>
