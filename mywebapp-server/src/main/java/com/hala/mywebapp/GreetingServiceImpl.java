@@ -273,22 +273,28 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
      * );
      * }
      */
-    public void settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
-        String keyAttuale = "-1";
-        String keyDaCollegare = "-1";
+    public boolean settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
+        String keyAttuale = trovaChiavePerScenario(attuale);
+        String keyDaCollegare = trovaChiavePerScenario(daCollegare);
+    
+        if (!keyAttuale.equals("-1") && !keyDaCollegare.equals("-1")) {
+            scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare);
+            scenariNelSito.get(keyDaCollegare).addPrecedente(keyAttuale);
+            return true;
+        } else {
+            // Gestione caso non trovato
+            System.err.println("Errore: Chiave non trovata per uno degli scenari.");
+            return false;
+        }
+    }
+    
+    private String trovaChiavePerScenario(Scenario scenario) {
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-            if (attuale.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
-                keyAttuale = entry.getKey(); // ID scenario attuale
-
-            }
-
-            if (daCollegare.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
-                keyDaCollegare = entry.getKey(); // ID scenario da Collegare
-
+            if (scenario.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
+                return entry.getKey();
             }
         }
-        scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare);
-        scenariNelSito.get(keyDaCollegare).addPrecedente(keyAttuale);
+        return "-1"; // Chiave non trovata
     }
 
     public boolean salvaSuFileScenari(String nomeStoria) {
@@ -330,6 +336,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
                     pW.println("    \"Scenari precedenti\": \"" + entry2.getValue().getPrecedente() + "\",");
                     pW.println("    \"Scenari successivi\": \"" + entry2.getValue().getSuccessivo() + "\"");
+
                     pW.println("}");
 
                     firstEntry = false;
@@ -344,58 +351,5 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
 
     }
-    /*
-     * public void convertToJsonScenariCollegati(){
-     * openDB();
-     * 
-     * try (PrintWriter pW = new PrintWriter(new
-     * FileWriter("scenariCollegati.json"))) {
-     * pW.println("{");
-     * 
-     * boolean firstEntry = true;
-     * for (Map.Entry<String, Scenario> entry : scenariPresenti.entrySet()) {
-     * String tipologiaTemp = entry.getValue().getTipologia().toString();
-     * if (!firstEntry) {
-     * pW.println(",");
-     * }
-     * pW.println("  \"" + entry.getKey() + "\": {");
-     * pW.println("    \"Nome Storia di appartenenza\": \"" +
-     * entry.getValue().getNomeStoria() + "\",");
-     * pW.println("    \"Testo Scenario\": \"" + entry.getValue().getTestoScena() +
-     * "\",");
-     * 
-     * if (tipologiaTemp.equalsIgnoreCase("ASCELTA")) {
-     * ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry.getValue();
-     * pW.println("    \"Domanda scelta\": \"" +
-     * scenarioTemp.getDomandaCambioScenario() + "\",");
-     * pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() +
-     * "\"");
-     * }
-     * 
-     * if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
-     * ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry.getValue();
-     * pW.println("    \"Domanda Indovinello\": \"" +
-     * scenarioTemp.getDomandaIndovinello() + "\",");
-     * pW.println("    \"Risposta Indovinello\": \"" +
-     * scenarioTemp.getRispostaIndovinello() + "\"");
-     * }
-     * 
-     * pW.println("    \"Scenari precedenti\": \"" +
-     * entry.getValue().getPrecedente() + "\",");
-     * pW.println("    \"Scenari successivi\": \"" +
-     * entry.getValue().getSuccessivo() + "\",");
-     * pW.println("  }");
-     * 
-     * firstEntry = false;
-     * }
-     * 
-     * pW.println("}");
-     * 
-     * } catch (IOException e) {
-     * e.printStackTrace();
-     * }
-     * }
-     */
 
-    /* togliere precedenti e inserire chiave attuale */
 }

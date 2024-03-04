@@ -2,9 +2,20 @@
 # RPC service class, partial path of RPC policy file
 com.hala.mywebapp.GreetingService, ABFC5DEE8CC6F7AFDCCDABFD5DCA873A.gwt.rpc
 com.hala.mywebapp.GreetingService, 8913FC39EA73E5842950623BECFFF942.gwt.rpc
-com.hala.mywebapp.GreetingService, 729EC279277D77B1E429B25347B0BC69.gwt.rpc
+com.hala.mywebapp.GreetingService, F4B018CD180799E87E3E24291B8D819E.gwt.rpc
+com.hala.mywebapp.GreetingService, 72EDFB1C5924FF9EE5C48F7799DA19A3.gwt.rpc
+com.hala.mywebapp.GreetingService, 0A820C8E89636D89D5403E0B168A2F29.gwt.rpc
 com.hala.mywebapp.GreetingService, 5268640F3C33CB306A62E5A1F0AA59A1.gwt.rpc
+com.hala.mywebapp.GreetingService, 834F81210156D4A9E3762DEF61C701F8.gwt.rpc
+com.hala.mywebapp.GreetingService, 45AB576A91002C666AACF4862C82B902.gwt.rpc
+com.hala.mywebapp.GreetingService, CF7C5E5D1AA9DA65357467CF709C08BD.gwt.rpc
+com.hala.mywebapp.GreetingService, DB3C513E04D3460A5A2AF6EA9FF96376.gwt.rpc
 com.hala.mywebapp.GreetingService, 753E3A1C748177F69B9DE89831881D9C.gwt.rpc
+com.hala.mywebapp.GreetingService, AAA45CB5C4CD11173678DE171DA84860.gwt.rpc
 com.hala.mywebapp.GreetingService, AB561ADA99BF7AE1A6A18570C3C27668.gwt.rpc
 com.hala.mywebapp.GreetingService, 4C87C42CCD2964CB35E974A0EE0C1FA0.gwt.rpc
+com.hala.mywebapp.GreetingService, 57F94F12BB5E3E0E99778EAB579FDE58.gwt.rpc
 com.hala.mywebapp.GreetingService, 38B0F813A41A70728B8C43EB26017A0F.gwt.rpc
+com.hala.mywebapp.GreetingService, 36EDDB78A04FCBBB67C19C88554A0404.gwt.rpc
+com.hala.mywebapp.GreetingService, D861F05605EB6754FA41EF6DB9145B36.gwt.rpc
+com.hala.mywebapp.GreetingService, 609ABCCE03EB8F034A1B5FB424FA97E4.gwt.rpc

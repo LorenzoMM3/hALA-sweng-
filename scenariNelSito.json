@@ -1,169 +1,127 @@
 {
-  "66": {
-    "Nome Storia di appartenenza": "ERERERER",
-    "Testo Scenario": "qcwccwqce",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+  "27": {
+    "Nome Storia di appartenenza": "CHE IDEA",
+    "Testo Scenario": "T2",
+    "Domanda Indovinello": "T2",
+    "Risposta Indovinello": "T2"
   }
 ,
-  "126": {
-    "Nome Storia di appartenenza": "ERTRETE",
-    "Testo Scenario": "dfdggfgf",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+  "11": {
+    "Nome Storia di appartenenza": "FUNZIONA PLS",
+    "Testo Scenario": "Testo",
+    "Domanda scelta": "D",
+    "Opzioni scelta": "{o1=ogg, o2=}"
   }
 ,
-  "4": {
-    "Nome Storia di appartenenza": "LOLLO UNO",
-    "Testo Scenario": "uno",
-    "Domanda scelta": "nnnooo",
-    "Opzioni scelta": "{ok=, uuuuu=}"
+  "48": {
+    "Nome Storia di appartenenza": "CIAO AMICI",
+    "Testo Scenario": "T3",
+    "Domanda Indovinello": "T3",
+    "Risposta Indovinello": "T3"
   }
 ,
   "22": {
-    "Nome Storia di appartenenza": "WWW",
-    "Testo Scenario": "qwer",
-    "Domanda scelta": "qwer",
-    "Opzioni scelta": "{qwer=qwer}"
+    "Nome Storia di appartenenza": "FUNZIONA PLS",
+    "Testo Scenario": "Ind1",
+    "Domanda Indovinello": "Ind1",
+    "Risposta Indovinello": "rc"
   }
 ,
-  "55": {
-    "Nome Storia di appartenenza": "UUUUUU",
-    "Testo Scenario": "fgghggfffh",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+  "17": {
+    "Nome Storia di appartenenza": "STORIA PAZZA",
+    "Testo Scenario": "T2",
+    "Domanda Indovinello": "Ind",
+    "Risposta Indovinello": "RC"
   }
 ,
-  "43": {
-    "Nome Storia di appartenenza": "EWRER",
-    "Testo Scenario": "qwerweweqwe",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+  "5": {
+    "Nome Storia di appartenenza": "NON SO CHE SCRIVERE",
+    "Testo Scenario": "Testo1",
+    "Domanda scelta": "Dom1",
+    "Opzioni scelta": "{Op2=Ogg, Op1=}"
   }
 ,
-  "30": {
-    "Nome Storia di appartenenza": "QWER",
-    "Testo Scenario": "qwer",
-    "Domanda scelta": "qwer",
-    "Opzioni scelta": "{qwer=}"
-  }
-,
-  "9": {
-    "Nome Storia di appartenenza": "SIUM",
-    "Testo Scenario": "prima cosa",
-    "Domanda scelta": "seconda cosa",
-    "Opzioni scelta": "{opzione due=, opzione uno=lollo}"
-  }
-,
-  "21": {
-    "Nome Storia di appartenenza": "EWRER",
-    "Testo Scenario": "wereweewr",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
-  }
-,
-  "64": {
-    "Nome Storia di appartenenza": "STORIA UNO",
-    "Testo Scenario": "quarto scenario",
-    "Domanda Indovinello": "",
-    "Risposta Indovinello": ""
+  "34": {
+    "Nome Storia di appartenenza": "FUNZIONA PLS",
+    "Testo Scenario": "Ind2",
+    "Domanda Indovinello": "Ind2",
+    "Risposta Indovinello": "Ind2"
   }
 ,
   "1": {
-    "Nome Storia di appartenenza": "YUPPIII",
-    "Testo Scenario": "testo scenario 2",
-    "Domanda Indovinello": "indovina",
-    "Risposta Indovinello": "risposta corretta"
+    "Nome Storia di appartenenza": "STORIA FANTASTICA",
+    "Testo Scenario": "Testo figo",
+    "Domanda Indovinello": "Testo dell'indovinello",
+    "Risposta Indovinello": "Risposta"
   }
 ,
-  "51": {
-    "Nome Storia di appartenenza": "STORIA UNO",
-    "Testo Scenario": "terzo scenario",
-    "Domanda Indovinello": "",
-    "Risposta Indovinello": ""
+  "13": {
+    "Nome Storia di appartenenza": "CHE IDEA",
+    "Testo Scenario": "T1",
+    "Domanda scelta": "T1",
+    "Opzioni scelta": "{null=, T1=T1}"
   }
 ,
   "0": {
-    "Nome Storia di appartenenza": "YUPPIII",
-    "Testo Scenario": "testo scenario",
-    "Domanda scelta": "domanda",
-    "Opzioni scelta": "{opzione=penna}"
-  }
-,
-  "39": {
-    "Nome Storia di appartenenza": "STORIA UNO",
-    "Testo Scenario": "secondo scenario",
-    "Domanda scelta": "r",
-    "Opzioni scelta": "{r=}"
-  }
-,
-  "78": {
-    "Nome Storia di appartenenza": "ERTRETE",
-    "Testo Scenario": "ertrte",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+    "Nome Storia di appartenenza": "STORIA FANTASTICA",
+    "Testo Scenario": "Scenario Nr1",
+    "Domanda scelta": "Domanda",
+    "Opzioni scelta": "{Opzione3=Oggetto, Opzione2=, Opzione1=}"
   }
 ,
   "6": {
-    "Nome Storia di appartenenza": "ALTEA",
-    "Testo Scenario": "come va",
-    "Domanda scelta": "male?",
-    "Opzioni scelta": "{no bene=sorriso}"
+    "Nome Storia di appartenenza": "CIAO NANO",
+    "Testo Scenario": "Testo lalalal",
+    "Domanda Indovinello": "Indovinello",
+    "Risposta Indovinello": "RC"
+  }
+,
+  "8": {
+    "Nome Storia di appartenenza": "STORIA PAZZA",
+    "Testo Scenario": "T",
+    "Domanda scelta": "D",
+    "Opzioni scelta": "{O1=, O2=ogg}"
+  }
+,
+  "31": {
+    "Nome Storia di appartenenza": "CIAO AMICI",
+    "Testo Scenario": "T2",
+    "Domanda Indovinello": "T2",
+    "Risposta Indovinello": "T2"
   }
 ,
   "18": {
-    "Nome Storia di appartenenza": "UUUUUU",
-    "Testo Scenario": "tytyytyyu",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{null=}"
+    "Nome Storia di appartenenza": "NON SO CHE SCRIVERE",
+    "Testo Scenario": "Testo2",
+    "Domanda Indovinello": "Indo",
+    "Risposta Indovinello": "RC"
   }
 ,
-  "93": {
-    "Nome Storia di appartenenza": "ERTRETE",
-    "Testo Scenario": "erttrert",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
-  }
-,
-  "28": {
-    "Nome Storia di appartenenza": "STORIA UNO",
-    "Testo Scenario": "primo scenario",
-    "Domanda scelta": "n",
-    "Opzioni scelta": "{n=}"
+  "41": {
+    "Nome Storia di appartenenza": "CHE IDEA",
+    "Testo Scenario": "T3",
+    "Domanda Indovinello": "T3",
+    "Risposta Indovinello": "T3"
   }
 ,
   "15": {
-    "Nome Storia di appartenenza": "QWERTY",
-    "Testo Scenario": "qwer",
-    "Domanda scelta": "qwer",
-    "Opzioni scelta": "{qwert=qwetr}"
+    "Nome Storia di appartenenza": "CIAO AMICI",
+    "Testo Scenario": "T1",
+    "Domanda scelta": "T1",
+    "Opzioni scelta": "{T1=}"
   }
 ,
-  "109": {
-    "Nome Storia di appartenenza": "ERTRETE",
-    "Testo Scenario": "tyuyuyt",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+  "10": {
+    "Nome Storia di appartenenza": "CIAO NANO",
+    "Testo Scenario": "Altro scenario",
+    "Domanda Indovinello": "Indovinello pazzo",
+    "Risposta Indovinello": "Boh"
   }
 ,
   "3": {
-    "Nome Storia di appartenenza": "YUPPIII",
-    "Testo Scenario": "testo scenario 3",
-    "Domanda Indovinello": "indovinello",
-    "Risposta Indovinello": "risp corretta"
-  }
-,
-  "36": {
-    "Nome Storia di appartenenza": "UUUUUU",
-    "Testo Scenario": "tyuuytuy",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
-  }
-,
-  "75": {
-    "Nome Storia di appartenenza": "UUUUUU",
-    "Testo Scenario": "ghghghf",
-    "Domanda scelta": "",
-    "Opzioni scelta": "{}"
+    "Nome Storia di appartenenza": "CIAO NANO",
+    "Testo Scenario": "Tanti nani nel giardino",
+    "Domanda scelta": "Che fai?",
+    "Opzioni scelta": "{fuggo=, li mangio=cucchiaio}"
   }
 }

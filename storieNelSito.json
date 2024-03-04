@@ -1,97 +1,43 @@
 {
-  "": {
-    "nome": "",
-    "creatore": "",
+  "CHE IDEA": {
+    "nome": "CHE IDEA",
+    "creatore": "Alessia",
     "iniziata": false
   }
 ,
-  "ERERERER": {
-    "nome": "ERERERER",
-    "creatore": "",
+  "FUNZIONA PLS": {
+    "nome": "FUNZIONA PLS",
+    "creatore": "Alessia",
     "iniziata": false
   }
 ,
-  "ERTRETE": {
-    "nome": "ERTRETE",
-    "creatore": "",
+  "CIAO NANO": {
+    "nome": "CIAO NANO",
+    "creatore": "Alessia",
     "iniziata": false
   }
 ,
-  "NONO": {
-    "nome": "NONO",
-    "creatore": "e",
+  "CIAO AMICI": {
+    "nome": "CIAO AMICI",
+    "creatore": "Alessia",
     "iniziata": false
   }
 ,
-  "ALTEA": {
-    "nome": "ALTEA",
-    "creatore": "e",
+  "STORIA FANTASTICA": {
+    "nome": "STORIA FANTASTICA",
+    "creatore": "Alessia",
     "iniziata": false
   }
 ,
-  "STORIA UNO": {
-    "nome": "STORIA UNO",
-    "creatore": "",
+  "STORIA PAZZA": {
+    "nome": "STORIA PAZZA",
+    "creatore": "Alessia",
     "iniziata": false
   }
 ,
-  "ULTIMA PROVA": {
-    "nome": "ULTIMA PROVA",
-    "creatore": "",
-    "iniziata": false
-  }
-,
-  "UUUUUU": {
-    "nome": "UUUUUU",
-    "creatore": "",
-    "iniziata": false
-  }
-,
-  "EWRER": {
-    "nome": "EWRER",
-    "creatore": "",
-    "iniziata": false
-  }
-,
-  "EEEEEE": {
-    "nome": "EEEEEE",
-    "creatore": "e",
-    "iniziata": false
-  }
-,
-  "LOLLO UNO": {
-    "nome": "LOLLO UNO",
-    "creatore": "e",
-    "iniziata": false
-  }
-,
-  "SIUM": {
-    "nome": "SIUM",
-    "creatore": "",
-    "iniziata": false
-  }
-,
-  "QWERTY": {
-    "nome": "QWERTY",
-    "creatore": "e",
-    "iniziata": false
-  }
-,
-  "WWW": {
-    "nome": "WWW",
-    "creatore": "e",
-    "iniziata": false
-  }
-,
-  "YUPPIII": {
-    "nome": "YUPPIII",
-    "creatore": "e",
-    "iniziata": false
-  }
-,
-  "QWER": {
-    "nome": "QWER",
-    "creatore": "e",
+  "NON SO CHE SCRIVERE": {
+    "nome": "NON SO CHE SCRIVERE",
+    "creatore": "Alessia",
     "iniziata": false
   }
 }

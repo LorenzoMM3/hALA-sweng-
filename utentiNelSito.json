@@ -1,13 +1,7 @@
 {
-  "": {
-    "username": "",
-    "password": "",
+  "Alessia": {
+    "username": "Alessia",
+    "password": "Alessia",
     "isLogged": true
-  }
-,
-  "e": {
-    "username": "e",
-    "password": "e",
-    "isLogged": false
   }
 }

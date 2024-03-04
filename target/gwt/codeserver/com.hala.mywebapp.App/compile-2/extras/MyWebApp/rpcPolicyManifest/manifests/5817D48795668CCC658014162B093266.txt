@@ -1,0 +1,2 @@
+serviceClass: com.hala.mywebapp.GreetingService
+path: 834F81210156D4A9E3762DEF61C701F8.gwt.rpc

@@ -21,7 +21,6 @@ public class Collegamenti extends Composite implements IsWidget {
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final CollegamentiUiBinder uiBinder = GWT.create(CollegamentiUiBinder.class);
     private ArrayList<Scenario> scenariStoria;
-    private String nomeStoria;
     Scenario attuale;
     Scenario scenarioIniziale;
 
@@ -66,13 +65,11 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Button terminaButton;
-    // @UiField
-    // Button ScenarioSucc;
+    
 
     @UiField
     ListBox menuScenariCollegamenti;
 
-    // int indice = 0;
 
     public Collegamenti(String nomeStoria, ArrayList<Scenario> scenari) {
 
@@ -107,32 +104,7 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-        /*
-         * settaPrecedente.addClickHandler(new ClickHandler() {
-         * public void onClick(ClickEvent event){
-         * int index = listaScenari.getSelectedIndex();
-         * if (index != -1) { // controllo che sia stato selezionato uno scenario
-         * Scenario attuale = scenariStoria.get(indice); //!!
-         * Scenario scenarioDaCollegare= scenariStoria.get(index);
-         * hALAServiceAsync.settaCollegamentoPrecedente(attuale, scenarioDaCollegare,
-         * new AsyncCallback<Void>() {
-         * 
-         * @Override
-         * public void onFailure(Throwable caught) {
-         * }
-         * 
-         * @Override
-         * public void onSuccess(Void result) {
-         * messageLabel.setText("Collegamento precedente impostato con successo");
-         * }
-         * });
-         * } else {
-         * messageLabel.setText("Selezionare uno scenario");
-         * }
-         * }
-         * });
-         */
-
+    
         settaSuccessivo.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 int indexAttuale = listaScenari.getSelectedIndex();
@@ -142,15 +114,20 @@ public class Collegamenti extends Composite implements IsWidget {
                     attuale = scenariStoria.get(indexAttuale);
                     Scenario scenarioDaCollegare = scenariStoria.get(indexCollegamento);
                     hALAServiceAsync.settaCollegamentoSuccessivo(attuale, scenarioDaCollegare,
-                            new AsyncCallback<Void>() {
+                            new AsyncCallback<Boolean>() {
                                 @Override
                                 public void onFailure(Throwable caught) {
                                     messageLabel.setText("C'è stato un errore");
                                 }
 
                                 @Override
-                                public void onSuccess(Void result) {
-                                    messageLabel.setText("Collegamento successivo impostato con successo");
+                                public void onSuccess(Boolean result) {
+                                    if (result){
+                                        messageLabel.setText("Collegamento successivo impostato con successo");
+                                    }
+                                    else{
+                                        messageLabel.setText("Impossibile impostare il collegamento successivo");
+                                    }
                                 }
                             });
                 } else {
@@ -159,39 +136,7 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-        /*
-         * ScenarioSucc.addClickHandler(new ClickHandler() {
-         * 
-         * @Override
-         * public void onClick(ClickEvent event) {
-         * 
-         * indice++;
-         * 
-         * if (indice == scenariStoria.size()) {
-         * hALAServiceAsync.salvaSuFileScenari(nomeStoria, new AsyncCallback<Boolean>()
-         * {
-         * 
-         * @Override
-         * public void onFailure(Throwable caught) {
-         * }
-         * 
-         * @Override
-         * public void onSuccess(Boolean result) {
-         * if (result) {
-         * messageLabel.setText("Storia creata con successo");
-         * } else {
-         * messageLabel.setText("Impossibile creare la storia");
-         * }
-         * }
-         * 
-         * });
-         * }
-         * else{
-         * testoScenarioDaCollegare.setText(scenariStoria.get(indice).getTestoScena());
-         * }
-         * }
-         * });
-         */
+        
 
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
@@ -239,6 +184,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
     private void facciataSecondaria() {
         pagina.remove(ScenarioInizialePanel);
+        pagina.remove(LscenarioIniziale);
         // pagina.remove(ScenarioSucc);
         riempiLista(menuScenari);
         menuScenari.setVisibleItemCount(scenariStoria.size());

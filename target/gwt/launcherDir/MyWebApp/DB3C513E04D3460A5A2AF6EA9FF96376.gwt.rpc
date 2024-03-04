@@ -1,0 +1,18 @@
+@FinalFields, false
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109
+com.hala.mywebapp.GreetingService, false, false, false, false, _, 2670320395
+com.hala.mywebapp.Scenario, false, false, true, true, com.hala.mywebapp.Scenario/1122198369, 1122198369
+com.hala.mywebapp.ScenarioAScelta, false, false, true, true, com.hala.mywebapp.ScenarioAScelta/2177547446, 2177547446
+com.hala.mywebapp.ScenarioIndovinello, false, false, true, true, com.hala.mywebapp.ScenarioIndovinello/583431578, 583431578
+com.hala.mywebapp.ScenarioOggetto, false, false, true, true, com.hala.mywebapp.ScenarioOggetto/654012284, 654012284
+com.hala.mywebapp.Storia, false, false, true, true, com.hala.mywebapp.Storia/702985664, 702985664
+com.hala.mywebapp.TipologiaScenario, false, false, true, true, com.hala.mywebapp.TipologiaScenario/2742218769, 2742218769
+com.hala.mywebapp.Utente, true, true, true, true, com.hala.mywebapp.Utente/3312155184, 3312155184
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.util.HashMap, false, false, true, true, java.util.HashMap/1797211028, 1797211028
+java.util.LinkedHashMap, false, false, true, true, java.util.LinkedHashMap/3008245022, 3008245022
