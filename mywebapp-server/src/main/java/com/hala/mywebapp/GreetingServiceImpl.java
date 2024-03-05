@@ -126,13 +126,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             openDB();
         }
-        // String nomeStoria = scenario.getNomeStoria();
-        //numeroScenari2 = contaScenari();
-        //scenario.setValId(numeroScenari2);
         scenariNelSito.put(id, scenario);
-        System.out.println("Ho creato lo scenario a scelta con id" + id);
         db.commit();
-        convertToJsonScenari(); //Da togliere
         return true;
     }
 
@@ -140,58 +135,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             openDB();
         }
-        // String nomeStoria = scenario.getNomeStoria();
-        //numeroScenari2 = contaScenari();
-        //scenario.setValId(numeroScenari2);
         scenariNelSito.put(id, scenario);
-        System.out.println("Ho creato lo scenario indovinello con id" + id);
-        System.out.println("Ho creato lo scenario indovinello con testo" + scenario.getTestoScena());
         db.commit();
-        convertToJsonScenari(); //Da togliere
         return true;
-    }
-
-    // Per convertire in json gli scenari: va completato con quelli mancanti
-    private void convertToJsonScenari() {
-        if (db == null || db.isClosed()) {
-            openDB();
-        }
-
-        try (PrintWriter pW = new PrintWriter(new FileWriter("scenariNelSito.json"))) {
-            pW.println("{");
-
-            boolean firstEntry = true;
-            for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-                String tipologiaTemp = entry.getValue().getTipologia().toString();
-                if (!firstEntry) {
-                    pW.println(",");
-                }
-                pW.println("  \"" + entry.getKey() + "\": {");
-                pW.println("    \"Nome Storia di appartenenza\": \"" + entry.getValue().getNomeStoria() + "\",");
-                pW.println("    \"Testo Scenario\": \"" + entry.getValue().getTestoScena() + "\",");
-
-                if (tipologiaTemp.equalsIgnoreCase("ASCELTA")) {
-                    ScenarioAScelta scenarioTemp = (ScenarioAScelta) entry.getValue();
-                    pW.println("    \"Domanda scelta\": \"" + scenarioTemp.getDomandaCambioScenario() + "\",");
-                    pW.println("    \"Opzioni scelta\": \"" + scenarioTemp.getOpzioniScelta() + "\"");
-                }
-
-                if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
-                    ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry.getValue();
-                    pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
-                    pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\"");
-                }
-
-                pW.println("  }");
-
-                firstEntry = false;
-            }
-
-            pW.println("}");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void convertToJsonStorie() {
@@ -269,15 +215,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (entry.getValue().getValId().equalsIgnoreCase(scenario.getValId())) {
-                //entry.getKey(); // ID scenario
-                System.out.println("Ho trovato lo scenario da settare come iniziale");
                 String k = entry.getKey();
                 Scenario x = entry.getValue();
                 String id = "-1";
-                x.addPrecedente(id); //Controllare !!!
+                x.addPrecedente(id); 
                 scenariNelSito.put(k,x);
-                System.out.println("Ho settato il precedente a -1"); 
-                System.out.println("Che ha quindi:" + scenariNelSito.get(k).getPrecedente()); 
                 return true;
             }
 
@@ -296,30 +238,23 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             x.addSuccessivo(keyDaCollegare); 
             scenariNelSito.put(keyAttuale, x);
             
-            System.out.println("attuale.getSuccessivo() " + scenariNelSito.get(keyAttuale).getSuccessivo());
-            
             Scenario y = scenariNelSito.get(keyDaCollegare);
             y.addPrecedente(keyAttuale);
             scenariNelSito.put(keyDaCollegare, y);
             
-            System.out.println("daCollegare.getPrecedente() " + scenariNelSito.get(keyDaCollegare).getPrecedente());
             return true;
         } else {
-            // Gestione caso non trovato
             System.err.println("Errore: Chiave non trovata per uno degli scenari.");
             return false;
         }
     }
     
     private String trovaChiavePerScenario(Scenario scenario) {
-        System.out.println("Sto cercando la chiave");
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (scenario.getValId().equalsIgnoreCase(entry.getValue().getValId())) {
-                System.out.println("Chiave trovata");
                 return entry.getKey();
             }
         }
-        System.out.println("Chiave non trovata");
         return "-1"; // Chiave non trovata
     }
 
@@ -381,24 +316,18 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
    
     public String prossimoId(){
-        numeroScenari2 = contaScenari();
-        System.out.println("Il prossimo id è " + numeroScenari2);
-        
+        numeroScenari2 = contaScenari();        
         return numeroScenari2;
     }
 
     @Override
     public ArrayList<Scenario> ottieniScenariStoria(String nomeStoria) {
-        System.out.println("Sono fuori1");
         ArrayList<Scenario> temp = new ArrayList<Scenario>();
-        System.out.println("Sono fuori2");
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
                 temp.add(entry.getValue());
-                System.out.println("Ho trovato" + entry.getValue().getTestoScena());
             }
         }
-        System.out.println("Sto uscendo");
         return temp;
     }
 

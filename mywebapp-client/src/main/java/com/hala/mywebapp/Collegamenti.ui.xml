@@ -3,36 +3,39 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-    
-    <g:HorizontalPanel spacing="100" ui:field="pagina">
-        
-    
 
-            <g:VerticalPanel spacing="30" ui:field="ScenariDaCollegare">
-                    <g:Label ui:field="MenuLateraleScenari">Menu Scenari:</g:Label>
-                    <g:ListBox ui:field="listaScenari"></g:ListBox>
-            </g:VerticalPanel>
-            
-            <g:VerticalPanel spacing="30" ui:field="ScenarioInizialePanel">
+
+    <g:HorizontalPanel spacing="0" ui:field="totale">
+        <g:VerticalPanel spacing="50" ui:field="pagina">
+        
+            <g:VerticalPanel spacing="10" ui:field="ScenarioInizialePanel">
                 <g:Label ui:field="LscenarioIniziale">Scegli lo scenario iniziale:</g:Label>
-                <g:ListBox ui:field="menuScenari"></g:ListBox>
+                <g:ListBox ui:field="listaScenari"></g:ListBox>
                 <g:Button ui:field="buttonSettaScenarioIniziale">Setta scenario iniziale</g:Button>
                 
             </g:VerticalPanel>
 
-        
-            <g:VerticalPanel spacing="30" ui:field="CollegamentiPanel">
+
+            <g:VerticalPanel spacing="10" ui:field="ScenariDaCollegare">
+                    <g:Label ui:field="SelezionaScenario1">Seleziona lo scenario che vuoi collegare:</g:Label>
+                    <g:ListBox ui:field="menuScenari"></g:ListBox>
+            </g:VerticalPanel>
+            
+            
+            <g:VerticalPanel spacing="10" ui:field="CollegamentiPanel">
                 
-                <g:Label>Collega il seguente scenario:</g:Label>
+                <g:Label>Seleziona lo scenario con cui vuoi effettuare il collegamento:</g:Label>
                 <g:Label ui:field="testoScenarioDaCollegare"/>
                 <g:ListBox ui:field="menuScenariCollegamenti"></g:ListBox>
                 <g:Button ui:field="settaSuccessivo">Setta come successivo</g:Button>
             </g:VerticalPanel>
 
         
-        <g:Label ui:field="message2"></g:Label>
-        <g:Label ui:field="messageLabel"></g:Label>
-        <g:Button ui:field="terminaButton">Termina</g:Button>
-        <g:Button ui:field="backButton">Back</g:Button>
-    </g:HorizontalPanel>
+            <g:Label ui:field="messageLabel"></g:Label>
+        
+        </g:VerticalPanel>
+
+            <g:Button ui:field="terminaButton">Termina</g:Button>
+            <g:Button ui:field="backButton">Back</g:Button>
+</g:HorizontalPanel>
 </ui:UiBinder>

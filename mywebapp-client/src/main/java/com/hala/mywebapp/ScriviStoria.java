@@ -3,18 +3,14 @@ package com.hala.mywebapp;
 import java.util.ArrayList;
 import java.util.Map;
 
-import org.checkerframework.checker.guieffect.qual.UI;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.hala.mywebapp.GreetingServiceAsync;
-import com.hala.mywebapp.GreetingService;
 
 public class ScriviStoria extends Composite implements IsWidget {
 
@@ -23,8 +19,6 @@ public class ScriviStoria extends Composite implements IsWidget {
     private ArrayList<String> opzioniSceltaTemp;
     private ArrayList<Scenario> scenariCreati;
     private String nomeStoriaTemp;
-    private int numeroScen = 0;
-    private Map<String, Scenario> scenariNelSito;
     private String idTemp = "";
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
@@ -97,9 +91,6 @@ public class ScriviStoria extends Composite implements IsWidget {
 
     @UiField
     Label message;
-
-    @UiField
-    Label message2;
 
     @UiField
     Label labelSceltaOggetto;
@@ -215,7 +206,6 @@ public class ScriviStoria extends Composite implements IsWidget {
                                 if (verifica) {
                                     message.setText("Scenario a scelta creato con successo");
                                     scenariCreati.add(scenario);
-                                    System.out.println(scenariCreati);
                                     // Resetto i field così da liberarli per la creazione di un nuovo scenario
                                     testoScenarioField.setText("");
                                     domandaFieldAScelta.setText("");
@@ -258,13 +248,10 @@ public class ScriviStoria extends Composite implements IsWidget {
                     @Override
                     public void onSuccess(String result) {
                         idTemp = result;
-                        message2.setText("ID dal client: " + idTemp);
                         ScenarioIndovinello scenario = new ScenarioIndovinello(nomeStoriaTemp);
 
                         scenario.setValId(idTemp);
-                        message2.setText("ID scenario: " + scenario.getValId());
                         scenario.setTestoScena(testoScenarioField.getText());
-                        message2.setText("Testo scena: " + scenario.getTestoScena());
 
                         scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
                         scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
@@ -280,7 +267,6 @@ public class ScriviStoria extends Composite implements IsWidget {
                             public void onSuccess(Boolean verifica) {
                                 if (verifica) {
                                     scenariCreati.add(scenario);
-                                    message2.setText("SCENARI SIZE: " + scenariCreati.size());
                                     message.setText("Scenario Indovinello creato con successo");
                                     testoScenarioField.setText("");
                                     domandaFieldIndovinello.setText("");
@@ -314,7 +300,6 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaCollegamenti.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                message2.setText("Size: " + scenariCreati.size());
                 RootPanel.get("startTable").clear();
                 //RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariCreati));
                 RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));

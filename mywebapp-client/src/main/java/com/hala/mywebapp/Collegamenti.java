@@ -2,19 +2,14 @@ package com.hala.mywebapp;
 
 import java.util.ArrayList;
 
-import org.checkerframework.checker.guieffect.qual.UI;
 
-import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.cellview.client.CellList;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import java.util.Map;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 
 public class Collegamenti extends Composite implements IsWidget {
 
@@ -34,9 +29,6 @@ public class Collegamenti extends Composite implements IsWidget {
     Button buttonSettaScenarioIniziale;
 
     @UiField
-    Button backButton;
-
-    @UiField
     Label messageLabel;
 
     @UiField
@@ -49,10 +41,7 @@ public class Collegamenti extends Composite implements IsWidget {
     Label LscenarioIniziale;
 
     @UiField
-    Label MenuLateraleScenari;
-
-    @UiField
-    HorizontalPanel pagina;
+    Label SelezionaScenario1;
 
     @UiField
     VerticalPanel CollegamentiPanel;
@@ -62,23 +51,29 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Button settaSuccessivo;
-
-    @UiField
-    Button terminaButton;
     
-
     @UiField
     ListBox menuScenariCollegamenti;
 
     @UiField
-    Label message2;
+    VerticalPanel ScenariDaCollegare;
+
+    @UiField
+    VerticalPanel pagina;
+
+    @UiField
+    Button terminaButton;
+
+    @UiField
+    Button backButton;
+
+
 
     public Collegamenti(String nomeStoria) {
 
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
         
-        message2.setText("NOME: " + nome);
         hALAServiceAsync.ottieniScenariStoria(nome, new AsyncCallback<ArrayList<Scenario>>() {
             
 
@@ -94,7 +89,6 @@ public class Collegamenti extends Composite implements IsWidget {
                     setScenaIniziale();
                 }
                 else{
-                    message2.setText("STAMPA: " + "null");
                     //GEstire TODO
                 }
             }
@@ -108,7 +102,6 @@ public class Collegamenti extends Composite implements IsWidget {
                 int index = listaScenari.getSelectedIndex();
                 if (index != -1) { // controllo che sia stato selezionato uno scenario
                     attuale = scenariStoria.get(index);
-                    message2.setText("Lo scenario attuale è in pos: " + index + " e ha testo: " + attuale.getTestoScena());
                     hALAServiceAsync.settaScenarioIniziale(attuale, new AsyncCallback<Boolean>() {
                         @Override
                         public void onFailure(Throwable caught) {
@@ -118,8 +111,7 @@ public class Collegamenti extends Composite implements IsWidget {
                         public void onSuccess(Boolean result) {
                             if (result) {
                                 messageLabel.setText("Scenario iniziale impostato con successo");
-                                attuale.addPrecedente("-1");
-                                message2.setText("Scenario iniziale: " + attuale.getPrecedente());
+                                //attuale.addPrecedente("-1");
                                 facciataSecondaria();
                             } else {
                                 messageLabel.setText("Impossibile impostare lo scenario iniziale");
@@ -138,16 +130,12 @@ public class Collegamenti extends Composite implements IsWidget {
                 int indexAttuale = listaScenari.getSelectedIndex();
                 int indexCollegamento = menuScenariCollegamenti.getSelectedIndex();
                 if (indexAttuale != -1 && indexCollegamento != -1) { // controllo che sia stato selezionato uno scenario
-                    // Scenario attuale = scenariStoria.get(indice); //!!
                     attuale = scenariStoria.get(indexAttuale);
-                    message2.setText("Lo scenario attuale è in pos: " + indexAttuale + " e ha testo: " + attuale.getTestoScena());
                     Scenario scenarioDaCollegare = scenariStoria.get(indexCollegamento);
-                    message2.setText("Lo scenario da collegare è in pos: " + indexCollegamento + " e ha testo: " + scenarioDaCollegare.getTestoScena());
                     hALAServiceAsync.settaCollegamentoSuccessivo(attuale, scenarioDaCollegare,
                             new AsyncCallback<Boolean>() {
                                 @Override
                                 public void onFailure(Throwable caught) {
-                                    messageLabel.setText("C'è stato un errore");
                                 }
 
                                 @Override
@@ -203,41 +191,40 @@ public class Collegamenti extends Composite implements IsWidget {
     }
 
     private void facciataIniziale() {
+        pagina.remove(messageLabel);
         pagina.remove(CollegamentiPanel);
-        message2.setText("Sto per riempire");
-        riempiLista(listaScenari);
-        listaScenari.setVisibleItemCount(scenariStoria.size());
-        menuScenari.setVisible(false);
-        // menuScenari.setVisibleItemCount(scenariStoria.size());
-        // pagina.remove(ScenarioSucc);
         pagina.remove(terminaButton);
+        pagina.remove(ScenariDaCollegare);
+        pagina.remove(terminaButton);
+        riempiLista(listaScenari);
+        pagina.add(messageLabel);
+        //listaScenari.setVisibleItemCount(scenariStoria.size());
+        //menuScenari.setVisible(false);
+        
     }
 
     private void facciataSecondaria() {
+        pagina.remove(messageLabel);
         pagina.remove(ScenarioInizialePanel);
-        pagina.remove(LscenarioIniziale);
-        // pagina.remove(ScenarioSucc);
+        pagina.add(ScenariDaCollegare);
+        //pagina.remove(LscenarioIniziale);
         riempiLista(menuScenari);
-        menuScenari.setVisibleItemCount(scenariStoria.size());
+        //menuScenari.setVisibleItemCount(scenariStoria.size());
         pagina.remove(backButton);
         pagina.add(CollegamentiPanel);
-        // testoScenarioDaCollegare.setText(attuale.getTestoScena());
-        // pagina.add(ScenarioSucc);
-        pagina.add(backButton);
-        // testoScenarioDaCollegare.setText(scenariStoria.get(indice).getTestoScena());
         riempiLista(menuScenariCollegamenti);
-        // indice++;
+        pagina.add(messageLabel);
         pagina.add(terminaButton);
-
+        pagina.add(backButton);
+        
+        
     }
 
     private void riempiLista(ListBox lb) {
         for (Scenario temp : scenariStoria) {
-            // if (!temp.getTestoScena().equalsIgnoreCase(attuale.getTestoScena()))
             lb.addItem(temp.getTestoScena());
         }
-        message2.setText("Ho riempito la lista con: " + scenariStoria.size() + "val1:" + scenariStoria.get(1).testoScena);
-        lb.setSize("200px", "200px");
+        lb.setSize("200px", "50px");
     }
 
 }
