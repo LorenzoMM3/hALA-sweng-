@@ -20,6 +20,7 @@ public class Storia implements StoriaI, Serializable{
         this.nome = nome;
         this.creatore = utente;
         this.iniziata = false;
+        scenarioIniziale = new Scenario(); //!!
     }
 
     public String getNome(){
