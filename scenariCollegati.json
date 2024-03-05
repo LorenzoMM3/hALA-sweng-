@@ -1,0 +1,55 @@
+{
+  "2": {
+    "Nome Storia di appartenenza": "STORIAAA",
+    "Testo Scenario": "testoo",
+    "Domanda scelta": "domandaa",
+    "Opzioni scelta": "{opziooo=, opzioneee=}",
+    "Scenari precedenti": "[]",
+    "Scenari successivi": "[]"
+}
+,
+  "4": {
+    "Nome Storia di appartenenza": "UN GIORNO",
+    "Testo Scenario": "ciao",
+    "Domanda scelta": "come va?",
+    "Opzioni scelta": "{bene=sorriso, male=}",
+    "Scenari precedenti": "[]",
+    "Scenari successivi": "[]"
+}
+,
+  "9": {
+    "Nome Storia di appartenenza": "UN GIORNO",
+    "Testo Scenario": "bla bla",
+    "Domanda scelta": "la smetti?",
+    "Opzioni scelta": "{no=}",
+    "Scenari precedenti": "[]",
+    "Scenari successivi": "[]"
+}
+,
+  "5": {
+    "Nome Storia di appartenenza": "STORIAAA",
+    "Testo Scenario": "we",
+    "Domanda Indovinello": "wee",
+    "Risposta Indovinello": "weee",
+    "Scenari precedenti": "[]",
+    "Scenari successivi": "[]"
+}
+,
+  "1": {
+    "Nome Storia di appartenenza": "STORIA",
+    "Testo Scenario": "shoif",
+    "Domanda Indovinello": "wejbd",
+    "Risposta Indovinello": "kwjdnf",
+    "Scenari precedenti": "[]",
+    "Scenari successivi": "[]"
+}
+,
+  "0": {
+    "Nome Storia di appartenenza": "STORIA",
+    "Testo Scenario": "txt",
+    "Domanda scelta": "dmnd",
+    "Opzioni scelta": "{pzn=, aah=}",
+    "Scenari precedenti": "[]",
+    "Scenari successivi": "[]"
+}
+}

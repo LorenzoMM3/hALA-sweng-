@@ -171,6 +171,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
             @Override
             public void onClick(ClickEvent event) {
+
                 String oggettoTemp = oggetto.getText(); // Uguale a "" se non serve
                 opzioniSceltaTemp.add(scelta.getText() + ";" + oggettoTemp);
                 oggetto.setText("");

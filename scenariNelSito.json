@@ -1,0 +1,29 @@
+{
+  "2": {
+    "Nome Storia di appartenenza": "STORIAAA",
+    "Testo Scenario": "testoo",
+    "Domanda scelta": "domandaa",
+    "Opzioni scelta": "{opziooo=, opzioneee=}"
+  }
+,
+  "5": {
+    "Nome Storia di appartenenza": "STORIAAA",
+    "Testo Scenario": "we",
+    "Domanda Indovinello": "wee",
+    "Risposta Indovinello": "weee"
+  }
+,
+  "1": {
+    "Nome Storia di appartenenza": "STORIA",
+    "Testo Scenario": "shoif",
+    "Domanda Indovinello": "wejbd",
+    "Risposta Indovinello": "kwjdnf"
+  }
+,
+  "0": {
+    "Nome Storia di appartenenza": "STORIA",
+    "Testo Scenario": "txt",
+    "Domanda scelta": "dmnd",
+    "Opzioni scelta": "{pzn=, aah=}"
+  }
+}

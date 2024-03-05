@@ -24,7 +24,6 @@ public class ScenarioAScelta extends Scenario implements Serializable {
             String[] temp = op.split(";");
             if (temp[1] != null) {
                 this.opzioniScelta.put(temp[0], temp[1]);
-
             } else {
                 this.opzioniScelta.put(temp[0], "");
             }

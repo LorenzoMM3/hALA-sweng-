@@ -276,7 +276,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
         String keyAttuale = trovaChiavePerScenario(attuale);
         String keyDaCollegare = trovaChiavePerScenario(daCollegare);
-    
+
         if (!keyAttuale.equals("-1") && !keyDaCollegare.equals("-1")) {
             scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare);
             scenariNelSito.get(keyDaCollegare).addPrecedente(keyAttuale);
@@ -287,7 +287,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             return false;
         }
     }
-    
+
     private String trovaChiavePerScenario(Scenario scenario) {
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (scenario.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
