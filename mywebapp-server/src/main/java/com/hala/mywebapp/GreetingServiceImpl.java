@@ -268,7 +268,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             System.out.println("SOno qui");
             System.out.println("Scenario attuale:" + scenariNelSito.get(keyAttuale).getTestoScena());
             System.out.println("Scenario successivo:" + scenariNelSito.get(keyDaCollegare).getTestoScena());
-            scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare);
+            scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare); //!! Il problema è qui
             
             System.out.println("attuale.getSuccessivo() " + scenariNelSito.get(keyAttuale).getSuccessivo());
             scenariNelSito.get(keyDaCollegare).addPrecedente(keyAttuale);
