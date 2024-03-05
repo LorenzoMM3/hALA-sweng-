@@ -30,8 +30,12 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
     }
 
+    
     private void openDB() {
-        
+        if (db != null && !db.isClosed()){
+            db.close();
+        }
+
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
@@ -397,4 +401,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         System.out.println("Sto uscendo");
         return temp;
     }
+
+    private void closeDatabase() {
+        if (db != null && !db.isClosed()) {
+            db.close();
+        }
+    }
+    
+    @Override
+    public void destroy() {
+        closeDatabase();
+        super.destroy();
+    }
+
 }
