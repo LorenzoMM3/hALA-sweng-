@@ -44,6 +44,7 @@
 
 
             <g:Label ui:field="message"></g:Label>
+            <g:Label ui:field="message2"></g:Label>
         </g:VerticalPanel>
         
         

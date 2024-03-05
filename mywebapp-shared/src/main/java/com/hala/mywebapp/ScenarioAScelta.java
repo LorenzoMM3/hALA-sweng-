@@ -14,9 +14,9 @@ public class ScenarioAScelta extends Scenario implements Serializable {
         super();
     }
 
-    public ScenarioAScelta(String id,String nome) {
-        super(id, nome);
-        valId = id;
+    public ScenarioAScelta(String nome) {
+        super(nome);
+        //valId = id;
         opzioniScelta = new HashMap<>();
         this.tipologiaScenario = TipologiaScenario.ASCELTA;
     }

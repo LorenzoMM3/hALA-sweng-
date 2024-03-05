@@ -30,6 +30,7 @@
             </g:VerticalPanel>
 
         
+        <g:Label ui:field="message2"></g:Label>
         <g:Label ui:field="messageLabel"></g:Label>
         <g:Button ui:field="terminaButton">Termina</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>

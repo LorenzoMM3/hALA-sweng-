@@ -1,5 +1,6 @@
 package com.hala.mywebapp;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -33,5 +34,7 @@ public interface GreetingServiceAsync {
 	public void salvaSuFileScenari(String nomeStoria, AsyncCallback<Boolean> callback);
 
 	public void prossimoId(AsyncCallback<String> callback);
+
+	public void ottieniScenariStoria(String nomeStoria, AsyncCallback<ArrayList<Scenario>> callback);
 
 }

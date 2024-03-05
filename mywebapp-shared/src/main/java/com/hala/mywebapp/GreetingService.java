@@ -1,5 +1,7 @@
 package com.hala.mywebapp;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -36,4 +38,6 @@ public interface GreetingService extends RemoteService {
 	public boolean salvaSuFileScenari(String nomeStoria);
 
 	public String prossimoId();
+
+	public ArrayList<Scenario> ottieniScenariStoria(String nomeStoria);
 }

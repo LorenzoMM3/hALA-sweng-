@@ -20,7 +20,7 @@ public class Scenario implements ScenarioI, Serializable {
         precedente = new ArrayList<>();
         successivo = new ArrayList<>();
     }
-
+    /* 
     public Scenario(String id, String nomeStoria) {
         valId = id;
         this.nomeStoria = nomeStoria;
@@ -31,7 +31,17 @@ public class Scenario implements ScenarioI, Serializable {
         successivo = new ArrayList<>();
     }
 
-    
+    */
+    public Scenario(String nomeStoria) {
+        valId = "";
+        this.nomeStoria = nomeStoria;
+        domandaCambioScenario = "";
+        testoScena = "";
+        tipologiaScenario = null;
+        precedente = new ArrayList<>();
+        successivo = new ArrayList<>();
+    }
+
     public void setValId(String id) {
         this.valId = id;
     }
@@ -56,12 +66,12 @@ public class Scenario implements ScenarioI, Serializable {
         return this.successivo;
     }
 
-    public void addPrecedente(String precedente) {
-        this.precedente.add(precedente);
+    public void addPrecedente(String id) {
+        this.precedente.add(id);
     }
 
-    public void addSuccessivo(String successivo) {
-        this.successivo.add(successivo);
+    public void addSuccessivo(String id) {
+        this.successivo.add(id);
     }
 
     public void setDomandaCambioScenario(String domanda) {

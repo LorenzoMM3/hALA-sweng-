@@ -70,12 +70,37 @@ public class Collegamenti extends Composite implements IsWidget {
     @UiField
     ListBox menuScenariCollegamenti;
 
+    @UiField
+    Label message2;
 
-    public Collegamenti(String nomeStoria, ArrayList<Scenario> scenari) {
+    public Collegamenti(String nomeStoria) {
 
         initWidget(uiBinder.createAndBindUi(this));
-        scenariStoria = scenari;
-        setScenaIniziale();
+        String nome = nomeStoria;
+        
+        message2.setText("NOME: " + nome);
+        hALAServiceAsync.ottieniScenariStoria(nome, new AsyncCallback<ArrayList<Scenario>>() {
+            
+
+            @Override
+            public void onFailure(Throwable caught) {
+                System.err.println("Errore");
+            }
+
+            @Override
+            public void onSuccess(ArrayList<Scenario> result) {
+                if (result != null) {
+                    scenariStoria = result;
+                    setScenaIniziale();
+                }
+                else{
+                    message2.setText("STAMPA: " + "null");
+                    //GEstire TODO
+                }
+            }
+        });
+
+        
 
         buttonSettaScenarioIniziale.addClickHandler(new ClickHandler() {
             @Override
@@ -83,6 +108,7 @@ public class Collegamenti extends Composite implements IsWidget {
                 int index = listaScenari.getSelectedIndex();
                 if (index != -1) { // controllo che sia stato selezionato uno scenario
                     attuale = scenariStoria.get(index);
+                    message2.setText("Lo scenario attuale è in pos: " + index + " e ha testo: " + attuale.getTestoScena());
                     hALAServiceAsync.settaScenarioIniziale(attuale, new AsyncCallback<Boolean>() {
                         @Override
                         public void onFailure(Throwable caught) {
@@ -92,6 +118,8 @@ public class Collegamenti extends Composite implements IsWidget {
                         public void onSuccess(Boolean result) {
                             if (result) {
                                 messageLabel.setText("Scenario iniziale impostato con successo");
+                                attuale.addPrecedente("-1");
+                                message2.setText("Scenario iniziale: " + attuale.getPrecedente());
                                 facciataSecondaria();
                             } else {
                                 messageLabel.setText("Impossibile impostare lo scenario iniziale");
@@ -112,7 +140,9 @@ public class Collegamenti extends Composite implements IsWidget {
                 if (indexAttuale != -1 && indexCollegamento != -1) { // controllo che sia stato selezionato uno scenario
                     // Scenario attuale = scenariStoria.get(indice); //!!
                     attuale = scenariStoria.get(indexAttuale);
+                    message2.setText("Lo scenario attuale è in pos: " + indexAttuale + " e ha testo: " + attuale.getTestoScena());
                     Scenario scenarioDaCollegare = scenariStoria.get(indexCollegamento);
+                    message2.setText("Lo scenario da collegare è in pos: " + indexCollegamento + " e ha testo: " + scenarioDaCollegare.getTestoScena());
                     hALAServiceAsync.settaCollegamentoSuccessivo(attuale, scenarioDaCollegare,
                             new AsyncCallback<Boolean>() {
                                 @Override
@@ -174,6 +204,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
     private void facciataIniziale() {
         pagina.remove(CollegamentiPanel);
+        message2.setText("Sto per riempire");
         riempiLista(listaScenari);
         listaScenari.setVisibleItemCount(scenariStoria.size());
         menuScenari.setVisible(false);
@@ -205,7 +236,7 @@ public class Collegamenti extends Composite implements IsWidget {
             // if (!temp.getTestoScena().equalsIgnoreCase(attuale.getTestoScena()))
             lb.addItem(temp.getTestoScena());
         }
-
+        message2.setText("Ho riempito la lista con: " + scenariStoria.size() + "val1:" + scenariStoria.get(1).testoScena);
         lb.setSize("200px", "200px");
     }
 

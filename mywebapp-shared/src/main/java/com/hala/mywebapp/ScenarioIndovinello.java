@@ -13,9 +13,9 @@ public class ScenarioIndovinello extends Scenario implements Serializable {
         super();
     }
 
-    public ScenarioIndovinello(String id, String nome) {
-        super(id, nome);
-        valId = id;
+    public ScenarioIndovinello(String nome) {
+        super(nome);
+        //valId = id;
         rispostaIndovinello = "";
         tipologiaScenario = TipologiaScenario.INDOVINELLO;
     }
