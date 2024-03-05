@@ -20,9 +20,9 @@ public interface GreetingServiceAsync {
 
 	public void ottieniUtenteAttuale(AsyncCallback<Utente> callback);
 
-	public void aggiungiScenarioAScelta(Scenario scenario, AsyncCallback<Boolean> callback);
+	public void aggiungiScenarioAScelta(String id, Scenario scenario, AsyncCallback<Boolean> callback);
 
-	public void aggiungiScenarioIndovinello(Scenario scenario, AsyncCallback<Boolean> callback);
+	public void aggiungiScenarioIndovinello(String id, Scenario scenario, AsyncCallback<Boolean> callback);
 
 	public void settaScenarioIniziale(Scenario scenario, AsyncCallback<Boolean> callback);
 	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
@@ -31,5 +31,7 @@ public interface GreetingServiceAsync {
 	public void settaCollegamentoSuccessivo(Scenario scenario, Scenario collegamento, AsyncCallback<Boolean> callback);
 
 	public void salvaSuFileScenari(String nomeStoria, AsyncCallback<Boolean> callback);
+
+	public void prossimoId(AsyncCallback<String> callback);
 
 }

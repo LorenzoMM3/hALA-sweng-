@@ -8,13 +8,15 @@ public class ScenarioAScelta extends Scenario implements Serializable {
 
     protected HashMap<String, String> opzioniScelta; // Oggetto, se non presente è null
     protected TipologiaScenario tipologiaScenario;
+    public String valId;
 
     public ScenarioAScelta() {
         super();
     }
 
-    public ScenarioAScelta(String nome) {
-        super(nome);
+    public ScenarioAScelta(String id,String nome) {
+        super(id, nome);
+        valId = id;
         opzioniScelta = new HashMap<>();
         this.tipologiaScenario = TipologiaScenario.ASCELTA;
     }
@@ -30,6 +32,14 @@ public class ScenarioAScelta extends Scenario implements Serializable {
         }
     }
 
+    public void setValId(String id) {
+        this.valId = id;
+    }
+     
+    public String getValId() {
+        return this.valId;
+    }
+    
     public HashMap<String, String> getOpzioniScelta() {
         return opzioniScelta;
     }

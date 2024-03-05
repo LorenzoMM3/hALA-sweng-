@@ -25,7 +25,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     private String nomeStoriaTemp;
     private int numeroScen = 0;
     private Map<String, Scenario> scenariNelSito;
-
+    private String idTemp = "";
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
 
@@ -112,7 +112,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         hideAdditionalFields();
         disabilitaTutto();
         scenariCreati = new ArrayList<>();
-
+        
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -183,14 +183,29 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
+                //Chiedo al server l'id per la creazione
+                idTemp = "";
+                hALAServiceAsync.prossimoId(new AsyncCallback<String>() {
+                    @Override
+                    public void onFailure(Throwable caught) {
+                    }
+
+                    @Override
+                    public void onSuccess(String result) {
+                        idTemp = result;
+                    }
+                
+                });
+
+                ScenarioAScelta scenario = new ScenarioAScelta(idTemp, nomeStoriaTemp);
+                scenario.setValId(idTemp);
                 scenario.setTestoScena(testoScenarioField.getText());
                 scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
                 scenario.setOpzioniScelte(opzioniSceltaTemp);
 
                 message.setText("");
                 vpScenario.add(message);
-                hALAServiceAsync.aggiungiScenarioAScelta(scenario, new AsyncCallback<Boolean>() {
+                hALAServiceAsync.aggiungiScenarioAScelta(idTemp, scenario, new AsyncCallback<Boolean>() {
                     @Override
                     public void onFailure(Throwable caught) {
                     }
@@ -218,8 +233,22 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioIndovinello.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                ScenarioIndovinello scenario = new ScenarioIndovinello(nomeStoriaTemp);
+                idTemp = "";
+                hALAServiceAsync.prossimoId(new AsyncCallback<String>() { //!!!
+                    @Override
+                    public void onFailure(Throwable caught) {
+                    }
 
+                    @Override
+                    public void onSuccess(String result) {
+                        idTemp = result;
+                    }
+                
+                });
+
+                ScenarioIndovinello scenario = new ScenarioIndovinello(idTemp, nomeStoriaTemp);
+
+                scenario.setValId(idTemp);
                 scenario.setTestoScena(testoScenarioField.getText());
 
                 scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
@@ -228,7 +257,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 message.setText("");
                 vpScenario.add(message);
 
-                hALAServiceAsync.aggiungiScenarioIndovinello(scenario, new AsyncCallback<Boolean>() {
+                hALAServiceAsync.aggiungiScenarioIndovinello(idTemp, scenario, new AsyncCallback<Boolean>() {
                     @Override
                     public void onFailure(Throwable caught) {
                     }

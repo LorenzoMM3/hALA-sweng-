@@ -20,7 +20,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private Map<String, Scenario> scenariNelSito;
     private Map<String, Scenario> scenariPresenti; // Vorrei sostituire scenariNelSito ma ne creo due per assicurarmi
                                                    // che funzioni
-    private int numeroScenari = 0;
+    private int numeroScenari;;
     private String numeroScenari2;
 
     public Utente utenteAttuale;
@@ -31,12 +31,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     private void openDB() {
+        numeroScenari = 0;
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
             scenariPresenti = (Map<String, Scenario>) db.hashMap("scenariPresenti").createOrOpen();
+            if (db == null){
+                numeroScenari = 0;
+            }
+            
         }
     }
 
@@ -106,29 +111,25 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true; // Si può registrare
     }
 
-    /*
-     * Per creare il metodo ricorda che è necessario aggiungerlo al
-     * "GreetingService" e al "GreetingServiceAsync"
-     */
-    public boolean aggiungiScenarioAScelta(Scenario scenario) {
+    public boolean aggiungiScenarioAScelta(String id, Scenario scenario) {
         openDB();
         // String nomeStoria = scenario.getNomeStoria();
         numeroScenari2 = contaScenari();
-        // scenario.setId(numeroScenari2);
-        scenariNelSito.put(numeroScenari2, scenario);
+        //scenario.setValId(numeroScenari2);
+        scenariNelSito.put(id, scenario);
         db.commit();
-        // convertToJsonScenari();
+        convertToJsonScenari(); //Da togliere
         return true;
     }
 
-    public boolean aggiungiScenarioIndovinello(Scenario scenario) {
+    public boolean aggiungiScenarioIndovinello(String id, Scenario scenario) {
         openDB();
         // String nomeStoria = scenario.getNomeStoria();
         numeroScenari2 = contaScenari();
-        // scenario.setId(numeroScenari2);
-        scenariNelSito.put(numeroScenari2, scenario);
+        //scenario.setValId(numeroScenari2);
+        scenariNelSito.put(id, scenario);
         db.commit();
-        convertToJsonScenari();
+        convertToJsonScenari(); //Da togliere
         return true;
     }
 
@@ -229,9 +230,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     public String contaScenari() {
         openDB();
-        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-            numeroScenari++;
-        }
+        numeroScenari = scenariNelSito.size() - 1;
         String numSc2 = Integer.toString(numeroScenari);
         return numSc2;
     }
@@ -240,7 +239,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         // openDB();
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (scenario.getNomeStoria().equals(entry.getValue().getNomeStoria())) {
-                entry.getKey(); // ID scenario
+                //entry.getKey(); // ID scenario
                 entry.getValue().addPrecedente("-1");
                 return true;
             }
@@ -249,37 +248,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
     }
 
-    /*
-     * public void settaCollegamentoPrecedente(Scenario attuale, Scenario
-     * daCollegare){
-     * String keyAttuale = "-1";
-     * String keyDaCollegare = "-1";
-     * for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-     * if(attuale.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())
-     * ){
-     * keyAttuale = entry.getKey(); //ID scenario attuale
-     * 
-     * }
-     * 
-     * if(daCollegare.getTestoScena().equalsIgnoreCase(entry.getValue().
-     * getTestoScena())){
-     * keyDaCollegare = entry.getKey(); //ID scenario da Collegare
-     * 
-     * }
-     * }
-     * scenariNelSito.get(keyAttuale).addPrecedente(Integer.parseInt(keyDaCollegare)
-     * );
-     * scenariNelSito.get(keyDaCollegare).addSuccessivo(Integer.parseInt(keyAttuale)
-     * );
-     * }
-     */
     public boolean settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
-        String keyAttuale = trovaChiavePerScenario(attuale);
-        String keyDaCollegare = trovaChiavePerScenario(daCollegare);
+        String keyAttuale = attuale.getValId();
+        String keyDaCollegare = daCollegare.getValId();
 
         if (!keyAttuale.equals("-1") && !keyDaCollegare.equals("-1")) {
+            System.out.println("SOno qui");
             scenariNelSito.get(keyAttuale).addSuccessivo(keyDaCollegare);
             scenariNelSito.get(keyDaCollegare).addPrecedente(keyAttuale);
+            System.out.println("SOno qui 2");
             return true;
         } else {
             // Gestione caso non trovato
@@ -287,7 +264,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             return false;
         }
     }
-
+    /* 
     private String trovaChiavePerScenario(Scenario scenario) {
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (scenario.getTestoScena().equalsIgnoreCase(entry.getValue().getTestoScena())) {
@@ -296,7 +273,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
         return "-1"; // Chiave non trovata
     }
-
+    */
     public boolean salvaSuFileScenari(String nomeStoria) {
         ArrayList<Scenario> temp = new ArrayList<Scenario>();
         boolean trovato = false;
@@ -318,7 +295,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                         pW.println(",");
                     }
                     pW.println("  \"" + entry2.getKey() + "\": {");
-                    // pW.println(" \"Id\": \"" + entry2.getValue().getId() + "\",");
+                    pW.println(" \"Id\": \"" + entry2.getValue().getValId() + "\",");
                     pW.println("    \"Nome Storia di appartenenza\": \"" + entry2.getValue().getNomeStoria() + "\",");
                     pW.println("    \"Testo Scenario\": \"" + entry2.getValue().getTestoScena() + "\",");
 
@@ -352,4 +329,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     }
 
+    public String prossimoId(){
+        return numeroScenari2;
+    }
 }

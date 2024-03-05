@@ -8,7 +8,7 @@ public class Scenario implements ScenarioI, Serializable {
     protected String testoScena;
     protected String nomeStoria;
     protected TipologiaScenario tipologiaScenario;
-    // protected String id;
+    public String valId;
     protected ArrayList<String> precedente;
     protected ArrayList<String> successivo;
 
@@ -16,13 +16,13 @@ public class Scenario implements ScenarioI, Serializable {
         domandaCambioScenario = "";
         testoScena = "";
         nomeStoria = "";
-        // id = "-1";
+        valId = "-1";
         precedente = new ArrayList<>();
         successivo = new ArrayList<>();
     }
 
-    public Scenario(String nomeStoria) {
-        // id = "-1";
+    public Scenario(String id, String nomeStoria) {
+        valId = id;
         this.nomeStoria = nomeStoria;
         domandaCambioScenario = "";
         testoScena = "";
@@ -31,15 +31,15 @@ public class Scenario implements ScenarioI, Serializable {
         successivo = new ArrayList<>();
     }
 
-    /*
-     * public void setId(String id) {
-     * this.id = id;
-     * }
-     * 
-     * public String getId() {
-     * return this.id;
-     * }
-     */
+    
+    public void setValId(String id) {
+        this.valId = id;
+    }
+     
+    public String getValId() {
+        return this.valId;
+    }
+     
     public void setPrecedente(ArrayList<String> precedente) {
         this.precedente = precedente;
     }
