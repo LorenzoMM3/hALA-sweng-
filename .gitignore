@@ -1,0 +1,7 @@
+.idea/
+file.db
+**/target
+**/.settings
+**/.classpath
+**/.project
+*.json
