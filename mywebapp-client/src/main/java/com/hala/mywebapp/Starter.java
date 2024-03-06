@@ -2,13 +2,10 @@ package com.hala.mywebapp;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.*;
 
 public class Starter extends Composite implements IsWidget {
@@ -22,36 +19,40 @@ public class Starter extends Composite implements IsWidget {
 
     @UiField
     Button signinButton;
-    
-    @UiField
-    Button logoutButton;
 
     @UiField
-    Button visualizzaStoriaButton;
+    Button visualizzaCatalogoButton;
 
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
-        //loginButton.getElement().getStyle().setColor("red");
+
+        signinButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new SignIn());
+            }
+        });
+
+        loginButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Login());
+            }
+        });
+
+        visualizzaCatalogoButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new VisualizzaCatalogo());
+            }
+        });
+
 
     }
 
-    @UiHandler("signinButton")
-    void onClickSignin(ClickEvent event) {
-        RootPanel.get("startTable").clear();
-        RootPanel.get("startTable").add(new SignIn());
-    }
-
-    @UiHandler("loginButton")
-    public void onClickLogin(ClickEvent event) {
-        RootPanel.get("startTable").clear();
-        RootPanel.get("startTable").add(new Login());
-    }
-
-    @UiHandler("logoutButton")
-    public void onClickLogout(ClickEvent event) {
-        RootPanel.get("startTable").clear();
-        RootPanel.get("startTable").add(new Logout());
-    }
 
 
     @Override

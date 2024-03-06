@@ -40,4 +40,6 @@ public interface GreetingService extends RemoteService {
 	public String prossimoId();
 
 	public ArrayList<Scenario> ottieniScenariStoria(String nomeStoria);
+
+	public ArrayList<Storia> ottieniStorie();
 }

@@ -8,8 +8,7 @@
         <div id="bottoni">
             <g:Button ui:field="signinButton" text="signIn"/>
             <g:Button ui:field="loginButton" text="logIn"/>
-            <g:Button ui:field="logoutButton" text="logout"/>
-            <g:Button ui:field="visualizzaStoriaButton" text="visualizza storia"/>
+            <g:Button ui:field="visualizzaCatalogoButton" text="Visualizza il catalogo delle storie"/>
         </div>
     </g:HTMLPanel>
 </ui:UiBinder>

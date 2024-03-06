@@ -339,6 +339,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
+    public ArrayList<Storia> ottieniStorie(){
+        ArrayList<Storia> temp = new ArrayList<Storia>();
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            temp.add(entry.getValue());
+        }
+        return temp;
+    }
+
+
     private void closeDatabase() {
         if (db != null && !db.isClosed()) {
             db.close();
