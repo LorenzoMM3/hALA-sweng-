@@ -3,7 +3,6 @@ package com.hala.mywebapp;
 import java.util.ArrayList;
 import java.util.Map;
 
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -20,6 +19,8 @@ public class ScriviStoria extends Composite implements IsWidget {
     private ArrayList<Scenario> scenariCreati;
     private String nomeStoriaTemp;
     private String idTemp = "";
+    Utente utenteAttuale;
+
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
 
@@ -98,7 +99,6 @@ public class ScriviStoria extends Composite implements IsWidget {
     @UiField
     TextBox oggetto;
 
-    
     @UiField
     Button creaCollegamenti;
 
@@ -107,7 +107,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         hideAdditionalFields();
         disabilitaTutto();
         scenariCreati = new ArrayList<>();
-        
+
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -119,7 +119,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     };
 
                     public void onSuccess(Utente utente) {
-                        final Utente utenteAttuale = utente;
+                        utenteAttuale = utente;
                         Storia nuovaStoria = new Storia(nomeStoriaTemp, utenteAttuale);
                         hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
                             public void onFailure(Throwable caught) {
@@ -178,7 +178,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                //Chiedo al server l'id per la creazione
+                // Chiedo al server l'id per la creazione
                 idTemp = "";
                 hALAServiceAsync.prossimoId(new AsyncCallback<String>() {
                     @Override
@@ -225,14 +225,10 @@ public class ScriviStoria extends Composite implements IsWidget {
                             }
                         });
 
-                        
                     }
-                        
+
                 });
 
-                
-
-                
             }
         });
 
@@ -240,7 +236,7 @@ public class ScriviStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 idTemp = "";
-                hALAServiceAsync.prossimoId(new AsyncCallback<String>() { //!!!
+                hALAServiceAsync.prossimoId(new AsyncCallback<String>() { // !!!
                     @Override
                     public void onFailure(Throwable caught) {
                     }
@@ -271,7 +267,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                     testoScenarioField.setText("");
                                     domandaFieldIndovinello.setText("");
                                     rispostaFieldIndovinello.setText("");
-                                    
+
                                 } else {
                                     message.setText("Errore nella creazione dello scenario indovinello");
                                     testoScenarioField.setText("");
@@ -281,11 +277,9 @@ public class ScriviStoria extends Composite implements IsWidget {
                             }
                         });
                     }
-                        
+
                 });
 
-                
-                
             }
         });
 
@@ -293,7 +287,7 @@ public class ScriviStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new HomePage());
+                RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
             }
         });
 
@@ -301,7 +295,8 @@ public class ScriviStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                //RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, scenariCreati));
+                // RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp,
+                // scenariCreati));
                 RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));
             }
         });

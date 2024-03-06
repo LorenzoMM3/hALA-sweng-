@@ -30,9 +30,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
     }
 
-    
     private void openDB() {
-        if (db != null && !db.isClosed()){
+        if (db != null && !db.isClosed()) {
             db.close();
         }
 
@@ -42,10 +41,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
             scenariPresenti = (Map<String, Scenario>) db.hashMap("scenariPresenti").createOrOpen();
-            if (db == null){
+            if (db == null) {
                 numeroScenari = 0;
             }
-            
+
         }
     }
 
@@ -54,7 +53,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             openDB();
         }
-        
+
         String username = utente.getUsername();
         String password = utente.getPassword();
         for (String user : utentiNelSito.keySet()) { // Si dovrebbe poter togliere il for
@@ -218,8 +217,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 String k = entry.getKey();
                 Scenario x = entry.getValue();
                 String id = "-1";
-                x.addPrecedente(id); 
-                scenariNelSito.put(k,x);
+                x.addPrecedente(id);
+                scenariNelSito.put(k, x);
                 return true;
             }
 
@@ -228,27 +227,27 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public boolean settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
-        
+
         String keyAttuale = trovaChiavePerScenario(attuale);
         String keyDaCollegare = trovaChiavePerScenario(daCollegare);
 
         if (!keyAttuale.equals("-1") || !keyDaCollegare.equals("-1")) {
 
             Scenario x = scenariNelSito.get(keyAttuale);
-            x.addSuccessivo(keyDaCollegare); 
+            x.addSuccessivo(keyDaCollegare);
             scenariNelSito.put(keyAttuale, x);
-            
+
             Scenario y = scenariNelSito.get(keyDaCollegare);
             y.addPrecedente(keyAttuale);
             scenariNelSito.put(keyDaCollegare, y);
-            
+
             return true;
         } else {
             System.err.println("Errore: Chiave non trovata per uno degli scenari.");
             return false;
         }
     }
-    
+
     private String trovaChiavePerScenario(Scenario scenario) {
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (scenario.getValId().equalsIgnoreCase(entry.getValue().getValId())) {
@@ -256,6 +255,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             }
         }
         return "-1"; // Chiave non trovata
+    }
+
+    public boolean controlloCollegamenti(ArrayList<Scenario> temp) {
+
+        for (Scenario t : temp) {
+
+        }
+
+        return true;
     }
 
     public boolean salvaSuFileScenari(String nomeStoria) {
@@ -267,6 +275,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 trovato = true;
             }
         }
+        controlloCollegamenti(temp);
 
         if (trovato) {
             try (PrintWriter pW = new PrintWriter(new FileWriter("scenariCollegati.json"))) {
@@ -314,9 +323,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     }
 
-   
-    public String prossimoId(){
-        numeroScenari2 = contaScenari();        
+    public String prossimoId() {
+        numeroScenari2 = contaScenari();
         return numeroScenari2;
     }
 
@@ -336,7 +344,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             db.close();
         }
     }
-    
+
     @Override
     public void destroy() {
         closeDatabase();

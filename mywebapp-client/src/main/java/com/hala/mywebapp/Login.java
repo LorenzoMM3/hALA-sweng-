@@ -22,7 +22,8 @@ public class Login extends Composite implements IsWidget {
     private static final LoginUiBinder UiB = GWT.create(LoginUiBinder.class);
     protected static String utenteAttivo = "";
 
-    interface LoginUiBinder extends UiBinder<Widget, Login> {}
+    interface LoginUiBinder extends UiBinder<Widget, Login> {
+    }
 
     @UiField
     TextBox usernameField;
@@ -41,32 +42,32 @@ public class Login extends Composite implements IsWidget {
 
     public Login() {
         initWidget(UiB.createAndBindUi(this));
-        
-		loginButton.addClickHandler(new ClickHandler() {
+
+        loginButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
                 Utente utente = new Utente(username, password);
                 hALAServiceAsync.logIn(utente, new AsyncCallback<Boolean>() {
 
-                @Override
-                public void onFailure(Throwable throwable) {
-                    messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
-                    GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
-                }
-
-                @Override
-                public void onSuccess(Boolean verifica) {
-                    if (verifica) {
-                        utenteAttivo = username;
-                        messageLabel.setText("Login effettuato con successo!");
-                        RootPanel.get("startTable").clear();
-                        RootPanel.get("startTable").add(new HomePage());
-                    } else {
-                        messageLabel.setText("Credenziali errate. Riprova.");
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
+                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                     }
-                }
-            });
+
+                    @Override
+                    public void onSuccess(Boolean verifica) {
+                        if (verifica) {
+                            utenteAttivo = username;
+                            messageLabel.setText("Login effettuato con successo!");
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(username));
+                        } else {
+                            messageLabel.setText("Credenziali errate. Riprova.");
+                        }
+                    }
+                });
             }
         });
 
@@ -79,11 +80,10 @@ public class Login extends Composite implements IsWidget {
         });
 
     }
-        
 
     @Override
     public Widget asWidget() {
         return this;
-     }
+    }
 
 }

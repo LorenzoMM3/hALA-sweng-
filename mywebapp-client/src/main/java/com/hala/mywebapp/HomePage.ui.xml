@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+             
+
+    <g:VerticalPanel spacing="10">
+
+        <g:Label ui:field="benvenuto"/>
+        <g:Button ui:field="giocaButton">gioca</g:Button>
+        <g:Button ui:field="scriviButton">scrivi una storia</g:Button>
+        <g:Button ui:field="visualizzaButton">visualizza le storie</g:Button>
+        <g:Button ui:field="logoutButton">logout</g:Button>
+        <g:Button ui:field="backButton">Back</g:Button>
+    </g:VerticalPanel>
+</ui:UiBinder>

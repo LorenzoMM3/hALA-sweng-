@@ -2,7 +2,6 @@ package com.hala.mywebapp;
 
 import java.util.ArrayList;
 
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -51,7 +50,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Button settaSuccessivo;
-    
+
     @UiField
     ListBox menuScenariCollegamenti;
 
@@ -67,15 +66,12 @@ public class Collegamenti extends Composite implements IsWidget {
     @UiField
     Button backButton;
 
-
-
     public Collegamenti(String nomeStoria) {
 
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
-        
+
         hALAServiceAsync.ottieniScenariStoria(nome, new AsyncCallback<ArrayList<Scenario>>() {
-            
 
             @Override
             public void onFailure(Throwable caught) {
@@ -87,14 +83,11 @@ public class Collegamenti extends Composite implements IsWidget {
                 if (result != null) {
                     scenariStoria = result;
                     setScenaIniziale();
-                }
-                else{
-                    //GEstire TODO
+                } else {
+                    // GEstire TODO
                 }
             }
         });
-
-        
 
         buttonSettaScenarioIniziale.addClickHandler(new ClickHandler() {
             @Override
@@ -111,7 +104,7 @@ public class Collegamenti extends Composite implements IsWidget {
                         public void onSuccess(Boolean result) {
                             if (result) {
                                 messageLabel.setText("Scenario iniziale impostato con successo");
-                                //attuale.addPrecedente("-1");
+                                // attuale.addPrecedente("-1");
                                 facciataSecondaria();
                             } else {
                                 messageLabel.setText("Impossibile impostare lo scenario iniziale");
@@ -124,7 +117,6 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-    
         settaSuccessivo.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 int indexAttuale = listaScenari.getSelectedIndex();
@@ -140,10 +132,9 @@ public class Collegamenti extends Composite implements IsWidget {
 
                                 @Override
                                 public void onSuccess(Boolean result) {
-                                    if (result){
+                                    if (result) {
                                         messageLabel.setText("Collegamento successivo impostato con successo");
-                                    }
-                                    else{
+                                    } else {
                                         messageLabel.setText("Impossibile impostare il collegamento successivo");
                                     }
                                 }
@@ -153,8 +144,6 @@ public class Collegamenti extends Composite implements IsWidget {
                 }
             }
         });
-
-        
 
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
@@ -198,26 +187,25 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(terminaButton);
         riempiLista(listaScenari);
         pagina.add(messageLabel);
-        //listaScenari.setVisibleItemCount(scenariStoria.size());
-        //menuScenari.setVisible(false);
-        
+        // listaScenari.setVisibleItemCount(scenariStoria.size());
+        // menuScenari.setVisible(false);
+
     }
 
     private void facciataSecondaria() {
         pagina.remove(messageLabel);
         pagina.remove(ScenarioInizialePanel);
         pagina.add(ScenariDaCollegare);
-        //pagina.remove(LscenarioIniziale);
+        // pagina.remove(LscenarioIniziale);
         riempiLista(menuScenari);
-        //menuScenari.setVisibleItemCount(scenariStoria.size());
+        // menuScenari.setVisibleItemCount(scenariStoria.size());
         pagina.remove(backButton);
         pagina.add(CollegamentiPanel);
         riempiLista(menuScenariCollegamenti);
         pagina.add(messageLabel);
         pagina.add(terminaButton);
         pagina.add(backButton);
-        
-        
+
     }
 
     private void riempiLista(ListBox lb) {
