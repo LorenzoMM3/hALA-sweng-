@@ -155,7 +155,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 pW.println("  \"" + entry.getKey() + "\": {");
                 pW.println("    \"nome\": \"" + entry.getValue().getNome() + "\",");
                 pW.println("    \"creatore\": \"" + entry.getValue().getUtente().getUsername() + "\",");
-                pW.println("    \"iniziata\": " + entry.getValue().getIniziata());
                 pW.println("  }");
 
                 firstEntry = false;
@@ -269,6 +268,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean salvaSuFileScenari(String nomeStoria) {
         ArrayList<Scenario> temp = new ArrayList<Scenario>();
         boolean trovato = false;
+
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
                 temp.add(entry.getValue());
@@ -276,6 +276,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             }
         }
         controlloCollegamenti(temp);
+        salvaNumeroScenariPerStoria(nomeStoria);
 
         if (trovato) {
             try (PrintWriter pW = new PrintWriter(new FileWriter("scenariCollegati.json"))) {
@@ -322,6 +323,25 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
 
     }
+
+    private void salvaNumeroScenariPerStoria(String nomeStoria){
+        int numeroScenari = 0;
+        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+            if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
+                numeroScenari++;
+            }
+        }
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            if ((entry.getValue().getNome()).equalsIgnoreCase(nomeStoria)) {
+                Storia s = entry.getValue();
+                String n = numeroScenari + "";
+                String k = entry.getKey();
+                s.setNumeroScenari(n);
+                storieNelSito.put(k, s);
+            }
+        }
+    }
+
 
     public String prossimoId() {
         numeroScenari2 = contaScenari();

@@ -77,10 +77,17 @@ public class VisualizzaCatalogo extends Composite {
             }
         };
 
+        TextColumn<Storia> numeroScenariStoria = new TextColumn<Storia>() {
+            @Override
+            public String getValue(Storia storia) {
+                return storia.getNumeroScenari();
+            }
+        };
         
         // Aggiunta delle colonne alla tabella
         tabella.addColumn(nomeStoria, "Nome Storia");
         tabella.addColumn(creatoreStoria, "Autore Storia");
+        tabella.addColumn(numeroScenariStoria, "Numero Scenari");
 
         // Chiamata asincrona per ottenere la lista delle storie
         hALAServiceAsync.ottieniStorie(new AsyncCallback<ArrayList<Storia>>() {
