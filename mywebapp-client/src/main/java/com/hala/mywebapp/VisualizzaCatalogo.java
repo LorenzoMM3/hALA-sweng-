@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
@@ -14,7 +16,9 @@ import com.google.gwt.user.cellview.client.ColumnSortList;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.AsyncDataProvider;
@@ -33,7 +37,13 @@ public class VisualizzaCatalogo extends Composite {
     private ArrayList<Storia> tutteLeStorie;
 
     // Tabella per visualizzare le storie
-    final CellTable<Storia> tabella;
+    //private CellTable<Storia> tabella;
+
+    @UiField
+    CellTable<Storia> tabella;
+
+    @UiField
+    Button backButton;
 
     // Interfaccia di UiBinder
     interface VisualizzaUiBinder extends UiBinder<Widget, VisualizzaCatalogo> {
@@ -48,7 +58,7 @@ public class VisualizzaCatalogo extends Composite {
         tutteLeStorie = new ArrayList<Storia>();
 
         // Inizializza la tabella per visualizzare le storie
-        tabella = new CellTable<Storia>();
+        //tabella = new CellTable<Storia>();
 
         // Colonna per il nome della storia
         TextColumn<Storia> nomeStoria = new TextColumn<Storia>() {
@@ -137,6 +147,16 @@ public class VisualizzaCatalogo extends Composite {
 
                 // Aggiunge la tabella al pannello principale
                 RootPanel.get().add(tabella);
+            }
+        });
+    
+    
+        backButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Starter());
+                RootPanel.get().clear();
             }
         });
     }
