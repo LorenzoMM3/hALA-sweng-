@@ -259,9 +259,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean controlloCollegamenti(ArrayList<Scenario> temp) {
 
         for (Scenario t : temp) {
-
+            if (t.getPrecedente().isEmpty())
+                return false;
         }
-
         return true;
     }
 
@@ -275,10 +275,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 trovato = true;
             }
         }
-        controlloCollegamenti(temp);
+
         salvaNumeroScenariPerStoria(nomeStoria);
 
-        if (trovato) {
+        if (trovato && controlloCollegamenti(temp)) {
             try (PrintWriter pW = new PrintWriter(new FileWriter("scenariCollegati.json"))) {
                 pW.println("{");
 
@@ -324,7 +324,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     }
 
-    private void salvaNumeroScenariPerStoria(String nomeStoria){
+    private void salvaNumeroScenariPerStoria(String nomeStoria) {
         int numeroScenari = 0;
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
@@ -342,7 +342,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
-
     public String prossimoId() {
         numeroScenari2 = contaScenari();
         return numeroScenari2;
@@ -359,14 +358,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
-    public ArrayList<Storia> ottieniStorie(){
+    public ArrayList<Storia> ottieniStorie() {
         ArrayList<Storia> temp = new ArrayList<Storia>();
         for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
             temp.add(entry.getValue());
         }
         return temp;
     }
-
 
     private void closeDatabase() {
         if (db != null && !db.isClosed()) {

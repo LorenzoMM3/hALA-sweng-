@@ -158,7 +158,8 @@ public class Collegamenti extends Composite implements IsWidget {
                         if (result) {
                             messageLabel.setText("Storia creata con successo");
                         } else {
-                            messageLabel.setText("Impossibile creare la storia");
+                            messageLabel
+                                    .setText("Impossibile creare la storia, forse non hai collegato tutti gli scenari");
                         }
                     }
                 });

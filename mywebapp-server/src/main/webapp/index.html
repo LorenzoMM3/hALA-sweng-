@@ -12,16 +12,10 @@
     <script src="MyWebApp/MyWebApp.nocache.js"></script>
     <style>
       div.alto{
-        background-color:rgb(#7B926E);
+        /*background-color:rgb(#7B926E);*/
         width:100%;
-	    	height:30%;
+	    	height:20%;
         text-align:left;
-      }
-      div.basso{
-        width:100%;
-	    	height:70%;
-      }
-      h1{
         background: rgb(#ffffff);
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 4px );
@@ -29,14 +23,25 @@
         border-radius: 10px;
         border: 1px solid rgba( 255, 255, 255, 0.18 );
       }
+      div.basso{
+        width:100%;
+	    	height:80%;
+      }
+      td.titolo{
+        text-align:center;
+      }
     </style>
   </head>
   <body>
     <div class="alto">
-      <h1>hALA</h1>
+      <table class="testa">
+        <tr>
+          <td id="immagine"><img src=immagineStart.jpg></td><td id="titolo"><h1>hALA</h1></td>
+        </tr>
+      </table>
+      
     </div>
     <div class="basso"></div>
-    
     <table align="center", id="startTable">
     </table>
   </body>
