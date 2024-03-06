@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dev.protobuf.DescriptorProtos.FieldDescriptorProto.Label;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,11 +16,13 @@ import com.google.gwt.user.cellview.client.ColumnSortEvent.AsyncHandler;
 import com.google.gwt.user.cellview.client.ColumnSortList;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
@@ -37,13 +40,22 @@ public class VisualizzaCatalogo extends Composite {
     private ArrayList<Storia> tutteLeStorie;
 
     // Tabella per visualizzare le storie
-    //private CellTable<Storia> tabella;
+    // private CellTable<Storia> tabella;
 
     @UiField
     CellTable<Storia> tabella;
 
     @UiField
     Button backButton;
+
+    @UiField
+    TextBox nomeRicercaTitolo;
+
+    @UiField
+    Button ricercaTitolo;
+
+    @UiField
+    Button resettaRicerca;
 
     // Interfaccia di UiBinder
     interface VisualizzaUiBinder extends UiBinder<Widget, VisualizzaCatalogo> {
@@ -58,7 +70,7 @@ public class VisualizzaCatalogo extends Composite {
         tutteLeStorie = new ArrayList<Storia>();
 
         // Inizializza la tabella per visualizzare le storie
-        //tabella = new CellTable<Storia>();
+        // tabella = new CellTable<Storia>();
 
         // Colonna per il nome della storia
         TextColumn<Storia> nomeStoria = new TextColumn<Storia>() {
@@ -83,7 +95,7 @@ public class VisualizzaCatalogo extends Composite {
                 return storia.getNumeroScenari();
             }
         };
-        
+
         // Aggiunta delle colonne alla tabella
         tabella.addColumn(nomeStoria, "Nome Storia");
         tabella.addColumn(creatoreStoria, "Autore Storia");
@@ -99,6 +111,7 @@ public class VisualizzaCatalogo extends Composite {
 
             @Override
             public void onSuccess(ArrayList<Storia> result) {
+
                 // In caso di successo, popola la lista di storie e aggiorna la tabella
                 tutteLeStorie = result;
                 tabella.setRowCount(tutteLeStorie.size(), true);
@@ -156,8 +169,54 @@ public class VisualizzaCatalogo extends Composite {
                 RootPanel.get().add(tabella);
             }
         });
-    
-    
+
+        ricercaTitolo.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+
+                // Converte il testo in minuscolo per una ricerca case-insensitive
+                String nomeDaCercare = nomeRicercaTitolo.getText().toLowerCase();
+
+                if (!nomeDaCercare.isEmpty()) {
+                    // Lista per memorizzare le storie che corrispondono al criterio di ricerca
+                    List<Storia> risultatiRicerca = new ArrayList<>();
+                    // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
+                    // cercata
+                    for (Storia storia : tutteLeStorie) {
+                        if (storia.getNome().toLowerCase().contains(nomeDaCercare)) {
+                            risultatiRicerca.add(storia);
+                        }
+                    }
+
+                    // Aggiorna la tabella con i risultati della ricerca
+                    tabella.setRowCount(risultatiRicerca.size(), true);
+                    tabella.setVisibleRange(0, risultatiRicerca.size());
+                    AsyncDataProvider<Storia> provider = new AsyncDataProvider<Storia>() {
+                        @Override
+                        protected void onRangeChanged(HasData<Storia> display) {
+                            int start = display.getVisibleRange().getStart();
+                            int end = start + display.getVisibleRange().getLength();
+                            end = end >= risultatiRicerca.size() ? risultatiRicerca.size() : end;
+                            List<Storia> subList = risultatiRicerca.subList(start, end);
+                            updateRowData(start, subList);
+                        }
+                    };
+                    provider.addDataDisplay(tabella);
+                } else {
+                    Window.alert("AHAH QUESTO E UN WINDOW ALERT! BAZINGA!");
+                }
+            }
+        });
+
+        resettaRicerca.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new VisualizzaCatalogo());
+                RootPanel.get().clear();
+            }
+        });
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
