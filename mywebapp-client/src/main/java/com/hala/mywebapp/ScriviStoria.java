@@ -111,36 +111,40 @@ public class ScriviStoria extends Composite implements IsWidget {
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                nomeStoriaTemp = titoloStoria.getText().toUpperCase();
+                if (!titoloStoria.getText().isEmpty()) {
+                    nomeStoriaTemp = titoloStoria.getText().toUpperCase();
 
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
+                    hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                        public void onFailure(Throwable caught) {
+                            System.err.println("Errore qui");
+                        };
 
-                    public void onSuccess(Utente utente) {
-                        utenteAttuale = utente;
-                        Storia nuovaStoria = new Storia(nomeStoriaTemp, utenteAttuale);
-                        hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
-                            public void onFailure(Throwable caught) {
-                            };
+                        public void onSuccess(Utente utente) {
+                            utenteAttuale = utente;
+                            Storia nuovaStoria = new Storia(nomeStoriaTemp, utenteAttuale);
+                            hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
+                                public void onFailure(Throwable caught) {
+                                };
 
-                            public void onSuccess(Boolean verifica) {
-                                if (verifica) {
-                                    messageLabelCreate.setText("Storia creata con successo");
-                                    titoloS.remove(inserisciStoria);
-                                    attivaTutto();
-                                    menuTipoScenario.setSelectedIndex(0);
-                                    showAdditionalFieldsAScelta();
-                                    opzioniSceltaTemp = new ArrayList<>();
-                                } else {
-                                    messageLabelCreate.setText("Nome già esistente, riprova");
-                                }
-                            };
-                        });
-                    };
+                                public void onSuccess(Boolean verifica) {
+                                    if (verifica) {
+                                        messageLabelCreate.setText("Storia creata con successo");
+                                        titoloS.remove(inserisciStoria);
+                                        attivaTutto();
+                                        menuTipoScenario.setSelectedIndex(0);
+                                        showAdditionalFieldsAScelta();
+                                        opzioniSceltaTemp = new ArrayList<>();
+                                    } else {
+                                        messageLabelCreate.setText("Nome già esistente, riprova");
+                                    }
+                                };
+                            });
+                        };
 
-                });
+                    });
+                } else {
+                    message.setText("Inserisci il titolo della storia");
+                }
 
             }
 
@@ -166,11 +170,14 @@ public class ScriviStoria extends Composite implements IsWidget {
 
             @Override
             public void onClick(ClickEvent event) {
-
-                String oggettoTemp = oggetto.getText(); // Uguale a "" se non serve
-                opzioniSceltaTemp.add(scelta.getText() + ";" + oggettoTemp);
-                oggetto.setText("");
-                scelta.setText("");
+                if (!scelta.getText().isEmpty()) {
+                    String oggettoTemp = oggetto.getText(); // Uguale a "" se non serve
+                    opzioniSceltaTemp.add(scelta.getText() + ";" + oggettoTemp);
+                    oggetto.setText("");
+                    scelta.setText("");
+                } else {
+                    message.setText("inserisci il testo dell'opzione di scelta");
+                }
             }
 
         });
@@ -178,56 +185,60 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                // Chiedo al server l'id per la creazione
-                idTemp = "";
-                hALAServiceAsync.prossimoId(new AsyncCallback<String>() {
-                    @Override
-                    public void onFailure(Throwable caught) {
-                    }
+                if (controlloScenari()) { // chiamo il metodo di controllo per gli scenari
+                    // Chiedo al server l'id per la creazione
+                    idTemp = "";
+                    hALAServiceAsync.prossimoId(new AsyncCallback<String>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+                        }
 
-                    @Override
-                    public void onSuccess(String result) {
-                        idTemp = result;
-                        message.setText("ID dal client: " + idTemp);
-                        ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
-                        scenario.setValId(idTemp);
-                        scenario.setTestoScena(testoScenarioField.getText());
-                        scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
-                        scenario.setOpzioniScelte(opzioniSceltaTemp);
+                        @Override
+                        public void onSuccess(String result) {
+                            idTemp = result;
+                            message.setText("ID dal client: " + idTemp);
+                            ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
+                            scenario.setValId(idTemp);
+                            scenario.setTestoScena(testoScenarioField.getText());
+                            scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
+                            scenario.setOpzioniScelte(opzioniSceltaTemp);
 
-                        message.setText("");
-                        vpScenario.add(message);
-                        hALAServiceAsync.aggiungiScenarioAScelta(idTemp, scenario, new AsyncCallback<Boolean>() {
-                            @Override
-                            public void onFailure(Throwable caught) {
-                            }
-
-                            public void onSuccess(Boolean verifica) {
-                                if (verifica) {
-                                    message.setText("Scenario a scelta creato con successo");
-                                    scenariCreati.add(scenario);
-                                    // Resetto i field così da liberarli per la creazione di un nuovo scenario
-                                    testoScenarioField.setText("");
-                                    domandaFieldAScelta.setText("");
-                                    scelta.setText("");
-                                    // Libero l'array di scelte
-                                    opzioniSceltaTemp.clear();
-
-                                } else {
-                                    message.setText("Errore nella creazione dello scenario a scelta");
-                                    // Resetto i field così da liberarli per la creazione di un nuovo scenario
-                                    testoScenarioField.setText("");
-                                    domandaFieldAScelta.setText("");
-                                    scelta.setText("");
-                                    // Libero l'array di scelte
-                                    opzioniSceltaTemp.clear();
+                            message.setText("");
+                            vpScenario.add(message);
+                            hALAServiceAsync.aggiungiScenarioAScelta(idTemp, scenario, new AsyncCallback<Boolean>() {
+                                @Override
+                                public void onFailure(Throwable caught) {
                                 }
-                            }
-                        });
 
-                    }
+                                public void onSuccess(Boolean verifica) {
+                                    if (verifica) {
+                                        message.setText("Scenario a scelta creato con successo");
+                                        scenariCreati.add(scenario);
+                                        // Resetto i field così da liberarli per la creazione di un nuovo scenario
+                                        testoScenarioField.setText("");
+                                        domandaFieldAScelta.setText("");
+                                        scelta.setText("");
+                                        // Libero l'array di scelte
+                                        opzioniSceltaTemp.clear();
 
-                });
+                                    } else {
+                                        message.setText("Errore nella creazione dello scenario a scelta");
+                                        // Resetto i field così da liberarli per la creazione di un nuovo scenario
+                                        testoScenarioField.setText("");
+                                        domandaFieldAScelta.setText("");
+                                        scelta.setText("");
+                                        // Libero l'array di scelte
+                                        opzioniSceltaTemp.clear();
+                                    }
+                                }
+                            });
+
+                        }
+
+                    });
+                } else {
+                    message.setText("Riempi i campi o aggiungi ancora una scelta");
+                }
 
             }
         });
@@ -235,50 +246,55 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioIndovinello.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                idTemp = "";
-                hALAServiceAsync.prossimoId(new AsyncCallback<String>() { // !!!
-                    @Override
-                    public void onFailure(Throwable caught) {
-                    }
+                if (controlloScenari()) {// chiamo il metodo di controllo degli scenari
+                    idTemp = "";
+                    hALAServiceAsync.prossimoId(new AsyncCallback<String>() { // !!!
+                        @Override
+                        public void onFailure(Throwable caught) {
+                        }
 
-                    @Override
-                    public void onSuccess(String result) {
-                        idTemp = result;
-                        ScenarioIndovinello scenario = new ScenarioIndovinello(nomeStoriaTemp);
+                        @Override
+                        public void onSuccess(String result) {
+                            idTemp = result;
+                            ScenarioIndovinello scenario = new ScenarioIndovinello(nomeStoriaTemp);
 
-                        scenario.setValId(idTemp);
-                        scenario.setTestoScena(testoScenarioField.getText());
+                            scenario.setValId(idTemp);
+                            scenario.setTestoScena(testoScenarioField.getText());
 
-                        scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
-                        scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
+                            scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
+                            scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
 
-                        message.setText("");
-                        vpScenario.add(message);
+                            message.setText("");
+                            vpScenario.add(message);
 
-                        hALAServiceAsync.aggiungiScenarioIndovinello(idTemp, scenario, new AsyncCallback<Boolean>() {
-                            @Override
-                            public void onFailure(Throwable caught) {
-                            }
+                            hALAServiceAsync.aggiungiScenarioIndovinello(idTemp, scenario,
+                                    new AsyncCallback<Boolean>() {
+                                        @Override
+                                        public void onFailure(Throwable caught) {
+                                        }
 
-                            public void onSuccess(Boolean verifica) {
-                                if (verifica) {
-                                    scenariCreati.add(scenario);
-                                    message.setText("Scenario Indovinello creato con successo");
-                                    testoScenarioField.setText("");
-                                    domandaFieldIndovinello.setText("");
-                                    rispostaFieldIndovinello.setText("");
+                                        public void onSuccess(Boolean verifica) {
+                                            if (verifica) {
+                                                scenariCreati.add(scenario);
+                                                message.setText("Scenario Indovinello creato con successo");
+                                                testoScenarioField.setText("");
+                                                domandaFieldIndovinello.setText("");
+                                                rispostaFieldIndovinello.setText("");
 
-                                } else {
-                                    message.setText("Errore nella creazione dello scenario indovinello");
-                                    testoScenarioField.setText("");
-                                    domandaFieldIndovinello.setText("");
-                                    rispostaFieldIndovinello.setText("");
-                                }
-                            }
-                        });
-                    }
+                                            } else {
+                                                message.setText("Errore nella creazione dello scenario indovinello");
+                                                testoScenarioField.setText("");
+                                                domandaFieldIndovinello.setText("");
+                                                rispostaFieldIndovinello.setText("");
+                                            }
+                                        }
+                                    });
+                        }
 
-                });
+                    });
+                } else {
+                    message.setText("Riempi tutti i campi");
+                }
 
             }
         });
@@ -295,34 +311,33 @@ public class ScriviStoria extends Composite implements IsWidget {
 
             @Override
             public void onClick(ClickEvent event) {
-                if (controlloScenari()) {
+                if (scenariCreati.size() > 1) {// controllo per verificare che le storie create abbiano almeno due
+                                               // scenari
                     RootPanel.get("startTable").clear();
-                    // RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp,
-                    // scenariCreati));
                     RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));
                 } else {
-                    message.setText("dovresti inserire almeno due scenari");
+                    message.setText(
+                            "Forse manca qualcosa (consiglio: inserisci almeno 2 scenari, se è uno scenario a scelta inserisci almeno due scelte)");
                 }
             }
 
         });
     }
 
+    // metodo per controllare se gli scenari hanno tutti i campi pieni e lo scenario
+    // a scelta abbia almeno due opzioni di scelta
     private boolean controlloScenari() {
-        int count = 0;
-        if (scenariCreati.size() > 1) {
-            count++;
-        }
-        for (Scenario s : scenariCreati) {
-            if (s.getTipologia().equals("Scenario a scelta")) {
-                ScenarioAScelta sa = (ScenarioAScelta) s;
-                if (sa.getOpzioniScelta().size() > 0 && !(sa.getTestoScena().isEmpty())) {
-                    count++;
-                }
+        if ("Scenario a scelta".equals(menuTipoScenario.getSelectedValue())) {
+            if (opzioniSceltaTemp.size() > 1 && !(testoScenarioField.getText().isEmpty())
+                    && !(domandaFieldAScelta.getText().isEmpty())) {
+                return true;
             }
         }
-        if (count > scenariCreati.size() + 2) {
-            return true;
+        if ("Scenario con indovinello".equals(menuTipoScenario.getSelectedValue())) {
+            if (!(testoScenarioField.getText().isEmpty()) && !(domandaFieldIndovinello.getText().isEmpty())
+                    && !(rispostaFieldIndovinello.getText().isEmpty())) {
+                return true;
+            }
         }
         return false;
     }

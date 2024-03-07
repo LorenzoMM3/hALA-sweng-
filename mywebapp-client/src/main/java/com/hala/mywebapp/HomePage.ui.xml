@@ -3,16 +3,17 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-    <ui:style>
-        .pretty{font-size:10px;
+    <!--<ui:style>
+        .pretty{
+            font-size:10px;
                 color:rgb(#7B926E);
                 }
-    </ui:style>         
+    </ui:style>-->         
     
 
     <g:VerticalPanel spacing="10">
 
-        <g:Label class='{style.pretty}' ui:field="benvenuto"/>
+        <g:Label ui:field="benvenuto"/>
         <g:Button ui:field="giocaButton">Gioca</g:Button>
         <g:Button ui:field="scriviButton">Scrivi una storia</g:Button>
         <g:Button ui:field="visualizzaButton">Visualizza le storie</g:Button>

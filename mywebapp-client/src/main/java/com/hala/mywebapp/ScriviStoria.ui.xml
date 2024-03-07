@@ -17,6 +17,8 @@
         </g:VerticalPanel>
 
         <g:VerticalPanel spacing="30" ui:field="vpScenario">
+            
+            <g:Label ui:field="message"></g:Label>
             <g:Label ui:field="scriviScenarioLabel">Scrivi lo scenario:</g:Label>
             <g:Label ui:field="tipologiaLabel">Che tipologia di scenario vuoi inserire?</g:Label>
             <g:ListBox ui:field="menuTipoScenario">
@@ -43,7 +45,6 @@
             <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
 
 
-            <g:Label ui:field="message"></g:Label>
         </g:VerticalPanel>
         
         
