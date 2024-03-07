@@ -292,14 +292,39 @@ public class ScriviStoria extends Composite implements IsWidget {
         });
 
         creaCollegamenti.addClickHandler(new ClickHandler() {
+
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                // RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp,
-                // scenariCreati));
-                RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));
+                if (controlloScenari()) {
+                    RootPanel.get("startTable").clear();
+                    // RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp,
+                    // scenariCreati));
+                    RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));
+                } else {
+                    message.setText("dovresti inserire almeno due scenari");
+                }
             }
+
         });
+    }
+
+    private boolean controlloScenari() {
+        int count = 0;
+        if (scenariCreati.size() > 1) {
+            count++;
+        }
+        for (Scenario s : scenariCreati) {
+            if (s.getTipologia().equals("Scenario a scelta")) {
+                ScenarioAScelta sa = (ScenarioAScelta) s;
+                if (sa.getOpzioniScelta().size() > 0 && !(sa.getTestoScena().isEmpty())) {
+                    count++;
+                }
+            }
+        }
+        if (count > scenariCreati.size() + 2) {
+            return true;
+        }
+        return false;
     }
 
     private void disabilitaTutto() {
