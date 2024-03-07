@@ -40,9 +40,6 @@ public class HomePage extends Composite implements IsWidget {
     @UiField
     Button scriviButton;
 
-    @UiField
-    Button backButton;
-
     public HomePage(String utente) {
         initWidget(uiBinder.createAndBindUi(this));
         mainPanel = GWT.create(VerticalPanel.class);
@@ -60,6 +57,14 @@ public class HomePage extends Composite implements IsWidget {
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new Logout());
+            }
+        });
+
+        visualizzaButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new VisualizzaCatalogo());
             }
         });
 

@@ -7,10 +7,9 @@
     <g:VerticalPanel spacing="10">
 
         <g:Label ui:field="benvenuto"/>
-        <g:Button ui:field="giocaButton">gioca</g:Button>
-        <g:Button ui:field="scriviButton">scrivi una storia</g:Button>
-        <g:Button ui:field="visualizzaButton">visualizza le storie</g:Button>
-        <g:Button ui:field="logoutButton">logout</g:Button>
-        <g:Button ui:field="backButton">Back</g:Button>
+        <g:Button ui:field="giocaButton">Gioca</g:Button>
+        <g:Button ui:field="scriviButton">Scrivi una storia</g:Button>
+        <g:Button ui:field="visualizzaButton">Visualizza le storie</g:Button>
+        <g:Button ui:field="logoutButton">Logout</g:Button>
     </g:VerticalPanel>
 </ui:UiBinder>

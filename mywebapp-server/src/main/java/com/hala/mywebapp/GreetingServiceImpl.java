@@ -153,8 +153,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                     pW.println(",");
                 }
                 pW.println("  \"" + entry.getKey() + "\": {");
-                pW.println("    \"nome\": \"" + entry.getValue().getNome() + "\",");
-                pW.println("    \"creatore\": \"" + entry.getValue().getUtente().getUsername() + "\",");
+                pW.println("    \"Nome\": \"" + entry.getValue().getNome() + "\",");
+                pW.println("    \"Autore\": \"" + entry.getValue().getUtente().getUsername() + "\",");
+                pW.println("    \"Numero Scenari\": \"" + entry.getValue().getNumeroScenari() + "\"");
                 pW.println("  }");
 
                 firstEntry = false;
@@ -340,6 +341,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 storieNelSito.put(k, s);
             }
         }
+        db.commit();
+        convertToJsonStorie();
     }
 
     public String prossimoId() {
@@ -372,8 +375,20 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
+    private void logoutUtenti() {
+        for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
+            Utente u = entry.getValue();
+            u.setIsLogged(false);
+            String key = entry.getKey();
+            utentiNelSito.put(key, u);
+        }
+        db.commit();
+        convertToJsonUtenti();
+    }
+
     @Override
     public void destroy() {
+        logoutUtenti();
         closeDatabase();
         super.destroy();
     }

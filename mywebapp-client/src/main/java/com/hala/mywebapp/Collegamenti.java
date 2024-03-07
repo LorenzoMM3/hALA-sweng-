@@ -119,7 +119,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
         settaSuccessivo.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                int indexAttuale = listaScenari.getSelectedIndex();
+                int indexAttuale = menuScenari.getSelectedIndex();
                 int indexCollegamento = menuScenariCollegamenti.getSelectedIndex();
                 if (indexAttuale != -1 && indexCollegamento != -1) { // controllo che sia stato selezionato uno scenario
                     attuale = scenariStoria.get(indexAttuale);
@@ -157,6 +157,25 @@ public class Collegamenti extends Composite implements IsWidget {
                     public void onSuccess(Boolean result) {
                         if (result) {
                             messageLabel.setText("Storia creata con successo");
+                            
+                            hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                                @Override
+                                public void onFailure(Throwable caught) {
+                                }
+
+                                @Override
+                                public void onSuccess(Utente result) {
+                                    if (result != null) {
+                                        Utente utenteAttivo = new Utente();
+                                        utenteAttivo = result;
+                                        RootPanel.get("startTable").clear();
+                                        RootPanel.get("startTable").add(new HomePage(utenteAttivo.getUsername()));
+                                    } else {
+                                        // GEstire TODO
+                                    }
+                                }
+                            });
+                            
                         } else {
                             messageLabel
                                     .setText("Impossibile creare la storia, forse non hai collegato tutti gli scenari");

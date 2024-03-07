@@ -50,6 +50,8 @@ public class Logout extends Composite implements IsWidget {
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
                             messageLabel.setText("Logout effettuato con successo!");
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter());
                         } else {
                             messageLabel.setText("Credenziali errate. Riprova.");
                         }

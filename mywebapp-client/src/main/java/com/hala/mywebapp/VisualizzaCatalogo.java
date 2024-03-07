@@ -220,7 +220,28 @@ public class VisualizzaCatalogo extends Composite {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
+                
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+                    }
+
+                    @Override
+                    public void onSuccess(Utente result) {
+                        Utente utenteConnesso = new Utente();
+                        utenteConnesso = result;
+                        if (utenteConnesso.getIsLogged()) {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utenteConnesso.getUsername()));
+                            RootPanel.get().clear();
+                        } else {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter());
+                            RootPanel.get().clear();
+                        }
+                    }
+                });
                 RootPanel.get("startTable").add(new Starter());
                 RootPanel.get().clear();
             }
