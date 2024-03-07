@@ -10,9 +10,14 @@
 
         <g:HorizontalPanel>
             <g:Button ui:field="backButton">Back</g:Button>
-            <g:TextBox ui:field="nomeRicercaTitolo"></g:TextBox>
-            <g:Button ui:field="ricercaTitolo">Ricerca Titolo</g:Button>
+            <g:TextBox ui:field="nomeRicerca"></g:TextBox>
+            <g:Button ui:field="ricerca">Ricerca</g:Button>
             <g:Button ui:field="resettaRicerca">Reset Ricerca</g:Button>
+            <g:ListBox ui:field="filtroListBox">
+                <g:item value="nome">Nome Storia</g:item>
+                <g:item value="autore">Autore Storia</g:item>
+                <g:item value="lunghezza">Lunghezza Storia</g:item>
+            </g:ListBox>
         </g:HorizontalPanel>
     </g:VerticalPanel>
 </ui:UiBinder>

@@ -21,6 +21,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -49,13 +50,16 @@ public class VisualizzaCatalogo extends Composite {
     Button backButton;
 
     @UiField
-    TextBox nomeRicercaTitolo;
+    TextBox nomeRicerca;
 
     @UiField
-    Button ricercaTitolo;
+    Button ricerca;
 
     @UiField
     Button resettaRicerca;
+
+    @UiField
+    ListBox filtroListBox;
 
     // Interfaccia di UiBinder
     interface VisualizzaUiBinder extends UiBinder<Widget, VisualizzaCatalogo> {
@@ -170,22 +174,53 @@ public class VisualizzaCatalogo extends Composite {
             }
         });
 
-        ricercaTitolo.addClickHandler(new ClickHandler() {
+
+        ricerca.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
 
+
                 // Converte il testo in minuscolo per una ricerca case-insensitive
-                String nomeDaCercare = nomeRicercaTitolo.getText().toLowerCase();
+                String nomeDaCercare = nomeRicerca.getText().toLowerCase();
+                String filtro = filtroListBox.getSelectedItemText();
 
                 if (!nomeDaCercare.isEmpty()) {
+
                     // Lista per memorizzare le storie che corrispondono al criterio di ricerca
                     List<Storia> risultatiRicerca = new ArrayList<>();
-                    // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
-                    // cercata
-                    for (Storia storia : tutteLeStorie) {
-                        if (storia.getNome().toLowerCase().contains(nomeDaCercare)) {
-                            risultatiRicerca.add(storia);
+
+                    if (filtro.equals("Nome Storia")){
+                        // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
+                        // cercata
+                        for (Storia storia : tutteLeStorie) {
+                            if (storia.getNome().toLowerCase().contains(nomeDaCercare)) {
+                                risultatiRicerca.add(storia);
+                            }
                         }
+
+                    }
+                    else if (filtro.equals("Autore Storia")){
+                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la stringa
+                        // cercata
+                        for (Storia storia : tutteLeStorie) {
+                            if (storia.getUtente().getUsername().toLowerCase().contains(nomeDaCercare)) {
+                                risultatiRicerca.add(storia);
+                            }
+                        }
+
+                    }
+                    else if (filtro.equals("Lunghezza Storia")){
+                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la stringa
+                        // cercata
+                        for (Storia storia : tutteLeStorie) {
+                            if (storia.getNumeroScenari().toLowerCase().contains(nomeDaCercare)) {
+                                risultatiRicerca.add(storia);
+                            }
+                        }
+
+                    }
+                    else {
+                        Window.alert("Seleziona un filtro per la ricerca");
                     }
 
                     // Aggiorna la tabella con i risultati della ricerca
