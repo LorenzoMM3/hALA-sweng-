@@ -6,6 +6,8 @@
 
 
     <g:HorizontalPanel spacing="0" ui:field="totale">
+
+
         <g:VerticalPanel spacing="50" ui:field="pagina">
         
             <g:VerticalPanel spacing="10" ui:field="ScenarioInizialePanel">
@@ -21,19 +23,35 @@
                     <g:ListBox ui:field="menuScenari"></g:ListBox>
             </g:VerticalPanel>
             
-            
+            <g:VerticalPanel spacing="10" ui:field="gestioneIndovinello">
+                <g:Label ui:field="labelGestioneIndovinello">Seleziona l'opzione a cui vuoi collegare l'indovinello:</g:Label>
+                <g:ListBox ui:field="menuIndovinelli">
+                    <g:item>Risposta sbagliata</g:item>
+                    <g:item>Risposta corretta</g:item>
+                </g:ListBox>
+                <g:Button ui:field="settaSuccessivoIndovinello">Setta come successivo</g:Button>
+            </g:VerticalPanel>
+
+            <g:VerticalPanel spacing="10" ui:field="gestioneScelte">
+                <g:Label ui:field="labelGestioneScelte">Seleziona l'opzione a cui vuoi collegare:</g:Label>
+                <g:ListBox ui:field="menuScelte"></g:ListBox>
+                <g:Button ui:field="settaSuccessivoScelta">Setta come successivo</g:Button>
+            </g:VerticalPanel>
+
             <g:VerticalPanel spacing="10" ui:field="CollegamentiPanel">
                 
                 <g:Label>Seleziona lo scenario con cui vuoi effettuare il collegamento:</g:Label>
                 <g:Label ui:field="testoScenarioDaCollegare"/>
                 <g:ListBox ui:field="menuScenariCollegamenti"></g:ListBox>
-                <g:Button ui:field="settaSuccessivo">Setta come successivo</g:Button>
+                
             </g:VerticalPanel>
 
         
             <g:Label ui:field="messageLabel"></g:Label>
         
         </g:VerticalPanel>
+
+        
 
             <g:Button ui:field="terminaButton">Termina</g:Button>
             <g:Button ui:field="backButton">Back</g:Button>

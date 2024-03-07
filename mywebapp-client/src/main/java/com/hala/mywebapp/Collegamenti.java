@@ -1,6 +1,7 @@
 package com.hala.mywebapp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -9,6 +10,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.shapesecurity.salvation2.Values.Hash;
 
 public class Collegamenti extends Composite implements IsWidget {
 
@@ -20,6 +22,9 @@ public class Collegamenti extends Composite implements IsWidget {
 
     interface CollegamentiUiBinder extends UiBinder<Widget, Collegamenti> {
     }
+
+    @UiField
+    HorizontalPanel totale;
 
     @UiField
     VerticalPanel ScenarioInizialePanel;
@@ -49,9 +54,6 @@ public class Collegamenti extends Composite implements IsWidget {
     Label testoScenarioDaCollegare;
 
     @UiField
-    Button settaSuccessivo;
-
-    @UiField
     ListBox menuScenariCollegamenti;
 
     @UiField
@@ -65,6 +67,24 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Button backButton;
+
+    @UiField
+    VerticalPanel gestioneIndovinello;
+
+    @UiField
+    ListBox menuIndovinelli;
+
+    @UiField
+    Button settaSuccessivoIndovinello;
+
+    @UiField
+    VerticalPanel gestioneScelte;
+
+    @UiField
+    ListBox menuScelte;
+
+    @UiField
+    Button settaSuccessivoScelta;
 
     public Collegamenti(String nomeStoria) {
 
@@ -117,6 +137,7 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
+        /* 
         settaSuccessivo.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 int indexAttuale = menuScenari.getSelectedIndex();
@@ -143,7 +164,7 @@ public class Collegamenti extends Composite implements IsWidget {
                     messageLabel.setText("Selezionare uno scenario");
                 }
             }
-        });
+        });*/
 
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
@@ -193,6 +214,57 @@ public class Collegamenti extends Composite implements IsWidget {
                                                                      // alla creazione scenari
             }
         });
+    
+        
+        menuScenari.addChangeHandler(event -> {
+            int index = menuScenari.getSelectedIndex();
+            
+            if (index != -1) {
+                String testo = menuScenari.getItemText(index);
+                for (Scenario temp : scenariStoria) {
+                    if (temp.getTestoScena().equals(testo)) {
+                        if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")){
+                            ScenarioAScelta temp2 = (ScenarioAScelta) temp;
+                            mostraSchermataScelte(temp2);
+                        }
+                        else{
+                            ScenarioIndovinello temp2 = (ScenarioIndovinello) temp;
+                            mostraSchermataIndovinello(temp2);
+                        }
+                    }
+                }
+            }
+        });
+    
+        settaSuccessivoScelta.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                // TODO 
+                
+            }
+        });
+
+        settaSuccessivoIndovinello.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                // TODO 
+                
+            }
+        });
+    }
+
+    private void mostraSchermataScelte(ScenarioAScelta temp){
+        gestioneIndovinello.setVisible(false);
+        gestioneScelte.setVisible(true);
+        HashMap<String, String> opzioni = temp.getOpzioniScelta();
+        for (HashMap.Entry<String, String> entry : opzioni.entrySet()) {
+            menuScelte.addItem(entry.getKey());
+        }
+    }
+
+    private void mostraSchermataIndovinello(ScenarioIndovinello temp){
+        gestioneScelte.setVisible(false);
+        gestioneIndovinello.setVisible(true);
     }
 
     private void setScenaIniziale() {
@@ -200,6 +272,7 @@ public class Collegamenti extends Composite implements IsWidget {
     }
 
     private void facciataIniziale() {
+        
         pagina.remove(messageLabel);
         pagina.remove(CollegamentiPanel);
         pagina.remove(terminaButton);
@@ -207,6 +280,8 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(terminaButton);
         riempiLista(listaScenari);
         pagina.add(messageLabel);
+        pagina.remove(gestioneScelte);
+        pagina.remove(gestioneIndovinello);
         // listaScenari.setVisibleItemCount(scenariStoria.size());
         // menuScenari.setVisible(false);
 
@@ -220,6 +295,10 @@ public class Collegamenti extends Composite implements IsWidget {
         riempiLista(menuScenari);
         // menuScenari.setVisibleItemCount(scenariStoria.size());
         pagina.remove(backButton);
+        pagina.add(gestioneScelte);
+        pagina.add(gestioneIndovinello);
+        gestioneScelte.setVisible(false);
+        gestioneIndovinello.setVisible(false);
         pagina.add(CollegamentiPanel);
         riempiLista(menuScenariCollegamenti);
         pagina.add(messageLabel);
