@@ -212,16 +212,29 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             openDB();
         }
+        String nomeStoria = "";
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (entry.getValue().getValId().equalsIgnoreCase(scenario.getValId())) {
+                nomeStoria = entry.getValue().getNomeStoria();
                 String k = entry.getKey();
                 Scenario x = entry.getValue();
                 String id = "-1";
                 x.addPrecedente(id);
                 scenariNelSito.put(k, x);
-                return true;
+                
             }
 
+        }
+        if (!nomeStoria.equals("")){
+            for(Storia s : storieNelSito.values()){
+                if(s.getNome().equalsIgnoreCase(nomeStoria)){
+                    Storia temp = s;
+                    temp.setScenarioIniziale(scenario);
+                    String key = temp.getNome();
+                    storieNelSito.put(key, temp);
+                    return true;
+                }
+            }
         }
         return false;
     }

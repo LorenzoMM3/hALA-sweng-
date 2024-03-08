@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.AsyncDataProvider;
+import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
 
@@ -84,10 +85,20 @@ public class VisualizzaCatalogo extends Composite {
         };
         numeroScenariStoria.setSortable(true);
 
+        TextColumn<Storia> scenarioIniziale = new TextColumn<Storia>() {
+            @Override
+            public String getValue(Storia storia) {
+                // Restituisci solo una parte del testo, ad esempio i primi 50 caratteri
+                String testoCompleto = storia.getScenarioIniziale().getTestoScena();
+                return testoCompleto.length() > 50 ? testoCompleto.substring(0, 50) + "..." : testoCompleto;
+            }
+        };
+
         // Aggiunta delle colonne alla tabella
         tabella.addColumn(nomeStoria, "Nome Storia");
         tabella.addColumn(creatoreStoria, "Autore Storia");
         tabella.addColumn(numeroScenariStoria, "Numero Scenari");
+        tabella.addColumn(scenarioIniziale, "Scenario Iniziale");
 
         // Chiamata asincrona per ottenere la lista delle storie
         hALAServiceAsync.ottieniStorie(new AsyncCallback<ArrayList<Storia>>() {
@@ -115,7 +126,7 @@ public class VisualizzaCatalogo extends Composite {
                             public void run() {
                                 int start = range.getStart();
                                 int end = start + range.getLength();
-
+                    
                                 // Seleziona la colonna per l'ordinamento
                                 Comparator<Storia> comparator = null;
                                 if (sortList.size() > 0) {
@@ -130,14 +141,13 @@ public class VisualizzaCatalogo extends Composite {
 
                                     // Ordina la lista di storie in base al comparator
                                     if (comparator != null) {
-                                        Collections.sort(tutteLeStorie,
-                                                sortInfo.isAscending() ? comparator : comparator.reversed());
+                                        Collections.sort(tutteLeStorie, sortInfo.isAscending() ? comparator : comparator.reversed());
                                     }
                                 }
-
+                    
                                 // Estrae i dati nella portata della tabella
                                 List<Storia> dataInRange = tutteLeStorie.subList(start, end);
-
+                    
                                 // Aggiorna la tabella con i dati estratti
                                 tabella.setRowData(start, dataInRange);
                             }
@@ -160,9 +170,11 @@ public class VisualizzaCatalogo extends Composite {
             }
         });
 
+
         ricerca.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+
 
                 // Converte il testo in minuscolo per una ricerca case-insensitive
                 String nomeDaCercare = nomeRicerca.getText().toLowerCase();
@@ -173,7 +185,7 @@ public class VisualizzaCatalogo extends Composite {
                     // Lista per memorizzare le storie che corrispondono al criterio di ricerca
                     List<Storia> risultatiRicerca = new ArrayList<>();
 
-                    if (filtro.equals("Nome Storia")) {
+                    if (filtro.equals("Nome Storia")){
                         // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
@@ -182,9 +194,9 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    } else if (filtro.equals("Autore Storia")) {
-                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la
-                        // stringa
+                    }
+                    else if (filtro.equals("Autore Storia")){
+                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getUtente().getUsername().toLowerCase().contains(nomeDaCercare)) {
@@ -192,9 +204,9 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    } else if (filtro.equals("Lunghezza Storia")) {
-                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la
-                        // stringa
+                    }
+                    else if (filtro.equals("Lunghezza Storia")){
+                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getNumeroScenari().toLowerCase().contains(nomeDaCercare)) {
@@ -202,7 +214,8 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    } else {
+                    }
+                    else {
                         Window.alert("Seleziona un filtro per la ricerca");
                     }
 
@@ -235,10 +248,27 @@ public class VisualizzaCatalogo extends Composite {
             }
         });
 
+        tabella.addCellPreviewHandler(new CellPreviewEvent.Handler<Storia>() {
+            @Override
+            public void onCellPreview(CellPreviewEvent<Storia> event) {
+                // Verifica se l'evento è un clic sulla cella
+                if ("click".equals(event.getNativeEvent().getType())) {
+                    int index = event.getIndex();
+                    
+                    // Ottenere l'oggetto Storia nella riga cliccata
+                    Storia storiaCliccata = tutteLeStorie.get(index);
+
+                    // Visualizza il testo completo dello scenario iniziale
+                    Window.alert("Testo completo dello scenario iniziale:\n" + storiaCliccata.getScenarioIniziale().getTestoScena());
+                }
+            }
+        });
+
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-
+                
                 hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
                     @Override
                     public void onFailure(Throwable throwable) {
