@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dev.protobuf.DescriptorProtos.FieldDescriptorProto.Label;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -20,7 +19,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -31,17 +29,11 @@ import com.google.gwt.view.client.Range;
 
 public class VisualizzaCatalogo extends Composite {
 
-    // Servizio asincrono GWT per le chiamate RPC
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
 
-    // Interfaccia di UiBinder per associare la parte grafica del widget
     private static final VisualizzaUiBinder UiB = GWT.create(VisualizzaUiBinder.class);
 
-    // Lista di tutte le storie da visualizzare
     private ArrayList<Storia> tutteLeStorie;
-
-    // Tabella per visualizzare le storie
-    // private CellTable<Storia> tabella;
 
     @UiField
     CellTable<Storia> tabella;
@@ -61,22 +53,12 @@ public class VisualizzaCatalogo extends Composite {
     @UiField
     ListBox filtroListBox;
 
-    // Interfaccia di UiBinder
     interface VisualizzaUiBinder extends UiBinder<Widget, VisualizzaCatalogo> {
     }
 
-    // Costruttore del widget
     public VisualizzaCatalogo() {
-        // Inizializza il widget associando la parte grafica
         initWidget(UiB.createAndBindUi(this));
-
-        // Inizializza la lista delle storie
         tutteLeStorie = new ArrayList<Storia>();
-
-        // Inizializza la tabella per visualizzare le storie
-        // tabella = new CellTable<Storia>();
-
-        // Colonna per il nome della storia
         TextColumn<Storia> nomeStoria = new TextColumn<Storia>() {
             @Override
             public String getValue(Storia storia) {
@@ -92,6 +74,7 @@ public class VisualizzaCatalogo extends Composite {
                 return storia.getUtente().getUsername();
             }
         };
+        creatoreStoria.setSortable(true);
 
         TextColumn<Storia> numeroScenariStoria = new TextColumn<Storia>() {
             @Override
@@ -99,6 +82,7 @@ public class VisualizzaCatalogo extends Composite {
                 return storia.getNumeroScenari();
             }
         };
+        numeroScenariStoria.setSortable(true);
 
         // Aggiunta delle colonne alla tabella
         tabella.addColumn(nomeStoria, "Nome Storia");
@@ -109,7 +93,6 @@ public class VisualizzaCatalogo extends Composite {
         hALAServiceAsync.ottieniStorie(new AsyncCallback<ArrayList<Storia>>() {
             @Override
             public void onFailure(Throwable throwable) {
-                // Gestione degli errori in caso di fallimento della chiamata
                 GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
             }
 
@@ -132,26 +115,28 @@ public class VisualizzaCatalogo extends Composite {
                             public void run() {
                                 int start = range.getStart();
                                 int end = start + range.getLength();
-
-                                // Ordina la lista di storie in base alla colonna selezionata
-                                Collections.sort(tutteLeStorie, new Comparator<Storia>() {
-                                    public int compare(Storia o1, Storia o2) {
-                                        if (o1 == o2) {
-                                            return 0;
-                                        }
-
-                                        // Confronta le colonne dei nomi
-                                        int diff = -1;
-                                        if (o1 != null) {
-                                            diff = (o2 != null) ? o1.getNome().compareTo(o2.getNome()) : 1;
-                                        }
-                                        return sortList.get(0).isAscending() ? diff : -diff;
+                    
+                                // Seleziona la colonna per l'ordinamento
+                                Comparator<Storia> comparator = null;
+                                if (sortList.size() > 0) {
+                                    ColumnSortList.ColumnSortInfo sortInfo = sortList.get(0);
+                                    if (sortInfo.getColumn() == nomeStoria) {
+                                        comparator = Comparator.comparing(Storia::getNome);
+                                    } else if (sortInfo.getColumn() == creatoreStoria) {
+                                        comparator = Comparator.comparing(storia -> storia.getUtente().getUsername());
+                                    } else if (sortInfo.getColumn() == numeroScenariStoria) {
+                                        comparator = Comparator.comparing(Storia::getNumeroScenari);
                                     }
-                                });
 
+                                    // Ordina la lista di storie in base al comparator
+                                    if (comparator != null) {
+                                        Collections.sort(tutteLeStorie, sortInfo.isAscending() ? comparator : comparator.reversed());
+                                    }
+                                }
+                    
                                 // Estrae i dati nella portata della tabella
                                 List<Storia> dataInRange = tutteLeStorie.subList(start, end);
-
+                    
                                 // Aggiorna la tabella con i dati estratti
                                 tabella.setRowData(start, dataInRange);
                             }
