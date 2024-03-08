@@ -115,7 +115,7 @@ public class VisualizzaCatalogo extends Composite {
                             public void run() {
                                 int start = range.getStart();
                                 int end = start + range.getLength();
-                    
+
                                 // Seleziona la colonna per l'ordinamento
                                 Comparator<Storia> comparator = null;
                                 if (sortList.size() > 0) {
@@ -130,13 +130,14 @@ public class VisualizzaCatalogo extends Composite {
 
                                     // Ordina la lista di storie in base al comparator
                                     if (comparator != null) {
-                                        Collections.sort(tutteLeStorie, sortInfo.isAscending() ? comparator : comparator.reversed());
+                                        Collections.sort(tutteLeStorie,
+                                                sortInfo.isAscending() ? comparator : comparator.reversed());
                                     }
                                 }
-                    
+
                                 // Estrae i dati nella portata della tabella
                                 List<Storia> dataInRange = tutteLeStorie.subList(start, end);
-                    
+
                                 // Aggiorna la tabella con i dati estratti
                                 tabella.setRowData(start, dataInRange);
                             }
@@ -159,11 +160,9 @@ public class VisualizzaCatalogo extends Composite {
             }
         });
 
-
         ricerca.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-
 
                 // Converte il testo in minuscolo per una ricerca case-insensitive
                 String nomeDaCercare = nomeRicerca.getText().toLowerCase();
@@ -174,7 +173,7 @@ public class VisualizzaCatalogo extends Composite {
                     // Lista per memorizzare le storie che corrispondono al criterio di ricerca
                     List<Storia> risultatiRicerca = new ArrayList<>();
 
-                    if (filtro.equals("Nome Storia")){
+                    if (filtro.equals("Nome Storia")) {
                         // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
@@ -183,9 +182,9 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    }
-                    else if (filtro.equals("Autore Storia")){
-                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la stringa
+                    } else if (filtro.equals("Autore Storia")) {
+                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la
+                        // stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getUtente().getUsername().toLowerCase().contains(nomeDaCercare)) {
@@ -193,9 +192,9 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    }
-                    else if (filtro.equals("Lunghezza Storia")){
-                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la stringa
+                    } else if (filtro.equals("Lunghezza Storia")) {
+                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la
+                        // stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getNumeroScenari().toLowerCase().contains(nomeDaCercare)) {
@@ -203,8 +202,7 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    }
-                    else {
+                    } else {
                         Window.alert("Seleziona un filtro per la ricerca");
                     }
 
@@ -240,7 +238,7 @@ public class VisualizzaCatalogo extends Composite {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                
+
                 hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
                     @Override
                     public void onFailure(Throwable throwable) {
@@ -262,6 +260,7 @@ public class VisualizzaCatalogo extends Composite {
                         }
                     }
                 });
+                RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new Starter());
                 RootPanel.get().clear();
             }
