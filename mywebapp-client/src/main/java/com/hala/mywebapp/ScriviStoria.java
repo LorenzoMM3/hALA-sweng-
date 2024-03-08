@@ -302,8 +302,18 @@ public class ScriviStoria extends Composite implements IsWidget {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    public void onFailure(Throwable caught) {
+                        System.err.println("Errore qui");
+                    };
+
+                    public void onSuccess(Utente utente) {
+                        utenteAttuale = utente;
+
+                        RootPanel.get("startTable").clear();
+                        RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                    }
+                });
             }
         });
 
