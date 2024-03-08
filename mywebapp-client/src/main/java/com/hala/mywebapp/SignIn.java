@@ -21,7 +21,8 @@ public class SignIn extends Composite implements IsWidget {
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final SignInUiBinder UiB = GWT.create(SignInUiBinder.class);
 
-    interface SignInUiBinder extends UiBinder<Widget, SignIn> {}
+    interface SignInUiBinder extends UiBinder<Widget, SignIn> {
+    }
 
     @UiField
     TextBox usernameField;
@@ -43,26 +44,31 @@ public class SignIn extends Composite implements IsWidget {
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                String username = usernameField.getText();
-                String password = passwordField.getText();
-                Utente utente = new Utente(username, password);
-                hALAServiceAsync.signIn(utente, new AsyncCallback<Boolean>() {
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
-                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
-                    }
-
-                    @Override
-                    public void onSuccess(Boolean verifica) {
-                        if (verifica) {
-                            messageLabel.setText("Registrazione effettuata! Benvenuto!");
-                        } else {
+                if (!(usernameField.getText().isEmpty()) && !(passwordField.getText().isEmpty())) {
+                    String username = usernameField.getText();
+                    String password = passwordField.getText();
+                    Utente utente = new Utente(username, password);
+                    hALAServiceAsync.signIn(utente, new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable throwable) {
                             messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
+                            GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                         }
-                    }
-                });
+
+                        @Override
+                        public void onSuccess(Boolean verifica) {
+                            if (verifica) {
+                                messageLabel.setText("Registrazione effettuata! Benvenuto!");
+                            } else {
+                                messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
+                            }
+                        }
+                    });
+                } else {
+                    messageLabel.setText("Forse manca qualcosa");
+                }
             }
+
         });
 
         backButton.addClickHandler(new ClickHandler() {
