@@ -23,7 +23,8 @@
             <g:Label ui:field="tipologiaLabel">Che tipologia di scenario vuoi inserire?</g:Label>
             <g:ListBox ui:field="menuTipoScenario">
                 <g:item>Scenario a scelta</g:item>
-                <g:item>Scenario con indovinello</g:item>             
+                <g:item>Scenario con indovinello</g:item>   
+                <g:item>Scenario finale</g:item>          
            </g:ListBox>
         
             <g:Label ui:field="labelTestoScenario">Inserisci testo scenario:</g:Label>
@@ -43,6 +44,8 @@
             <g:Label ui:field="labelRispostaIndovinello">Inserisci risposta corretta:</g:Label>
             <g:TextBox ui:field="rispostaFieldIndovinello"/>
             <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
+
+            <g:Button ui:field="creaScenarioFinale">Crea</g:Button>
 
 
         </g:VerticalPanel>

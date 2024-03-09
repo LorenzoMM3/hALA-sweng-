@@ -130,6 +130,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
+    public boolean aggiungiScenarioFinale(String id, Scenario scenario) {
+        if (db == null || db.isClosed()) {
+            openDB();
+        }
+        scenariNelSito.put(id, scenario);
+        db.commit();
+        return true;
+    }
+
     public boolean aggiungiScenarioIndovinello(String id, Scenario scenario) {
         if (db == null || db.isClosed()) {
             openDB();
@@ -221,13 +230,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 String id = "-1";
                 x.addPrecedente(id);
                 scenariNelSito.put(k, x);
-                
+
             }
 
         }
-        if (!nomeStoria.equals("")){
-            for(Storia s : storieNelSito.values()){
-                if(s.getNome().equalsIgnoreCase(nomeStoria)){
+        if (!nomeStoria.equals("")) {
+            for (Storia s : storieNelSito.values()) {
+                if (s.getNome().equalsIgnoreCase(nomeStoria)) {
                     Storia temp = s;
                     temp.setScenarioIniziale(scenario);
                     String key = temp.getNome();

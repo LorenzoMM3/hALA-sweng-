@@ -29,13 +29,13 @@
                     <g:item>Risposta sbagliata</g:item>
                     <g:item>Risposta corretta</g:item>
                 </g:ListBox>
-                <g:Button ui:field="settaSuccessivoIndovinello">Setta come successivo</g:Button>
+               
             </g:VerticalPanel>
 
             <g:VerticalPanel spacing="10" ui:field="gestioneScelte">
                 <g:Label ui:field="labelGestioneScelte">Seleziona l'opzione a cui vuoi collegare:</g:Label>
                 <g:ListBox ui:field="menuScelte"></g:ListBox>
-                <g:Button ui:field="settaSuccessivoScelta">Setta come successivo</g:Button>
+                
             </g:VerticalPanel>
 
             <g:VerticalPanel spacing="10" ui:field="CollegamentiPanel">
@@ -43,6 +43,7 @@
                 <g:Label>Seleziona lo scenario con cui vuoi effettuare il collegamento:</g:Label>
                 <g:Label ui:field="testoScenarioDaCollegare"/>
                 <g:ListBox ui:field="menuScenariCollegamenti"></g:ListBox>
+                <g:Button ui:field="settaSuccessivo">Setta come successivo</g:Button>
                 
             </g:VerticalPanel>
 

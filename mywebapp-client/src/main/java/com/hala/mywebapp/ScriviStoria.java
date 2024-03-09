@@ -102,6 +102,9 @@ public class ScriviStoria extends Composite implements IsWidget {
     @UiField
     Button creaCollegamenti;
 
+    @UiField
+    Button creaScenarioFinale;
+
     public ScriviStoria() {
         initWidget(uiBinder.createAndBindUi(this));
         hideAdditionalFields();
@@ -163,6 +166,13 @@ public class ScriviStoria extends Composite implements IsWidget {
                 showAdditionalFieldsIndovinello();
             } else {
                 hideAdditionalFieldsIndovinello();
+            }
+
+            if ("Scenario finale".equals(menuTipoScenario.getSelectedValue())) {
+                showAdditionalFieldsFinale();
+            } else {
+                hideAdditionalFieldsFinale();
+
             }
         });
 
@@ -299,6 +309,55 @@ public class ScriviStoria extends Composite implements IsWidget {
             }
         });
 
+        creaScenarioFinale.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                if (controlloScenari()) {// chiamo il metodo di controllo degli scenari
+                    idTemp = "";
+                    hALAServiceAsync.prossimoId(new AsyncCallback<String>() { // !!!
+                        @Override
+                        public void onFailure(Throwable caught) {
+                        }
+
+                        @Override
+                        public void onSuccess(String result) {
+                            idTemp = result;
+                            Scenario scenario = new Scenario(nomeStoriaTemp);
+
+                            scenario.setValId(idTemp);
+                            scenario.setTestoScena(testoScenarioField.getText());
+
+                            message.setText("");
+                            vpScenario.add(message);
+
+                            hALAServiceAsync.aggiungiScenarioFinale(idTemp, scenario,
+                                    new AsyncCallback<Boolean>() {
+                                        @Override
+                                        public void onFailure(Throwable caught) {
+                                        }
+
+                                        public void onSuccess(Boolean verifica) {
+                                            if (verifica) {
+                                                scenariCreati.add(scenario);
+                                                message.setText("Scenario finale creato con successo");
+                                                testoScenarioField.setText("");
+
+                                            } else {
+                                                message.setText("Errore nella creazione dello scenario finale");
+                                                testoScenarioField.setText("");
+                                            }
+                                        }
+                                    });
+                        }
+
+                    });
+                } else {
+                    message.setText("Riempi tutti i campi");
+                }
+
+            }
+        });
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -346,6 +405,11 @@ public class ScriviStoria extends Composite implements IsWidget {
         if ("Scenario con indovinello".equals(menuTipoScenario.getSelectedValue())) {
             if (!(testoScenarioField.getText().isEmpty()) && !(domandaFieldIndovinello.getText().isEmpty())
                     && !(rispostaFieldIndovinello.getText().isEmpty())) {
+                return true;
+            }
+        }
+        if ("Scenario finale".equals(menuTipoScenario.getSelectedValue())) {
+            if (!(testoScenarioField.getText().isEmpty())) {
                 return true;
             }
         }
@@ -399,6 +463,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     private void hideAdditionalFields() {
         hideAdditionalFieldsAScelta();
         hideAdditionalFieldsIndovinello();
+        hideAdditionalFieldsFinale();
     }
 
     private void showAdditionalFieldsAScelta() {
@@ -430,6 +495,14 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.add(labelRispostaIndovinello);
         vpScenario.add(rispostaFieldIndovinello);
         vpScenario.add(creaScenarioIndovinello);
+    }
+
+    private void showAdditionalFieldsFinale() {
+        vpScenario.add(creaScenarioFinale);
+    }
+
+    private void hideAdditionalFieldsFinale() {
+        vpScenario.remove(creaScenarioFinale);
     }
 
     private void hideAdditionalFieldsIndovinello() {
