@@ -1,16 +1,19 @@
 /** Add css rules here for your application. */
-
+/*var(--gradient-2, linear-gradient(90deg, #2accf5 0%, #5000fd 100%)) per fare uno sfondo sfumatooooo bellissimooo*/
 body{
   background-color:rgb(#7B926E);
 }
 
 /** Example rules used by the template application (remove for your app) */
 h1 {
-  font-size: 2em;
+  font-size: 40px;
   font-weight: bold;
-  color: #777777;
+  color: #565263;
   margin: 40px 0px 70px;
   text-align: center;
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-weight: 800;
 }
 
 .sendButton {
@@ -35,41 +38,10 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
-div.alto{
-  /*background-color:rgb(#7B926E);*/
-  width:100%;
-  height:10%;
-  text-align:left;
-  background: rgb(#ffffff);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-}
-div.basso{
-  width:100%;
-  height:90%;
-  margin-top: 60px;
-}
-td.titolo{
-  text-align:center;
-  padding: 10px;
-}
-td.immagine{
-  text-align:center;
-  vertical-align: middle;
-}
-img{
-  border-width:10;
-  height:100px;
-  width:auto;
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-}
-.loginPanel{
+.sPanel{
   padding: 10px;
   margin: 0;
-  width: 100vw;
+  width: 20vw;
   height: 7rem;
   background-color: transparent;
   border: 2px solid transparent;
@@ -79,4 +51,32 @@ img{
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  text-align:center;
+}
+
+
+.sButton{
+  color: #466646;
+  background: #84BF88;
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  border: #466646; /* Spessore, tipo e colore del bordo */
+  border-radius: 5px; 
+  padding: 9px 18px;
+}
+
+.sButton:hover {
+  background-color: #466646; /* Cambio colore di sfondo al passaggio del mouse */
+  color: #a4d7a8; /* Cambio colore del testo al passaggio del mouse */
+}
+
+
+.messaggio{
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: medium;
+  color: #A65D33;
 }

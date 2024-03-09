@@ -45,7 +45,7 @@ public class Login extends Composite implements IsWidget {
 
     public Login() {
         initWidget(UiB.createAndBindUi(this));
-        loginPanel.setStyleName("loginPanel");
+        loginPanel.setStyleName("sPanel");
 
         loginButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {

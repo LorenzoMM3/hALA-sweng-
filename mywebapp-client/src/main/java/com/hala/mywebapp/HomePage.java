@@ -47,6 +47,7 @@ public class HomePage extends Composite implements IsWidget {
         initWidget(uiBinder.createAndBindUi(this));
         mainPanel = GWT.create(VerticalPanel.class);
         benvenuto.setText("ciao " + utente);
+        benvenuto.setStyleName("messaggio");
 
         scriviButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {

@@ -12,7 +12,8 @@ public class Starter extends Composite implements IsWidget {
 
     private static final StarterUiBinder uiBinder = GWT.create(StarterUiBinder.class);
 
-    interface StarterUiBinder extends UiBinder<Widget, Starter> {}
+    interface StarterUiBinder extends UiBinder<Widget, Starter> {
+    }
 
     @UiField
     Button loginButton;
@@ -25,6 +26,9 @@ public class Starter extends Composite implements IsWidget {
 
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
+        loginButton.setStyleName("sButton");
+        signinButton.setStyleName("sButton");
+        visualizzaCatalogoButton.setStyleName("sButton");
 
         signinButton.addClickHandler(new ClickHandler() {
             @Override
@@ -50,10 +54,7 @@ public class Starter extends Composite implements IsWidget {
             }
         });
 
-
     }
-
-
 
     @Override
     public Widget asWidget() {
