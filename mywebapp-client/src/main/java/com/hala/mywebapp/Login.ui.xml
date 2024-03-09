@@ -9,7 +9,7 @@
         }
     </ui:style>
 
-    <g:VerticalPanel>
+    <g:VerticalPanel ui:field="loginPanel">
         <g:Label>Username:</g:Label>
         <g:TextBox ui:field="usernameField"/>
         <g:Label>Password:</g:Label>

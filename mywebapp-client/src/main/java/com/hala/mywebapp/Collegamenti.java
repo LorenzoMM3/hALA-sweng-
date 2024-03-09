@@ -251,7 +251,11 @@ public class Collegamenti extends Composite implements IsWidget {
                         if (temp.getTestoScena().equals(testo1)) {
                             temp1 = (ScenarioAScelta) temp;
                         } else if (temp.getTestoScena().equals(testo2)) {
-                            temp2 = (ScenarioAScelta) temp;
+                            if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                                temp2 = (ScenarioAScelta) temp;
+                            } else {
+                                temp2 = (ScenarioIndovinello) temp;
+                            }
                         }
                     }
                     hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
@@ -287,7 +291,11 @@ public class Collegamenti extends Composite implements IsWidget {
                         if (temp.getTestoScena().equals(testo1)) {
                             temp1 = (ScenarioIndovinello) temp;
                         } else if (temp.getTestoScena().equals(testo2)) {
-                            temp2 = (ScenarioIndovinello) temp;
+                            if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                                temp2 = (ScenarioAScelta) temp;
+                            } else {
+                                temp2 = (ScenarioIndovinello) temp;
+                            }
                         }
                     }
                     hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
@@ -311,6 +319,7 @@ public class Collegamenti extends Composite implements IsWidget {
     }
 
     private void mostraSchermataScelte(ScenarioAScelta temp) {
+        menuScelte.clear();
         gestioneIndovinello.setVisible(false);
         gestioneScelte.setVisible(true);
         HashMap<String, String> opzioni = temp.getOpzioniScelta();
