@@ -30,6 +30,10 @@
             <g:Label ui:field="labelTestoScenario">Inserisci testo scenario:</g:Label>
             <g:TextBox ui:field="testoScenarioField"/>
 
+            <g:Label ui:field="inserisciOggettoLabel">Inserisci gli oggetti raccoglibili nello scenario:</g:Label>
+            <g:TextBox ui:field="inserisciOggettoTextBox"/>
+            <g:Button ui:field="inserisciOggettoButton">Aggiungi Oggetto</g:Button>
+
             <g:Label ui:field="labelDomandaAScelta">Inserisci domanda per il cambio di scenario:</g:Label>
             <g:TextBox ui:field="domandaFieldAScelta"/>
             <g:Label ui:field="labelScelta">Inserisci opzione scelta:</g:Label>

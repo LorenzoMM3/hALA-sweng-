@@ -20,6 +20,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     private String nomeStoriaTemp;
     private String idTemp = "";
     Utente utenteAttuale;
+    private ArrayList<String> oggettiSbloccabili;
 
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
@@ -105,11 +106,21 @@ public class ScriviStoria extends Composite implements IsWidget {
     @UiField
     Button creaScenarioFinale;
 
+    @UiField
+    Button inserisciOggettoButton;
+
+    @UiField
+    TextBox inserisciOggettoTextBox;
+
+    @UiField
+    Label inserisciOggettoLabel;
+
     public ScriviStoria() {
         initWidget(uiBinder.createAndBindUi(this));
         hideAdditionalFields();
         disabilitaTutto();
         scenariCreati = new ArrayList<>();
+        oggettiSbloccabili = new ArrayList<>();
 
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
@@ -192,11 +203,21 @@ public class ScriviStoria extends Composite implements IsWidget {
 
         });
 
+        inserisciOggettoButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                String oggetto = inserisciOggettoTextBox.getText();
+                oggettiSbloccabili.add(oggetto);
+                inserisciOggettoTextBox.setText("");
+            }
+        });
+
         creaScenarioAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                if (controlloScenari()) { // chiamo il metodo di controllo per gli scenari
-                    // Chiedo al server l'id per la creazione
+                if (controlloScenari()) {
+                    
                     idTemp = "";
                     hALAServiceAsync.prossimoId(new AsyncCallback<String>() {
                         @Override
@@ -206,12 +227,12 @@ public class ScriviStoria extends Composite implements IsWidget {
                         @Override
                         public void onSuccess(String result) {
                             idTemp = result;
-                            message.setText("ID dal client: " + idTemp);
                             ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
                             scenario.setValId(idTemp);
                             scenario.setTestoScena(testoScenarioField.getText());
                             scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
                             scenario.setOpzioniScelte(opzioniSceltaTemp);
+                            scenario.setOggettiCheSblocca(oggettiSbloccabili);
 
                             message.setText("");
                             vpScenario.add(message);
@@ -230,6 +251,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                         scelta.setText("");
                                         // Libero l'array di scelte
                                         opzioniSceltaTemp.clear();
+                                        oggettiSbloccabili.clear();
 
                                     } else {
                                         message.setText("Errore nella creazione dello scenario a scelta");
@@ -239,6 +261,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                         scelta.setText("");
                                         // Libero l'array di scelte
                                         opzioniSceltaTemp.clear();
+                                        oggettiSbloccabili.clear();
                                     }
                                 }
                             });
@@ -273,6 +296,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                             scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
                             scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
+                            scenario.setOggettiCheSblocca(oggettiSbloccabili);
 
                             message.setText("");
                             vpScenario.add(message);
@@ -290,12 +314,14 @@ public class ScriviStoria extends Composite implements IsWidget {
                                                 testoScenarioField.setText("");
                                                 domandaFieldIndovinello.setText("");
                                                 rispostaFieldIndovinello.setText("");
+                                                oggettiSbloccabili.clear();
 
                                             } else {
                                                 message.setText("Errore nella creazione dello scenario indovinello");
                                                 testoScenarioField.setText("");
                                                 domandaFieldIndovinello.setText("");
                                                 rispostaFieldIndovinello.setText("");
+                                                oggettiSbloccabili.clear();
                                             }
                                         }
                                     });
@@ -417,6 +443,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     }
 
     private void disabilitaTutto() {
+        labelTestoScenario.setVisible(false);
         scriviScenarioLabel.setVisible(false);
         tipologiaLabel.setVisible(false);
         menuTipoScenario.setVisible(false);
@@ -435,6 +462,10 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioIndovinello.setVisible(false);
         labelSceltaOggetto.setVisible(false);
         oggetto.setVisible(false);
+        inserisciOggettoLabel.setVisible(false);
+        inserisciOggettoTextBox.setVisible(false);
+        inserisciOggettoButton.setVisible(false);
+
         // creaCollegamenti.setVisible(false);
     }
 
@@ -457,6 +488,9 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioIndovinello.setVisible(true);
         labelSceltaOggetto.setVisible(true);
         oggetto.setVisible(true);
+        inserisciOggettoLabel.setVisible(true);
+        inserisciOggettoTextBox.setVisible(true);
+        inserisciOggettoButton.setVisible(true);
 
     }
 

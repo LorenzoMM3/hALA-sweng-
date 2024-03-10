@@ -12,6 +12,7 @@ public class Scenario implements ScenarioI, Serializable {
     public String valId;
     protected ArrayList<String> precedente;
     protected HashMap<String, String> successivo; //Testo opzione, indice
+    protected ArrayList<String> oggettiCheSblocca;
 
     public Scenario() {
         domandaCambioScenario = "";
@@ -21,6 +22,7 @@ public class Scenario implements ScenarioI, Serializable {
         tipologiaScenario = null;
         precedente = new ArrayList<>();
         successivo = new HashMap<>();
+        oggettiCheSblocca = new ArrayList<>();
     }
     /* 
     public Scenario(String id, String nomeStoria) {
@@ -52,6 +54,10 @@ public class Scenario implements ScenarioI, Serializable {
         return this.valId;
     }
      
+    public ArrayList<String> getOggettiCheSblocca() {
+        return oggettiCheSblocca;
+    }
+
     public void setPrecedente(ArrayList<String> precedente) {
         this.precedente = precedente;
     }
@@ -76,6 +82,10 @@ public class Scenario implements ScenarioI, Serializable {
         this.successivo.put(key, id);
     }
 
+    public void addOggettoCheSblocca(String oggetto) {
+        this.oggettiCheSblocca.add(oggetto);
+    }
+
     public void setDomandaCambioScenario(String domanda) {
         this.domandaCambioScenario = domanda;
     }
@@ -97,6 +107,10 @@ public class Scenario implements ScenarioI, Serializable {
         return nomeStoria;
     }
 
+    public void setOggettiCheSblocca(ArrayList<String> oggettiCheSblocca) {
+        this.oggettiCheSblocca = oggettiCheSblocca;
+    }
+    
     public TipologiaScenario getTipologia() {
         return tipologiaScenario;
     }

@@ -338,6 +338,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                     }
 
                     Scenario x = entry2.getValue();
+                    pW.println("    \"Oggetti Sbloccabili tramite lo Scenario\": \"" + x.getOggettiCheSblocca() + "\",");
                     pW.println("    \"Scenari precedenti\": \"" + x.getPrecedente() + "\",");
                     pW.println("    \"Scenari successivi\": \"" + x.getSuccessivo() + "\"");
 
