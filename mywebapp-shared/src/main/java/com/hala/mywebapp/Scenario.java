@@ -17,6 +17,7 @@ public class Scenario implements ScenarioI, Serializable {
         testoScena = "";
         nomeStoria = "";
         valId = "-1";
+        tipologiaScenario = null;
         precedente = new ArrayList<>();
         successivo = new ArrayList<>();
     }
@@ -37,7 +38,7 @@ public class Scenario implements ScenarioI, Serializable {
         this.nomeStoria = nomeStoria;
         domandaCambioScenario = "";
         testoScena = "";
-        tipologiaScenario = null;
+        tipologiaScenario = TipologiaScenario.DEFAULT;
         precedente = new ArrayList<>();
         successivo = new ArrayList<>();
     }

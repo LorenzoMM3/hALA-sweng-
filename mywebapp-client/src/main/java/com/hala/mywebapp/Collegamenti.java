@@ -143,37 +143,6 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-        /*
-         * settaSuccessivo.addClickHandler(new ClickHandler() {
-         * public void onClick(ClickEvent event) {
-         * int indexAttuale = menuScenari.getSelectedIndex();
-         * int indexCollegamento = menuScenariCollegamenti.getSelectedIndex();
-         * if (indexAttuale != -1 && indexCollegamento != -1) { // controllo che sia
-         * stato selezionato uno scenario
-         * attuale = scenariStoria.get(indexAttuale);
-         * Scenario scenarioDaCollegare = scenariStoria.get(indexCollegamento);
-         * hALAServiceAsync.settaCollegamentoSuccessivo(attuale, scenarioDaCollegare,
-         * new AsyncCallback<Boolean>() {
-         * 
-         * @Override
-         * public void onFailure(Throwable caught) {
-         * }
-         * 
-         * @Override
-         * public void onSuccess(Boolean result) {
-         * if (result) {
-         * messageLabel.setText("Collegamento successivo impostato con successo");
-         * } else {
-         * messageLabel.setText("Impossibile impostare il collegamento successivo");
-         * }
-         * }
-         * });
-         * } else {
-         * messageLabel.setText("Selezionare uno scenario");
-         * }
-         * }
-         * });
-         */
 
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
@@ -255,7 +224,7 @@ public class Collegamenti extends Composite implements IsWidget {
                     String testo1 = menuScenari.getItemText(index1);
                     String testo2 = menuScenariCollegamenti.getItemText(index2);
                     Scenario temp1 = new ScenarioAScelta();
-                    Scenario temp2 = new ScenarioAScelta();
+                    Scenario temp2 = new Scenario();
 
                     for (Scenario temp : scenariStoria) {
                         if (temp.getTestoScena().equals(testo1)) {
@@ -265,7 +234,7 @@ public class Collegamenti extends Composite implements IsWidget {
                                 temp2 = (ScenarioAScelta) temp;
                             } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                 temp2 = (ScenarioIndovinello) temp;
-                            } else {
+                            } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")){
                                 temp2 = (Scenario) temp;
                             }
                         }
@@ -298,7 +267,7 @@ public class Collegamenti extends Composite implements IsWidget {
                 String testo1 = menuScenari.getItemText(index1);
                 String testo2 = menuScenariCollegamenti.getItemText(index2);
                 Scenario temp1 = new ScenarioIndovinello();
-                Scenario temp2 = new ScenarioIndovinello();
+                Scenario temp2 = new Scenario();
                 if (index1 != -1 && index2 != -1) {
                     for (Scenario temp : scenariStoria) {
                         if (temp.getTestoScena().equals(testo1)) {
@@ -308,7 +277,7 @@ public class Collegamenti extends Composite implements IsWidget {
                                 temp2 = (ScenarioAScelta) temp;
                             } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                 temp2 = (ScenarioIndovinello) temp;
-                            } else {
+                            } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")){
                                 temp2 = (Scenario) temp;
                             }
                         }
@@ -332,6 +301,7 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
+        
         settaSuccessivoFinale.addClickHandler(new ClickHandler() {
 
             @Override
@@ -347,13 +317,13 @@ public class Collegamenti extends Composite implements IsWidget {
                         if (temp.getTestoScena().equals(testo1)) {
                             temp1 = temp;
                         } else if (temp.getTestoScena().equals(testo2)) {
-                            if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                            /*if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
                                 temp2 = (ScenarioAScelta) temp;
                             } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                 temp2 = (ScenarioIndovinello) temp;
-                            } else {
+                            } else {*/
                                 temp2 = temp;
-                            }
+                            //
                         }
                     }
                     hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
