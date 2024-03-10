@@ -27,8 +27,10 @@ public class SignIn extends Composite implements IsWidget {
     @UiField
     TextBox usernameField;
 
-    @UiField
-    VerticalPanel SigninPanel;
+    /*
+     * @UiField
+     * VerticalPanel SigninPanel;
+     */
 
     @UiField
     TextBox passwordField;
@@ -44,7 +46,7 @@ public class SignIn extends Composite implements IsWidget {
 
     public SignIn() {
         initWidget(UiB.createAndBindUi(this));
-        SigninPanel.setStyleName("sPanel");
+        // SigninPanel.setStyleName("sPanel");
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -53,6 +55,7 @@ public class SignIn extends Composite implements IsWidget {
                     String password = passwordField.getText();
                     Utente utente = new Utente(username, password);
                     hALAServiceAsync.signIn(utente, new AsyncCallback<Boolean>() {
+
                         @Override
                         public void onFailure(Throwable throwable) {
                             messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");

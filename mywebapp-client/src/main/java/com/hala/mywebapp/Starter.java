@@ -27,7 +27,7 @@ public class Starter extends Composite implements IsWidget {
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
         loginButton.setStyleName("sButton");
-        signinButton.setStyleName("sButton");
+        // signinButton.setStyleName("sButton");
         visualizzaCatalogoButton.setStyleName("sButton");
 
         signinButton.addClickHandler(new ClickHandler() {

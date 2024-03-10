@@ -81,7 +81,10 @@ public class Collegamenti extends Composite implements IsWidget {
     ListBox menuScelte;
 
     @UiField
-    Button settaSuccessivo;
+    Button settaSuccessivoAScelta;
+
+    @UiField
+    Button settaSuccessivoIndovinello;
 
     public Collegamenti(String nomeStoria) {
 
@@ -234,32 +237,25 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-        settaSuccessivo.addClickHandler(new ClickHandler() {
+        settaSuccessivoAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 int index1 = menuScenari.getSelectedIndex();
                 int index2 = menuScenariCollegamenti.getSelectedIndex();
-                String testo1 = menuScenari.getItemText(index1);
-                String testo2 = menuScenariCollegamenti.getItemText(index2);
-                Scenario temp1 = new Scenario();
-                Scenario temp2 = new Scenario();
                 if (index1 != -1 && index2 != -1) {
+                    String testo1 = menuScenari.getItemText(index1);
+                    String testo2 = menuScenariCollegamenti.getItemText(index2);
+                    Scenario temp1 = new ScenarioAScelta();
+                    Scenario temp2 = new ScenarioAScelta();
+
                     for (Scenario temp : scenariStoria) {
                         if (temp.getTestoScena().equals(testo1)) {
-                            if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
-                                temp1 = (ScenarioAScelta) temp;
-                            } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
-                                temp1 = (ScenarioIndovinello) temp;
-                            } else {
-                                temp1 = temp;
-                            }
+                            temp1 = (ScenarioAScelta) temp;
                         } else if (temp.getTestoScena().equals(testo2)) {
                             if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
                                 temp2 = (ScenarioAScelta) temp;
-                            } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
-                                temp2 = (ScenarioIndovinello) temp;
                             } else {
-                                temp2 = temp;
+                                temp2 = (ScenarioIndovinello) temp;
                             }
                         }
                     }
@@ -282,52 +278,47 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-        /*
-         * settaSuccessivoIndovinello.addClickHandler(new ClickHandler() {
-         * 
-         * @Override
-         * public void onClick(ClickEvent event) {
-         * int index1 = menuScenari.getSelectedIndex();
-         * int index2 = menuScenariCollegamenti.getSelectedIndex();
-         * String testo1 = menuScenari.getItemText(index1);
-         * String testo2 = menuScenariCollegamenti.getItemText(index2);
-         * Scenario temp1 = new ScenarioIndovinello();
-         * Scenario temp2 = new ScenarioIndovinello();
-         * if (index1 != -1 && index2 != -1) {
-         * for (Scenario temp : scenariStoria) {
-         * if (temp.getTestoScena().equals(testo1)) {
-         * temp1 = (ScenarioIndovinello) temp;
-         * } else if (temp.getTestoScena().equals(testo2)) {
-         * if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
-         * temp2 = (ScenarioAScelta) temp;
-         * } else {
-         * temp2 = (ScenarioIndovinello) temp;
-         * }
-         * }
-         * }
-         * hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new
-         * AsyncCallback<Boolean>() {
-         * 
-         * @Override
-         * public void onFailure(Throwable caught) {
-         * }
-         * 
-         * @Override
-         * public void onSuccess(Boolean result) {
-         * if (result) {
-         * messageLabel.setText("Scenario indovinello successivo impostato con successo"
-         * );
-         * // qui da aggiungere qualcosa
-         * } else {
-         * messageLabel.
-         * setText("Impossibile impostare lo scenario indovinello successivo");
-         * }
-         * }
-         * });
-         * }
-         * }
-         * });
-         */
+        settaSuccessivoIndovinello.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                int index1 = menuScenari.getSelectedIndex();
+                int index2 = menuScenariCollegamenti.getSelectedIndex();
+                String testo1 = menuScenari.getItemText(index1);
+                String testo2 = menuScenariCollegamenti.getItemText(index2);
+                Scenario temp1 = new ScenarioIndovinello();
+                Scenario temp2 = new ScenarioIndovinello();
+                if (index1 != -1 && index2 != -1) {
+                    for (Scenario temp : scenariStoria) {
+                        if (temp.getTestoScena().equals(testo1)) {
+                            temp1 = (ScenarioIndovinello) temp;
+                        } else if (temp.getTestoScena().equals(testo2)) {
+                            if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                                temp2 = (ScenarioAScelta) temp;
+                            } else {
+                                temp2 = (ScenarioIndovinello) temp;
+                            }
+                        }
+                    }
+                    hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+                        }
+
+                        @Override
+                        public void onSuccess(Boolean result) {
+                            if (result) {
+                                messageLabel.setText("Scenario indovinello successivo impostato con successo");
+                                // qui da aggiungere qualcosa
+                            } else {
+                                messageLabel.setText("Impossibile impostare lo scenario indovinello successivo");
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
     }
 
     private void mostraSchermataScelte(ScenarioAScelta temp) {

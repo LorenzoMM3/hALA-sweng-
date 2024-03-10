@@ -3,18 +3,13 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
              
-    <ui:style>
-        .Login{
-          
-        }
-    </ui:style>
 
     <g:VerticalPanel ui:field="loginPanel" spacing="10">
         <g:Label>Username:</g:Label>
         <g:TextBox ui:field="usernameField"/>
         <g:Label>Password:</g:Label>
         <g:TextBox ui:field="passwordField"/>
-        <g:Button styleName="{style.Login}" ui:field="loginButton">Login</g:Button>
+        <g:Button ui:field="loginButton">Login</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>
         <g:Label ui:field="messageLabel"/>
     </g:VerticalPanel>
