@@ -28,8 +28,9 @@
                 <g:ListBox ui:field="menuIndovinelli">
                     <g:item>Risposta sbagliata</g:item>
                     <g:item>Risposta corretta</g:item>
-                    <g:Button ui:field="settaSuccessivoIndovinello">Setta come successivo</g:Button>
+                    
                 </g:ListBox>
+                <g:Button ui:field="settaSuccessivoIndovinello">Setta come successivo</g:Button>
                
             </g:VerticalPanel>
 
@@ -39,6 +40,12 @@
                 <g:Button ui:field="settaSuccessivoAScelta">Setta come successivo</g:Button>
                 
             </g:VerticalPanel>
+
+            <g:VerticalPanel spacing="10" ui:field="gestioneFinale">
+                <g:Button ui:field="settaSuccessivoFinale">Setta come successivo</g:Button>
+            </g:VerticalPanel>
+
+            
 
             <g:VerticalPanel spacing="10" ui:field="CollegamentiPanel">
                 

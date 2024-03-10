@@ -78,6 +78,9 @@ public class Collegamenti extends Composite implements IsWidget {
     VerticalPanel gestioneScelte;
 
     @UiField
+    VerticalPanel gestioneFinale;
+
+    @UiField
     ListBox menuScelte;
 
     @UiField
@@ -85,6 +88,9 @@ public class Collegamenti extends Composite implements IsWidget {
 
     @UiField
     Button settaSuccessivoIndovinello;
+
+    @UiField
+    Button settaSuccessivoFinale;
 
     public Collegamenti(String nomeStoria) {
 
@@ -231,6 +237,9 @@ public class Collegamenti extends Composite implements IsWidget {
                         } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                             ScenarioIndovinello temp2 = (ScenarioIndovinello) temp;
                             mostraSchermataIndovinello(temp2);
+                        } else {
+                            Scenario temp2 = temp;
+                            mostraSchermataFinale(temp2);
                         }
                     }
                 }
@@ -254,8 +263,10 @@ public class Collegamenti extends Composite implements IsWidget {
                         } else if (temp.getTestoScena().equals(testo2)) {
                             if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
                                 temp2 = (ScenarioAScelta) temp;
-                            } else {
+                            } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                 temp2 = (ScenarioIndovinello) temp;
+                            } else {
+                                temp2 = (Scenario) temp;
                             }
                         }
                     }
@@ -295,8 +306,53 @@ public class Collegamenti extends Composite implements IsWidget {
                         } else if (temp.getTestoScena().equals(testo2)) {
                             if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
                                 temp2 = (ScenarioAScelta) temp;
-                            } else {
+                            } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                 temp2 = (ScenarioIndovinello) temp;
+                            } else {
+                                temp2 = (Scenario) temp;
+                            }
+                        }
+                    }
+                    hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+                        }
+
+                        @Override
+                        public void onSuccess(Boolean result) {
+                            if (result) {
+                                messageLabel.setText("Scenario indovinello successivo impostato con successo");
+                                // qui da aggiungere qualcosa
+                            } else {
+                                messageLabel.setText("Impossibile impostare lo scenario indovinello successivo");
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        settaSuccessivoFinale.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                int index1 = menuScenari.getSelectedIndex();
+                int index2 = menuScenariCollegamenti.getSelectedIndex();
+                String testo1 = menuScenari.getItemText(index1);
+                String testo2 = menuScenariCollegamenti.getItemText(index2);
+                Scenario temp1 = new Scenario();
+                Scenario temp2 = new Scenario();
+                if (index1 != -1 && index2 != -1) {
+                    for (Scenario temp : scenariStoria) {
+                        if (temp.getTestoScena().equals(testo1)) {
+                            temp1 = temp;
+                        } else if (temp.getTestoScena().equals(testo2)) {
+                            if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                                temp2 = (ScenarioAScelta) temp;
+                            } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
+                                temp2 = (ScenarioIndovinello) temp;
+                            } else {
+                                temp2 = temp;
                             }
                         }
                     }
@@ -324,6 +380,7 @@ public class Collegamenti extends Composite implements IsWidget {
     private void mostraSchermataScelte(ScenarioAScelta temp) {
         menuScelte.clear();
         gestioneIndovinello.setVisible(false);
+        gestioneFinale.setVisible(false);
         gestioneScelte.setVisible(true);
         HashMap<String, String> opzioni = temp.getOpzioniScelta();
         for (HashMap.Entry<String, String> entry : opzioni.entrySet()) {
@@ -333,7 +390,14 @@ public class Collegamenti extends Composite implements IsWidget {
 
     private void mostraSchermataIndovinello(ScenarioIndovinello temp) {
         gestioneScelte.setVisible(false);
+        gestioneFinale.setVisible(false);
         gestioneIndovinello.setVisible(true);
+    }
+
+    private void mostraSchermataFinale(Scenario temp) {
+        gestioneScelte.setVisible(false);
+        gestioneFinale.setVisible(true);
+        gestioneIndovinello.setVisible(false);
     }
 
     private void setScenaIniziale() {
@@ -351,6 +415,7 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.add(messageLabel);
         pagina.remove(gestioneScelte);
         pagina.remove(gestioneIndovinello);
+        pagina.remove(gestioneFinale);
         // listaScenari.setVisibleItemCount(scenariStoria.size());
         // menuScenari.setVisible(false);
 
@@ -366,6 +431,7 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(backButton);
         pagina.add(gestioneScelte);
         pagina.add(gestioneIndovinello);
+        pagina.add(gestioneFinale);
         gestioneScelte.setVisible(false);
         gestioneIndovinello.setVisible(false);
         pagina.add(CollegamentiPanel);
