@@ -3,6 +3,8 @@ package com.hala.mywebapp;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.checkerframework.checker.units.qual.m;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -224,6 +226,8 @@ public class Collegamenti extends Composite implements IsWidget {
                     String testo1 = menuScenari.getItemText(index1);
                     String testo2 = menuScenariCollegamenti.getItemText(index2);
                     Scenario temp1 = new ScenarioAScelta();
+                    int indiceScelta = menuScelte.getSelectedIndex();
+                    String scelta = menuScelte.getItemText(indiceScelta);
                     Scenario temp2 = new Scenario();
 
                     for (Scenario temp : scenariStoria) {
@@ -239,7 +243,7 @@ public class Collegamenti extends Composite implements IsWidget {
                             }
                         }
                     }
-                    hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
+                    hALAServiceAsync.settaCollegamentoSuccessivo(temp1, scelta,temp2, new AsyncCallback<Boolean>() {
                         @Override
                         public void onFailure(Throwable caught) {
                         }
@@ -267,6 +271,12 @@ public class Collegamenti extends Composite implements IsWidget {
                 String testo1 = menuScenari.getItemText(index1);
                 String testo2 = menuScenariCollegamenti.getItemText(index2);
                 Scenario temp1 = new ScenarioIndovinello();
+                String opzione = "";
+                if (menuIndovinelli.getSelectedIndex() == 0) {
+                    opzione = "false"; //Risposta sbagliata
+                } else {
+                    opzione = "true"; //Risposta corretta
+                }
                 Scenario temp2 = new Scenario();
                 if (index1 != -1 && index2 != -1) {
                     for (Scenario temp : scenariStoria) {
@@ -282,7 +292,7 @@ public class Collegamenti extends Composite implements IsWidget {
                             }
                         }
                     }
-                    hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
+                    hALAServiceAsync.settaCollegamentoSuccessivo(temp1, opzione, temp2, new AsyncCallback<Boolean>() {
                         @Override
                         public void onFailure(Throwable caught) {
                         }
@@ -301,7 +311,7 @@ public class Collegamenti extends Composite implements IsWidget {
             }
         });
 
-        
+        /* 
         settaSuccessivoFinale.addClickHandler(new ClickHandler() {
 
             @Override
@@ -317,13 +327,7 @@ public class Collegamenti extends Composite implements IsWidget {
                         if (temp.getTestoScena().equals(testo1)) {
                             temp1 = temp;
                         } else if (temp.getTestoScena().equals(testo2)) {
-                            /*if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
-                                temp2 = (ScenarioAScelta) temp;
-                            } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
-                                temp2 = (ScenarioIndovinello) temp;
-                            } else {*/
-                                temp2 = temp;
-                            //
+                            temp2 = temp;
                         }
                     }
                     hALAServiceAsync.settaCollegamentoSuccessivo(temp1, temp2, new AsyncCallback<Boolean>() {
@@ -343,7 +347,7 @@ public class Collegamenti extends Composite implements IsWidget {
                     });
                 }
             }
-        });
+        }); */
 
     }
 

@@ -18,8 +18,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
-    private Map<String, Scenario> scenariPresenti; // Vorrei sostituire scenariNelSito ma ne creo due per assicurarmi
-                                                   // che funzioni
+
     private int numeroScenari;;
     private String numeroScenari2;
 
@@ -40,7 +39,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
-            scenariPresenti = (Map<String, Scenario>) db.hashMap("scenariPresenti").createOrOpen();
             if (db == null) {
                 numeroScenari = 0;
             }
@@ -248,16 +246,27 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
     }
 
-    public boolean settaCollegamentoSuccessivo(Scenario attuale, Scenario daCollegare) {
+    public boolean settaCollegamentoSuccessivo(Scenario attuale, String opzione, Scenario daCollegare) {
 
+        //Opzione è, negli scenari a scelta, il testo dell'opzione, negli indovinelli è true o false
         String keyAttuale = trovaChiavePerScenario(attuale);
         String keyDaCollegare = trovaChiavePerScenario(daCollegare);
 
         if (!keyAttuale.equals("-1") || !keyDaCollegare.equals("-1")) {
 
             Scenario x = scenariNelSito.get(keyAttuale);
-            x.addSuccessivo(keyDaCollegare);
-            scenariNelSito.put(keyAttuale, x);
+            String tipologia = x.getTipologia() + "";
+            if (tipologia.equals("ASCELTA")){
+                ScenarioAScelta temp = (ScenarioAScelta) x;
+                temp.addSuccessivo(opzione, keyDaCollegare);
+                scenariNelSito.put(keyAttuale, temp);
+            } else if (tipologia.equals("INDOVINELLO")){
+                ScenarioIndovinello temp = (ScenarioIndovinello) x;
+                temp.addSuccessivo(opzione, keyDaCollegare);
+                scenariNelSito.put(keyAttuale, temp);
+            } else {
+                System.out.println("Errore: Tipologia non riconosciuta.");
+            }
 
             Scenario y = scenariNelSito.get(keyDaCollegare);
             y.addPrecedente(keyAttuale);

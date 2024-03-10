@@ -2,6 +2,7 @@ package com.hala.mywebapp;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Scenario implements ScenarioI, Serializable {
     protected String domandaCambioScenario;
@@ -10,7 +11,7 @@ public class Scenario implements ScenarioI, Serializable {
     protected TipologiaScenario tipologiaScenario;
     public String valId;
     protected ArrayList<String> precedente;
-    protected ArrayList<String> successivo;
+    protected HashMap<String, String> successivo; //Testo opzione, indice
 
     public Scenario() {
         domandaCambioScenario = "";
@@ -19,7 +20,7 @@ public class Scenario implements ScenarioI, Serializable {
         valId = "-1";
         tipologiaScenario = null;
         precedente = new ArrayList<>();
-        successivo = new ArrayList<>();
+        successivo = new HashMap<>();
     }
     /* 
     public Scenario(String id, String nomeStoria) {
@@ -40,7 +41,7 @@ public class Scenario implements ScenarioI, Serializable {
         testoScena = "";
         tipologiaScenario = TipologiaScenario.DEFAULT;
         precedente = new ArrayList<>();
-        successivo = new ArrayList<>();
+        successivo = new HashMap<>();
     }
 
     public void setValId(String id) {
@@ -55,7 +56,7 @@ public class Scenario implements ScenarioI, Serializable {
         this.precedente = precedente;
     }
 
-    public void setSuccessivo(ArrayList<String> successivo) {
+    public void setSuccessivo(HashMap<String, String> successivo) {
         this.successivo = successivo;
     }
 
@@ -63,7 +64,7 @@ public class Scenario implements ScenarioI, Serializable {
         return this.precedente;
     }
 
-    public ArrayList<String> getSuccessivo() {
+    public HashMap<String, String> getSuccessivo() {
         return this.successivo;
     }
 
@@ -71,8 +72,8 @@ public class Scenario implements ScenarioI, Serializable {
         this.precedente.add(id);
     }
 
-    public void addSuccessivo(String id) {
-        this.successivo.add(id);
+    public void addSuccessivo(String key, String id) {
+        this.successivo.put(key, id);
     }
 
     public void setDomandaCambioScenario(String domanda) {

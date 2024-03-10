@@ -35,7 +35,7 @@ public interface GreetingService extends RemoteService {
 	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
 	// collegamento);
 
-	public boolean settaCollegamentoSuccessivo(Scenario scenario, Scenario collegamento);
+	public boolean settaCollegamentoSuccessivo(Scenario scenario, String opzione,Scenario collegamento);
 
 	public boolean salvaSuFileScenari(String nomeStoria);
 

@@ -31,7 +31,7 @@ public interface GreetingServiceAsync {
 	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
 	// collegamento, AsyncCallback<Void> callback);
 
-	public void settaCollegamentoSuccessivo(Scenario scenario, Scenario collegamento, AsyncCallback<Boolean> callback);
+	public void settaCollegamentoSuccessivo(Scenario scenario, String opzione, Scenario collegamento, AsyncCallback<Boolean> callback);
 
 	public void salvaSuFileScenari(String nomeStoria, AsyncCallback<Boolean> callback);
 
