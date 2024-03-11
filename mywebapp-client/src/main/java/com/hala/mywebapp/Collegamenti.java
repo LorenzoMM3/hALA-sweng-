@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.checkerframework.checker.units.qual.m;
 
+import com.google.common.util.concurrent.ListenableScheduledFuture;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -348,7 +349,7 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(terminaButton);
         pagina.remove(ScenariDaCollegare);
         pagina.remove(terminaButton);
-        riempiLista(listaScenari);
+        riempiListaTranneFinali(listaScenari);
         pagina.add(messageLabel);
         pagina.remove(gestioneScelte);
         pagina.remove(gestioneIndovinello);
@@ -363,7 +364,7 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(ScenarioInizialePanel);
         pagina.add(ScenariDaCollegare);
         // pagina.remove(LscenarioIniziale);
-        riempiLista(menuScenari);
+        riempiListaTranneFinali(menuScenari);
         // menuScenari.setVisibleItemCount(scenariStoria.size());
         pagina.remove(backButton);
         pagina.add(gestioneScelte);
@@ -376,7 +377,37 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.add(messageLabel);
         pagina.add(terminaButton);
         pagina.add(backButton);
+        listaScenari.setSelectedIndex(0);
+        menuScenari.setSelectedIndex(0);
+        int index = menuScenari.getSelectedIndex();
+        if (index != -1) {
+            String testo = menuScenari.getItemText(index);
+            for (Scenario temp : scenariStoria) {
+                if (temp.getTestoScena().equals(testo)) {
+                    if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                        ScenarioAScelta temp2 = (ScenarioAScelta) temp;
+                        mostraSchermataScelte(temp2);
+                    } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
+                        ScenarioIndovinello temp2 = (ScenarioIndovinello) temp;
+                        mostraSchermataIndovinello(temp2);
+                    } else {
+                        Scenario temp2 = temp;
+                        mostraSchermataFinale(temp2);
+                    }
+                }
+            }
+        }
+        menuScenariCollegamenti.setSelectedIndex(0);
 
+    }
+
+    private void riempiListaTranneFinali(ListBox lb){
+        for (Scenario temp : scenariStoria) {
+            if (!temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")){
+                lb.addItem(temp.getTestoScena());
+            }
+        }
+        lb.setSize("200px", "50px");
     }
 
     private void riempiLista(ListBox lb) {

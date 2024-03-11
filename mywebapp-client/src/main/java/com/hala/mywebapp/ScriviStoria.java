@@ -166,25 +166,26 @@ public class ScriviStoria extends Composite implements IsWidget {
 
         menuTipoScenario.addChangeHandler(event -> {
             message.setText("");
+            
+
             if ("Scenario a scelta".equals(menuTipoScenario.getSelectedValue())) {
+                hideAdditionalFieldsIndovinello();
+                hideAdditionalFieldsFinale();
                 showAdditionalFieldsAScelta();
                 opzioniSceltaTemp = new ArrayList<>();
-            } else {
+            } else if ("Scenario con indovinello".equals(menuTipoScenario.getSelectedValue())) {
+                
                 hideAdditionalFieldsAScelta();
-            }
-
-            if ("Scenario con indovinello".equals(menuTipoScenario.getSelectedValue())) {
-                showAdditionalFieldsIndovinello();
-            } else {
-                hideAdditionalFieldsIndovinello();
-            }
-
-            if ("Scenario finale".equals(menuTipoScenario.getSelectedValue())) {
-                showAdditionalFieldsFinale();
-            } else {
                 hideAdditionalFieldsFinale();
+                showAdditionalFieldsIndovinello();
+            } else if ("Scenario finale".equals(menuTipoScenario.getSelectedValue())) {
+                hideAdditionalFieldsAScelta();
+                hideAdditionalFieldsIndovinello();
+                showAdditionalFieldsFinale();
 
             }
+
+
         });
 
         altraScelta.addClickHandler(new ClickHandler() {
@@ -508,6 +509,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.add(labelSceltaOggetto);
         vpScenario.add(oggetto);
         vpScenario.add(altraScelta);
+        aggiungiOggettifields();
         vpScenario.add(creaScenarioAScelta);
 
     }
@@ -520,6 +522,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(altraScelta);
         vpScenario.remove(creaScenarioAScelta);
         vpScenario.remove(labelSceltaOggetto);
+        rimuoviOggettiFields();
         vpScenario.remove(oggetto);
     }
 
@@ -528,6 +531,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.add(domandaFieldIndovinello);
         vpScenario.add(labelRispostaIndovinello);
         vpScenario.add(rispostaFieldIndovinello);
+        aggiungiOggettifields();
         vpScenario.add(creaScenarioIndovinello);
     }
 
@@ -537,6 +541,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
     private void hideAdditionalFieldsFinale() {
         vpScenario.remove(creaScenarioFinale);
+        rimuoviOggettiFields();
     }
 
     private void hideAdditionalFieldsIndovinello() {
@@ -544,7 +549,19 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(domandaFieldIndovinello);
         vpScenario.remove(labelRispostaIndovinello);
         vpScenario.remove(rispostaFieldIndovinello);
+        rimuoviOggettiFields();
         vpScenario.remove(creaScenarioIndovinello);
     }
 
+    private void aggiungiOggettifields(){
+        vpScenario.add(inserisciOggettoLabel);
+        vpScenario.add(inserisciOggettoTextBox);
+        vpScenario.add(inserisciOggettoButton);
+    }
+
+    private void rimuoviOggettiFields(){
+        vpScenario.remove(inserisciOggettoLabel);
+        vpScenario.remove(inserisciOggettoTextBox);
+        vpScenario.remove(inserisciOggettoButton);
+    }
 }
