@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.HasData;
@@ -46,10 +47,13 @@ public class VisualizzaCatalogo extends Composite {
     TextBox nomeRicerca;
 
     @UiField
+    Label messageLabel;
+
+    @UiField
     Button ricerca;
 
     @UiField
-    Button resettaRicerca;
+    Button mostraTutti;
 
     @UiField
     ListBox filtroListBox;
@@ -59,6 +63,11 @@ public class VisualizzaCatalogo extends Composite {
 
     public VisualizzaCatalogo() {
         initWidget(UiB.createAndBindUi(this));
+        mostraTutti.setStyleName("lButton");
+        ricerca.setStyleName("lButton");
+        backButton.setStyleName("lButton");
+        messageLabel.setStyleName("messaggio");
+
         tutteLeStorie = new ArrayList<Storia>();
         TextColumn<Storia> nomeStoria = new TextColumn<Storia>() {
             @Override
@@ -182,6 +191,7 @@ public class VisualizzaCatalogo extends Composite {
 
                 if (!nomeDaCercare.isEmpty()) {
 
+                    messageLabel.setText("");
                     // Lista per memorizzare le storie che corrispondono al criterio di ricerca
                     List<Storia> risultatiRicerca = new ArrayList<>();
 
@@ -234,12 +244,12 @@ public class VisualizzaCatalogo extends Composite {
                     };
                     provider.addDataDisplay(tabella);
                 } else {
-                    Window.alert("AHAH QUESTO E UN WINDOW ALERT! BAZINGA!");
+                    messageLabel.setText("Per cercare tutte le storie, clicca su 'Mostra Tutte'");
                 }
             }
         });
 
-        resettaRicerca.addClickHandler(new ClickHandler() {
+        mostraTutti.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();

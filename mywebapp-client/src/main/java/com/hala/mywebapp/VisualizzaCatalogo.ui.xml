@@ -9,14 +9,18 @@
         <c:CellTable ui:field="tabella" width="100%" height="100%"/>
 
         <g:HorizontalPanel>
+            <g:Label ui:field="messageLabel"></g:Label>
+        </g:HorizontalPanel>
+
+        <g:HorizontalPanel spacing = "5">
             <g:Button ui:field="backButton">Back</g:Button>
             <g:TextBox ui:field="nomeRicerca"></g:TextBox>
             <g:Button ui:field="ricerca">Ricerca</g:Button>
-            <g:Button ui:field="resettaRicerca">Reset Ricerca</g:Button>
+            <g:Button ui:field="mostraTutti">Mostra Tutte</g:Button>
             <g:ListBox ui:field="filtroListBox">
                 <g:item value="nome">Nome Storia</g:item>
                 <g:item value="autore">Autore Storia</g:item>
-                <g:item value="lunghezza">Lunghezza Storia</g:item>
+                <g:item value="lunghezza">Numero Scenari</g:item>
             </g:ListBox>
         </g:HorizontalPanel>
     </g:VerticalPanel>
