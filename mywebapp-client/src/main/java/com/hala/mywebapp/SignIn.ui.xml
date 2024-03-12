@@ -4,10 +4,10 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 
-    <g:VerticalPanel>
-        <g:Label>Username:</g:Label>
+    <g:VerticalPanel ui:field="signinPanel" spacing="10">
+        <g:Label ui:field="usernameLabel">Username:</g:Label>
         <g:TextBox ui:field="usernameField"/>
-        <g:Label>Password:</g:Label>
+        <g:Label ui:field="passwordLabel">Password:</g:Label>
         <g:TextBox ui:field="passwordField"/>
         <g:Button ui:field="sendButton">signIn</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>

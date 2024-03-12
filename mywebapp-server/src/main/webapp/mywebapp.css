@@ -41,8 +41,8 @@ h1 {
 .sPanel{
   padding: 10px;
   margin: 0;
-  width: 20vw;
-  height: 7rem;
+  width: 300px;
+  height: 300px;
   background-color: transparent;
   border: 2px solid transparent;
   font-size: 1rem;
@@ -52,8 +52,37 @@ h1 {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   text-align:center;
+  border-radius: 5px; 
 }
 
+.mPanel{
+  padding: 10px;
+  margin: 0;
+  width: 300px;
+  height: 10px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
+  background: rgba(255, 255, 255, 0.11);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-align:center;
+  border-radius: 5px; 
+}
+
+.lButton{
+  color: #466646;
+  background: #84BF88;
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  border: #466646; /* Spessore, tipo e colore del bordo */
+  border-radius: 5px; 
+  padding: 7px 15px;
+}
 
 .sButton{
   color: #466646;
@@ -72,6 +101,11 @@ h1 {
   color: #a4d7a8; /* Cambio colore del testo al passaggio del mouse */
 }
 
+.lButton:hover {
+  background-color: #466646; /* Cambio colore di sfondo al passaggio del mouse */
+  color: #a4d7a8; /* Cambio colore del testo al passaggio del mouse */
+}
+
 
 .messaggio{
   font-family: 'bufalino', sans-serif;
@@ -79,4 +113,12 @@ h1 {
   font-weight: 600;
   font-size: medium;
   color: #A65D33;
+}
+
+.testi{
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-size: medium;
+  font-weight: bold;
+  color: #565263;
 }

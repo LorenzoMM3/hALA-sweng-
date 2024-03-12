@@ -3,21 +3,16 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-    <!--<ui:style>
-        .pretty{
-            font-size:10px;
-                color:rgb(#7B926E);
-                }
-    </ui:style>-->         
-    
-
-    <g:VerticalPanel spacing="10">
-
-        <g:Label ui:field="benvenuto"/>
-        <g:Button ui:field="giocaButton">Gioca</g:Button>
-        <g:Button ui:field="scriviButton">Scrivi una storia</g:Button>
-        <g:Button ui:field="visualizzaButton">Visualizza le storie</g:Button>
-        <g:Button ui:field="backButton">Back</g:Button>
-        <g:Button ui:field="logoutButton">Logout</g:Button>
+    <g:VerticalPanel ui:field="hpPanel" spacing="20">
+        <g:VerticalPanel ui:field="bPanel" spacing="10">
+            <g:Label ui:field="benvenuto"/>
+        </g:VerticalPanel>
+        <g:VerticalPanel ui:field="tastiPanel" spacing="10">
+            <g:Button ui:field="giocaButton">Gioca</g:Button>
+            <g:Button ui:field="scriviButton">Scrivi una storia</g:Button>
+            <g:Button ui:field="modificaButton">Modifica una storia</g:Button>
+            <g:Button ui:field="visualizzaButton">Visualizza le storie</g:Button>
+            <g:Button ui:field="logoutButton">Logout</g:Button>
+        </g:VerticalPanel>
     </g:VerticalPanel>
 </ui:UiBinder>

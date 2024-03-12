@@ -5,10 +5,11 @@
 
 
 
-    <g:HorizontalPanel spacing="0" ui:field="totale">
+    <g:HorizontalPanel spacing="20" ui:field="totale">
 
+        <g:Button ui:field="backButton">Back</g:Button>
 
-        <g:VerticalPanel spacing="50" ui:field="pagina">
+        <g:VerticalPanel spacing="30" ui:field="pagina">
         
             <g:VerticalPanel spacing="10" ui:field="ScenarioInizialePanel">
                 <g:Label ui:field="LscenarioIniziale">Scegli lo scenario iniziale:</g:Label>
@@ -61,9 +62,7 @@
         
         </g:VerticalPanel>
 
-        
-
-            <g:Button ui:field="terminaButton">Termina</g:Button>
-            <g:Button ui:field="backButton">Back</g:Button>
-</g:HorizontalPanel>
+        <g:Button ui:field="terminaButton">Termina</g:Button>
+            
+    </g:HorizontalPanel>
 </ui:UiBinder>

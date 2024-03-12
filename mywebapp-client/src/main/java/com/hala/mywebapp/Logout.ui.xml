@@ -9,10 +9,9 @@
         }
     </ui:style>
 
-    <g:VerticalPanel>
-        <g:Label>Sei sicuro di voler eseguire il Logout?</g:Label>
+    <g:VerticalPanel spacing="10">
+        <g:Label ui:field="messageLabel">Sei sicuro di voler eseguire il Logout?</g:Label>
         <g:Button styleName="{style.Logout}" ui:field="sendButton">Esegui Logout</g:Button>
         <g:Button ui:field="backButton">Torna Indietro</g:Button>
-        <g:Label ui:field="messageLabel"/>
     </g:VerticalPanel>
 </ui:UiBinder>

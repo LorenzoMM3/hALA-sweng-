@@ -27,10 +27,14 @@ public class SignIn extends Composite implements IsWidget {
     @UiField
     TextBox usernameField;
 
-    /*
-     * @UiField
-     * VerticalPanel SigninPanel;
-     */
+    @UiField
+    VerticalPanel signinPanel;
+
+    @UiField
+    Label usernameLabel;
+
+    @UiField
+    Label passwordLabel;
 
     @UiField
     TextBox passwordField;
@@ -46,7 +50,12 @@ public class SignIn extends Composite implements IsWidget {
 
     public SignIn() {
         initWidget(UiB.createAndBindUi(this));
-        // SigninPanel.setStyleName("sPanel");
+        signinPanel.setStyleName("sPanel");
+        backButton.setStyleName("lButton");
+        sendButton.setStyleName("lButton");
+        usernameLabel.setStyleName("testi");
+        passwordLabel.setStyleName("testi");
+        messageLabel.setStyleName("messaggio");
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {

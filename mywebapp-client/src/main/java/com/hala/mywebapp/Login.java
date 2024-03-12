@@ -29,6 +29,12 @@ public class Login extends Composite implements IsWidget {
     TextBox usernameField;
 
     @UiField
+    Label usernameLabel;
+
+    @UiField
+    Label passwordLabel;
+
+    @UiField
     VerticalPanel loginPanel;
 
     @UiField
@@ -46,6 +52,11 @@ public class Login extends Composite implements IsWidget {
     public Login() {
         initWidget(UiB.createAndBindUi(this));
         loginPanel.setStyleName("sPanel");
+        backButton.setStyleName("lButton");
+        loginButton.setStyleName("lButton");
+        usernameLabel.setStyleName("testi");
+        passwordLabel.setStyleName("testi");
+        messageLabel.setStyleName("messaggio");
 
         loginButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {

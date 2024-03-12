@@ -29,6 +29,15 @@ public class HomePage extends Composite implements IsWidget {
     Label benvenuto;
 
     @UiField
+    VerticalPanel hpPanel;
+
+    @UiField
+    VerticalPanel bPanel;
+
+    @UiField
+    VerticalPanel tastiPanel;
+
+    @UiField
     Button giocaButton;
 
     @UiField
@@ -41,13 +50,20 @@ public class HomePage extends Composite implements IsWidget {
     Button scriviButton;
 
     @UiField
-    Button backButton;
+    Button modificaButton;
 
     public HomePage(String utente) {
         initWidget(uiBinder.createAndBindUi(this));
         mainPanel = GWT.create(VerticalPanel.class);
-        benvenuto.setText("ciao " + utente);
+        benvenuto.setText("Ciao " + utente + ", cosa vuoi fare?");
         benvenuto.setStyleName("messaggio");
+        logoutButton.setStyleName("lButton");
+        scriviButton.setStyleName("lButton");
+        modificaButton.setStyleName("lButton");
+        visualizzaButton.setStyleName("lButton");
+        giocaButton.setStyleName("lButton");
+        bPanel.setStyleName("mPanel");
+        tastiPanel.setStyleName("sPanel");
 
         scriviButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -64,19 +80,19 @@ public class HomePage extends Composite implements IsWidget {
             }
         });
 
+        modificaButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new ModificaStoria(utente));
+            }
+        });
+
         visualizzaButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new VisualizzaCatalogo());
-            }
-        });
-
-        backButton.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Login());
             }
         });
 

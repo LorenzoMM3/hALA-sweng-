@@ -99,6 +99,14 @@ public class Collegamenti extends Composite implements IsWidget {
 
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
+        backButton.setStyleName("lButton");
+        terminaButton.setStyleName("lButton");
+        settaSuccessivoAScelta.setStyleName("lButton");
+        settaSuccessivoIndovinello.setStyleName("lButton");
+        settaSuccessivoFinale.setStyleName("lButton");
+        messageLabel.setStyleName("messaggio");
+        LscenarioIniziale.setStyleName("testi");
+        
 
         hALAServiceAsync.ottieniScenariStoria(nome, new AsyncCallback<ArrayList<Scenario>>() {
 

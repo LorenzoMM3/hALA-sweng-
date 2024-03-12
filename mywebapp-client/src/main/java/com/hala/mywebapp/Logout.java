@@ -34,6 +34,9 @@ public class Logout extends Composite implements IsWidget {
     
     public Logout() {
         initWidget(UiB.createAndBindUi(this));
+        sendButton.setStyleName("lButton");
+        backButton.setStyleName("lButton");
+        messageLabel.setStyleName("messaggio");
         
 		sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -49,11 +52,8 @@ public class Logout extends Composite implements IsWidget {
                     @Override
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
-                            messageLabel.setText("Logout effettuato con successo!");
                             RootPanel.get("startTable").clear();
                             RootPanel.get("startTable").add(new Starter());
-                        } else {
-                            messageLabel.setText("Credenziali errate. Riprova.");
                         }
                     }
                 });
@@ -61,9 +61,20 @@ public class Logout extends Composite implements IsWidget {
         });
         
         backButton.addClickHandler(new ClickHandler() {
+            @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Starter());
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    public void onFailure(Throwable caught) {
+                        System.err.println("Errore qui");
+                    };
+
+                    public void onSuccess(Utente utente) {
+                        Utente utenteAttuale = utente;
+
+                        RootPanel.get("startTable").clear();
+                        RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                    }
+                });
             }
         });
 

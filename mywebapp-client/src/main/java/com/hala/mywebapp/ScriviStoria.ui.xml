@@ -9,14 +9,15 @@
 
 
     <g:HorizontalPanel spacing="100">
-        <g:VerticalPanel spacing="30" ui:field="titoloS">
-            <g:Label>Scrivi il titolo della storia:</g:Label>
+        <g:VerticalPanel spacing="25" ui:field="titoloS">
+            <g:Label ui:field="labelTitolo">Scrivi il titolo della storia:</g:Label>
             <g:TextBox ui:field="titoloStoria"/>
             <g:Button ui:field="inserisciStoria">Crea</g:Button>
             <g:Label ui:field="messageLabelCreate"></g:Label>
+            <g:Button ui:field="backButton">Back</g:Button>
         </g:VerticalPanel>
 
-        <g:VerticalPanel spacing="30" ui:field="vpScenario">
+        <g:VerticalPanel spacing="25" ui:field="vpScenario">
             
             <g:Label ui:field="message"></g:Label>
             <g:Label ui:field="scriviScenarioLabel">Scrivi lo scenario:</g:Label>
@@ -56,7 +57,6 @@
         
         
         <g:Label ui:field="messageLabel"/>
-        <g:Button ui:field="backButton">Back</g:Button>
         <g:Button ui:field="creaCollegamenti">Crea collegamenti</g:Button>
     </g:HorizontalPanel>
 </ui:UiBinder>

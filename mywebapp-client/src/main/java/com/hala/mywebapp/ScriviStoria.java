@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.Window;
 
 public class ScriviStoria extends Composite implements IsWidget {
 
@@ -30,6 +31,12 @@ public class ScriviStoria extends Composite implements IsWidget {
 
     @UiField
     Label messageLabelCreate;
+
+    @UiField
+    Label messageLabel;
+
+    @UiField
+    Label labelTitolo;
 
     @UiField
     TextBox titoloStoria;
@@ -121,6 +128,28 @@ public class ScriviStoria extends Composite implements IsWidget {
         disabilitaTutto();
         scenariCreati = new ArrayList<>();
         oggettiSbloccabili = new ArrayList<>();
+        backButton.setStyleName("lButton");
+        inserisciStoria.setStyleName("lButton");
+        creaScenarioAScelta.setStyleName("lButton");
+        altraScelta.setStyleName("lButton");
+        creaScenarioIndovinello.setStyleName("lButton");
+        creaCollegamenti.setStyleName("lButton");
+        creaScenarioFinale.setStyleName("lButton");
+        inserisciOggettoButton.setStyleName("lButton");
+        labelTitolo.setStyleName("testi");
+        messageLabelCreate.setStyleName("messaggio");
+        scriviScenarioLabel.setStyleName("testi");
+        tipologiaLabel.setStyleName("testi");
+        message.setStyleName("messaggio");
+        labelTestoScenario.setStyleName("testi");
+        messageLabel.setStyleName("messaggio");
+        titoloS.setStyleName("sPanel");
+        inserisciOggettoLabel.setStyleName("testi");
+        labelSceltaOggetto.setStyleName("testi");
+        labelRispostaIndovinello.setStyleName("testi");
+        labelDomandaIndovinello.setStyleName("testi");
+        labelScelta.setStyleName("testi");
+        labelDomandaAScelta.setStyleName("testi");
 
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
@@ -244,7 +273,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                                 public void onSuccess(Boolean verifica) {
                                     if (verifica) {
-                                        message.setText("Scenario a scelta creato con successo");
+                                        message.setText("Scenario a scelta '" + testoScenarioField.getText() +"' creato con successo");
                                         scenariCreati.add(scenario);
                                         // Resetto i field così da liberarli per la creazione di un nuovo scenario
                                         testoScenarioField.setText("");
@@ -272,6 +301,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     });
                 } else {
                     message.setText("Riempi i campi o aggiungi ancora una scelta");
+                    Window.scrollTo(0, 0);
                 }
 
             }
@@ -331,6 +361,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     });
                 } else {
                     message.setText("Riempi tutti i campi");
+                    Window.scrollTo(0, 0);
                 }
 
             }
@@ -379,7 +410,8 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                     });
                 } else {
-                    message.setText("Riempi tutti i campi");
+                    message.setText("Inserisci il testo dello scenario finale");
+                    Window.scrollTo(0, 0);
                 }
 
             }
@@ -466,8 +498,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         inserisciOggettoLabel.setVisible(false);
         inserisciOggettoTextBox.setVisible(false);
         inserisciOggettoButton.setVisible(false);
-
-        // creaCollegamenti.setVisible(false);
+        creaCollegamenti.setVisible(false);
     }
 
     private void attivaTutto() {
@@ -492,6 +523,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         inserisciOggettoLabel.setVisible(true);
         inserisciOggettoTextBox.setVisible(true);
         inserisciOggettoButton.setVisible(true);
+        creaCollegamenti.setVisible(true);
 
     }
 
