@@ -7,8 +7,14 @@
         <g:Label ui:field="labelIniziale"></g:Label>
         <g:Label ui:field="labelSelezionaScenario">Seleziona lo scenario da modificare:</g:Label>
         <g:ListBox ui:field="elencoScenari"></g:ListBox>
+        <g:Label ui:field="labelInformazioniScenario">Informazioni relative allo scenario selezionato:</g:Label>
+        <g:ListBox ui:field="informazioniScenario"></g:ListBox>
         <g:Label ui:field="labelModificaTesto">Inserisci nuovo testo per lo scenario:</g:Label>
         <g:TextBox ui:field="testoModificato"></g:TextBox>
+        <g:Label ui:field="labelModificaDomanda"></g:Label>
+        <g:TextBox ui:field="domandaModificata"></g:TextBox>
+        <g:Label ui:field="labelModificaRisposta">Inserisci nuova risposta corretta:</g:Label>
+        <g:TextBox ui:field="rispostaModificata"></g:TextBox>
         <g:Button ui:field="modificaButton">Modifica scenario</g:Button>
         <g:Label ui:field="message"></g:Label>
         <g:Button ui:field="backButton">Torna indietro</g:Button>

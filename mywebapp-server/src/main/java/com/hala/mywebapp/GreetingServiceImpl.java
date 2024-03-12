@@ -404,7 +404,18 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato) {
         String key = trovaChiavePerScenario(scenarioDaModificare);
         if (!key.equals("-1")) {
-            scenariNelSito.put(key, scenarioModificato);
+            if (scenarioModificato.getTipologia().equals(TipologiaScenario.ASCELTA)) {
+                ScenarioAScelta temp = (ScenarioAScelta) scenarioModificato;
+                scenariNelSito.put(key, temp);
+            } else if (scenarioModificato.getTipologia().equals(TipologiaScenario.INDOVINELLO)) {
+                ScenarioIndovinello temp = (ScenarioIndovinello) scenarioModificato;
+                scenariNelSito.put(key, temp);
+            } else {
+                Scenario temp = scenarioModificato;
+                scenariNelSito.put(key, temp);
+            }
+
+            //scenariNelSito.put(key, temp);
             salvaSuFileScenari(nomeStoria);
             db.commit();
             return true;
