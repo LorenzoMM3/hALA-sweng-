@@ -46,4 +46,6 @@ public interface GreetingService extends RemoteService {
 	public ArrayList<Storia> ottieniStorie();
 
 	public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato);
+
+	public boolean eliminaStoria(String nomeStoria);
 }

@@ -423,6 +423,29 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
     }
 
+    public boolean eliminaStoria(String nomeStoria){
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
+                storieNelSito.remove(entry.getKey());
+                db.commit();
+                convertToJsonStorie();
+                eliminaScenari(nomeStoria);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void eliminaScenari(String nomeStoria){
+        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+            if (entry.getValue().getNomeStoria().equalsIgnoreCase(nomeStoria)) {
+                scenariNelSito.remove(entry.getKey());
+                salvaSuFileScenari(nomeStoria);
+                db.commit();
+            }
+        }
+    }
+
     private void closeDatabase() {
         if (db != null && !db.isClosed()) {
             db.close();

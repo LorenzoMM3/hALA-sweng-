@@ -34,14 +34,20 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
     Button modificaButton;
 
     @UiField
+    Button eliminaButton;
+
+    @UiField
     Button backButton;
+
+    @UiField
+    Label messageLabel;
 
     public StorieCreateDaUtente(String utente) {
 
         initWidget(uiBinder.createAndBindUi(this));
         settaGrafica();
         storieUtente = new ArrayList<Storia>();
-        
+
         hALAServiceAsync.ottieniStorie(new AsyncCallback<ArrayList<Storia>>() {
             @Override
             public void onFailure(Throwable throwable) {
@@ -79,6 +85,32 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
             }
         });
 
+        eliminaButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                String nomeStoria = elencoStorie.getSelectedItemText();
+                hALAServiceAsync.eliminaStoria(nomeStoria, new AsyncCallback<Boolean>() {
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+                    }
+
+                    @Override
+                    public void onSuccess(Boolean verifica) {
+                        if (verifica) {
+                            messageLabel.setText("Storia eliminata con successo"); //Mai stampato
+
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new StorieCreateDaUtente(utente));
+                        }
+                        else {
+                            messageLabel.setText("Non è stato possibile eliminare la storia. Riprova.");
+                        }
+                    }
+                });
+            }
+        });
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -100,6 +132,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
 
     private void settaGrafica() {
         labelIniziale.setStyleName("testi");
+        messageLabel.setStyleName("messaggio");
         modificaButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
         elencoStorie.setSize("200px", "50px");

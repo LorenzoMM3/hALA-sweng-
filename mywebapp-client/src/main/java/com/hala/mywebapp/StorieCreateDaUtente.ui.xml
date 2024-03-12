@@ -7,6 +7,8 @@
         <g:Label ui:field="labelIniziale">"Storie create da te:"</g:Label>
         <g:ListBox ui:field="elencoStorie"></g:ListBox>
         <g:Button ui:field="modificaButton">Modifica Storia</g:Button>
+        <g:Button ui:field="eliminaButton">Elimina Storia</g:Button>
+        <g:Label ui:field="messageLabel"></g:Label>
         <g:Button ui:field="backButton">Torna indietro</g:Button>
     </g:VerticalPanel>
 </ui:UiBinder>

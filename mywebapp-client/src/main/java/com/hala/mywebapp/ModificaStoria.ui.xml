@@ -13,7 +13,9 @@
         <g:TextBox ui:field="testoModificato"></g:TextBox>
         <g:Label ui:field="labelModificaDomanda"></g:Label>
         <g:TextBox ui:field="domandaModificata"></g:TextBox>
-        <g:Label ui:field="labelModificaRisposta">Inserisci nuova risposta corretta:</g:Label>
+        <g:Label ui:field="labelSceltaOpzioni">Scegli l'opzione da modificare:</g:Label>
+        <g:ListBox ui:field="sceltaOpzioni"></g:ListBox>
+        <g:Label ui:field="labelModificaRisposta"></g:Label>
         <g:TextBox ui:field="rispostaModificata"></g:TextBox>
         <g:Button ui:field="modificaButton">Modifica scenario</g:Button>
         <g:Label ui:field="message"></g:Label>

@@ -60,6 +60,12 @@ public class ModificaStoria extends Composite implements IsWidget{
     TextBox domandaModificata;
 
     @UiField
+    Label labelSceltaOpzioni;
+
+    @UiField
+    ListBox sceltaOpzioni;
+
+    @UiField
     Label labelModificaRisposta;
 
     @UiField
@@ -173,20 +179,25 @@ public class ModificaStoria extends Composite implements IsWidget{
                     if (nuovaDomanda.trim().length() > 0){
                         ((ScenarioAScelta) scenarioModificato).setDomandaCambioScenario(nuovaDomanda);
                     }
+                    String nuovaOpzione = rispostaModificata.getText();
+                    rispostaModificata.setText("");
+
+                    if (nuovaOpzione.trim().length() > 0){
+                        String opzioneSelezionata = sceltaOpzioni.getSelectedItemText();
+                        ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().put(nuovaOpzione, ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().get(opzioneSelezionata));
+                        ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().remove(opzioneSelezionata);
+                        ((ScenarioAScelta) scenarioModificato).getSuccessivo().put(nuovaOpzione, ((ScenarioAScelta) scenarioModificato).getSuccessivo().get(opzioneSelezionata));
+                        ((ScenarioAScelta) scenarioModificato).getSuccessivo().remove(opzioneSelezionata);
+                    }
                 } else if (scenarioDaModificare.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")){
                     if (nuovaDomanda.trim().length() > 0){
                         ((ScenarioIndovinello) scenarioModificato).setDomandaIndovinello(nuovaDomanda);
-                        message.setText("Modifica di avvenuta con successo");
                     }
                     String nuovaRipostaCorretta = rispostaModificata.getText();
                     rispostaModificata.setText("");
                     if (nuovaRipostaCorretta.trim().length() > 0){
                         ((ScenarioIndovinello) scenarioModificato).setRispostaIndovinello(nuovaRipostaCorretta);
-                        message.setText("Modifica rc avvenuta con successo");
                     }
-                } else {
-                    message.setText("errore");
-
                 }
 
 
@@ -198,10 +209,10 @@ public class ModificaStoria extends Composite implements IsWidget{
                     @Override
                     public void onSuccess(Boolean result) {
                         if (result){
-                            //message.setText("Modifica avvenuta con successo");
+                            message.setText("Modifica avvenuta con successo");
                         }
                         else{
-                            //message.setText("Errore durante la modifica");
+                            message.setText("Errore durante la modifica");
                         }
                     }
                 });
@@ -226,6 +237,7 @@ public class ModificaStoria extends Composite implements IsWidget{
         labelInformazioniScenario.setStyleName("testi");
         labelModificaTesto.setStyleName("testi");
         labelModificaDomanda.setStyleName("testi");
+        labelSceltaOpzioni.setStyleName("testi");
         labelModificaRisposta.setStyleName("testi");
         modificaButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
@@ -279,23 +291,41 @@ public class ModificaStoria extends Composite implements IsWidget{
     }
 
     private void mostraPerScelta(){
+        labelModificaRisposta.setText("Inserisci nuova opzione:");
         labelModificaDomanda.setText("Inserisci nuova domanda per il cambio di scenario:");
         domandaModificata.setVisible(true);
-        labelModificaRisposta.setVisible(false);
-        rispostaModificata.setVisible(false);
+        labelSceltaOpzioni.setVisible(true);
+        labelModificaRisposta.setVisible(true);
+        rispostaModificata.setVisible(true);
+        sceltaOpzioni.setVisible(true);
+        popolaOpzioniScelta();
     }
 
     private void mostraPerIndovinello(){
+        labelModificaRisposta.setText("Inserisci nuova risposta corretta per l'indovinello:");
         labelModificaDomanda.setText("Inserisci nuovo indovinello per il cambio di scenario:");
         domandaModificata.setVisible(true);
         labelModificaRisposta.setVisible(true);
         rispostaModificata.setVisible(true);
+        labelSceltaOpzioni.setVisible(false);
+        sceltaOpzioni.setVisible(false);
     }
 
     private void nascondiPerFinale(){
         labelModificaDomanda.setText("");
+        labelSceltaOpzioni.setVisible(false);
         domandaModificata.setVisible(false);
         labelModificaRisposta.setVisible(false);
         rispostaModificata.setVisible(false);
+        sceltaOpzioni.setVisible(false);
+    }
+
+    private void popolaOpzioniScelta(){
+        sceltaOpzioni.clear();
+        int index = elencoScenari.getSelectedIndex();
+        ScenarioAScelta scenario = (ScenarioAScelta) scenari.get(index);
+        for (String s : scenario.getOpzioniScelta().keySet()){
+            sceltaOpzioni.addItem(s);
+        }
     }
 }
