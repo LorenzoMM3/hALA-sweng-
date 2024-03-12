@@ -237,9 +237,16 @@ public class ScriviStoria extends Composite implements IsWidget {
 
             @Override
             public void onClick(ClickEvent event) {
+                message.setText("");
                 String oggetto = inserisciOggettoTextBox.getText();
-                oggettiSbloccabili.add(oggetto);
-                inserisciOggettoTextBox.setText("");
+                if(!oggetto.trim().equals("")){
+                    oggettiSbloccabili.add(oggetto);
+                    message.setText("Oggetto Sbloccabile Inserito nello Scenario.");
+                    inserisciOggettoTextBox.setText("");
+                } else {
+                    message.setText("Errore nell'inserimento. Inserire un Oggetto Sbloccabile nella casella di testo.");
+                    Window.scrollTo(0, 0);
+                }
             }
         });
 
