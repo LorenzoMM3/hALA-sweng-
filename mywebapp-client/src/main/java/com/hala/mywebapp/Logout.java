@@ -65,8 +65,8 @@ public class Logout extends Composite implements IsWidget {
             public void onClick(ClickEvent event) {
                 hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
                     public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
+                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", caught);
+                    }
 
                     public void onSuccess(Utente utente) {
                         Utente utenteAttuale = utente;

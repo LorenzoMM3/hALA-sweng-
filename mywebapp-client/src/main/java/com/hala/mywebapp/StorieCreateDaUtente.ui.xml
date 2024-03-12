@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
+             xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+    <g:VerticalPanel ui:field="MSPanel" spacing="20">
+        <g:Label ui:field="labelIniziale">"Storie create da te:"</g:Label>
+        <g:ListBox ui:field="elencoStorie"></g:ListBox>
+        <g:Button ui:field="modificaButton">Modifica Storia</g:Button>
+        <g:Button ui:field="backButton">Torna indietro</g:Button>
+    </g:VerticalPanel>
+</ui:UiBinder>

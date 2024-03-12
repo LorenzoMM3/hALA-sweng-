@@ -40,4 +40,6 @@ public interface GreetingServiceAsync {
 	public void ottieniScenariStoria(String nomeStoria, AsyncCallback<ArrayList<Scenario>> callback);
 
 	public void ottieniStorie(AsyncCallback<ArrayList<Storia>> callback);
+
+	public void modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato, AsyncCallback<Boolean> callback);
 }

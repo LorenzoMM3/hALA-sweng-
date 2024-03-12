@@ -4,6 +4,13 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
     <g:VerticalPanel ui:field="MSPanel" spacing="20">
-        <g:Label ui:field="elencoStorie"/>
+        <g:Label ui:field="labelIniziale"></g:Label>
+        <g:Label ui:field="labelSelezionaScenario">Seleziona lo scenario da modificare:</g:Label>
+        <g:ListBox ui:field="elencoScenari"></g:ListBox>
+        <g:Label ui:field="labelModificaTesto">Inserisci nuovo testo per lo scenario:</g:Label>
+        <g:TextBox ui:field="testoModificato"></g:TextBox>
+        <g:Button ui:field="modificaButton">Modifica scenario</g:Button>
+        <g:Label ui:field="message"></g:Label>
+        <g:Button ui:field="backButton">Torna indietro</g:Button>
     </g:VerticalPanel>
 </ui:UiBinder>

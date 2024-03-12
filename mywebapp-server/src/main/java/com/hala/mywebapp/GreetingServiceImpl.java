@@ -401,6 +401,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
+    public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato) {
+        String key = trovaChiavePerScenario(scenarioDaModificare);
+        if (!key.equals("-1")) {
+            scenariNelSito.put(key, scenarioModificato);
+            salvaSuFileScenari(nomeStoria);
+            db.commit();
+            return true;
+        }
+        return false;
+    }
+
     private void closeDatabase() {
         if (db != null && !db.isClosed()) {
             db.close();
