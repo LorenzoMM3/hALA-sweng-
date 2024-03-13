@@ -1,8 +1,13 @@
-/*
- * mvn gwt:codeserver -pl *-client -am
- * mvn jetty:run -pl *-server -am -Denv=dev
- * http://localhost:8080
- * 
- * netstat -ano | find "9876"
- * taskkill /F /PID 14728
- */
+Per testare aprire due console nella directory del progetto.
+Nella prima digitare:
+"mvn gwt:codeserver -pl *-client -am"
+Nella seconda digitare:
+"mvn jetty:run -pl *-server -am -Denv=dev"
+Nella barra di ricerca del browser digitare:
+http://localhost:8080
+
+In caso di riavvio, digitare nella prima console:
+"netstat -ano | find "9876""
+Successivamente digitare nella stessa console:
+"taskkill /F /PID n"
+sostituendo al posto di "n" il numero a destra comparso sotto l'ultima schermata
