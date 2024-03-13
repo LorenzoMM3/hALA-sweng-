@@ -21,7 +21,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class ModificaStoria extends Composite implements IsWidget{
+public class ModificaStoria extends Composite implements IsWidget {
 
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final ModificaStoriaUiBinder uiBinder = GWT.create(ModificaStoriaUiBinder.class);
@@ -32,7 +32,7 @@ public class ModificaStoria extends Composite implements IsWidget{
     interface ModificaStoriaUiBinder extends UiBinder<Widget, ModificaStoria> {
     }
 
-    @UiField 
+    @UiField
     Label labelIniziale;
 
     @UiField
@@ -71,7 +71,6 @@ public class ModificaStoria extends Composite implements IsWidget{
     @UiField
     TextBox rispostaModificata;
 
-
     @UiField
     Button modificaButton;
 
@@ -81,7 +80,6 @@ public class ModificaStoria extends Composite implements IsWidget{
     @UiField
     Button backButton;
 
-    
     public ModificaStoria(Storia storiaDaModificare) {
         initWidget(uiBinder.createAndBindUi(this));
         settaGrafica();
@@ -102,7 +100,7 @@ public class ModificaStoria extends Composite implements IsWidget{
                 for (Scenario s : scenari) {
                     scenari = result;
                     elencoScenari.addItem(s.getTestoScena());
-                    
+
                 }
                 settaElencoPrimoElemento();
 
@@ -116,7 +114,7 @@ public class ModificaStoria extends Composite implements IsWidget{
                 informazioniScenario.clear();
                 int index = elencoScenari.getSelectedIndex();
                 Scenario scenario = scenari.get(index);
-                if (scenario.getTipologia().toString().equalsIgnoreCase("ASCELTA")){
+                if (scenario.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
                     mostraPerScelta();
                     informazioniScenario.addItem("Tipo: Scenario a scelta");
                     scenario = (ScenarioAScelta) scenario;
@@ -125,14 +123,14 @@ public class ModificaStoria extends Composite implements IsWidget{
                     String domanda = scenario.getDomandaCambioScenario();
                     informazioniScenario.addItem("Domanda cambio scenario: " + domanda);
                     informazioniScenario.addItem("Scelte disponibili:\n");
-                    
+
                     int n = 1;
-                    for (String s : ((ScenarioAScelta) scenario).getOpzioniScelta().keySet()){
+                    for (String s : ((ScenarioAScelta) scenario).getOpzioniScelta().keySet()) {
                         informazioniScenario.addItem(n + " - " + s);
                         n++;
                     }
 
-                } else if (scenario.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")){
+                } else if (scenario.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                     mostraPerIndovinello();
                     informazioniScenario.addItem("Tipo: Scenario con indovinello");
                     scenario = (ScenarioIndovinello) scenario;
@@ -141,7 +139,7 @@ public class ModificaStoria extends Composite implements IsWidget{
                     String indovinello = scenario.getDomandaCambioScenario();
                     informazioniScenario.addItem("Indovinello: " + indovinello);
                     String rispostaCorretta = ((ScenarioIndovinello) scenario).getRispostaIndovinello();
-                    informazioniScenario.addItem("Risposta corretta: " + rispostaCorretta);                    
+                    informazioniScenario.addItem("Risposta corretta: " + rispostaCorretta);
                 } else {
                     nascondiPerFinale();
 
@@ -155,10 +153,9 @@ public class ModificaStoria extends Composite implements IsWidget{
             }
 
         });
-        
 
         modificaButton.addClickHandler(new ClickHandler() {
-            
+
             @Override
             public void onClick(ClickEvent event) {
                 String nuovoTesto = testoModificato.getText();
@@ -167,58 +164,59 @@ public class ModificaStoria extends Composite implements IsWidget{
                 String nuovaDomanda = domandaModificata.getText();
                 domandaModificata.setText("");
 
-                
                 int index = elencoScenari.getSelectedIndex();
                 scenarioDaModificare = scenari.get(index);
                 scenarioModificato = scenarioDaModificare;
-                if (nuovoTesto.trim().length() > 0){
+                if (nuovoTesto.trim().length() > 0) {
                     scenarioModificato.setTestoScena(nuovoTesto);
                 }
 
-                if (scenarioDaModificare.getTipologia().toString().equalsIgnoreCase("ASCELTA")){
-                    if (nuovaDomanda.trim().length() > 0){
+                if (scenarioDaModificare.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
+                    if (nuovaDomanda.trim().length() > 0) {
                         ((ScenarioAScelta) scenarioModificato).setDomandaCambioScenario(nuovaDomanda);
                     }
                     String nuovaOpzione = rispostaModificata.getText();
                     rispostaModificata.setText("");
 
-                    if (nuovaOpzione.trim().length() > 0){
+                    if (nuovaOpzione.trim().length() > 0) {
                         String opzioneSelezionata = sceltaOpzioni.getSelectedItemText();
-                        ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().put(nuovaOpzione, ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().get(opzioneSelezionata));
+                        ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().put(nuovaOpzione,
+                                ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().get(opzioneSelezionata));
                         ((ScenarioAScelta) scenarioModificato).getOpzioniScelta().remove(opzioneSelezionata);
-                        ((ScenarioAScelta) scenarioModificato).getSuccessivo().put(nuovaOpzione, ((ScenarioAScelta) scenarioModificato).getSuccessivo().get(opzioneSelezionata));
+                        ((ScenarioAScelta) scenarioModificato).getSuccessivo().put(nuovaOpzione,
+                                ((ScenarioAScelta) scenarioModificato).getSuccessivo().get(opzioneSelezionata));
                         ((ScenarioAScelta) scenarioModificato).getSuccessivo().remove(opzioneSelezionata);
                     }
-                } else if (scenarioDaModificare.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")){
-                    if (nuovaDomanda.trim().length() > 0){
-                        ((ScenarioIndovinello) scenarioModificato).setDomandaIndovinello(nuovaDomanda);
+                } else if (scenarioDaModificare.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
+                    if (nuovaDomanda.trim().length() > 0) {
+                        ((ScenarioIndovinello) scenarioModificato).setDomandaCambioScenario(nuovaDomanda);
                     }
                     String nuovaRipostaCorretta = rispostaModificata.getText();
                     rispostaModificata.setText("");
-                    if (nuovaRipostaCorretta.trim().length() > 0){
+                    if (nuovaRipostaCorretta.trim().length() > 0) {
                         ((ScenarioIndovinello) scenarioModificato).setRispostaIndovinello(nuovaRipostaCorretta);
                     }
                 }
 
+                hALAServiceAsync.modificaScenario(nomeStoria, scenarioDaModificare, scenarioModificato,
+                        new AsyncCallback<Boolean>() {
+                            @Override
+                            public void onFailure(Throwable throwable) {
+                                GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+                            }
 
-                hALAServiceAsync.modificaScenario(nomeStoria, scenarioDaModificare, scenarioModificato, new AsyncCallback<Boolean>(){
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
-                    }
-                    @Override
-                    public void onSuccess(Boolean result) {
-                        if (result){
-                            message.setText("Modifica avvenuta con successo");
-                        }
-                        else{
-                            message.setText("Errore durante la modifica");
-                        }
-                    }
-                });
+                            @Override
+                            public void onSuccess(Boolean result) {
+                                if (result) {
+                                    message.setText("Modifica avvenuta con successo");
+                                } else {
+                                    message.setText("Errore durante la modifica");
+                                }
+                            }
+                        });
             }
         });
-    
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -247,11 +245,11 @@ public class ModificaStoria extends Composite implements IsWidget{
         elencoScenari.setSelectedIndex(0);
     }
 
-    private void settaElencoPrimoElemento(){
+    private void settaElencoPrimoElemento() {
         informazioniScenario.clear();
         int index = elencoScenari.getSelectedIndex();
         Scenario scenario = scenari.get(index);
-        if (scenario.getTipologia().toString().equalsIgnoreCase("ASCELTA")){
+        if (scenario.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
             mostraPerScelta();
             informazioniScenario.addItem("Tipo: Scenario a scelta");
             scenario = (ScenarioAScelta) scenario;
@@ -260,23 +258,23 @@ public class ModificaStoria extends Composite implements IsWidget{
             String domanda = scenario.getDomandaCambioScenario();
             informazioniScenario.addItem("Domanda cambio scenario: " + domanda);
             informazioniScenario.addItem("Scelte disponibili:\n");
-            
+
             int n = 1;
-            for (String s : ((ScenarioAScelta) scenario).getOpzioniScelta().keySet()){
+            for (String s : ((ScenarioAScelta) scenario).getOpzioniScelta().keySet()) {
                 informazioniScenario.addItem(n + " - " + s);
                 n++;
             }
 
-        } else if (scenario.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")){
+        } else if (scenario.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
             mostraPerIndovinello();
             informazioniScenario.addItem("Tipo: Scenario con indovinello");
             scenario = (ScenarioIndovinello) scenario;
             String testo = scenario.getTestoScena();
             informazioniScenario.addItem("Testo scenario: " + testo);
-            String indovinello = ((ScenarioIndovinello)scenario).getDomandaIndovinello();
+            String indovinello = ((ScenarioIndovinello) scenario).getDomandaCambioScenario();
             informazioniScenario.addItem("Indovinello: " + indovinello);
             String rispostaCorretta = ((ScenarioIndovinello) scenario).getRispostaIndovinello();
-            informazioniScenario.addItem("Risposta corretta: " + rispostaCorretta);                    
+            informazioniScenario.addItem("Risposta corretta: " + rispostaCorretta);
         } else {
             nascondiPerFinale();
 
@@ -287,10 +285,10 @@ public class ModificaStoria extends Composite implements IsWidget{
 
         int size = informazioniScenario.getItemCount();
         informazioniScenario.setVisibleItemCount(size);
-    
+
     }
 
-    private void mostraPerScelta(){
+    private void mostraPerScelta() {
         labelModificaRisposta.setText("Inserisci nuova opzione:");
         labelModificaDomanda.setText("Inserisci nuova domanda per il cambio di scenario:");
         domandaModificata.setVisible(true);
@@ -301,7 +299,7 @@ public class ModificaStoria extends Composite implements IsWidget{
         popolaOpzioniScelta();
     }
 
-    private void mostraPerIndovinello(){
+    private void mostraPerIndovinello() {
         labelModificaRisposta.setText("Inserisci nuova risposta corretta per l'indovinello:");
         labelModificaDomanda.setText("Inserisci nuovo indovinello per il cambio di scenario:");
         domandaModificata.setVisible(true);
@@ -311,7 +309,7 @@ public class ModificaStoria extends Composite implements IsWidget{
         sceltaOpzioni.setVisible(false);
     }
 
-    private void nascondiPerFinale(){
+    private void nascondiPerFinale() {
         labelModificaDomanda.setText("");
         labelSceltaOpzioni.setVisible(false);
         domandaModificata.setVisible(false);
@@ -320,11 +318,11 @@ public class ModificaStoria extends Composite implements IsWidget{
         sceltaOpzioni.setVisible(false);
     }
 
-    private void popolaOpzioniScelta(){
+    private void popolaOpzioniScelta() {
         sceltaOpzioni.clear();
         int index = elencoScenari.getSelectedIndex();
         ScenarioAScelta scenario = (ScenarioAScelta) scenari.get(index);
-        for (String s : scenario.getOpzioniScelta().keySet()){
+        for (String s : scenario.getOpzioniScelta().keySet()) {
             sceltaOpzioni.addItem(s);
         }
     }

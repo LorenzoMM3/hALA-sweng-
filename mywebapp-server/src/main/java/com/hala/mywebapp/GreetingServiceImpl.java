@@ -248,7 +248,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     public boolean settaCollegamentoSuccessivo(Scenario attuale, String opzione, Scenario daCollegare) {
 
-        //Opzione è, negli scenari a scelta, il testo dell'opzione, negli indovinelli è true o false
+        // Opzione è, negli scenari a scelta, il testo dell'opzione, negli indovinelli è
+        // true o false
         String keyAttuale = trovaChiavePerScenario(attuale);
         String keyDaCollegare = trovaChiavePerScenario(daCollegare);
 
@@ -256,11 +257,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
             Scenario x = scenariNelSito.get(keyAttuale);
             String tipologia = x.getTipologia() + "";
-            if (tipologia.equals("ASCELTA")){
+            if (tipologia.equals("ASCELTA")) {
                 ScenarioAScelta temp = (ScenarioAScelta) x;
                 temp.addSuccessivo(opzione, keyDaCollegare);
                 scenariNelSito.put(keyAttuale, temp);
-            } else if (tipologia.equals("INDOVINELLO")){
+            } else if (tipologia.equals("INDOVINELLO")) {
                 ScenarioIndovinello temp = (ScenarioIndovinello) x;
                 temp.addSuccessivo(opzione, keyDaCollegare);
                 scenariNelSito.put(keyAttuale, temp);
@@ -333,12 +334,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
                     if (tipologiaTemp.equalsIgnoreCase("INDOVINELLO")) {
                         ScenarioIndovinello scenarioTemp = (ScenarioIndovinello) entry2.getValue();
-                        pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaIndovinello() + "\",");
+                        pW.println("    \"Domanda Indovinello\": \"" + scenarioTemp.getDomandaCambioScenario() + "\",");
                         pW.println("    \"Risposta Indovinello\": \"" + scenarioTemp.getRispostaIndovinello() + "\",");
                     }
 
                     Scenario x = entry2.getValue();
-                    pW.println("    \"Oggetti Sbloccabili tramite lo Scenario\": \"" + x.getOggettiCheSblocca() + "\",");
+                    pW.println(
+                            "    \"Oggetti Sbloccabili tramite lo Scenario\": \"" + x.getOggettiCheSblocca() + "\",");
                     pW.println("    \"Scenari precedenti\": \"" + x.getPrecedente() + "\",");
                     pW.println("    \"Scenari successivi\": \"" + x.getSuccessivo() + "\"");
 
@@ -415,7 +417,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 scenariNelSito.put(key, temp);
             }
 
-            //scenariNelSito.put(key, temp);
+            // scenariNelSito.put(key, temp);
             salvaSuFileScenari(nomeStoria);
             db.commit();
             return true;
@@ -423,25 +425,25 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
     }
 
-    public boolean eliminaStoria(String nomeStoria){
+    public boolean eliminaStoria(String nomeStoria) {
         for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
             if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
+                eliminaScenari(nomeStoria);
                 storieNelSito.remove(entry.getKey());
                 db.commit();
                 convertToJsonStorie();
-                eliminaScenari(nomeStoria);
                 return true;
             }
         }
         return false;
     }
 
-    private void eliminaScenari(String nomeStoria){
+    private void eliminaScenari(String nomeStoria) {
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (entry.getValue().getNomeStoria().equalsIgnoreCase(nomeStoria)) {
                 scenariNelSito.remove(entry.getKey());
-                salvaSuFileScenari(nomeStoria);
                 db.commit();
+                salvaSuFileScenari(nomeStoria);
             }
         }
     }

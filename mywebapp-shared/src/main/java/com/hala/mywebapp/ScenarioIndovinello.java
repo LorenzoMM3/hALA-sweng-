@@ -15,7 +15,7 @@ public class ScenarioIndovinello extends Scenario implements Serializable {
 
     public ScenarioIndovinello(String nome) {
         super(nome);
-        //valId = id;
+        // valId = id;
         rispostaIndovinello = "";
         tipologiaScenario = TipologiaScenario.INDOVINELLO;
     }
@@ -27,24 +27,22 @@ public class ScenarioIndovinello extends Scenario implements Serializable {
      * }
      */
 
-     public void setValId(String id) {
+    public void setValId(String id) {
         this.valId = id;
     }
-     
+
     public String getValId() {
         return this.valId;
     }
 
-    public void setDomandaIndovinello(String domanda) {
-        this.domandaIndovinello = domanda;
-    }
+    /*
+     * public void setDomandaIndovinello(String domanda) {
+     * this.domandaIndovinello = domanda;
+     * }
+     */
 
     public void setRispostaIndovinello(String opzioniSceltaTemp) {
         this.rispostaIndovinello = opzioniSceltaTemp;
-    }
-
-    public String getDomandaIndovinello() {
-        return this.domandaIndovinello;
     }
 
     public String getRispostaIndovinello() {

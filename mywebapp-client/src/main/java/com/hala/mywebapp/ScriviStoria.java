@@ -332,7 +332,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                             scenario.setValId(idTemp);
                             scenario.setTestoScena(testoScenarioField.getText());
 
-                            scenario.setDomandaIndovinello(domandaFieldIndovinello.getText());
+                            scenario.setDomandaCambioScenario(domandaFieldIndovinello.getText());
                             scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
                             scenario.setOggettiCheSblocca(oggettiSbloccabili);
 
