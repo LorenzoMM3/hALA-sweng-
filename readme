@@ -5,9 +5,11 @@ Nella seconda digitare:
 "mvn jetty:run -pl *-server -am -Denv=dev"
 Nella barra di ricerca del browser digitare:
 http://localhost:8080
+Sulla pagina apparirà la home dell'applicazione.
 
-In caso di riavvio, digitare nella prima console:
+In caso di riavvio del server potrebbe essere necessario chiudere l'attività precedente, quindi digitare nella prima console:
 "netstat -ano | find "9876""
 Successivamente digitare nella stessa console:
 "taskkill /F /PID n"
-sostituendo al posto di "n" il numero a destra comparso sotto l'ultima schermata
+sostituendo al posto di "n" il numero a destra comparso sotto l'ultima schermata.
+A questo punto ripetere la sequenza dalla prima istruzione di questo file.
