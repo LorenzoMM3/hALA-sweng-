@@ -266,8 +266,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         String keyAttuale = trovaChiavePerScenario(attuale);
         String keyDaCollegare = trovaChiavePerScenario(daCollegare);
 
-        if (!keyAttuale.equals("-1") || !keyDaCollegare.equals("-1")) {
-
+        
+        if (!keyAttuale.equals("-2") || !keyDaCollegare.equals("-2")) {
+            
             Scenario x = scenariNelSito.get(keyAttuale);
             String tipologia = x.getTipologia() + "";
             if (tipologia.equals("ASCELTA")) {
@@ -286,6 +287,16 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             y.addPrecedente(keyAttuale);
             scenariNelSito.put(keyDaCollegare, y);
 
+            //Se è lo scenario iniziale
+            if (x.getPrecedente().get(0).equals("-1")){
+                Storia s = storieNelSito.get(x.getNomeStoria());
+                s.setScenarioIniziale(x);
+                storieNelSito.put(x.getNomeStoria(), s);
+                convertToJsonStorie();
+                System.out.println("x: " + x.getValId());
+                System.out.println("successivi: " + x.getSuccessivo());
+            }
+            db.commit();
             return true;
         } else {
             System.err.println("Errore: Chiave non trovata per uno degli scenari.");
@@ -299,7 +310,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 return entry.getKey();
             }
         }
-        return "-1"; // Chiave non trovata
+        return "-2"; // Chiave non trovata
     }
 
     public boolean controlloCollegamenti(ArrayList<Scenario> temp) {
@@ -568,8 +579,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private void aggiornaPartita(Partita partita){
         for (Partita p : partite){
             if (p.getId().equalsIgnoreCase(partita.getId())){
-                p = partita;
-                System.out.println("Partita aggiornata a:" + p.getScenarioAttuale().getValId());
+                partite.remove(p);
+                partite.add(partita);
+                System.out.println("Partita aggiornata a:" + partita.getScenarioAttuale().getValId());
                 convertToJsonPartite();
             }
         }
