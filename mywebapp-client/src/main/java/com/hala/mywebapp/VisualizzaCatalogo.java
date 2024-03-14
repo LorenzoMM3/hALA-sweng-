@@ -287,17 +287,24 @@ public class VisualizzaCatalogo extends Composite {
 
                     @Override
                     public void onSuccess(Utente result) {
-                        Utente utenteConnesso = new Utente();
-                        utenteConnesso = result;
-                        if (utenteConnesso.getIsLogged()) {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new HomePage(utenteConnesso.getUsername()));
-                            RootPanel.get().clear();
+                        if (result != null){
+                            Utente utenteConnesso = new Utente();
+                            utenteConnesso = result;
+                            if (utenteConnesso.getIsLogged()) {
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new HomePage(utenteConnesso.getUsername()));
+                                RootPanel.get().clear();
+                            } else {
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new Starter());
+                                RootPanel.get().clear();
+                            }
                         } else {
                             RootPanel.get("startTable").clear();
                             RootPanel.get("startTable").add(new Starter());
                             RootPanel.get().clear();
                         }
+                        
                     }
                 });
                 RootPanel.get("startTable").clear();

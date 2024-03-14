@@ -120,10 +120,16 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                      }
 
                     public void onSuccess(Utente utente) {
-                        Utente utenteAttuale = utente;
+                        if (utente != null){
+                            Utente utenteAttuale = utente;
 
-                        RootPanel.get("startTable").clear();
-                        RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                        } else {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter());
+                        }
+                        
                     }
                 });
             }

@@ -433,10 +433,15 @@ public class ScriviStoria extends Composite implements IsWidget {
                     };
 
                     public void onSuccess(Utente utente) {
-                        utenteAttuale = utente;
+                        if (utente != null){
+                            utenteAttuale = utente;
 
-                        RootPanel.get("startTable").clear();
-                        RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                        } else {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter());
+                        }
                     }
                 });
             }

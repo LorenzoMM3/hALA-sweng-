@@ -92,6 +92,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         Utente utenteSalvato = utentiNelSito.get(username);
         utenteSalvato.setIsLogged(false);
         utentiNelSito.put(utenteSalvato.getUsername(), utenteSalvato);
+        utenteAttuale = null;
         db.commit();
         convertToJsonUtenti();
         return true;
@@ -477,6 +478,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             Utente u = entry.getValue();
             u.setIsLogged(false);
             String key = entry.getKey();
+            utenteAttuale = null;
             utentiNelSito.put(key, u);
         }
         db.commit();

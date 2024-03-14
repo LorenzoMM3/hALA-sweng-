@@ -174,7 +174,8 @@ public class Collegamenti extends Composite implements IsWidget {
                                         RootPanel.get("startTable").clear();
                                         RootPanel.get("startTable").add(new HomePage(utenteAttivo.getUsername()));
                                     } else {
-                                        // GEstire TODO
+                                        RootPanel.get("startTable").clear();
+                                        RootPanel.get("startTable").add(new Starter());
                                     }
                                 }
                             });
