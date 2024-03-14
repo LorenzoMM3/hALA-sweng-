@@ -28,6 +28,8 @@ import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.CellPreviewEvent;
 import com.google.gwt.view.client.HasData;
 import com.google.gwt.view.client.Range;
+import com.google.gwt.view.client.SelectionChangeEvent;
+import com.google.gwt.view.client.SingleSelectionModel;
 
 public class VisualizzaCatalogo extends Composite {
 
@@ -36,6 +38,7 @@ public class VisualizzaCatalogo extends Composite {
     private static final VisualizzaUiBinder UiB = GWT.create(VisualizzaUiBinder.class);
 
     private ArrayList<Storia> tutteLeStorie;
+    String nomeStoria;
 
     @UiField
     CellTable<Storia> tabella;
@@ -201,6 +204,7 @@ public class VisualizzaCatalogo extends Composite {
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getNome().toLowerCase().contains(nomeDaCercare)) {
                                 risultatiRicerca.add(storia);
+                                
                             }
                         }
 
@@ -286,24 +290,40 @@ public class VisualizzaCatalogo extends Composite {
                     @Override
                     public void onSuccess(Utente result) {
                         if (result != null){
-                            int index = tabella.getKeyboardSelectedRow();
                             Utente utenteAttuale = result;
-                            if (index != -1) {
-                                Storia storiaSelezionata = tutteLeStorie.get(index);
-                                //Controllare se l'utente ha gia giocato a questa storia
-                                //Se non ha ancora giocato:
-                                RootPanel.get("startTable").clear();
-                                RootPanel.get("startTable").add(new GiocaStoria(storiaSelezionata, utenteAttuale));
-                                RootPanel.get().clear();
-                                //Se ha gia giocato:
-                                
-                            } else {
-                                messageLabel.setText("Seleziona una storia per giocare");
+
+                            // PARTE DA GUARDARE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            
+                            // Add a selection model to handle user selection.
+                            final SingleSelectionModel<Storia> selectionModel = new SingleSelectionModel<Storia>();
+                            tabella.setSelectionModel(selectionModel);
+                            selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+                            public void onSelectionChange(SelectionChangeEvent event) {
+                                Storia selected = selectionModel.getSelectedObject();
+                                String nomeStoria = selected.getNome();
+                                if (selected != null) {
+                                    Window.alert("You selected: " + selected.getNome());
+                                }
+                            }
+                            });
+                            
+                            for (Storia storia : tutteLeStorie) {
+                                if (storia.getNome().equals(nomeStoria)) {
+                                    Storia storiaSelezionata = storia;
+                                    //Controllare se l'utente ha gia giocato a questa storia
+                                    //Se non ha ancora giocato:
+                                    RootPanel.get("startTable").clear();
+                                    RootPanel.get("startTable").add(new GiocaStoria(storiaSelezionata, utenteAttuale));
+                                    RootPanel.get().clear();
+                                    //Se ha gia giocato:
+                                } else {
+                                    messageLabel.setText("Seleziona una storia per giocare");
+                                }
                             }
                         } else {
                             messageLabel.setText("Devi essere loggato per giocare");
-                        
                         }
+                    
                     }
                 
                 });

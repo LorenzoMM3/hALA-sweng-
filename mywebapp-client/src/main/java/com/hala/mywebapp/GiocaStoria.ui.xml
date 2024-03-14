@@ -5,12 +5,13 @@
              xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 
 
-    <g:VerticalPanel>
+    <g:VerticalPanel spacing="5">
         <g:Label ui:field="testoScenarioLabel"></g:Label>
         <g:Label ui:field="domandaCambioScenarioLabel"></g:Label>
         <g:Label ui:field="rispostaCambioScenarioLabel">Inserisci la tua risposta:</g:Label>
         <g:TextBox ui:field="inserimentoRispostaTB"></g:TextBox>
         <g:Button ui:field="invioRispostaButton">Prosegui</g:Button>
+        <g:Button ui:field="backButton">Torna al Menu</g:Button>
         <g:Label ui:field="messageLabel"></g:Label>
     </g:VerticalPanel>
 </ui:UiBinder>

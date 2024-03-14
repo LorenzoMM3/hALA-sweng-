@@ -10,6 +10,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.hala.mywebapp.VisualizzaCatalogo.VisualizzaUiBinder;
@@ -40,6 +41,9 @@ public class GiocaStoria extends Composite{
 
     @UiField
     Button invioRispostaButton;
+
+    @UiField
+    Button backButton;
     
     @UiField
     Label messageLabel;
@@ -85,11 +89,35 @@ public class GiocaStoria extends Composite{
             }
             
         });
+
+            backButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    public void onFailure(Throwable caught) {
+                        System.err.println("Errore qui");
+                    };
+
+                    public void onSuccess(Utente utente) {
+                        if (utente != null){
+                            Utente utenteAttuale = utente;
+
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                        } else {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter());
+                        }
+                    }
+                });
+            }
+        });
     }
 
     
 
     public void settaGrafica(){
+        backButton.setStyleName("lButton");
         testoScenarioLabel.setStyleName("testi");
         domandaCambioScenarioLabel.setStyleName("testi");
         rispostaCambioScenarioLabel.setStyleName("testi");
