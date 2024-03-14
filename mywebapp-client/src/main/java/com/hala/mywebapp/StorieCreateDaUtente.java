@@ -134,6 +134,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
         labelIniziale.setStyleName("testi");
         messageLabel.setStyleName("messaggio");
         modificaButton.setStyleName("lButton");
+        eliminaButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
         elencoStorie.setSize("200px", "50px");
         

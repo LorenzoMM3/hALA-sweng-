@@ -99,13 +99,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
-        backButton.setStyleName("lButton");
-        terminaButton.setStyleName("lButton");
-        settaSuccessivoAScelta.setStyleName("lButton");
-        settaSuccessivoIndovinello.setStyleName("lButton");
-        settaSuccessivoFinale.setStyleName("lButton");
-        messageLabel.setStyleName("messaggio");
-        LscenarioIniziale.setStyleName("testi");
+        settaGrafica();
         
 
         hALAServiceAsync.ottieniScenariStoria(nome, new AsyncCallback<ArrayList<Scenario>>() {
@@ -323,6 +317,17 @@ public class Collegamenti extends Composite implements IsWidget {
 
     }
 
+    private void settaGrafica(){
+        backButton.setStyleName("lButton");
+        terminaButton.setStyleName("lButton");
+        settaSuccessivoAScelta.setStyleName("lButton");
+        buttonSettaScenarioIniziale.setStyleName("lButton");
+        settaSuccessivoIndovinello.setStyleName("lButton");
+        settaSuccessivoFinale.setStyleName("lButton");
+        messageLabel.setStyleName("messaggio");
+        LscenarioIniziale.setStyleName("testi");
+    }
+    
     private void mostraSchermataScelte(ScenarioAScelta temp) {
         menuScelte.clear();
         gestioneIndovinello.setVisible(false);

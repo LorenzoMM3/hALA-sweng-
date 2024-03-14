@@ -309,10 +309,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             }
         }
 
-        salvaNumeroScenariPerStoria(nomeStoria);
-
+        
+        
         if (trovato && controlloCollegamenti(temp)) {
             try (PrintWriter pW = new PrintWriter(new FileWriter("scenariCollegati.json"))) {
+                salvaNumeroScenariPerStoria(nomeStoria, true);
                 pW.println("{");
 
                 boolean firstEntry = true;
@@ -355,28 +356,45 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 e.printStackTrace();
             }
         }
+        salvaNumeroScenariPerStoria(nomeStoria, false);
         return false;
 
     }
 
-    private void salvaNumeroScenariPerStoria(String nomeStoria) {
+    private void salvaNumeroScenariPerStoria(String nomeStoria, boolean verifica) {
         int numeroScenari = 0;
-        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-            if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
-                numeroScenari++;
+        if (verifica){
+            for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
+                if ((entry.getValue().getNomeStoria()).equalsIgnoreCase(nomeStoria)) {
+                    numeroScenari++;
+                }
+            }
+            for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+                if ((entry.getValue().getNome()).equalsIgnoreCase(nomeStoria)) {
+                    Storia s = entry.getValue();
+                    String n = numeroScenari + "";
+                    String k = entry.getKey();
+                    s.setNumeroScenari(n);
+                    storieNelSito.put(k, s);
+                }
+            }
+            
+        }
+        else {
+            for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+                if ((entry.getValue().getNome()).equalsIgnoreCase(nomeStoria)) {
+                    Storia s = entry.getValue();
+                    String n = numeroScenari + "";
+                    String k = entry.getKey();
+                    s.setNumeroScenari(n);
+                    storieNelSito.put(k, s);
+                }
             }
         }
-        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
-            if ((entry.getValue().getNome()).equalsIgnoreCase(nomeStoria)) {
-                Storia s = entry.getValue();
-                String n = numeroScenari + "";
-                String k = entry.getKey();
-                s.setNumeroScenari(n);
-                storieNelSito.put(k, s);
-            }
-        }
+
         db.commit();
         convertToJsonStorie();
+        
     }
 
     public String prossimoId() {

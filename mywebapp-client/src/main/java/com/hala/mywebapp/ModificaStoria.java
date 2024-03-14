@@ -208,8 +208,10 @@ public class ModificaStoria extends Composite implements IsWidget {
                             @Override
                             public void onSuccess(Boolean result) {
                                 if (result) {
+                                    message.setText("");
                                     message.setText("Modifica avvenuta con successo");
                                 } else {
+                                    message.setText("");
                                     message.setText("Errore durante la modifica");
                                 }
                             }
