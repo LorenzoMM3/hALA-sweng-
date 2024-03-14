@@ -12,5 +12,6 @@
         <g:Button ui:field="sendButton">signIn</g:Button>
         <g:Button ui:field="backButton">Back</g:Button>
         <g:Label ui:field="messageLabel"/>
+        <g:Button ui:field="startButton">Vai al Login</g:Button>
     </g:VerticalPanel>
 </ui:UiBinder>

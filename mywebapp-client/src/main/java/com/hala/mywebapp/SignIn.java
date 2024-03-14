@@ -48,8 +48,13 @@ public class SignIn extends Composite implements IsWidget {
     @UiField
     Label messageLabel;
 
+    @UiField
+    Button startButton;
+
     public SignIn() {
         initWidget(UiB.createAndBindUi(this));
+        startButton.setVisible(false);
+        startButton.setStyleName("lButton");
         signinPanel.setStyleName("sPanel");
         backButton.setStyleName("lButton");
         sendButton.setStyleName("lButton");
@@ -74,9 +79,11 @@ public class SignIn extends Composite implements IsWidget {
                         @Override
                         public void onSuccess(Boolean verifica) {
                             if (verifica) {
-                                messageLabel.setText("Registrazione effettuata! Benvenuto!");
+                                messageLabel.setText("Registrazione effettuata! Benvenuto "+username+"! Clicca sul tasto per effettuare il Login ed iniziare a giocare.");
+                                startButton.setVisible(true);
                             } else {
                                 messageLabel.setText("Credenziali già in uso, cambia Username e riprova.");
+                                startButton.setVisible(false);
                             }
                         }
                     });
@@ -92,6 +99,14 @@ public class SignIn extends Composite implements IsWidget {
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new Starter());
+            }
+        });
+
+        startButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event){
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new Login());
             }
         });
     }
