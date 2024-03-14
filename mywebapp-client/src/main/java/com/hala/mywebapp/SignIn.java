@@ -76,7 +76,7 @@ public class SignIn extends Composite implements IsWidget {
                             if (verifica) {
                                 messageLabel.setText("Registrazione effettuata! Benvenuto!");
                             } else {
-                                messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
+                                messageLabel.setText("Credenziali già in uso, cambia Username e riprova.");
                             }
                         }
                     });

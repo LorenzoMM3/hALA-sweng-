@@ -72,15 +72,19 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 String nomeStoria = elencoStorie.getSelectedItemText();
-                Storia daModificare = new Storia();
-                for (Storia s : storieUtente) {
-                    if (s.getNome().equals(nomeStoria)) {
-                        daModificare = s;
+                if(nomeStoria != null){
+                    Storia daModificare = new Storia();
+                    for (Storia s : storieUtente) {
+                        if (s.getNome().equals(nomeStoria)) {
+                            daModificare = s;
+                        }
                     }
-                }
-                if (daModificare != null) {
-                    RootPanel.get("startTable").clear();
-                    RootPanel.get("startTable").add(new ModificaStoria(daModificare));
+                    if (daModificare != null) {
+                        RootPanel.get("startTable").clear();
+                        RootPanel.get("startTable").add(new ModificaStoria(daModificare));
+                    }
+                } else {
+                    messageLabel.setText("Nessuna storia selezionata. Seleziona una Storia da cancellare.");
                 }
             }
         });
@@ -98,8 +102,6 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                     @Override
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
-                            messageLabel.setText("Storia eliminata con successo"); //Mai stampato
-
                             RootPanel.get("startTable").clear();
                             RootPanel.get("startTable").add(new StorieCreateDaUtente(utente));
                         }
