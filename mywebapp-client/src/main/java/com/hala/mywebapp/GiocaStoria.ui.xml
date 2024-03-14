@@ -8,6 +8,9 @@
     <g:VerticalPanel>
         <g:Label ui:field="testoScenarioLabel"></g:Label>
         <g:Label ui:field="domandaCambioScenarioLabel"></g:Label>
+        <g:Label ui:field="rispostaCambioScenarioLabel">Inserisci la tua risposta:</g:Label>
+        <g:TextBox ui:field="inserimentoRispostaTB"></g:TextBox>
+        <g:Button ui:field="invioRispostaButton">Prosegui</g:Button>
         <g:Label ui:field="messageLabel"></g:Label>
     </g:VerticalPanel>
 </ui:UiBinder>

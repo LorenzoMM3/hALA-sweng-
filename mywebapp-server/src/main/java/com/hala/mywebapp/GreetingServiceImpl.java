@@ -1,6 +1,7 @@
 package com.hala.mywebapp;
 
 import org.checkerframework.checker.units.qual.A;
+import org.checkerframework.checker.units.qual.s;
 import org.mapdb.*;
 
 import com.google.gwt.user.server.rpc.jakarta.RemoteServiceServlet;
@@ -9,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("serial")
@@ -171,6 +173,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 pW.println("  \"" + entry.getKey() + "\": {");
                 pW.println("    \"Nome\": \"" + entry.getValue().getNome() + "\",");
                 pW.println("    \"Autore\": \"" + entry.getValue().getUtente().getUsername() + "\",");
+                pW.println("    \"Scenario iniziale\": \"" + entry.getValue().getScenarioIniziale().getValId() + "\",");
                 pW.println("    \"Numero Scenari\": \"" + entry.getValue().getNumeroScenari() + "\"");
                 pW.println("  }");
 
@@ -229,6 +232,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             openDB();
         }
         String nomeStoria = "";
+        Scenario temp = new Scenario();
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (entry.getValue().getValId().equalsIgnoreCase(scenario.getValId())) {
                 nomeStoria = entry.getValue().getNomeStoria();
@@ -236,6 +240,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 Scenario x = entry.getValue();
                 String id = "-1";
                 x.addPrecedente(id);
+                temp = x;
                 scenariNelSito.put(k, x);
             }
 
@@ -243,10 +248,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (!nomeStoria.equals("")) {
             for (Storia s : storieNelSito.values()) {
                 if (s.getNome().equalsIgnoreCase(nomeStoria)) {
-                    Storia temp = s;
-                    temp.setScenarioIniziale(scenario);
-                    String key = temp.getNome();
-                    storieNelSito.put(key, temp);
+                    Storia tempS = s;
+                    tempS.setScenarioIniziale(temp);
+                    String key = tempS.getNome();
+                    storieNelSito.put(key, tempS);
                     return true;
                 }
             }
@@ -492,37 +497,116 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return numeroPartite2;
     }
 
-    private void aggiungiNuovaPartita(){
-
-    }
+    
 
     public Partita caricaPartita(Storia storia, Utente giocatore){
         String nomeStoria = storia.getNome();
+        System.out.println("Inizio carica partita");
+        System.out.println("Nome storia: " + nomeStoria);
         String usernameGiocatore = giocatore.getUsername();
+        System.out.println("Username giocatore: " + usernameGiocatore);
         boolean iniziata = false;
         Partita daTornare;
         for (Partita p : partite){
             if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
                 iniziata = true;
+                
             }
         }
-
-        if (!iniziata){
+        /*
+        if (!iniziata){  */
             contaPartite();
             String nuovoId = contaPartite();
             daTornare = new Partita(giocatore, storia, nuovoId);
+            System.out.println("Nuova partita creata con id: " + daTornare.getId());
+            System.out.println("Storia: " + daTornare.getStoria().getNome());
+            System.out.println("Giocatore: " + daTornare.getGiocatore().getUsername());
+            System.out.println("Scenario attuale: " + daTornare.getScenarioAttuale().getValId());
+            System.out.println("Scenari successivi: " + daTornare.getScenarioAttuale().getSuccessivo());
             partite.add(daTornare);
+            convertToJsonPartite();
+            System.out.println("Partita aggiunta");
             return daTornare;
-        } else {
+        /* } else {
             for (Partita p : partite){
                 if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
                     daTornare = p;
                     return daTornare;
                 }
             }
-        }
-        return null; // Non dovrebbe mai arrivare qui
+        } 
+        return null; // Non dovrebbe mai arrivare qui*/
         
+    }
+
+    public Partita caricaSuccessivoIndovinello(Partita partita, String risposta){
+        System.out.println("Id attuale: " + partita.getScenarioAttuale().getValId());
+        ScenarioIndovinello attuale = (ScenarioIndovinello)partita.getScenarioAttuale();
+        boolean rispostaCorretta = attuale.verificaRisposta(risposta);
+        HashMap<String, String> successivi = attuale.getSuccessivo();
+        System.out.println("successivi: " + successivi);
+        String indiceSuccessivo = "";
+        if (rispostaCorretta){
+            indiceSuccessivo = successivi.get("true");
+        }
+        else {
+            indiceSuccessivo = successivi.get("false");
+        }
+        System.out.println("Indice successivo: " + indiceSuccessivo);
+        Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
+        System.out.println("Nuovo id: " + daTornare.getValId());
+        partita.setScenarioAttuale(daTornare);
+        System.out.println("Nuovo id prova: " + daTornare.getValId());
+        aggiornaPartita(partita);
+        return partita;
+    }
+
+    public Partita caricaSuccessivoScelta(Partita partita, String opzione){
+        return null;
+    }
+
+    private void aggiornaPartita(Partita partita){
+        for (Partita p : partite){
+            if (p.getId().equalsIgnoreCase(partita.getId())){
+                p = partita;
+                System.out.println("Partita aggiornata a:" + p.getScenarioAttuale().getValId());
+                convertToJsonPartite();
+            }
+        }
+
+        
+    }
+
+    private void convertToJsonPartite(){
+        System.out.println("ConvertToJsonPartite");
+        if (db == null || db.isClosed()) {
+            openDB();
+        }
+
+        try (PrintWriter pW = new PrintWriter(new FileWriter("partiteNelSito.json"))) {
+            pW.println("{");
+
+            boolean firstEntry = true;
+            for (Partita p: partite) {
+                System.out.println("Partita: " + p.getId());
+                if (!firstEntry) {
+                    pW.println(",");
+                }
+                pW.println("  \"" + p.getId() + "\": {");
+                pW.println("    \"Giocatore\": \"" + p.getGiocatore().getUsername() + "\",");
+                pW.println("    \"Storia\": \"" + p.getStoria().getNome() + "\",");
+                pW.println("    \"Id scenario attuale\": \"" + p.getScenarioAttuale().getValId() + "\",");
+                pW.println("    \"Inventario\": " + p.getInventario());
+                pW.println("  }");
+
+                firstEntry = false;
+            }
+
+            pW.println("}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void closeDatabase() {

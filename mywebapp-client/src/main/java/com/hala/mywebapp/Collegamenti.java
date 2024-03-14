@@ -124,8 +124,14 @@ public class Collegamenti extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 int index = listaScenari.getSelectedIndex();
+                String testo = listaScenari.getItemText(index);
                 if (index != -1) { // controllo che sia stato selezionato uno scenario
-                    Scenario attuale = scenariStoria.get(index);
+                    Scenario attuale = new Scenario();
+                    for (Scenario temp : scenariStoria) {
+                        if (temp.getTestoScena().equals(testo)) {
+                            attuale = temp;
+                        }
+                    }
                     hALAServiceAsync.settaScenarioIniziale(attuale, new AsyncCallback<Boolean>() {
                         @Override
                         public void onFailure(Throwable caught) {

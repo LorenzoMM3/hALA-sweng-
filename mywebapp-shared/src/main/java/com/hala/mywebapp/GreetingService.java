@@ -50,4 +50,8 @@ public interface GreetingService extends RemoteService {
 	public boolean eliminaStoria(String nomeStoria);
 
 	public Partita caricaPartita(Storia storia, Utente giocatore);
+
+	public Partita caricaSuccessivoIndovinello(Partita partita, String risposta);
+
+	public Partita caricaSuccessivoScelta(Partita partita, String opzione);
 }
