@@ -18,9 +18,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
+    private ArrayList<Partita> partite;
 
-    private int numeroScenari;;
+    private int numeroScenari;
     private String numeroScenari2;
+    private int numeroPartite;
+    private String numeroPartite2;
+
 
     public Utente utenteAttuale;
 
@@ -39,6 +43,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
+            if (partite == null) {
+                partite = new ArrayList<Partita>();
+                numeroPartite = 0;
+            }
             if (db == null) {
                 numeroScenari = 0;
             }
@@ -436,6 +444,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             }
 
             // scenariNelSito.put(key, temp);
+
+            //Controllo se è uno scenario iniziale
+            ArrayList<String> precedenti = scenarioModificato.getPrecedente();
+            if (precedenti.size() == 1 && precedenti.get(0).equals("-1")){
+                Storia s = storieNelSito.get(nomeStoria);
+                s.setScenarioIniziale(scenarioModificato);
+                storieNelSito.put(nomeStoria, s);
+                convertToJsonStorie();
+            }
             salvaSuFileScenari(nomeStoria);
             db.commit();
             return true;
@@ -464,6 +481,48 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 salvaSuFileScenari(nomeStoria);
             }
         }
+    }
+
+    private String contaPartite() {
+        if (db == null || db.isClosed()) {
+            openDB();
+        }
+        numeroPartite++;
+        numeroPartite2 = Integer.toString(numeroPartite);
+        return numeroPartite2;
+    }
+
+    private void aggiungiNuovaPartita(){
+
+    }
+
+    public Partita caricaPartita(Storia storia, Utente giocatore){
+        String nomeStoria = storia.getNome();
+        String usernameGiocatore = giocatore.getUsername();
+        boolean iniziata = false;
+        Partita daTornare;
+        for (Partita p : partite){
+            if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
+                iniziata = true;
+            }
+        }
+
+        if (!iniziata){
+            contaPartite();
+            String nuovoId = contaPartite();
+            daTornare = new Partita(giocatore, storia, nuovoId);
+            partite.add(daTornare);
+            return daTornare;
+        } else {
+            for (Partita p : partite){
+                if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
+                    daTornare = p;
+                    return daTornare;
+                }
+            }
+        }
+        return null; // Non dovrebbe mai arrivare qui
+        
     }
 
     private void closeDatabase() {

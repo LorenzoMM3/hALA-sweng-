@@ -12,9 +12,9 @@ public interface PartitaI {
 
     public void setStoria(Storia storia);
 
-    public String getScenarioAttuale();
+    public Scenario getScenarioAttuale();
 
-    public void setScenarioAttuale(String scenarioAttuale);
+    public void setScenarioAttuale(Scenario scenarioAttuale);
 
     public ArrayList<String> getInventario();
 

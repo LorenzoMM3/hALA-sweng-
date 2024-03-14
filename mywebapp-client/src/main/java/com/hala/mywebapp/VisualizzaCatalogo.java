@@ -58,15 +58,15 @@ public class VisualizzaCatalogo extends Composite {
     @UiField
     ListBox filtroListBox;
 
+    @UiField
+    Button giocaButton;
+
     interface VisualizzaUiBinder extends UiBinder<Widget, VisualizzaCatalogo> {
     }
 
     public VisualizzaCatalogo() {
         initWidget(UiB.createAndBindUi(this));
-        mostraTutti.setStyleName("lButton");
-        ricerca.setStyleName("lButton");
-        backButton.setStyleName("lButton");
-        messageLabel.setStyleName("messaggio");
+        settaGrafica();
 
         tutteLeStorie = new ArrayList<Storia>();
         TextColumn<Storia> nomeStoria = new TextColumn<Storia>() {
@@ -274,6 +274,43 @@ public class VisualizzaCatalogo extends Composite {
             }
         });
 
+        giocaButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+                    }
+
+                    @Override
+                    public void onSuccess(Utente result) {
+                        if (result != null){
+                            int index = tabella.getKeyboardSelectedRow();
+                            Utente utenteAttuale = result;
+                            if (index != -1) {
+                                Storia storiaSelezionata = tutteLeStorie.get(index);
+                                //Controllare se l'utente ha gia giocato a questa storia
+                                //Se non ha ancora giocato:
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new GiocaStoria(storiaSelezionata, utenteAttuale));
+                                RootPanel.get().clear();
+                                //Se ha gia giocato:
+                                
+                            } else {
+                                messageLabel.setText("Seleziona una storia per giocare");
+                            }
+                        } else {
+                            messageLabel.setText("Devi essere loggato per giocare");
+                        
+                        }
+                    }
+                
+                });
+
+                
+            }
+        });
 
         backButton.addClickHandler(new ClickHandler() {
             @Override
@@ -312,6 +349,14 @@ public class VisualizzaCatalogo extends Composite {
                 RootPanel.get().clear();
             }
         });
+    }
+
+    private void settaGrafica() {
+        mostraTutti.setStyleName("lButton");
+        ricerca.setStyleName("lButton");
+        backButton.setStyleName("lButton");
+        giocaButton.setStyleName("lButton");
+        messageLabel.setStyleName("messaggio");
     }
 
     @Override

@@ -22,6 +22,7 @@
                 <g:item value="autore">Autore Storia</g:item>
                 <g:item value="lunghezza">Numero Scenari</g:item>
             </g:ListBox>
+            <g:Button ui:field="giocaButton">Gioca</g:Button>
         </g:HorizontalPanel>
     </g:VerticalPanel>
 </ui:UiBinder>

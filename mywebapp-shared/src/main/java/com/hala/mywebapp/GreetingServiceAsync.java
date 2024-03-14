@@ -44,4 +44,6 @@ public interface GreetingServiceAsync {
 	public void modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato, AsyncCallback<Boolean> callback);
 
 	public void eliminaStoria(String nomeStoria, AsyncCallback<Boolean> callback);
+
+	public void caricaPartita(Storia storia, Utente giocatore, AsyncCallback<Partita> callback);
 }

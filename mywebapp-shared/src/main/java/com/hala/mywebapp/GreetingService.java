@@ -48,4 +48,6 @@ public interface GreetingService extends RemoteService {
 	public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato);
 
 	public boolean eliminaStoria(String nomeStoria);
+
+	public Partita caricaPartita(Storia storia, Utente giocatore);
 }

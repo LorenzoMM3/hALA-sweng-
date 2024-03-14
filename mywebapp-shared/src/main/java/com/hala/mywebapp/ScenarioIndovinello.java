@@ -62,4 +62,5 @@ public class ScenarioIndovinello extends Scenario implements Serializable {
         return this.tipologiaScenario;
     }
 
+    
 }
