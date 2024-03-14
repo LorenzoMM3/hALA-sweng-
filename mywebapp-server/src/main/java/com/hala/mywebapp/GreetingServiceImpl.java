@@ -229,7 +229,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 String id = "-1";
                 x.addPrecedente(id);
                 scenariNelSito.put(k, x);
-
             }
 
         }
@@ -267,7 +266,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 temp.addSuccessivo(opzione, keyDaCollegare);
                 scenariNelSito.put(keyAttuale, temp);
             } else {
-                System.out.println("Errore: Tipologia non riconosciuta.");
+                System.err.println("Errore: Tipologia non riconosciuta.");
             }
 
             Scenario y = scenariNelSito.get(keyDaCollegare);
@@ -293,8 +292,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean controlloCollegamenti(ArrayList<Scenario> temp) {
 
         for (Scenario t : temp) {
-            if (t.getPrecedente().isEmpty())
+            if (t.getPrecedente().isEmpty() && t.getPrecedente() == null) {
                 return false;
+            }
         }
         return true;
     }
@@ -310,7 +310,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             }
         }
 
-        
         
         if (trovato && controlloCollegamenti(temp)) {
             try (PrintWriter pW = new PrintWriter(new FileWriter("scenariCollegati.json"))) {
