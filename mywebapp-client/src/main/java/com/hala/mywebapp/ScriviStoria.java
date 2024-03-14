@@ -245,7 +245,6 @@ public class ScriviStoria extends Composite implements IsWidget {
                     inserisciOggettoTextBox.setText("");
                 } else {
                     message.setText("Errore nell'inserimento. Inserire un Oggetto Sbloccabile nella casella di testo.");
-                    Window.scrollTo(0, 0);
                 }
             }
         });

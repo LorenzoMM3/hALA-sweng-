@@ -14,9 +14,9 @@
 
         <g:HorizontalPanel spacing = "5">
             <g:Button ui:field="backButton">Back</g:Button>
+            <g:Button ui:field="mostraTutti">Mostra Tutte le Storie</g:Button>
             <g:TextBox ui:field="nomeRicerca"></g:TextBox>
             <g:Button ui:field="ricerca">Ricerca</g:Button>
-            <g:Button ui:field="mostraTutti">Mostra Tutte</g:Button>
             <g:ListBox ui:field="filtroListBox">
                 <g:item value="nome">Nome Storia</g:item>
                 <g:item value="autore">Autore Storia</g:item>
