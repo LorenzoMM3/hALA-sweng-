@@ -43,6 +43,18 @@ public class GiocaStoria extends Composite{
     Label rispostaCambioScenarioLabel;
 
     @UiField
+    Label propostaOggettiSbloccabili;
+
+    @UiField
+    ListBox listBoxOggettiSbloccabili;
+
+    @UiField
+    Button buttonOggettiSbloccabili;
+
+    @UiField
+    Label labelOggettiSbloccabili;
+
+    @UiField
     TextBox inserimentoRispostaTB;
 
     @UiField 
@@ -85,7 +97,7 @@ public class GiocaStoria extends Composite{
 
             @Override
             public void onClick(ClickEvent event) {
-                String risposta = inserimentoRispostaTB.getText();
+               String risposta = inserimentoRispostaTB.getText();
                inserimentoRispostaTB.setText(""); 
                hALAServiceAsync.caricaSuccessivoIndovinello(partita, risposta, new AsyncCallback<Partita>() {
                     @Override
@@ -164,9 +176,50 @@ public class GiocaStoria extends Composite{
         });
     }
 
-    
+    public void proproniOggettiRaccoglibili(Scenario scenarioAttuale){
+        if(scenarioAttuale.getOggettiCheSblocca().size()!=0){
+            ArrayList<String> oggettiSbloccabili = scenarioAttuale.getOggettiCheSblocca();
+            for(String oggettoSbloccabile : oggettiSbloccabili){
+                if(!partita.getInventario().contains(oggettoSbloccabile)){
+                    mostraPropostaOggetto();
+                    propostaOggettiSbloccabili.setText("Puoi raccogliere i seguenti oggetti:");
+                    listBoxOggettiSbloccabili.addItem(oggettoSbloccabile);
+                    int selectedIndex = listBoxOggettiSbloccabili.getSelectedIndex();
+                    if(selectedIndex!=-1){
+                        buttonOggettiSbloccabili.addClickHandler(new ClickHandler() {
+                        @Override
+                        public void onClick(ClickEvent event) {
+                            partita.addInventario(oggettoSbloccabile);
+                            labelOggettiSbloccabili.setText("Oggetto Raccolto");
+                        }
+                        });
+                    }
+                }
+            }
+            return;
+        } else {
+            return;
+        }
+    }
+
+    public void mostraPropostaOggetto(){
+        listBoxOggettiSbloccabili.setVisible(true);
+        buttonOggettiSbloccabili.setVisible(true);
+        propostaOggettiSbloccabili.setVisible(true);
+        labelOggettiSbloccabili.setVisible(true);
+    }    
+
+    public void nascondiPropostaOggetto(){
+        listBoxOggettiSbloccabili.setVisible(false);
+        buttonOggettiSbloccabili.setVisible(false);
+        propostaOggettiSbloccabili.setVisible(false);
+        labelOggettiSbloccabili.setVisible(false);
+    } 
 
     public void settaGrafica(){
+        buttonOggettiSbloccabili.setStyleName("lButton");
+        propostaOggettiSbloccabili.setStyleName("testi");
+        labelOggettiSbloccabili.setStyleName("messaggio");
         backButton.setStyleName("lButton");
         testoScenarioLabel.setStyleName("testi");
         domandaCambioScenarioLabel.setStyleName("testi");
@@ -177,12 +230,13 @@ public class GiocaStoria extends Composite{
     }
 
     public void riempiCampi(){
+        nascondiPropostaOggetto();
         opzioni = new HashMap<>();
         scenarioAttuale = partita.getScenarioAttuale();
         String tipologia = scenarioAttuale.getTipologia().toString();
         String testo = scenarioAttuale.getTestoScena();
-        testoScenarioLabel.setText(testo); 
-        ArrayList<String> oggettiSbloccati = scenarioAttuale.getOggettiCheSblocca();
+        testoScenarioLabel.setText(testo);
+        proproniOggettiRaccoglibili(scenarioAttuale);
         
         if(tipologia.equals("ASCELTA")){
             String domanda = ((ScenarioAScelta) scenarioAttuale).getDomandaCambioScenario();
