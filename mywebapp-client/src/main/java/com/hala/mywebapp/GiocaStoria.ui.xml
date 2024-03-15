@@ -12,5 +12,6 @@
         <g:TextBox ui:field="inserimentoRispostaTB"></g:TextBox>
         <g:Button ui:field="invioRispostaButton">Prosegui</g:Button>
         <g:Label ui:field="messageLabel"></g:Label>
+        <g:Button ui:field="esciButton">Esci</g:Button>
     </g:VerticalPanel>
 </ui:UiBinder>

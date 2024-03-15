@@ -10,6 +10,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.hala.mywebapp.VisualizzaCatalogo.VisualizzaUiBinder;
@@ -43,6 +44,9 @@ public class GiocaStoria extends Composite{
     
     @UiField
     Label messageLabel;
+
+    @UiField
+    Button esciButton;
 
     public GiocaStoria(Storia storia, Utente giocatore) {
         initWidget(UiB.createAndBindUi(this));
@@ -85,6 +89,17 @@ public class GiocaStoria extends Composite{
             }
             
         });
+    
+        esciButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new VisualizzaCatalogo());
+                RootPanel.get().clear();
+            }
+            
+        });
     }
 
     
@@ -95,6 +110,7 @@ public class GiocaStoria extends Composite{
         rispostaCambioScenarioLabel.setStyleName("testi");
         invioRispostaButton.setStyleName("lButton");
         messageLabel.setStyleName("messaggio");
+        esciButton.setStyleName("lButton");
     }
 
     public void riempiCampi(){

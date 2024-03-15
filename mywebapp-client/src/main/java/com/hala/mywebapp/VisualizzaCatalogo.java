@@ -37,6 +37,10 @@ public class VisualizzaCatalogo extends Composite {
 
     private ArrayList<Storia> tutteLeStorie;
 
+    private Storia storiaSelezionata;
+
+    private List<Storia> risultatiRicerca;
+
     @UiField
     CellTable<Storia> tabella;
 
@@ -67,7 +71,8 @@ public class VisualizzaCatalogo extends Composite {
     public VisualizzaCatalogo() {
         initWidget(UiB.createAndBindUi(this));
         settaGrafica();
-
+        storiaSelezionata = new Storia();
+        risultatiRicerca = new ArrayList<Storia>();
         tutteLeStorie = new ArrayList<Storia>();
         TextColumn<Storia> nomeStoria = new TextColumn<Storia>() {
             @Override
@@ -193,7 +198,7 @@ public class VisualizzaCatalogo extends Composite {
 
                     messageLabel.setText("");
                     // Lista per memorizzare le storie che corrispondono al criterio di ricerca
-                    List<Storia> risultatiRicerca = new ArrayList<>();
+                    risultatiRicerca = new ArrayList<>();
 
                     if (filtro.equals("Nome Storia")){
                         // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
@@ -243,6 +248,16 @@ public class VisualizzaCatalogo extends Composite {
                         }
                     };
                     provider.addDataDisplay(tabella);
+
+                    // Identifica l'elemento selezionato nella nuova lista dei risultati
+                    int selectedIndex = tabella.getKeyboardSelectedRow();
+                    if (selectedIndex != -1) {
+                        storiaSelezionata = risultatiRicerca.get(selectedIndex);
+                    } else {
+                        storiaSelezionata = null;
+                    }
+
+
                 } else {
                     messageLabel.setText("Per cercare tutte le storie, clicca su 'Mostra Tutte'");
                 }
@@ -268,8 +283,19 @@ public class VisualizzaCatalogo extends Composite {
                     // Ottenere l'oggetto Storia nella riga cliccata
                     Storia storiaCliccata = tutteLeStorie.get(index);
 
+                    if (risultatiRicerca.isEmpty()) {
+                        // Se non c'è ricerca in corso, impostiamo direttamente la storia selezionata
+                        storiaSelezionata = storiaCliccata;
+                    } else {
+                        // Se c'è una ricerca in corso, dobbiamo aggiornare la storia selezionata
+                        int absoluteIndex = tutteLeStorie.indexOf(storiaCliccata);
+                        if (absoluteIndex != -1) {
+                            storiaSelezionata = risultatiRicerca.get(absoluteIndex);
+                        }
+                    }
+
                     // Visualizza il testo completo dello scenario iniziale
-                    Window.alert("Testo completo dello scenario iniziale:\n" + storiaCliccata.getScenarioIniziale().getTestoScena());
+                    Window.alert("Testo completo dello scenario iniziale:\n" + storiaSelezionata.getScenarioIniziale().getTestoScena());
                 }
             }
         });
@@ -289,11 +315,13 @@ public class VisualizzaCatalogo extends Composite {
                             int index = tabella.getKeyboardSelectedRow();
                             Utente utenteAttuale = result;
                             if (index != -1) {
-                                Storia storiaSelezionata = tutteLeStorie.get(index);
+                                //Storia storiaSelezionata = tutteLeStorie.get(index);
                                 //Controllare se l'utente ha gia giocato a questa storia
                                 //Se non ha ancora giocato:
+                                Storia daGiocare = storiaSelezionata;
+                                storiaSelezionata = null;
                                 RootPanel.get("startTable").clear();
-                                RootPanel.get("startTable").add(new GiocaStoria(storiaSelezionata, utenteAttuale));
+                                RootPanel.get("startTable").add(new GiocaStoria(daGiocare, utenteAttuale));
                                 RootPanel.get().clear();
                                 //Se ha gia giocato:
                                 
