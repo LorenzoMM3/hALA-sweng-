@@ -15,6 +15,5 @@
         <g:Button ui:field="invioSelezioneSceltaButton">Prosegui</g:Button>
         <g:Button ui:field="backButton">Torna al Menu</g:Button>
         <g:Label ui:field="messageLabel"></g:Label>
-        <g:Button ui:field="esciButton">Esci</g:Button>
     </g:VerticalPanel>
 </ui:UiBinder>

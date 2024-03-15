@@ -62,8 +62,6 @@ public class GiocaStoria extends Composite{
     @UiField
     Label messageLabel;
 
-    @UiField
-    Button esciButton;
 
     public GiocaStoria(Storia storia, Utente giocatore, boolean nuovoGioco) {
         initWidget(UiB.createAndBindUi(this));
@@ -178,7 +176,6 @@ public class GiocaStoria extends Composite{
         invioRispostaButton.setStyleName("lButton");
         invioSelezioneSceltaButton.setStyleName("lButton");
         messageLabel.setStyleName("messaggio");
-        esciButton.setStyleName("lButton");
     }
 
     public void riempiCampi(){
