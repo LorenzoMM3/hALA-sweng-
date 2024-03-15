@@ -220,7 +220,7 @@ public class VisualizzaCatalogo extends Composite {
                         }
 
                     }
-                    else if (filtro.equals("Lunghezza Storia")){
+                    else if (filtro.equals("Numero Scenari")){
                         // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
@@ -248,7 +248,7 @@ public class VisualizzaCatalogo extends Composite {
                         }
                     };
                     provider.addDataDisplay(tabella);
-
+                    
                     // Identifica l'elemento selezionato nella nuova lista dei risultati
                     int selectedIndex = tabella.getKeyboardSelectedRow();
                     if (selectedIndex != -1) {

@@ -45,10 +45,8 @@ public class GiocaStoria extends Composite{
     @UiField
     TextBox inserimentoRispostaTB;
 
-
     @UiField 
     ListBox opzioniLB;
-
     
     @UiField
     Button invioRispostaButton;

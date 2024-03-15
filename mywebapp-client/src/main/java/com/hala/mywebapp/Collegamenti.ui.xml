@@ -10,6 +10,8 @@
         <g:Button ui:field="backButton">Back</g:Button>
 
         <g:VerticalPanel spacing="30" ui:field="pagina">
+
+            <g:Label ui:field="messageLabel"></g:Label>
         
             <g:VerticalPanel spacing="10" ui:field="ScenarioInizialePanel">
                 <g:Label ui:field="LscenarioIniziale">Scegli lo scenario iniziale:</g:Label>
@@ -17,7 +19,6 @@
                 <g:Button ui:field="buttonSettaScenarioIniziale">Setta scenario iniziale</g:Button>
                 
             </g:VerticalPanel>
-
 
             <g:VerticalPanel spacing="10" ui:field="ScenariDaCollegare">
                     <g:Label ui:field="SelezionaScenario1">Seleziona lo scenario che vuoi collegare:</g:Label>
@@ -45,24 +46,18 @@
             <g:VerticalPanel spacing="10" ui:field="gestioneFinale">
                 <g:Button ui:field="settaSuccessivoFinale">Setta come successivo</g:Button>
             </g:VerticalPanel>
-
             
-
             <g:VerticalPanel spacing="10" ui:field="CollegamentiPanel">
                 
                 <g:Label>Seleziona lo scenario con cui vuoi effettuare il collegamento:</g:Label>
                 <g:Label ui:field="testoScenarioDaCollegare"/>
                 <g:ListBox ui:field="menuScenariCollegamenti"></g:ListBox>
-                
-                
+                                
             </g:VerticalPanel>
-
-        
-            <g:Label ui:field="messageLabel"></g:Label>
         
         </g:VerticalPanel>
 
-        <g:Button ui:field="terminaButton">Termina</g:Button>
+        <g:Button ui:field="terminaButton">Termina Collegamenti Storia</g:Button>
             
     </g:HorizontalPanel>
 </ui:UiBinder>
