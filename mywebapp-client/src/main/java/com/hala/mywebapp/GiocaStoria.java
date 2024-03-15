@@ -65,13 +65,13 @@ public class GiocaStoria extends Composite{
     @UiField
     Button esciButton;
 
-    public GiocaStoria(Storia storia, Utente giocatore) {
+    public GiocaStoria(Storia storia, Utente giocatore, boolean nuovoGioco) {
         initWidget(UiB.createAndBindUi(this));
         settaGrafica();
         partita = new Partita();
         scenarioAttuale = new Scenario();
 
-        hALAServiceAsync.caricaPartita(storia, giocatore, new AsyncCallback<Partita>() {
+        hALAServiceAsync.caricaPartita(storia, giocatore, nuovoGioco, new AsyncCallback<Partita>() {
             @Override
             public void onFailure(Throwable throwable) {
                 GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);

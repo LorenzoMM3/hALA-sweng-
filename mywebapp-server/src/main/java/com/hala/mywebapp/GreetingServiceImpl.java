@@ -510,12 +510,12 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     
 
-    public Partita caricaPartita(Storia storia, Utente giocatore){
+    public Partita caricaPartita(Storia storia, Utente giocatore, boolean ricomincia){
         String nomeStoria = storia.getNome();
-        System.out.println("Inizio carica partita");
-        System.out.println("Nome storia: " + nomeStoria);
+        //System.out.println("Inizio carica partita");
+        //System.out.println("Nome storia: " + nomeStoria);
         String usernameGiocatore = giocatore.getUsername();
-        System.out.println("Username giocatore: " + usernameGiocatore);
+        //System.out.println("Username giocatore: " + usernameGiocatore);
         boolean iniziata = false;
         Partita daTornare;
         for (Partita p : partite){
@@ -524,27 +524,31 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 
             }
         }
-        /*
-        if (!iniziata){  */
+        
+        if (!iniziata || ricomincia){  
             contaPartite();
             String nuovoId = contaPartite();
             daTornare = new Partita(giocatore, storia, nuovoId);
-            System.out.println("Nuova partita creata con id: " + daTornare.getId());
-            System.out.println("Storia: " + daTornare.getStoria().getNome());
-            System.out.println("Giocatore: " + daTornare.getGiocatore().getUsername());
-            System.out.println("Scenario attuale: " + daTornare.getScenarioAttuale().getValId());
-            System.out.println("Scenari successivi: " + daTornare.getScenarioAttuale().getSuccessivo());
+            //System.out.println("Nuova partita creata con id: " + daTornare.getId());
+            //System.out.println("Storia: " + daTornare.getStoria().getNome());
+            //System.out.println("Giocatore: " + daTornare.getGiocatore().getUsername());
+            //System.out.println("Scenario attuale: " + daTornare.getScenarioAttuale().getValId());
+            //System.out.println("Scenari successivi: " + daTornare.getScenarioAttuale().getSuccessivo());
             partite.add(daTornare);
+            aggiornaPartita(daTornare);
             convertToJsonPartite();
-            System.out.println("Partita aggiunta");
+            //System.out.println("Partita aggiunta");
             return daTornare;
-        /* } else {
+        } else { //La partita è già iniziata
+            
             for (Partita p : partite){
                 if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
                     daTornare = p;
+                    aggiornaPartita(daTornare);
                     return daTornare;
                 }
             }
+            
         } 
         return null; // Non dovrebbe mai arrivare qui*/
         

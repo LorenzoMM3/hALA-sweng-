@@ -45,7 +45,7 @@ public interface GreetingServiceAsync {
 
 	public void eliminaStoria(String nomeStoria, AsyncCallback<Boolean> callback);
 
-	public void caricaPartita(Storia storia, Utente giocatore, AsyncCallback<Partita> callback);
+	public void caricaPartita(Storia storia, Utente giocatore, boolean nuovoGioco, AsyncCallback<Partita> callback);
 
 	public void caricaSuccessivoIndovinello(Partita partita, String risposta, AsyncCallback<Partita> callback);
 
