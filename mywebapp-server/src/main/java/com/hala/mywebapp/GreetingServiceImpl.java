@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 @SuppressWarnings("serial")
@@ -586,18 +587,20 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return partita;
     }
 
-    private void aggiornaPartita(Partita partita){
-        for (Partita p : partite){
-            if (p.getId().equalsIgnoreCase(partita.getId())){
-                partite.remove(p);
-                partite.add(partita);
+    private void aggiornaPartita(Partita partita) { //NEcessario iteratore perchè altrimenti non si può modificare la lista in caricaPartita
+        Iterator<Partita> iterator = partite.iterator();
+        while (iterator.hasNext()) {
+            Partita p = iterator.next();
+            if (p.getId().equalsIgnoreCase(partita.getId())) {
+                iterator.remove(); // Rimuovi l'elemento corrente dalla lista
+                partite.add(partita); // Aggiungi il nuovo elemento
                 System.out.println("Partita aggiornata a:" + partita.getScenarioAttuale().getValId());
                 convertToJsonPartite();
+                break; // Esci dal ciclo una volta aggiornato l'elemento
             }
         }
-
-        
     }
+    
 
     
 
