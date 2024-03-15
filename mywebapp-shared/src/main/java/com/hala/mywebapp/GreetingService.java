@@ -54,4 +54,5 @@ public interface GreetingService extends RemoteService {
 	public Partita caricaSuccessivoIndovinello(Partita partita, String risposta);
 
 	public Partita caricaSuccessivoScelta(Partita partita, String opzione);
+	
 }

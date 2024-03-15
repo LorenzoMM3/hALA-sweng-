@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public interface PartitaI {
     
+    public boolean controllaOggetto(String oggetto);
+    
     public Utente getGiocatore();
 
     public void setGiocatore(Utente utente);

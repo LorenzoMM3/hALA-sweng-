@@ -11,7 +11,7 @@ public class Scenario implements ScenarioI, Serializable {
     protected TipologiaScenario tipologiaScenario;
     public String valId;
     protected ArrayList<String> precedente;
-    protected HashMap<String, String> successivo; //Testo opzione, indice
+    protected HashMap<String, String> successivo; //Testo opzione = indice successivo
     protected ArrayList<String> oggettiCheSblocca;
 
     public Scenario() {

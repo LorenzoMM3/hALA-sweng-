@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class ScenarioAScelta extends Scenario implements Serializable {
 
-    protected HashMap<String, String> opzioniScelta; // Oggetto, se non presente è null
+    protected HashMap<String, String> opzioniScelta; // Testo Opzione=Oggetto, se non presente è null
     protected TipologiaScenario tipologiaScenario;
     public String valId;
 

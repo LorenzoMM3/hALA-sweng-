@@ -27,6 +27,10 @@ public class Partita implements Serializable, PartitaI {
         inventario = new ArrayList<String>();
     }
 
+    public boolean controllaOggetto(String oggetto){
+        return this.inventario.contains(oggetto);
+    }
+
     public Utente getGiocatore(){
         return this.giocatore;
     }

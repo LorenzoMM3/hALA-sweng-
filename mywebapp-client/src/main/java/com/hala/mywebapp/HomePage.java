@@ -38,9 +38,6 @@ public class HomePage extends Composite implements IsWidget {
     VerticalPanel tastiPanel;
 
     @UiField
-    Button giocaButton;
-
-    @UiField
     Button visualizzaButton;
 
     @UiField
@@ -61,7 +58,6 @@ public class HomePage extends Composite implements IsWidget {
         scriviButton.setStyleName("lButton");
         modificaButton.setStyleName("lButton");
         visualizzaButton.setStyleName("lButton");
-        giocaButton.setStyleName("lButton");
         bPanel.setStyleName("mPanel");
         tastiPanel.setStyleName("sPanel");
 

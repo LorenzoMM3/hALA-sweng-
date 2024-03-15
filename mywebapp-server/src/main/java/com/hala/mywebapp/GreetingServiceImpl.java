@@ -551,11 +551,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public Partita caricaSuccessivoIndovinello(Partita partita, String risposta){
-        System.out.println("Id attuale: " + partita.getScenarioAttuale().getValId());
+        //System.out.println("Id attuale: " + partita.getScenarioAttuale().getValId());
         ScenarioIndovinello attuale = (ScenarioIndovinello)partita.getScenarioAttuale();
         boolean rispostaCorretta = attuale.verificaRisposta(risposta);
         HashMap<String, String> successivi = attuale.getSuccessivo();
-        System.out.println("successivi: " + successivi);
+        //System.out.println("successivi: " + successivi);
         String indiceSuccessivo = "";
         if (rispostaCorretta){
             indiceSuccessivo = successivi.get("true");
@@ -563,17 +563,23 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         else {
             indiceSuccessivo = successivi.get("false");
         }
-        System.out.println("Indice successivo: " + indiceSuccessivo);
+        //System.out.println("Indice successivo: " + indiceSuccessivo);
         Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
-        System.out.println("Nuovo id: " + daTornare.getValId());
+        //System.out.println("Nuovo id: " + daTornare.getValId());
         partita.setScenarioAttuale(daTornare);
-        System.out.println("Nuovo id prova: " + daTornare.getValId());
+        //System.out.println("Nuovo id prova: " + daTornare.getValId());
         aggiornaPartita(partita);
         return partita;
     }
 
-    public Partita caricaSuccessivoScelta(Partita partita, String opzione){
-        return null;
+    public Partita caricaSuccessivoScelta(Partita partita, String scelta){
+        ScenarioAScelta attuale = (ScenarioAScelta)partita.getScenarioAttuale();
+        HashMap<String, String> successivi = attuale.getSuccessivo();
+        String indiceSuccessivo = successivi.get(scelta);
+        Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
+        partita.setScenarioAttuale(daTornare);
+        aggiornaPartita(partita);
+        return partita;
     }
 
     private void aggiornaPartita(Partita partita){
@@ -588,6 +594,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         
     }
+
+    
 
     private void convertToJsonPartite(){
         System.out.println("ConvertToJsonPartite");

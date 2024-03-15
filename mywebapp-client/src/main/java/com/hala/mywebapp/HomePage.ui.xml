@@ -8,7 +8,6 @@
             <g:Label ui:field="benvenuto"/>
         </g:VerticalPanel>
         <g:VerticalPanel ui:field="tastiPanel" spacing="10">
-            <g:Button ui:field="giocaButton">Gioca</g:Button>
             <g:Button ui:field="scriviButton">Scrivi una storia</g:Button>
             <g:Button ui:field="modificaButton">Modifica una storia</g:Button>
             <g:Button ui:field="visualizzaButton">Visualizza le storie</g:Button>
