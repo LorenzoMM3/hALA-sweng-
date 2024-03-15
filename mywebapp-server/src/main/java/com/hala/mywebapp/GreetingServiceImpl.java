@@ -21,7 +21,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
-    private ArrayList<Partita> partite;
+    private Map<String, Partita> partiteNelSito;
 
     private int numeroScenari;
     private String numeroScenari2;
@@ -46,12 +46,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
-            if (partite == null) {
-                partite = new ArrayList<Partita>();
-                numeroPartite = 0;
-            }
+            partiteNelSito = (Map<String, Partita>) db.hashMap("partiteNelSitoPresenti").createOrOpen();
+
             if (db == null) {
                 numeroScenari = 0;
+                numeroPartite = 0;
             }
 
         }
@@ -511,22 +510,24 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     
 
-    public Partita caricaPartita(Storia storia, Utente giocatore, boolean ricomincia){
+    public Partita caricaPartita(Storia storia, Utente giocatore, boolean nuovoGioco){
         String nomeStoria = storia.getNome();
         //System.out.println("Inizio carica partita");
         //System.out.println("Nome storia: " + nomeStoria);
         String usernameGiocatore = giocatore.getUsername();
         //System.out.println("Username giocatore: " + usernameGiocatore);
         boolean iniziata = false;
+        String idPartita = "-1";
         Partita daTornare;
-        for (Partita p : partite){
+        for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
+            Partita p = entry.getValue();
             if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
                 iniziata = true;
-                
+                idPartita = p.getId();
             }
         }
         
-        if (!iniziata || ricomincia){  
+        if (!iniziata && nuovoGioco){  
             contaPartite();
             String nuovoId = contaPartite();
             daTornare = new Partita(giocatore, storia, nuovoId);
@@ -535,20 +536,18 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             //System.out.println("Giocatore: " + daTornare.getGiocatore().getUsername());
             //System.out.println("Scenario attuale: " + daTornare.getScenarioAttuale().getValId());
             //System.out.println("Scenari successivi: " + daTornare.getScenarioAttuale().getSuccessivo());
-            partite.add(daTornare);
-            aggiornaPartita(daTornare);
+            partiteNelSito.put(nuovoId, daTornare);
+            
             convertToJsonPartite();
             //System.out.println("Partita aggiunta");
             return daTornare;
         } else { //La partita è già iniziata
-            
-            for (Partita p : partite){
-                if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
-                    daTornare = p;
-                    aggiornaPartita(daTornare);
-                    return daTornare;
-                }
+            if (!idPartita.equals("-1")){
+                daTornare = partiteNelSito.get(idPartita);
+                //partiteNelSito.put(idPartita, daTornare);
+                return daTornare;
             }
+            
             
         } 
         return null; // Non dovrebbe mai arrivare qui*/
@@ -556,8 +555,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public Partita caricaSuccessivoIndovinello(Partita partita, String risposta){
-        //System.out.println("Id attuale: " + partita.getScenarioAttuale().getValId());
-        ScenarioIndovinello attuale = (ScenarioIndovinello)partita.getScenarioAttuale();
+
+        Partita temp = partita;
+        String id = temp.getId();
+        ScenarioIndovinello attuale = (ScenarioIndovinello)temp.getScenarioAttuale();
         boolean rispostaCorretta = attuale.verificaRisposta(risposta);
         HashMap<String, String> successivi = attuale.getSuccessivo();
         //System.out.println("successivi: " + successivi);
@@ -571,36 +572,25 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         //System.out.println("Indice successivo: " + indiceSuccessivo);
         Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
         //System.out.println("Nuovo id: " + daTornare.getValId());
-        partita.setScenarioAttuale(daTornare);
+        temp.setScenarioAttuale(daTornare);
         //System.out.println("Nuovo id prova: " + daTornare.getValId());
-        aggiornaPartita(partita);
-        return partita;
+        partiteNelSito.put(id, temp);
+        convertToJsonPartite();
+        return temp;
     }
 
     public Partita caricaSuccessivoScelta(Partita partita, String scelta){
-        ScenarioAScelta attuale = (ScenarioAScelta)partita.getScenarioAttuale();
+        Partita temp = partita;
+        String id = temp.getId();
+        ScenarioAScelta attuale = (ScenarioAScelta)temp.getScenarioAttuale();
         HashMap<String, String> successivi = attuale.getSuccessivo();
         String indiceSuccessivo = successivi.get(scelta);
         Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
-        partita.setScenarioAttuale(daTornare);
-        aggiornaPartita(partita);
-        return partita;
+        temp.setScenarioAttuale(daTornare);
+        partiteNelSito.put(id, temp);
+        convertToJsonPartite();
+        return temp;
     }
-
-    private void aggiornaPartita(Partita partita) { //NEcessario iteratore perchè altrimenti non si può modificare la lista in caricaPartita
-        Iterator<Partita> iterator = partite.iterator();
-        while (iterator.hasNext()) {
-            Partita p = iterator.next();
-            if (p.getId().equalsIgnoreCase(partita.getId())) {
-                iterator.remove(); // Rimuovi l'elemento corrente dalla lista
-                partite.add(partita); // Aggiungi il nuovo elemento
-                System.out.println("Partita aggiornata a:" + partita.getScenarioAttuale().getValId());
-                convertToJsonPartite();
-                break; // Esci dal ciclo una volta aggiornato l'elemento
-            }
-        }
-    }
-    
 
     
 
@@ -614,7 +604,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             pW.println("{");
 
             boolean firstEntry = true;
-            for (Partita p: partite) {
+            for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
+                Partita p = entry.getValue();
                 System.out.println("Partita: " + p.getId());
                 if (!firstEntry) {
                     pW.println(",");
