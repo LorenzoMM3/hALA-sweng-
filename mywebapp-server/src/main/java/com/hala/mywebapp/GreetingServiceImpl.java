@@ -293,8 +293,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 s.setScenarioIniziale(x);
                 storieNelSito.put(x.getNomeStoria(), s);
                 convertToJsonStorie();
-                System.out.println("x: " + x.getValId());
-                System.out.println("successivi: " + x.getSuccessivo());
             }
             db.commit();
             return true;
@@ -511,11 +509,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     
 
     public Partita caricaPartita(Storia storia, Utente giocatore, boolean nuovoGioco){
+        System.out.println("Carica partita");
+        System.out.println("Storia: " + storia.getNome());
+        System.out.println("Scenario iniziale: " + storia.getScenarioIniziale().getValId());
         String nomeStoria = storia.getNome();
-        //System.out.println("Inizio carica partita");
-        //System.out.println("Nome storia: " + nomeStoria);
         String usernameGiocatore = giocatore.getUsername();
-        //System.out.println("Username giocatore: " + usernameGiocatore);
         boolean iniziata = false;
         String idPartita = "-1";
         Partita daTornare;
@@ -524,29 +522,27 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
                 iniziata = true;
                 idPartita = p.getId();
+                System.out.println("Scenario attuale: " + p.getScenarioAttuale().getValId());
             }
         }
         
-        if (!iniziata && nuovoGioco){  
+        if ((!iniziata && nuovoGioco) || nuovoGioco){  
             contaPartite();
             String nuovoId = contaPartite();
+            System.out.println("Storia, scenario iniziale:" + storia.getScenarioIniziale());
             daTornare = new Partita(giocatore, storia, nuovoId);
-            //System.out.println("Nuova partita creata con id: " + daTornare.getId());
-            //System.out.println("Storia: " + daTornare.getStoria().getNome());
-            //System.out.println("Giocatore: " + daTornare.getGiocatore().getUsername());
-            //System.out.println("Scenario attuale: " + daTornare.getScenarioAttuale().getValId());
-            //System.out.println("Scenari successivi: " + daTornare.getScenarioAttuale().getSuccessivo());
+            System.out.println("Nuova partita creata, scenario iniziale:" + daTornare.getScenarioAttuale().getValId());
             partiteNelSito.put(nuovoId, daTornare);
+            System.out.println("Partita inserita nella mappa, id scenario iniziale: " + partiteNelSito.get(nuovoId).getScenarioAttuale().getValId());
+
             
             convertToJsonPartite();
-            //System.out.println("Partita aggiunta");
             return daTornare;
         } else { //La partita è già iniziata
             if (!idPartita.equals("-1")){
                 daTornare = partiteNelSito.get(idPartita);
-                //partiteNelSito.put(idPartita, daTornare);
                 return daTornare;
-            }
+            } 
             
             
         } 
@@ -561,7 +557,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         ScenarioIndovinello attuale = (ScenarioIndovinello)temp.getScenarioAttuale();
         boolean rispostaCorretta = attuale.verificaRisposta(risposta);
         HashMap<String, String> successivi = attuale.getSuccessivo();
-        //System.out.println("successivi: " + successivi);
         String indiceSuccessivo = "";
         if (rispostaCorretta){
             indiceSuccessivo = successivi.get("true");
@@ -569,11 +564,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         else {
             indiceSuccessivo = successivi.get("false");
         }
-        //System.out.println("Indice successivo: " + indiceSuccessivo);
         Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
-        //System.out.println("Nuovo id: " + daTornare.getValId());
         temp.setScenarioAttuale(daTornare);
-        //System.out.println("Nuovo id prova: " + daTornare.getValId());
         partiteNelSito.put(id, temp);
         convertToJsonPartite();
         return temp;
@@ -595,7 +587,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     
 
     private void convertToJsonPartite(){
-        System.out.println("ConvertToJsonPartite");
         if (db == null || db.isClosed()) {
             openDB();
         }
@@ -606,7 +597,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             boolean firstEntry = true;
             for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
                 Partita p = entry.getValue();
-                System.out.println("Partita: " + p.getId());
+                
                 if (!firstEntry) {
                     pW.println(",");
                 }

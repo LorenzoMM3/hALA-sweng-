@@ -88,7 +88,6 @@ public class GiocaStoria extends Composite{
             @Override
             public void onSuccess(Partita result) {
                 partita = result;
-                messageLabel.setText("Benvenuto in " + partita.getStoria().getNome() + ", scenario attuale: " + partita.getScenarioAttuale().getTestoScena() + ", successivi: " + partita.getScenarioAttuale().getSuccessivo());
                 riempiCampi();
             }
         });
@@ -176,6 +175,7 @@ public class GiocaStoria extends Composite{
         });
     }
 
+    /* 
     public void proproniOggettiRaccoglibili(Scenario scenarioAttuale){
         if(scenarioAttuale.getOggettiCheSblocca().size()!=0){
             ArrayList<String> oggettiSbloccabili = scenarioAttuale.getOggettiCheSblocca();
@@ -200,7 +200,7 @@ public class GiocaStoria extends Composite{
         } else {
             return;
         }
-    }
+    }*/
 
     public void mostraPropostaOggetto(){
         listBoxOggettiSbloccabili.setVisible(true);
@@ -209,12 +209,14 @@ public class GiocaStoria extends Composite{
         labelOggettiSbloccabili.setVisible(true);
     }    
 
+    /* 
     public void nascondiPropostaOggetto(){
         listBoxOggettiSbloccabili.setVisible(false);
         buttonOggettiSbloccabili.setVisible(false);
         propostaOggettiSbloccabili.setVisible(false);
         labelOggettiSbloccabili.setVisible(false);
     } 
+    */
 
     public void settaGrafica(){
         buttonOggettiSbloccabili.setStyleName("lButton");
@@ -230,13 +232,13 @@ public class GiocaStoria extends Composite{
     }
 
     public void riempiCampi(){
-        nascondiPropostaOggetto();
+        //nascondiPropostaOggetto();
         opzioni = new HashMap<>();
         scenarioAttuale = partita.getScenarioAttuale();
         String tipologia = scenarioAttuale.getTipologia().toString();
         String testo = scenarioAttuale.getTestoScena();
         testoScenarioLabel.setText(testo);
-        proproniOggettiRaccoglibili(scenarioAttuale);
+        //proproniOggettiRaccoglibili(scenarioAttuale);
         
         if(tipologia.equals("ASCELTA")){
             String domanda = ((ScenarioAScelta) scenarioAttuale).getDomandaCambioScenario();
@@ -278,12 +280,17 @@ public class GiocaStoria extends Composite{
 
     private void mostraPerFinale(){
         testoScenarioLabel.setVisible(true);
+        propostaOggettiSbloccabili.setVisible(false);
+        buttonOggettiSbloccabili.setVisible(false);
+        labelOggettiSbloccabili.setVisible(false);
+        listBoxOggettiSbloccabili.setVisible(false);
         domandaCambioScenarioLabel.setVisible(false);
         rispostaCambioScenarioLabel.setVisible(false);
         inserimentoRispostaTB.setVisible(false);
         invioRispostaButton.setVisible(false);
         opzioniLB.setVisible(false);
         invioSelezioneSceltaButton.setVisible(false);
+
 
     }
 

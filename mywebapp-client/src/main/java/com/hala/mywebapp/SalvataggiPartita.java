@@ -74,11 +74,13 @@ public class SalvataggiPartita extends Composite{
 
             @Override
             public void onSuccess(Partita result) {
-                Scenario attuale = result.getScenarioAttuale();
-                String scenarioInizialeDellaStoria = storia.getScenarioIniziale().getTestoScena();
-                if (!attuale.getTestoScena().equals(scenarioInizialeDellaStoria)){
-                    lb.addItem(attuale.getTestoScena());
-                } 
+                if (result != null){
+                    Scenario attuale = result.getScenarioAttuale();
+                    String scenarioInizialeDellaStoria = storia.getScenarioIniziale().getTestoScena();
+                    if (!attuale.getTestoScena().equals(scenarioInizialeDellaStoria)){
+                        lb.addItem(attuale.getTestoScena());
+                    } 
+                }
                 // Altrimenti non aggiunge nulla
             }
 
