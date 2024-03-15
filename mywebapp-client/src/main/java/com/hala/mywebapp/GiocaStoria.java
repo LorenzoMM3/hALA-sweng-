@@ -41,6 +41,9 @@ public class GiocaStoria extends Composite{
 
     @UiField
     Button invioRispostaButton;
+
+    @UiField
+    Button backButton;
     
     @UiField
     Label messageLabel;
@@ -89,22 +92,36 @@ public class GiocaStoria extends Composite{
             }
             
         });
-    
-        esciButton.addClickHandler(new ClickHandler() {
 
+
+        backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new VisualizzaCatalogo());
-                RootPanel.get().clear();
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    public void onFailure(Throwable caught) {
+                        System.err.println("Errore qui");
+                    };
+
+                    public void onSuccess(Utente utente) {
+                        if (utente != null){
+                            Utente utenteAttuale = utente;
+
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                        } else {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter());
+                        }
+                    }
+                });
             }
-            
         });
     }
 
     
 
     public void settaGrafica(){
+        backButton.setStyleName("lButton");
         testoScenarioLabel.setStyleName("testi");
         domandaCambioScenarioLabel.setStyleName("testi");
         rispostaCambioScenarioLabel.setStyleName("testi");
