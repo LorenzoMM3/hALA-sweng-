@@ -514,40 +514,70 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         System.out.println("Scenario iniziale: " + storia.getScenarioIniziale().getValId());
         String nomeStoria = storia.getNome();
         String usernameGiocatore = giocatore.getUsername();
-        boolean iniziata = false;
+        //boolean iniziata = false;
         String idPartita = "-1";
         Partita daTornare;
-        for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
+        //controllo se esiste già la partita
+
+        /*for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
             Partita p = entry.getValue();
             if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) && p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
-                iniziata = true;
-                idPartita = p.getId();
+                //iniziata = true; //se esiste setto a true
+                idPartita = p.getId(); //e riprendo il suo id
                 System.out.println("Scenario attuale: " + p.getScenarioAttuale().getValId());
             }
+        }*/
+        Partita p= datiPartita(nomeStoria, usernameGiocatore);
+        if(p!=null){
+            idPartita = p.getId();
         }
         
-        if ((!iniziata && nuovoGioco) || nuovoGioco){  
-            contaPartite();
+        //se non è stata iniziata e sto facendo partire una nuova giocata oppure sto facendo partire una nuova giocata (? ma non basta solo nuovoGioco?)
+        if (idPartita.equals("-1")||(nuovoGioco)){  //potrei anche fare il controllo semplicemente se l'id è = -1
+            if(nuovoGioco){
+                eliminaPartita(storia, giocatore);
+            }
+            contaPartite();//chiamo il contapartite per creare l'id
             String nuovoId = contaPartite();
             System.out.println("Storia, scenario iniziale:" + storia.getScenarioIniziale());
-            daTornare = new Partita(giocatore, storia, nuovoId);
+            daTornare = new Partita(giocatore, storia, nuovoId); //creo la partita
             System.out.println("Nuova partita creata, scenario iniziale:" + daTornare.getScenarioAttuale().getValId());
-            partiteNelSito.put(nuovoId, daTornare);
+            partiteNelSito.put(nuovoId, daTornare);//la aggiungo nel db
             System.out.println("Partita inserita nella mappa, id scenario iniziale: " + partiteNelSito.get(nuovoId).getScenarioAttuale().getValId());
 
-            
             convertToJsonPartite();
-            return daTornare;
-        } else { //La partita è già iniziata
-            if (!idPartita.equals("-1")){
+            return daTornare;//la return
+
+        } else if (!idPartita.equals("-1")&&(!nuovoGioco)){  //------si può fare direttamente l'else-if o anche solo else (per precisione metterei solo else)
                 daTornare = partiteNelSito.get(idPartita);
-                return daTornare;
-            } 
-            
-            
+                return daTornare;           
         } 
         return null; // Non dovrebbe mai arrivare qui*/
         
+    }
+
+    public Partita datiPartita(String storia, String utente){
+        for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
+            Partita p = entry.getValue();
+            if (p.getStoria().getNome().equalsIgnoreCase(storia) && p.getGiocatore().getUsername().equalsIgnoreCase(utente)){
+                //iniziata = true; //se esiste setto a true
+                //idPartita = p.getId(); //e riprendo il suo id
+                //System.out.println("Scenario attuale: " + p.getScenarioAttuale().getValId());
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void eliminaPartita(Storia storia, Utente utente){
+        for(Map.Entry<String, Partita> entry : partiteNelSito.entrySet()){
+            Partita p = entry.getValue();
+            if (p.getStoria().getNome().equalsIgnoreCase(storia.getNome()) && p.getGiocatore().getUsername().equalsIgnoreCase(utente.getUsername())){
+                partiteNelSito.remove(entry.getKey());
+                db.commit();
+                convertToJsonPartite();
+            }
+        }
     }
 
     public Partita caricaSuccessivoIndovinello(Partita partita, String risposta){
@@ -605,7 +635,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 pW.println("    \"Giocatore\": \"" + p.getGiocatore().getUsername() + "\",");
                 pW.println("    \"Storia\": \"" + p.getStoria().getNome() + "\",");
                 pW.println("    \"Id scenario attuale\": \"" + p.getScenarioAttuale().getValId() + "\",");
-                pW.println("    \"Inventario\": " + p.getInventario());
+                pW.println("    \"Inventario\": \"" + p.getInventario()+ "\"");
                 pW.println("  }");
 
                 firstEntry = false;

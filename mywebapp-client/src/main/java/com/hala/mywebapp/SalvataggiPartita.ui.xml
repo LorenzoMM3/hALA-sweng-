@@ -6,10 +6,11 @@
 
 
     <g:VerticalPanel spacing="5">
-        <g:Label ui:field="salutoLabel"></g:Label>
-        <g:ListBox ui:field="salvataggiLB">
-            <g:item value="0">Nuova Partita</g:item>
-        </g:ListBox>
+        <g:Label ui:field="salutoLabel"/>
         <g:Button ui:field="giocaButton">Gioca</g:Button>
+        <g:Label ui:field="riprendiLabel"/>
+        <g:Button ui:field="riprendiButton">Riprendi</g:Button>
+        <g:Button ui:field="backButton">Torna alla lista delle storie</g:Button>
+        
     </g:VerticalPanel>
 </ui:UiBinder>

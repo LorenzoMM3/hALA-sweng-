@@ -68,6 +68,9 @@ public class GiocaStoria extends Composite{
     
     @UiField
     Button backButton;
+
+    @UiField
+    Button terminaButton;
     
     @UiField
     Label messageLabel;
@@ -132,6 +135,7 @@ public class GiocaStoria extends Composite{
                     messageLabel.setText("Non possiedi l'oggetto necessario per questa scelta");
                     return;
                 } else {
+                    messageLabel.setText("");
                     hALAServiceAsync.caricaSuccessivoScelta(partita, scelta, new AsyncCallback<Partita>() {
                         @Override
                         public void onFailure(Throwable throwable) {
@@ -162,7 +166,6 @@ public class GiocaStoria extends Composite{
                     public void onSuccess(Utente utente) {
                         if (utente != null){
                             Utente utenteAttuale = utente;
-
                             RootPanel.get("startTable").clear();
                             RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
                         } else {
@@ -173,10 +176,45 @@ public class GiocaStoria extends Composite{
                 });
             }
         });
+
+
+        terminaButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    public void onFailure(Throwable caught) {
+                        System.err.println("Errore qui");
+                    };
+
+                    public void onSuccess(Utente utente) {
+                        if (utente != null){
+                            Utente utenteAttuale = utente;
+
+
+                           hALAServiceAsync.eliminaPartita(storia, utenteAttuale, new AsyncCallback<Boolean>() {
+                                @Override
+                                public void onFailure(Throwable throwable) {
+                                    GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+                                }
+                               @Override
+                                public void onSuccess(Boolean verifica) {
+                                        RootPanel.get("startTable").clear();
+                                        RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
+                                }
+                            });
+                            
+                        } else {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new Starter()); //da sistemareeeeeee (nel termina non va questo pezzo, metteremo un mess)
+                        }
+                    }
+                });
+            }
+        });
+    
     }
 
-    /* 
-    public void proproniOggettiRaccoglibili(Scenario scenarioAttuale){
+    public void proponiOggettiRaccoglibili(Scenario scenarioAttuale){
         if(scenarioAttuale.getOggettiCheSblocca().size()!=0){
             ArrayList<String> oggettiSbloccabili = scenarioAttuale.getOggettiCheSblocca();
             for(String oggettoSbloccabile : oggettiSbloccabili){
@@ -200,7 +238,7 @@ public class GiocaStoria extends Composite{
         } else {
             return;
         }
-    }*/
+    }
 
     public void mostraPropostaOggetto(){
         listBoxOggettiSbloccabili.setVisible(true);
@@ -209,17 +247,18 @@ public class GiocaStoria extends Composite{
         labelOggettiSbloccabili.setVisible(true);
     }    
 
-    /* 
+    
     public void nascondiPropostaOggetto(){
         listBoxOggettiSbloccabili.setVisible(false);
         buttonOggettiSbloccabili.setVisible(false);
         propostaOggettiSbloccabili.setVisible(false);
         labelOggettiSbloccabili.setVisible(false);
     } 
-    */
+    
 
     public void settaGrafica(){
         buttonOggettiSbloccabili.setStyleName("lButton");
+        terminaButton.setStyleName("lButton");
         propostaOggettiSbloccabili.setStyleName("testi");
         labelOggettiSbloccabili.setStyleName("messaggio");
         backButton.setStyleName("lButton");
@@ -232,15 +271,16 @@ public class GiocaStoria extends Composite{
     }
 
     public void riempiCampi(){
-        //nascondiPropostaOggetto();
+        nascondiPropostaOggetto();
         opzioni = new HashMap<>();
         scenarioAttuale = partita.getScenarioAttuale();
         String tipologia = scenarioAttuale.getTipologia().toString();
         String testo = scenarioAttuale.getTestoScena();
         testoScenarioLabel.setText(testo);
-        //proproniOggettiRaccoglibili(scenarioAttuale);
+        
         
         if(tipologia.equals("ASCELTA")){
+            proponiOggettiRaccoglibili(scenarioAttuale);
             String domanda = ((ScenarioAScelta) scenarioAttuale).getDomandaCambioScenario();
             domandaCambioScenarioLabel.setText(domanda);
             opzioni = ((ScenarioAScelta) scenarioAttuale).getOpzioniScelta();
@@ -248,10 +288,10 @@ public class GiocaStoria extends Composite{
         
         }
         else if(tipologia.equals("INDOVINELLO")){
+            proponiOggettiRaccoglibili(scenarioAttuale);
             mostraPerIndovinello();
             String indovinello = ((ScenarioIndovinello) scenarioAttuale).getDomandaCambioScenario();
             domandaCambioScenarioLabel.setText(indovinello);
-
 
         }
         else if(tipologia.equals("DEFAULT")){
@@ -266,6 +306,8 @@ public class GiocaStoria extends Composite{
         inserimentoRispostaTB.setVisible(false);
         invioRispostaButton.setVisible(false);
         invioSelezioneSceltaButton.setVisible(true);
+        terminaButton.setVisible(false);
+        backButton.setVisible(true);
         
         riempiLB(opzioniLB);
     }
@@ -273,13 +315,19 @@ public class GiocaStoria extends Composite{
     private void mostraPerIndovinello(){
         rispostaCambioScenarioLabel.setText("Inserisci la tua risposta:");
         testoScenarioLabel.setVisible(true);
+        inserimentoRispostaTB.setVisible(true);
+        invioRispostaButton.setVisible(true);
         opzioniLB.setVisible(false);
         invioSelezioneSceltaButton.setVisible(false);
+        terminaButton.setVisible(false);
+        backButton.setVisible(true);
 
     }
 
     private void mostraPerFinale(){
         testoScenarioLabel.setVisible(true);
+        terminaButton.setVisible(true);
+        backButton.setVisible(false);
         propostaOggettiSbloccabili.setVisible(false);
         buttonOggettiSbloccabili.setVisible(false);
         labelOggettiSbloccabili.setVisible(false);

@@ -18,6 +18,7 @@
         <g:Button ui:field="invioRispostaButton">Prosegui</g:Button>
         <g:Button ui:field="invioSelezioneSceltaButton">Prosegui</g:Button>
         <g:Button ui:field="backButton">Torna al Menu</g:Button>
+        <g:Button ui:field="terminaButton">Termina partita</g:Button>
         <g:Label ui:field="messageLabel"></g:Label>
     </g:VerticalPanel>
 </ui:UiBinder>

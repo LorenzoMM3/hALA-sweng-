@@ -29,43 +29,84 @@ public class SalvataggiPartita extends Composite{
     Label salutoLabel;
 
     @UiField
-    ListBox salvataggiLB;
+    Button giocaButton;
 
     @UiField
-    Button giocaButton;
+    Label riprendiLabel;
+
+    @UiField
+    Button riprendiButton;
+
+    @UiField
+    Button backButton;
     
     public SalvataggiPartita(Storia s, Utente u) {
         initWidget(UiB.createAndBindUi(this));
         storia = s;
         utente = u;
+        riprendiButton.setVisible(false);
+        riprendiLabel.setText("");
         settaGrafica();
 
         giocaButton.addClickHandler(new ClickHandler() {
         
             @Override
             public void onClick(ClickEvent event) {
-                int index = salvataggiLB.getSelectedIndex();
-                if (index == 0){
-                    RootPanel.get("startTable").clear();
-                    RootPanel.get("startTable").add(new GiocaStoria(storia, utente, true));
-                }
-                else {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new GiocaStoria(storia, utente, true));
+            } 
+        });
+
+        riprendiButton.addClickHandler(new ClickHandler() {
+        
+            @Override
+            public void onClick(ClickEvent event) {
                     RootPanel.get("startTable").clear();
                     RootPanel.get("startTable").add(new GiocaStoria(storia, utente, false));
-                }
             } 
+        });
+
+        backButton.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                RootPanel.get("startTable").clear();
+                RootPanel.get("startTable").add(new VisualizzaCatalogo());
+            }
         });
 
     }
 
     private void settaGrafica() {
-        salutoLabel.setText("Ciao " + utente.getUsername() + ", vuoi caricare una partita salvata?");
+        salutoLabel.setText("Ciao " + utente.getUsername() + ", vuoi giocare a " + storia.getNome() + "?");
         salutoLabel.setStyleName("testi");
         giocaButton.setStyleName("lButton");
-        riempiListBox(salvataggiLB);
+        backButton.setStyleName("lButton");
+        riprendiButton.setStyleName("lButton");
+        riprendiLabel.setStyleName("testi");
+
+        hALAServiceAsync.datiPartita(storia.getNome(), utente.getUsername(), new AsyncCallback<Partita>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                System.out.println("Errore nel caricamento della partita");
+            }
+
+            @Override
+            public void onSuccess(Partita result) {
+                if (result != null){
+                    riprendiLabel.setText("l'ultima volta hai lasciato la partita in sospeso allo scenario:\n" + result.getScenarioAttuale().getTestoScena());
+                    riprendiButton.setVisible(true);
+                    Scenario attuale = result.getScenarioAttuale();
+                    String scenarioInizialeDellaStoria = storia.getScenarioIniziale().getTestoScena();
+                }
+                // Altrimenti non aggiunge nulla
+            }
+
+            
+        });
+
     }
 
-    private void riempiListBox(ListBox lb) {
+    /*private void riempiListBox(ListBox lb) {
         hALAServiceAsync.caricaPartita(storia, utente, false, new AsyncCallback<Partita>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -77,6 +118,7 @@ public class SalvataggiPartita extends Composite{
                 if (result != null){
                     Scenario attuale = result.getScenarioAttuale();
                     String scenarioInizialeDellaStoria = storia.getScenarioIniziale().getTestoScena();
+                    //qua si fa già un controllo se lo scenario attuale non è uguale allo scenario iniziale si aggiunge l'item
                     if (!attuale.getTestoScena().equals(scenarioInizialeDellaStoria)){
                         lb.addItem(attuale.getTestoScena());
                     } 
@@ -86,7 +128,7 @@ public class SalvataggiPartita extends Composite{
 
             
         });
-    }
+    }*/
 
 
 
