@@ -206,11 +206,20 @@ public class Collegamenti extends Composite implements IsWidget {
 
         menuScenari.addChangeHandler(event -> {
             int index = menuScenari.getSelectedIndex();
-
+            menuScenariCollegamenti.clear(); //Elimino i valori
+            riempiLista(menuScenariCollegamenti); //Li rimetto
             if (index != -1) {
                 String testo = menuScenari.getItemText(index);
                 for (Scenario temp : scenariStoria) {
                     if (temp.getTestoScena().equals(testo)) {
+                        
+                        for (int i = 0; i < menuScenariCollegamenti.getItemCount(); i++) {
+                            String t = menuScenariCollegamenti.getValue(i);
+                            if (testo.equals(t)){
+                                menuScenariCollegamenti.removeItem(i); //Elimino cosi da non poter collegare due scenari uguali
+                            }
+                        }
+
                         if (temp.getTipologia().toString().equalsIgnoreCase("ASCELTA")) {
                             ScenarioAScelta temp2 = (ScenarioAScelta) temp;
                             mostraSchermataScelte(temp2);
