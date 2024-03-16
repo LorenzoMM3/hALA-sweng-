@@ -177,6 +177,18 @@ public class GiocaStoria extends Composite{
             }
         });
 
+        buttonOggettiSbloccabili.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                int selectedIndex = listBoxOggettiSbloccabili.getSelectedIndex();
+                    if(selectedIndex!=-1){
+                        String oggettoSbloccabile = listBoxOggettiSbloccabili.getItemText(selectedIndex);
+                        partita.addInventario(oggettoSbloccabile);
+                        labelOggettiSbloccabili.setText("Oggetto Raccolto");
+                    }
+                
+            }
+            });
 
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
@@ -222,16 +234,6 @@ public class GiocaStoria extends Composite{
                     mostraPropostaOggetto();
                     propostaOggettiSbloccabili.setText("Puoi raccogliere i seguenti oggetti:");
                     listBoxOggettiSbloccabili.addItem(oggettoSbloccabile);
-                    int selectedIndex = listBoxOggettiSbloccabili.getSelectedIndex();
-                    if(selectedIndex!=-1){
-                        buttonOggettiSbloccabili.addClickHandler(new ClickHandler() {
-                        @Override
-                        public void onClick(ClickEvent event) {
-                            partita.addInventario(oggettoSbloccabile);
-                            labelOggettiSbloccabili.setText("Oggetto Raccolto");
-                        }
-                        });
-                    }
                 }
             }
             return;

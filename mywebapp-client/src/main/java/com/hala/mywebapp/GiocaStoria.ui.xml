@@ -7,14 +7,14 @@
 
     <g:VerticalPanel spacing="5">
         <g:Label ui:field="testoScenarioLabel"></g:Label>
-        <g:Label ui:field="propostaOggettiSbloccabili"></g:Label>
-        <g:ListBox ui:field="listBoxOggettiSbloccabili"></g:ListBox>
-        <g:Button ui:field="buttonOggettiSbloccabili">Raccogli Oggetto</g:Button>
-        <g:Label ui:field="labelOggettiSbloccabili"></g:Label>
         <g:Label ui:field="domandaCambioScenarioLabel"></g:Label>
         <g:Label ui:field="rispostaCambioScenarioLabel"></g:Label>
         <g:TextBox ui:field="inserimentoRispostaTB"></g:TextBox>
         <g:ListBox ui:field="opzioniLB"></g:ListBox>
+        <g:Label ui:field="propostaOggettiSbloccabili"></g:Label>
+        <g:ListBox ui:field="listBoxOggettiSbloccabili"></g:ListBox>
+        <g:Button ui:field="buttonOggettiSbloccabili">Raccogli Oggetto</g:Button>
+        <g:Label ui:field="labelOggettiSbloccabili"></g:Label>
         <g:Button ui:field="invioRispostaButton">Prosegui</g:Button>
         <g:Button ui:field="invioSelezioneSceltaButton">Prosegui</g:Button>
         <g:Button ui:field="backButton">Torna al Menu</g:Button>

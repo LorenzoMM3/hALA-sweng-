@@ -32,6 +32,9 @@ public class SalvataggiPartita extends Composite{
     Button giocaButton;
 
     @UiField
+    Label avvisoLabel;
+
+    @UiField
     Label riprendiLabel;
 
     @UiField
@@ -80,6 +83,7 @@ public class SalvataggiPartita extends Composite{
         salutoLabel.setText("Ciao " + utente.getUsername() + ", vuoi giocare a " + storia.getNome() + "?");
         salutoLabel.setStyleName("testi");
         giocaButton.setStyleName("lButton");
+        avvisoLabel.setStyleName("messaggio");
         backButton.setStyleName("lButton");
         riprendiButton.setStyleName("lButton");
         riprendiLabel.setStyleName("testi");

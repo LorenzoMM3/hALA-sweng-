@@ -7,7 +7,8 @@
 
     <g:VerticalPanel spacing="5">
         <g:Label ui:field="salutoLabel"/>
-        <g:Button ui:field="giocaButton">Gioca</g:Button>
+        <g:Button ui:field="giocaButton">Ricomincia dall'inizio</g:Button>
+        <g:Label ui:field="avvisoLabel">(Attenzione, non potrai tornare indietro)</g:Label>
         <g:Label ui:field="riprendiLabel"/>
         <g:Button ui:field="riprendiButton">Riprendi</g:Button>
         <g:Button ui:field="backButton">Torna alla lista delle storie</g:Button>
