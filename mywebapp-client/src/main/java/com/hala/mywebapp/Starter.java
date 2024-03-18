@@ -24,6 +24,24 @@ public class Starter extends Composite implements IsWidget {
     @UiField
     Button visualizzaCatalogoButton;
 
+    @UiField
+    Panel totale;
+
+    @UiField
+    Panel descrizione;
+
+    @UiField
+    Panel bottoniPanel;
+
+    @UiField
+    Label desc1;
+    @UiField
+    Label desc2;
+    @UiField
+    Label desc3;
+    @UiField
+    Label desc4;
+
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
         loginButton.setStyleName("sButton");
