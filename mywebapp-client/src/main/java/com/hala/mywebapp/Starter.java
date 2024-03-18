@@ -47,6 +47,10 @@ public class Starter extends Composite implements IsWidget {
         loginButton.setStyleName("sButton");
         signinButton.setStyleName("sButton");
         visualizzaCatalogoButton.setStyleName("sButton");
+        desc1.setStyleName("testi");
+        desc2.setStyleName("testi");
+        desc3.setStyleName("testi");
+        desc4.setStyleName("testi");
 
         signinButton.addClickHandler(new ClickHandler() {
             @Override

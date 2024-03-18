@@ -137,10 +137,8 @@ public class ScriviStoria extends Composite implements IsWidget {
         creaScenarioFinale.setStyleName("lButton");
         inserisciOggettoButton.setStyleName("lButton");
         labelTitolo.setStyleName("testi");
-        messageLabelCreate.setStyleName("messaggio");
         scriviScenarioLabel.setStyleName("testi");
         tipologiaLabel.setStyleName("testi");
-        message.setStyleName("messaggio");
         labelTestoScenario.setStyleName("testi");
         messageLabel.setStyleName("messaggio");
         titoloS.setStyleName("sPanel");
@@ -155,6 +153,7 @@ public class ScriviStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 if (!titoloStoria.getText().isEmpty()) {
+                    message.setText("");
                     nomeStoriaTemp = titoloStoria.getText().toUpperCase();
 
                     hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
@@ -171,6 +170,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                                 public void onSuccess(Boolean verifica) {
                                     if (verifica) {
+                                        messageLabelCreate.setStyleName("messaggios");
                                         messageLabelCreate.setText("Storia creata con successo");
                                         titoloS.remove(inserisciStoria);
                                         attivaTutto();
@@ -178,6 +178,8 @@ public class ScriviStoria extends Composite implements IsWidget {
                                         showAdditionalFieldsAScelta();
                                         opzioniSceltaTemp = new ArrayList<>();
                                     } else {
+
+                                        messageLabelCreate.setStyleName("messaggioa");
                                         messageLabelCreate.setText("Nome già esistente, riprova");
                                     }
                                 };
@@ -186,6 +188,8 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                     });
                 } else {
+
+                    message.setStyleName("messaggioa");
                     message.setText("Inserisci il titolo della storia");
                 }
 
@@ -195,7 +199,6 @@ public class ScriviStoria extends Composite implements IsWidget {
 
         menuTipoScenario.addChangeHandler(event -> {
             message.setText("");
-            
 
             if ("Scenario a scelta".equals(menuTipoScenario.getSelectedValue())) {
                 hideAdditionalFieldsIndovinello();
@@ -203,7 +206,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 showAdditionalFieldsAScelta();
                 opzioniSceltaTemp = new ArrayList<>();
             } else if ("Scenario con indovinello".equals(menuTipoScenario.getSelectedValue())) {
-                
+
                 hideAdditionalFieldsAScelta();
                 hideAdditionalFieldsFinale();
                 showAdditionalFieldsIndovinello();
@@ -213,7 +216,6 @@ public class ScriviStoria extends Composite implements IsWidget {
                 showAdditionalFieldsFinale();
 
             }
-
 
         });
 
@@ -227,6 +229,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     oggetto.setText("");
                     scelta.setText("");
                 } else {
+                    message.setStyleName("messaggioa");
                     message.setText("inserisci il testo dell'opzione di scelta");
                 }
             }
@@ -239,11 +242,13 @@ public class ScriviStoria extends Composite implements IsWidget {
             public void onClick(ClickEvent event) {
                 message.setText("");
                 String oggetto = inserisciOggettoTextBox.getText();
-                if(!oggetto.trim().equals("")){
+                if (!oggetto.trim().equals("")) {
                     oggettiSbloccabili.add(oggetto);
+                    message.setStyleName("messaggios");
                     message.setText("Oggetto Sbloccabile Inserito nello Scenario.");
                     inserisciOggettoTextBox.setText("");
                 } else {
+                    message.setStyleName("messaggioa");
                     message.setText("Errore nell'inserimento. Inserire un Oggetto Sbloccabile nella casella di testo.");
                 }
             }
@@ -253,7 +258,7 @@ public class ScriviStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 if (controlloScenari()) {
-                    
+
                     idTemp = "";
                     hALAServiceAsync.prossimoId(new AsyncCallback<String>() {
                         @Override
@@ -279,7 +284,9 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                                 public void onSuccess(Boolean verifica) {
                                     if (verifica) {
-                                        message.setText("Scenario a scelta '" + testoScenarioField.getText() +"' creato con successo");
+                                        message.setStyleName("messaggios");
+                                        message.setText("Scenario a scelta '" + testoScenarioField.getText()
+                                                + "' creato con successo");
                                         scenariCreati.add(scenario);
                                         // Resetto i field così da liberarli per la creazione di un nuovo scenario
                                         testoScenarioField.setText("");
@@ -290,6 +297,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                         oggettiSbloccabili.clear();
 
                                     } else {
+                                        message.setStyleName("messaggioa");
                                         message.setText("Errore nella creazione dello scenario a scelta");
                                         // Resetto i field così da liberarli per la creazione di un nuovo scenario
                                         testoScenarioField.setText("");
@@ -306,6 +314,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                     });
                 } else {
+                    message.setStyleName("messaggioa");
                     message.setText("Riempi i campi o aggiungi ancora una scelta");
                     Window.scrollTo(0, 0);
                 }
@@ -347,6 +356,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                         public void onSuccess(Boolean verifica) {
                                             if (verifica) {
                                                 scenariCreati.add(scenario);
+                                                message.setStyleName("messaggios");
                                                 message.setText("Scenario Indovinello creato con successo");
                                                 testoScenarioField.setText("");
                                                 domandaFieldIndovinello.setText("");
@@ -354,6 +364,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                                 oggettiSbloccabili.clear();
 
                                             } else {
+                                                message.setStyleName("messaggioa");
                                                 message.setText("Errore nella creazione dello scenario indovinello");
                                                 testoScenarioField.setText("");
                                                 domandaFieldIndovinello.setText("");
@@ -366,6 +377,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                     });
                 } else {
+                    message.setStyleName("messaggioa");
                     message.setText("Riempi tutti i campi");
                     Window.scrollTo(0, 0);
                 }
@@ -403,10 +415,12 @@ public class ScriviStoria extends Composite implements IsWidget {
                                         public void onSuccess(Boolean verifica) {
                                             if (verifica) {
                                                 scenariCreati.add(scenario);
+                                                message.setStyleName("messaggios");
                                                 message.setText("Scenario finale creato con successo");
                                                 testoScenarioField.setText("");
 
                                             } else {
+                                                message.setStyleName("messaggioa");
                                                 message.setText("Errore nella creazione dello scenario finale");
                                                 testoScenarioField.setText("");
                                             }
@@ -416,6 +430,7 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                     });
                 } else {
+                    message.setStyleName("messaggioa");
                     message.setText("Inserisci il testo dello scenario finale");
                     Window.scrollTo(0, 0);
                 }
@@ -432,7 +447,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     };
 
                     public void onSuccess(Utente utente) {
-                        if (utente != null){
+                        if (utente != null) {
                             utenteAttuale = utente;
 
                             RootPanel.get("startTable").clear();
@@ -455,6 +470,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     RootPanel.get("startTable").clear();
                     RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));
                 } else {
+                    message.setStyleName("messaggioa");
                     message.setText(
                             "Forse manca qualcosa (consiglio: inserisci almeno 2 scenari, se è uno scenario a scelta inserisci almeno due scelte)");
                 }
@@ -596,13 +612,13 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(creaScenarioIndovinello);
     }
 
-    private void aggiungiOggettifields(){
+    private void aggiungiOggettifields() {
         vpScenario.add(inserisciOggettoLabel);
         vpScenario.add(inserisciOggettoTextBox);
         vpScenario.add(inserisciOggettoButton);
     }
 
-    private void rimuoviOggettiFields(){
+    private void rimuoviOggettiFields() {
         vpScenario.remove(inserisciOggettoLabel);
         vpScenario.remove(inserisciOggettoTextBox);
         vpScenario.remove(inserisciOggettoButton);

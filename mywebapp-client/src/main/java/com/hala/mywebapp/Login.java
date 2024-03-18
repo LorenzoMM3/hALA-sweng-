@@ -56,7 +56,6 @@ public class Login extends Composite implements IsWidget {
         loginButton.setStyleName("lButton");
         usernameLabel.setStyleName("testi");
         passwordLabel.setStyleName("testi");
-        messageLabel.setStyleName("messaggio");
 
         loginButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -68,6 +67,7 @@ public class Login extends Composite implements IsWidget {
 
                         @Override
                         public void onFailure(Throwable throwable) {
+                            messageLabel.setStyleName("messaggioa");
                             messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
                             GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                         }
@@ -76,15 +76,18 @@ public class Login extends Composite implements IsWidget {
                         public void onSuccess(Boolean verifica) {
                             if (verifica) {
                                 utenteAttivo = username;
+                                messageLabel.setStyleName("messaggios");
                                 messageLabel.setText("Login effettuato con successo!");
                                 RootPanel.get("startTable").clear();
                                 RootPanel.get("startTable").add(new HomePage(username));
                             } else {
+                                messageLabel.setStyleName("messaggioa");
                                 messageLabel.setText("Credenziali errate. Riprova.");
                             }
                         }
                     });
                 } else {
+                    messageLabel.setStyleName("messaggioa");
                     messageLabel.setText("Forse manca qualcosa");
                 }
             }

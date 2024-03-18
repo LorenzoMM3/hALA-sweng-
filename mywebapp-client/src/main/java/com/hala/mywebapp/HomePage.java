@@ -52,8 +52,8 @@ public class HomePage extends Composite implements IsWidget {
     public HomePage(String utente) {
         initWidget(uiBinder.createAndBindUi(this));
         mainPanel = GWT.create(VerticalPanel.class);
+        benvenuto.setStyleName("messaggios");
         benvenuto.setText("Ciao " + utente + ", cosa vuoi fare?");
-        benvenuto.setStyleName("messaggio");
         logoutButton.setStyleName("lButton");
         scriviButton.setStyleName("lButton");
         modificaButton.setStyleName("lButton");

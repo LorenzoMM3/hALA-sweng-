@@ -60,7 +60,6 @@ public class SignIn extends Composite implements IsWidget {
         sendButton.setStyleName("lButton");
         usernameLabel.setStyleName("testi");
         passwordLabel.setStyleName("testi");
-        messageLabel.setStyleName("messaggio");
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -72,6 +71,7 @@ public class SignIn extends Composite implements IsWidget {
 
                         @Override
                         public void onFailure(Throwable throwable) {
+                            messageLabel.setStyleName("messaggioa");
                             messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
                             GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                         }
@@ -79,15 +79,19 @@ public class SignIn extends Composite implements IsWidget {
                         @Override
                         public void onSuccess(Boolean verifica) {
                             if (verifica) {
-                                messageLabel.setText("Registrazione effettuata! Benvenuto "+username+"! Clicca sul tasto per effettuare il Login ed iniziare a giocare.");
+                                messageLabel.setStyleName("messaggios");
+                                messageLabel.setText("Registrazione effettuata! Benvenuto " + username
+                                        + "! Clicca sul tasto per effettuare il Login ed iniziare a giocare.");
                                 startButton.setVisible(true);
                             } else {
+                                messageLabel.setStyleName("messaggioa");
                                 messageLabel.setText("Credenziali già in uso, cambia Username e riprova.");
                                 startButton.setVisible(false);
                             }
                         }
                     });
                 } else {
+                    messageLabel.setStyleName("messaggioa");
                     messageLabel.setText("Forse manca qualcosa");
                 }
             }
@@ -104,7 +108,7 @@ public class SignIn extends Composite implements IsWidget {
 
         startButton.addClickHandler(new ClickHandler() {
             @Override
-            public void onClick(ClickEvent event){
+            public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new Login());
             }

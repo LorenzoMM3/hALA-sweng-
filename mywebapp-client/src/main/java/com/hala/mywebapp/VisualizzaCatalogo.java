@@ -140,7 +140,7 @@ public class VisualizzaCatalogo extends Composite {
                             public void run() {
                                 int start = range.getStart();
                                 int end = start + range.getLength();
-                    
+
                                 // Seleziona la colonna per l'ordinamento
                                 Comparator<Storia> comparator = null;
                                 if (sortList.size() > 0) {
@@ -155,13 +155,14 @@ public class VisualizzaCatalogo extends Composite {
 
                                     // Ordina la lista di storie in base al comparator
                                     if (comparator != null) {
-                                        Collections.sort(tutteLeStorie, sortInfo.isAscending() ? comparator : comparator.reversed());
+                                        Collections.sort(tutteLeStorie,
+                                                sortInfo.isAscending() ? comparator : comparator.reversed());
                                     }
                                 }
-                    
+
                                 // Estrae i dati nella portata della tabella
                                 List<Storia> dataInRange = tutteLeStorie.subList(start, end);
-                    
+
                                 // Aggiorna la tabella con i dati estratti
                                 tabella.setRowData(start, dataInRange);
                             }
@@ -184,11 +185,9 @@ public class VisualizzaCatalogo extends Composite {
             }
         });
 
-
         ricerca.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-
 
                 // Converte il testo in minuscolo per una ricerca case-insensitive
                 String nomeDaCercare = nomeRicerca.getText().toLowerCase();
@@ -200,7 +199,7 @@ public class VisualizzaCatalogo extends Composite {
                     // Lista per memorizzare le storie che corrispondono al criterio di ricerca
                     risultatiRicerca = new ArrayList<>();
 
-                    if (filtro.equals("Nome Storia")){
+                    if (filtro.equals("Nome Storia")) {
                         // Scorre tutte le storie per cercare quelle il cui nome contiene la stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
@@ -209,9 +208,9 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    }
-                    else if (filtro.equals("Autore Storia")){
-                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la stringa
+                    } else if (filtro.equals("Autore Storia")) {
+                        // Scorre tutte le storie per cercare quelle il cui nome dell'autore contiene la
+                        // stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getUtente().getUsername().toLowerCase().contains(nomeDaCercare)) {
@@ -219,9 +218,9 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    }
-                    else if (filtro.equals("Numero Scenari")){
-                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la stringa
+                    } else if (filtro.equals("Numero Scenari")) {
+                        // Scorre tutte le storie per cercare quelle il cui numero scenari contiene la
+                        // stringa
                         // cercata
                         for (Storia storia : tutteLeStorie) {
                             if (storia.getNumeroScenari().toLowerCase().contains(nomeDaCercare)) {
@@ -229,8 +228,7 @@ public class VisualizzaCatalogo extends Composite {
                             }
                         }
 
-                    }
-                    else {
+                    } else {
                         Window.alert("Seleziona un filtro per la ricerca");
                     }
 
@@ -248,7 +246,7 @@ public class VisualizzaCatalogo extends Composite {
                         }
                     };
                     provider.addDataDisplay(tabella);
-                    
+
                     // Identifica l'elemento selezionato nella nuova lista dei risultati
                     int selectedIndex = tabella.getKeyboardSelectedRow();
                     if (selectedIndex != -1) {
@@ -257,8 +255,8 @@ public class VisualizzaCatalogo extends Composite {
                         storiaSelezionata = null;
                     }
 
-
                 } else {
+                    messageLabel.setStyleName("messaggios");
                     messageLabel.setText("Per cercare tutte le storie, clicca su 'Mostra Tutte'");
                 }
             }
@@ -279,7 +277,7 @@ public class VisualizzaCatalogo extends Composite {
                 // Verifica se l'evento è un clic sulla cella
                 if ("click".equals(event.getNativeEvent().getType())) {
                     int index = event.getIndex();
-                    
+
                     // Ottenere l'oggetto Storia nella riga cliccata
                     Storia storiaCliccata = tutteLeStorie.get(index);
 
@@ -295,7 +293,8 @@ public class VisualizzaCatalogo extends Composite {
                     }
 
                     // Visualizza il testo completo dello scenario iniziale
-                    Window.alert("Testo completo dello scenario iniziale:\n" + storiaSelezionata.getScenarioIniziale().getTestoScena());
+                    Window.alert("Testo completo dello scenario iniziale:\n"
+                            + storiaSelezionata.getScenarioIniziale().getTestoScena());
                 }
             }
         });
@@ -311,40 +310,41 @@ public class VisualizzaCatalogo extends Composite {
 
                     @Override
                     public void onSuccess(Utente result) {
-                        if (result != null){
+                        if (result != null) {
                             int index = tabella.getKeyboardSelectedRow();
                             Utente utenteAttuale = result;
                             if (index != -1) {
-                                //Storia storiaSelezionata = tutteLeStorie.get(index);
-                                //Controllare se l'utente ha gia giocato a questa storia
-                                //Se non ha ancora giocato:
+                                // Storia storiaSelezionata = tutteLeStorie.get(index);
+                                // Controllare se l'utente ha gia giocato a questa storia
+                                // Se non ha ancora giocato:
                                 Storia daGiocare = storiaSelezionata;
                                 storiaSelezionata = null;
                                 RootPanel.get("startTable").clear();
                                 RootPanel.get("startTable").add(new SalvataggiPartita(daGiocare, utenteAttuale));
-                                //RootPanel.get("startTable").add(new GiocaStoria(daGiocare, utenteAttuale));
+                                // RootPanel.get("startTable").add(new GiocaStoria(daGiocare, utenteAttuale));
                                 RootPanel.get().clear();
-                                //Se ha gia giocato:
-                                
+                                // Se ha gia giocato:
+
                             } else {
+                                messageLabel.setStyleName("messaggioa");
                                 messageLabel.setText("Seleziona una storia per giocare");
                             }
                         } else {
+                            messageLabel.setStyleName("messaggioa");
                             messageLabel.setText("Devi essere loggato per giocare");
-                        
+
                         }
                     }
-                
+
                 });
 
-                
             }
         });
 
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                
+
                 hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
                     @Override
                     public void onFailure(Throwable throwable) {
@@ -353,7 +353,7 @@ public class VisualizzaCatalogo extends Composite {
 
                     @Override
                     public void onSuccess(Utente result) {
-                        if (result != null){
+                        if (result != null) {
                             Utente utenteConnesso = new Utente();
                             utenteConnesso = result;
                             if (utenteConnesso.getIsLogged()) {
@@ -370,7 +370,7 @@ public class VisualizzaCatalogo extends Composite {
                             RootPanel.get("startTable").add(new Starter());
                             RootPanel.get().clear();
                         }
-                        
+
                     }
                 });
                 RootPanel.get("startTable").clear();
@@ -385,7 +385,6 @@ public class VisualizzaCatalogo extends Composite {
         ricerca.setStyleName("lButton");
         backButton.setStyleName("lButton");
         giocaButton.setStyleName("lButton");
-        messageLabel.setStyleName("messaggio");
     }
 
     @Override

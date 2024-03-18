@@ -20,7 +20,7 @@ public class Collegamenti extends Composite implements IsWidget {
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final CollegamentiUiBinder uiBinder = GWT.create(CollegamentiUiBinder.class);
     private ArrayList<Scenario> scenariStoria;
-    
+
     Scenario scenarioIniziale;
 
     interface CollegamentiUiBinder extends UiBinder<Widget, Collegamenti> {
@@ -100,7 +100,6 @@ public class Collegamenti extends Composite implements IsWidget {
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
         settaGrafica();
-        
 
         hALAServiceAsync.ottieniScenariStoria(nome, new AsyncCallback<ArrayList<Scenario>>() {
 
@@ -140,15 +139,18 @@ public class Collegamenti extends Composite implements IsWidget {
                         @Override
                         public void onSuccess(Boolean result) {
                             if (result) {
+                                messageLabel.setStyleName("messaggios");
                                 messageLabel.setText("Scenario iniziale impostato con successo");
                                 // attuale.addPrecedente("-1");
                                 facciataSecondaria();
                             } else {
+                                messageLabel.setStyleName("messaggioa");
                                 messageLabel.setText("Impossibile impostare lo scenario iniziale");
                             }
                         }
                     });
                 } else {
+                    messageLabel.setStyleName("messaggioa");
                     messageLabel.setText("Selezionare uno scenario per impostarlo come iniziale");
                 }
             }
@@ -165,6 +167,7 @@ public class Collegamenti extends Composite implements IsWidget {
                     @Override
                     public void onSuccess(Boolean result) {
                         if (result) {
+                            messageLabel.setStyleName("messaggios");
                             messageLabel.setText("Storia creata con successo");
 
                             hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
@@ -187,6 +190,7 @@ public class Collegamenti extends Composite implements IsWidget {
                             });
 
                         } else {
+                            messageLabel.setStyleName("messaggioa");
                             messageLabel
                                     .setText("Impossibile creare la storia, forse non hai collegato tutti gli scenari");
                         }
@@ -206,17 +210,18 @@ public class Collegamenti extends Composite implements IsWidget {
 
         menuScenari.addChangeHandler(event -> {
             int index = menuScenari.getSelectedIndex();
-            menuScenariCollegamenti.clear(); //Elimino i valori
-            riempiLista(menuScenariCollegamenti); //Li rimetto
+            menuScenariCollegamenti.clear(); // Elimino i valori
+            riempiLista(menuScenariCollegamenti); // Li rimetto
             if (index != -1) {
                 String testo = menuScenari.getItemText(index);
                 for (Scenario temp : scenariStoria) {
                     if (temp.getTestoScena().equals(testo)) {
-                        
+
                         for (int i = 0; i < menuScenariCollegamenti.getItemCount(); i++) {
                             String t = menuScenariCollegamenti.getValue(i);
-                            if (testo.equals(t)){
-                                menuScenariCollegamenti.removeItem(i); //Elimino cosi da non poter collegare due scenari uguali
+                            if (testo.equals(t)) {
+                                menuScenariCollegamenti.removeItem(i); // Elimino cosi da non poter collegare due
+                                                                       // scenari uguali
                             }
                         }
 
@@ -229,11 +234,11 @@ public class Collegamenti extends Composite implements IsWidget {
                         } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")) {
                             Scenario temp2 = temp;
                             mostraSchermataFinale(temp2);
-                        }
-                        else {
+                        } else {
+                            messageLabel.setStyleName("messaggioa");
                             messageLabel.setText("Errore");
                         }
-                        
+
                     }
                 }
             }
@@ -245,10 +250,9 @@ public class Collegamenti extends Composite implements IsWidget {
                 messageLabel.setText("");
                 int indexControllo = menuScenari.getSelectedIndex();
                 String controllo = menuScenari.getItemText(indexControllo);
-                if (controllo.equals("Seleziona")){
+                if (controllo.equals("Seleziona")) {
                     messageLabel.setText("Selezionare uno scenario");
-                }
-                else {
+                } else {
                     int index1 = menuScenari.getSelectedIndex();
                     int index2 = menuScenariCollegamenti.getSelectedIndex();
                     if (index1 != -1 && index2 != -1) {
@@ -258,7 +262,7 @@ public class Collegamenti extends Composite implements IsWidget {
                         int indiceScelta = menuScelte.getSelectedIndex();
                         String scelta = menuScelte.getItemText(indiceScelta);
                         Scenario temp2 = new Scenario();
-                        
+
                         for (Scenario temp : scenariStoria) {
                             if (temp.getTestoScena().equals(testo1)) {
                                 temp1 = (ScenarioAScelta) temp;
@@ -267,26 +271,29 @@ public class Collegamenti extends Composite implements IsWidget {
                                     temp2 = (ScenarioAScelta) temp;
                                 } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                     temp2 = (ScenarioIndovinello) temp;
-                                } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")){
+                                } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")) {
                                     temp2 = (Scenario) temp;
                                 }
                             }
                         }
-                        hALAServiceAsync.settaCollegamentoSuccessivo(temp1, scelta,temp2, new AsyncCallback<Boolean>() {
-                            @Override
-                            public void onFailure(Throwable caught) {
-                            }
+                        hALAServiceAsync.settaCollegamentoSuccessivo(temp1, scelta, temp2,
+                                new AsyncCallback<Boolean>() {
+                                    @Override
+                                    public void onFailure(Throwable caught) {
+                                    }
 
-                            @Override
-                            public void onSuccess(Boolean result) {
-                                if (result) {
-                                    messageLabel.setText("Scenario successivo impostato con successo");
-                                    // qui da aggiungere qualcosa che rimuova la scelta gia collegata
-                                } else {
-                                    messageLabel.setText("Impossibile impostare lo scenario successivo");
-                                }
-                            }
-                        });
+                                    @Override
+                                    public void onSuccess(Boolean result) {
+                                        if (result) {
+                                            messageLabel.setStyleName("messaggios");
+                                            messageLabel.setText("Scenario successivo impostato con successo");
+                                            // qui da aggiungere qualcosa che rimuova la scelta gia collegata
+                                        } else {
+                                            messageLabel.setStyleName("messaggioa");
+                                            messageLabel.setText("Impossibile impostare lo scenario successivo");
+                                        }
+                                    }
+                                });
                     }
                 }
             }
@@ -299,10 +306,9 @@ public class Collegamenti extends Composite implements IsWidget {
                 messageLabel.setText("");
                 int indexControllo = menuScenari.getSelectedIndex();
                 String controllo = menuScenari.getItemText(indexControllo);
-                if (controllo.equals("Seleziona")){
+                if (controllo.equals("Seleziona")) {
                     messageLabel.setText("Selezionare uno scenario");
-                }
-                else {
+                } else {
                     int index1 = menuScenari.getSelectedIndex();
                     int index2 = menuScenariCollegamenti.getSelectedIndex();
                     String testo1 = menuScenari.getItemText(index1);
@@ -310,9 +316,9 @@ public class Collegamenti extends Composite implements IsWidget {
                     Scenario temp1 = new ScenarioIndovinello();
                     String opzione = "";
                     if (menuIndovinelli.getSelectedIndex() == 0) {
-                        opzione = "false"; //Risposta sbagliata
+                        opzione = "false"; // Risposta sbagliata
                     } else {
-                        opzione = "true"; //Risposta corretta
+                        opzione = "true"; // Risposta corretta
                     }
                     Scenario temp2 = new Scenario();
                     if (index1 != -1 && index2 != -1) {
@@ -324,26 +330,31 @@ public class Collegamenti extends Composite implements IsWidget {
                                     temp2 = (ScenarioAScelta) temp;
                                 } else if (temp.getTipologia().toString().equalsIgnoreCase("INDOVINELLO")) {
                                     temp2 = (ScenarioIndovinello) temp;
-                                } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")){
+                                } else if (temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")) {
                                     temp2 = (Scenario) temp;
                                 }
                             }
                         }
-                        hALAServiceAsync.settaCollegamentoSuccessivo(temp1, opzione, temp2, new AsyncCallback<Boolean>() {
-                            @Override
-                            public void onFailure(Throwable caught) {
-                            }
+                        hALAServiceAsync.settaCollegamentoSuccessivo(temp1, opzione, temp2,
+                                new AsyncCallback<Boolean>() {
+                                    @Override
+                                    public void onFailure(Throwable caught) {
+                                    }
 
-                            @Override
-                            public void onSuccess(Boolean result) {
-                                if (result) {
-                                    messageLabel.setText("Scenario indovinello successivo impostato con successo");
-                                    // qui da aggiungere qualcosa
-                                } else {
-                                    messageLabel.setText("Impossibile impostare lo scenario indovinello successivo");
-                                }
-                            }
-                        });
+                                    @Override
+                                    public void onSuccess(Boolean result) {
+                                        if (result) {
+                                            messageLabel.setStyleName("messaggios");
+                                            messageLabel
+                                                    .setText("Scenario indovinello successivo impostato con successo");
+                                            // qui da aggiungere qualcosa
+                                        } else {
+                                            messageLabel.setStyleName("messaggioa");
+                                            messageLabel.setText(
+                                                    "Impossibile impostare lo scenario indovinello successivo");
+                                        }
+                                    }
+                                });
                     }
                 }
             }
@@ -351,17 +362,17 @@ public class Collegamenti extends Composite implements IsWidget {
 
     }
 
-    private void settaGrafica(){
+    private void settaGrafica() {
         backButton.setStyleName("lButton");
         terminaButton.setStyleName("lButton");
         settaSuccessivoAScelta.setStyleName("lButton");
         buttonSettaScenarioIniziale.setStyleName("lButton");
         settaSuccessivoIndovinello.setStyleName("lButton");
         settaSuccessivoFinale.setStyleName("lButton");
-        messageLabel.setStyleName("messaggio");
+        // messageLabel.setStyleName("messaggio");
         LscenarioIniziale.setStyleName("testi");
     }
-    
+
     private void mostraSchermataScelte(ScenarioAScelta temp) {
         menuScelte.clear();
         gestioneIndovinello.setVisible(false);
@@ -433,9 +444,9 @@ public class Collegamenti extends Composite implements IsWidget {
 
     }
 
-    private void riempiListaTranneFinali(ListBox lb){
+    private void riempiListaTranneFinali(ListBox lb) {
         for (Scenario temp : scenariStoria) {
-            if (!temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")){
+            if (!temp.getTipologia().toString().equalsIgnoreCase("DEFAULT")) {
                 lb.addItem(temp.getTestoScena());
             }
         }

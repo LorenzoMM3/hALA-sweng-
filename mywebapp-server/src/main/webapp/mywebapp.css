@@ -34,6 +34,11 @@ h1 {
   color: red;
 }
 
+.centered-buttons {
+  margin-right:auto;
+  margin-left:auto;
+}
+
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
   margin: 15px 6px 6px;
@@ -107,11 +112,19 @@ h1 {
 }
 
 
-.messaggio{
+.messaggios{
   font-family: 'bufalino', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: medium;
+  font-size: 16px;
+  color: #466646;
+}
+
+.messaggioa{
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
   color: #A65D33;
 }
 

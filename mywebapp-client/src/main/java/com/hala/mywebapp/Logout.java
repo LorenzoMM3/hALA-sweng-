@@ -20,7 +20,8 @@ public class Logout extends Composite implements IsWidget {
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final LogoutUiBinder UiB = GWT.create(LogoutUiBinder.class);
 
-    interface LogoutUiBinder extends UiBinder<Widget, Logout> {}
+    interface LogoutUiBinder extends UiBinder<Widget, Logout> {
+    }
 
     @UiField
     Button sendButton;
@@ -31,24 +32,24 @@ public class Logout extends Composite implements IsWidget {
     @UiField
     Label messageLabel;
 
-    
     public Logout() {
         initWidget(UiB.createAndBindUi(this));
         sendButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
-        messageLabel.setStyleName("messaggio");
-        
-		sendButton.addClickHandler(new ClickHandler() {
+        messageLabel.setStyleName("messaggioa");
+
+        sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 String username = Login.utenteAttivo;
                 hALAServiceAsync.logOut(username, new AsyncCallback<Boolean>() {
-        
+
                     @Override
                     public void onFailure(Throwable throwable) {
-                        messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova."); 
+
+                        messageLabel.setText("Non è stato possibile effettuare l'operazione. Riprova.");
                         GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                     }
-        
+
                     @Override
                     public void onSuccess(Boolean verifica) {
                         if (verifica) {
@@ -59,7 +60,7 @@ public class Logout extends Composite implements IsWidget {
                 });
             }
         });
-        
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
@@ -69,7 +70,7 @@ public class Logout extends Composite implements IsWidget {
                     }
 
                     public void onSuccess(Utente utente) {
-                        if (utente != null){
+                        if (utente != null) {
                             Utente utenteAttuale = utente;
 
                             RootPanel.get("startTable").clear();
@@ -83,11 +84,10 @@ public class Logout extends Composite implements IsWidget {
             }
         });
 
-    } 
-    
+    }
 
     @Override
     public Widget asWidget() {
         return this;
-     }
+    }
 }

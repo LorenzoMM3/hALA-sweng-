@@ -208,9 +208,11 @@ public class ModificaStoria extends Composite implements IsWidget {
                             @Override
                             public void onSuccess(Boolean result) {
                                 if (result) {
+                                    message.setStyleName("messaggios");
                                     message.setText("");
                                     message.setText("Modifica avvenuta con successo");
                                 } else {
+                                    message.setStyleName("messaggioa");
                                     message.setText("");
                                     message.setText("Errore durante la modifica");
                                 }
@@ -241,7 +243,6 @@ public class ModificaStoria extends Composite implements IsWidget {
         labelModificaRisposta.setStyleName("testi");
         modificaButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
-        message.setStyleName("messaggio");
         elencoScenari.setSize("200px", "50px");
         informazioniScenario.setSize("400px", "50px");
         elencoScenari.setSelectedIndex(0);

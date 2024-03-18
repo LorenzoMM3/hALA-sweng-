@@ -21,7 +21,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
 
     interface StorieCreateDaUtenteUiBinder extends UiBinder<Widget, StorieCreateDaUtente> {
     }
-    
+
     private ArrayList<Storia> storieUtente;
 
     @UiField
@@ -72,7 +72,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 String nomeStoria = elencoStorie.getSelectedItemText();
-                if(nomeStoria != null){
+                if (nomeStoria != null) {
                     Storia daModificare = new Storia();
                     for (Storia s : storieUtente) {
                         if (s.getNome().equals(nomeStoria)) {
@@ -84,6 +84,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                         RootPanel.get("startTable").add(new ModificaStoria(daModificare));
                     }
                 } else {
+                    messageLabel.setStyleName("messaggioa");
                     messageLabel.setText("Nessuna storia selezionata. Seleziona una Storia da cancellare.");
                 }
             }
@@ -104,8 +105,8 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                         if (verifica) {
                             RootPanel.get("startTable").clear();
                             RootPanel.get("startTable").add(new StorieCreateDaUtente(utente));
-                        }
-                        else {
+                        } else {
+                            messageLabel.setStyleName("messaggioa");
                             messageLabel.setText("Non è stato possibile eliminare la storia. Riprova.");
                         }
                     }
@@ -119,10 +120,10 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                 hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
                     public void onFailure(Throwable caught) {
                         GWT.log("Errore durante la chiamata asincrona al servizio remoto", caught);
-                     }
+                    }
 
                     public void onSuccess(Utente utente) {
-                        if (utente != null){
+                        if (utente != null) {
                             Utente utenteAttuale = utente;
 
                             RootPanel.get("startTable").clear();
@@ -131,7 +132,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                             RootPanel.get("startTable").clear();
                             RootPanel.get("startTable").add(new Starter());
                         }
-                        
+
                     }
                 });
             }
@@ -140,11 +141,10 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
 
     private void settaGrafica() {
         labelIniziale.setStyleName("testi");
-        messageLabel.setStyleName("messaggio");
         modificaButton.setStyleName("lButton");
         eliminaButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
         elencoStorie.setSize("200px", "50px");
-        
+
     }
 }
