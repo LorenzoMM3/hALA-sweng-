@@ -72,7 +72,7 @@ public class Starter extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new VisualizzaCatalogo());
+                RootPanel.get("startTable").add(new VisualizzaCatalogo(null));
             }
         });
 

@@ -95,7 +95,7 @@ public class Collegamenti extends Composite implements IsWidget {
     @UiField
     Button settaSuccessivoFinale;
 
-    public Collegamenti(String nomeStoria) {
+    public Collegamenti(String nomeStoria, Utente utente) {
 
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
@@ -170,24 +170,13 @@ public class Collegamenti extends Composite implements IsWidget {
                             messageLabel.setStyleName("messaggios");
                             messageLabel.setText("Storia creata con successo");
 
-                            hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                                @Override
-                                public void onFailure(Throwable caught) {
-                                }
-
-                                @Override
-                                public void onSuccess(Utente result) {
-                                    if (result != null) {
-                                        Utente utenteAttivo = new Utente();
-                                        utenteAttivo = result;
-                                        RootPanel.get("startTable").clear();
-                                        RootPanel.get("startTable").add(new HomePage(utenteAttivo.getUsername()));
-                                    } else {
-                                        RootPanel.get("startTable").clear();
-                                        RootPanel.get("startTable").add(new Starter());
-                                    }
-                                }
-                            });
+                            if (utente != null) {
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new HomePage(utente));
+                            } else {
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new Starter());
+                            }
 
                         } else {
                             messageLabel.setStyleName("messaggioa");
@@ -203,7 +192,7 @@ public class Collegamenti extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new ScriviStoria());
+                RootPanel.get("startTable").add(new ScriviStoria(utente));
                 // secondo me servira fare in modo che si torna alla creazione scenari
             }
         });

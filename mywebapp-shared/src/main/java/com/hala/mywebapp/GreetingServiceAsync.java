@@ -15,11 +15,11 @@ public interface GreetingServiceAsync {
 
 	public void logIn(Utente utente, AsyncCallback<Boolean> callback);
 
-	public void logOut(String username, AsyncCallback<Boolean> callback);
+	public void logOut(Utente utente, AsyncCallback<Boolean> callback);
 
 	public void creaNuovaStoria(Storia nuovaStoria, AsyncCallback<Boolean> callback);
 
-	public void ottieniUtenteAttuale(AsyncCallback<Utente> callback);
+	// public void ottieniUtenteAttuale(AsyncCallback<Utente> callback);
 
 	public void aggiungiScenarioAScelta(String id, Scenario scenario, AsyncCallback<Boolean> callback);
 
@@ -31,7 +31,8 @@ public interface GreetingServiceAsync {
 	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
 	// collegamento, AsyncCallback<Void> callback);
 
-	public void settaCollegamentoSuccessivo(Scenario scenario, String opzione, Scenario collegamento, AsyncCallback<Boolean> callback);
+	public void settaCollegamentoSuccessivo(Scenario scenario, String opzione, Scenario collegamento,
+			AsyncCallback<Boolean> callback);
 
 	public void salvaSuFileScenari(String nomeStoria, AsyncCallback<Boolean> callback);
 
@@ -41,7 +42,8 @@ public interface GreetingServiceAsync {
 
 	public void ottieniStorie(AsyncCallback<ArrayList<Storia>> callback);
 
-	public void modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato, AsyncCallback<Boolean> callback);
+	public void modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato,
+			AsyncCallback<Boolean> callback);
 
 	public void eliminaStoria(String nomeStoria, AsyncCallback<Boolean> callback);
 

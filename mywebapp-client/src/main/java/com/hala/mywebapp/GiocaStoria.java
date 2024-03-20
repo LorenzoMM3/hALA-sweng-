@@ -74,13 +74,13 @@ public class GiocaStoria extends Composite {
     @UiField
     Label messageLabel;
 
-    public GiocaStoria(Storia storia, Utente giocatore, boolean nuovoGioco) {
+    public GiocaStoria(Storia storia, Utente utente, boolean nuovoGioco) {
         initWidget(UiB.createAndBindUi(this));
         settaGrafica();
         partita = new Partita();
         scenarioAttuale = new Scenario();
 
-        hALAServiceAsync.caricaPartita(storia, giocatore, nuovoGioco, new AsyncCallback<Partita>() {
+        hALAServiceAsync.caricaPartita(storia, utente, nuovoGioco, new AsyncCallback<Partita>() {
             @Override
             public void onFailure(Throwable throwable) {
                 GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
@@ -158,22 +158,14 @@ public class GiocaStoria extends Composite {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            Utente utenteAttuale = utente;
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter());
-                        }
-                    }
-                });
+                if (utente != null) {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new HomePage(utente));
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                }
             }
         });
 
@@ -194,35 +186,27 @@ public class GiocaStoria extends Composite {
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            Utente utenteAttuale = utente;
+                if (utente != null) {
 
-                            hALAServiceAsync.eliminaPartita(storia, utenteAttuale, new AsyncCallback<Boolean>() {
-                                @Override
-                                public void onFailure(Throwable throwable) {
-                                    GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
-                                }
-
-                                @Override
-                                public void onSuccess(Boolean verifica) {
-                                    RootPanel.get("startTable").clear();
-                                    RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                                }
-                            });
-
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter()); // da sistemareeeeeee (nel termina non va
-                                                                            // questo pezzo, metteremo un mess)
+                    hALAServiceAsync.eliminaPartita(storia, utente, new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable throwable) {
+                            GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                         }
-                    }
-                });
+
+                        @Override
+                        public void onSuccess(Boolean verifica) {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utente));
+                        }
+                    });
+
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                    // questo pezzo, metteremo un mess)
+                }
             }
         });
 

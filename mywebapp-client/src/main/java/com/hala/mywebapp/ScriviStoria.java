@@ -20,7 +20,6 @@ public class ScriviStoria extends Composite implements IsWidget {
     private ArrayList<Scenario> scenariCreati;
     private String nomeStoriaTemp;
     private String idTemp = "";
-    Utente utenteAttuale;
     private ArrayList<String> oggettiSbloccabili;
 
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
@@ -122,7 +121,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     @UiField
     Label inserisciOggettoLabel;
 
-    public ScriviStoria() {
+    public ScriviStoria(Utente utente) {
         initWidget(uiBinder.createAndBindUi(this));
         hideAdditionalFields();
         disabilitaTutto();
@@ -155,37 +154,26 @@ public class ScriviStoria extends Composite implements IsWidget {
                 if (!titoloStoria.getText().isEmpty()) {
                     message.setText("");
                     nomeStoriaTemp = titoloStoria.getText().toUpperCase();
-
-                    hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
+                    Storia nuovaStoria = new Storia(nomeStoriaTemp, utente);
+                    hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
                         public void onFailure(Throwable caught) {
-                            System.err.println("Errore qui");
                         };
 
-                        public void onSuccess(Utente utente) {
-                            utenteAttuale = utente;
-                            Storia nuovaStoria = new Storia(nomeStoriaTemp, utenteAttuale);
-                            hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
-                                public void onFailure(Throwable caught) {
-                                };
+                        public void onSuccess(Boolean verifica) {
+                            if (verifica) {
+                                messageLabelCreate.setStyleName("messaggios");
+                                messageLabelCreate.setText("Storia creata con successo");
+                                titoloS.remove(inserisciStoria);
+                                attivaTutto();
+                                menuTipoScenario.setSelectedIndex(0);
+                                showAdditionalFieldsAScelta();
+                                opzioniSceltaTemp = new ArrayList<>();
+                            } else {
 
-                                public void onSuccess(Boolean verifica) {
-                                    if (verifica) {
-                                        messageLabelCreate.setStyleName("messaggios");
-                                        messageLabelCreate.setText("Storia creata con successo");
-                                        titoloS.remove(inserisciStoria);
-                                        attivaTutto();
-                                        menuTipoScenario.setSelectedIndex(0);
-                                        showAdditionalFieldsAScelta();
-                                        opzioniSceltaTemp = new ArrayList<>();
-                                    } else {
-
-                                        messageLabelCreate.setStyleName("messaggioa");
-                                        messageLabelCreate.setText("Nome già esistente, riprova");
-                                    }
-                                };
-                            });
+                                messageLabelCreate.setStyleName("messaggioa");
+                                messageLabelCreate.setText("Nome già esistente, riprova");
+                            }
                         };
-
                     });
                 } else {
 
@@ -441,23 +429,14 @@ public class ScriviStoria extends Composite implements IsWidget {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            utenteAttuale = utente;
-
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter());
-                        }
-                    }
-                });
+                if (utente != null) {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new HomePage(utente));
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                }
             }
         });
 
@@ -468,7 +447,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 if (scenariCreati.size() > 1) {// controllo per verificare che le storie create abbiano almeno due
                                                // scenari
                     RootPanel.get("startTable").clear();
-                    RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp));
+                    RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, utente));
                 } else {
                     message.setStyleName("messaggioa");
                     message.setText(

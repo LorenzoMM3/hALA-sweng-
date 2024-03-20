@@ -80,7 +80,7 @@ public class ModificaStoria extends Composite implements IsWidget {
     @UiField
     Button backButton;
 
-    public ModificaStoria(Storia storiaDaModificare) {
+    public ModificaStoria(Storia storiaDaModificare, Utente utente) {
         initWidget(uiBinder.createAndBindUi(this));
         settaGrafica();
 
@@ -225,7 +225,7 @@ public class ModificaStoria extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new StorieCreateDaUtente(storiaDaModificare.getUtente().getUsername()));
+                RootPanel.get("startTable").add(new StorieCreateDaUtente(utente));
             }
         });
     }

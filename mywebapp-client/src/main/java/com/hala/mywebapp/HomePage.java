@@ -49,11 +49,11 @@ public class HomePage extends Composite implements IsWidget {
     @UiField
     Button modificaButton;
 
-    public HomePage(String utente) {
+    public HomePage(Utente utente) {
         initWidget(uiBinder.createAndBindUi(this));
         mainPanel = GWT.create(VerticalPanel.class);
         benvenuto.setStyleName("messaggios");
-        benvenuto.setText("Ciao " + utente + ", cosa vuoi fare?");
+        benvenuto.setText("Ciao " + utente.getUsername() + ", cosa vuoi fare?");
         logoutButton.setStyleName("lButton");
         scriviButton.setStyleName("lButton");
         modificaButton.setStyleName("lButton");
@@ -64,7 +64,7 @@ public class HomePage extends Composite implements IsWidget {
         scriviButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new ScriviStoria());
+                RootPanel.get("startTable").add(new ScriviStoria(utente));
             }
         });
 
@@ -72,7 +72,7 @@ public class HomePage extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Logout());
+                RootPanel.get("startTable").add(new Logout(utente));
             }
         });
 
@@ -88,7 +88,7 @@ public class HomePage extends Composite implements IsWidget {
             @Override
             public void onClick(ClickEvent event) {
                 RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new VisualizzaCatalogo());
+                RootPanel.get("startTable").add(new VisualizzaCatalogo(utente));
             }
         });
 

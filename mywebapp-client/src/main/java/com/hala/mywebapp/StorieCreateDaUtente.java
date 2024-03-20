@@ -42,7 +42,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
     @UiField
     Label messageLabel;
 
-    public StorieCreateDaUtente(String utente) {
+    public StorieCreateDaUtente(Utente utente) {
 
         initWidget(uiBinder.createAndBindUi(this));
         settaGrafica();
@@ -81,7 +81,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
                     }
                     if (daModificare != null) {
                         RootPanel.get("startTable").clear();
-                        RootPanel.get("startTable").add(new ModificaStoria(daModificare));
+                        RootPanel.get("startTable").add(new ModificaStoria(daModificare, utente));
                     }
                 } else {
                     messageLabel.setStyleName("messaggioa");
@@ -117,24 +117,17 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", caught);
-                    }
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            Utente utenteAttuale = utente;
+                if (utente.getIsLogged()) {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new HomePage(utente));
+                    RootPanel.get().clear();
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                    RootPanel.get().clear();
+                }
 
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter());
-                        }
-
-                    }
-                });
             }
         });
     }
