@@ -11,7 +11,7 @@ public class Scenario implements ScenarioI, Serializable {
     protected TipologiaScenario tipologiaScenario;
     public String valId;
     protected ArrayList<String> precedente;
-    protected HashMap<String, String> successivo; //Testo opzione = indice successivo
+    protected HashMap<String, String> successivo; // Testo opzione = indice successivo
     protected ArrayList<String> oggettiCheSblocca;
 
     public Scenario() {
@@ -24,18 +24,19 @@ public class Scenario implements ScenarioI, Serializable {
         successivo = new HashMap<>();
         oggettiCheSblocca = new ArrayList<>();
     }
-    /* 
-    public Scenario(String id, String nomeStoria) {
-        valId = id;
-        this.nomeStoria = nomeStoria;
-        domandaCambioScenario = "";
-        testoScena = "";
-        tipologiaScenario = null;
-        precedente = new ArrayList<>();
-        successivo = new ArrayList<>();
-    }
 
-    */
+    /*
+     * public Scenario(String id, String nomeStoria) {
+     * valId = id;
+     * this.nomeStoria = nomeStoria;
+     * domandaCambioScenario = "";
+     * testoScena = "";
+     * tipologiaScenario = null;
+     * precedente = new ArrayList<>();
+     * successivo = new ArrayList<>();
+     * }
+     * 
+     */
     public Scenario(String nomeStoria) {
         valId = "";
         this.nomeStoria = nomeStoria;
@@ -44,16 +45,17 @@ public class Scenario implements ScenarioI, Serializable {
         tipologiaScenario = TipologiaScenario.DEFAULT;
         precedente = new ArrayList<>();
         successivo = new HashMap<>();
+        oggettiCheSblocca = new ArrayList<>();
     }
 
     public void setValId(String id) {
         this.valId = id;
     }
-     
+
     public String getValId() {
         return this.valId;
     }
-     
+
     public ArrayList<String> getOggettiCheSblocca() {
         return oggettiCheSblocca;
     }
@@ -110,7 +112,7 @@ public class Scenario implements ScenarioI, Serializable {
     public void setOggettiCheSblocca(ArrayList<String> oggettiCheSblocca) {
         this.oggettiCheSblocca = oggettiCheSblocca;
     }
-    
+
     public TipologiaScenario getTipologia() {
         return tipologiaScenario;
     }

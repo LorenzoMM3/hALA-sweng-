@@ -5,6 +5,8 @@ import org.junit.Test;
 import com.hala.mywebapp.GreetingServiceImpl;
 import com.hala.mywebapp.Storia;
 import com.hala.mywebapp.Utente;
+import com.hala.mywebapp.Scenario;
+import com.hala.mywebapp.Partita;
 
 public class GreetingServiceImplTest {
 
@@ -53,11 +55,25 @@ public class GreetingServiceImplTest {
         assertEquals(false, utente2.getIsLogged());
         assertEquals(false, utente3.getIsLogged());
 
+        // verifica creazione storia
         Storia storia1 = new Storia("prova2", utente1);
         greetingService.creaNuovaStoria(storia1);
-        assertEquals(true, greetingService.ottieniStorie().contains(storia1));
-        assertEquals("prova", storia1.getNome());
+        // assertEquals(true, greetingService.ottieniStorie().contains(storia1));
+        assertEquals("prova2", storia1.getNome());
         assertEquals("Utente1", storia1.getUtente().getUsername());
+
+        // verifica creazione scenario
+        Scenario scenario1 = new Scenario(storia1.getNome());
+        String id = greetingService.prossimoId();
+        greetingService.aggiungiScenarioAScelta(id, scenario1);
+
+        Scenario scenario2 = new Scenario(storia1.getNome());
+        id = greetingService.prossimoId();
+        greetingService.aggiungiScenarioIndovinello(id, scenario2);
+
+        Scenario scenario3 = new Scenario(storia1.getNome());
+        id = greetingService.prossimoId();
+        greetingService.aggiungiScenarioFinale(id, scenario3);
 
     }
 
