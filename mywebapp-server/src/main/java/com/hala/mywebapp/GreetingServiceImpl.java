@@ -106,8 +106,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             openDB();
         }
-        System.out.println("NOme storia" + nuovaStoria.getNome());
-        System.out.println("NOme creatore" + nuovaStoria.getUtente());
+        System.out.println("Nome storia" + nuovaStoria.getNome());
+        System.out.println("Nome creatore" + nuovaStoria.getUtente());
         String nomeStoria = nuovaStoria.getNome();
         System.out.println("Nome: " + nomeStoria);
         if (storieNelSito.containsKey(nomeStoria)) {
@@ -425,9 +425,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public ArrayList<Storia> ottieniStorie() {
+        int i = 0;
         ArrayList<Storia> temp = new ArrayList<Storia>();
         for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
             temp.add(entry.getValue());
+            System.out.println("storia nel map " + entry.getValue().getNome());
+            System.out.println("storia nell'array " + temp.get(i).getNome());
+            i++;
         }
         return temp;
     }
