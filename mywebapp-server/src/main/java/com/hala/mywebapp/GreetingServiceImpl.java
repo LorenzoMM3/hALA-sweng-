@@ -33,7 +33,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
     }
 
-    private void openDB() {
+    public void openDB() {
         if (db != null && !db.isClosed()) {
             db.close();
         }
@@ -644,7 +644,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
-    private void closeDatabase() {
+    public void closeDatabase() {
         if (db != null && !db.isClosed()) {
             db.close();
         }
