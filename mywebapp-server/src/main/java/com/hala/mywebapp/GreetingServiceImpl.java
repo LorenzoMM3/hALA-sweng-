@@ -480,7 +480,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
     }
 
-    private void eliminaScenari(String nomeStoria) {
+    public void eliminaScenari(String nomeStoria) {
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (entry.getValue().getNomeStoria().equalsIgnoreCase(nomeStoria)) {
                 scenariNelSito.remove(entry.getKey());
@@ -490,7 +490,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
-    private String contaPartite() {
+    public String contaPartite() {
         if (db == null || db.isClosed()) {
             openDB();
         }
@@ -650,7 +650,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
-    private void logoutUtenti() {
+    public void logoutUtenti() {
         for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
             Utente u = entry.getValue();
             u.setIsLogged(false);

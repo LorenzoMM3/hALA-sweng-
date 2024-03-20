@@ -75,6 +75,16 @@ public class GreetingServiceImplTest {
         id = greetingService.prossimoId();
         greetingService.aggiungiScenarioFinale(id, scenario3);
 
+        String PartitaId = greetingService.contaPartite();
+        Partita partita1 = new Partita(utente1, storia1, id);
+
     }
+
+    /*
+     * @Test
+     * public void testPartita() {
+     * 
+     * }
+     */
 
 }
