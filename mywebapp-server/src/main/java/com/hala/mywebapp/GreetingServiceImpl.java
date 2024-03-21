@@ -17,7 +17,7 @@ import java.util.Map;
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
-    private DB db;
+    public DB db;
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
@@ -40,6 +40,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
+            // txMaker = DBMaker.txMaker(db);
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
@@ -429,8 +430,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         ArrayList<Storia> temp = new ArrayList<Storia>();
         for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
             temp.add(entry.getValue());
-            System.out.println("storia nel map " + entry.getValue().getNome());
-            System.out.println("storia nell'array " + temp.get(i).getNome());
+            /*
+             * System.out.println("storia nel map " + entry.getValue().getNome());
+             * System.out.println("storia nell'array " + temp.get(i).getNome());
+             */
             i++;
         }
         return temp;
@@ -558,9 +561,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             Partita p = entry.getValue();
             if (p.getStoria().getNome().equalsIgnoreCase(storia)
                     && p.getGiocatore().getUsername().equalsIgnoreCase(utente)) {
-                // iniziata = true; //se esiste setto a true
-                // idPartita = p.getId(); //e riprendo il suo id
-                // System.out.println("Scenario attuale: " + p.getScenarioAttuale().getValId());
                 return p;
             }
         }

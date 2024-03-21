@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import com.hala.mywebapp.ScenarioAScelta;
 import com.hala.mywebapp.ScenarioIndovinello;
 import com.hala.mywebapp.Storia;
 import com.hala.mywebapp.Utente;
+import com.hala.mywebapp.Partita;
 import org.mapdb.DBMaker;
 import org.mapdb.DBMaker;
 
@@ -99,6 +101,7 @@ public class GreetingServiceImplTest {
     @Test
     public void testScenari() {
         chiudi();
+        // scenario1 a scelta
         Scenario scenario1 = new ScenarioAScelta("storia1");
         scenario1.setTestoScena("Testo dello scenario a scelta");
         scenario1.setDomandaCambioScenario("Domanda dello scenario a scelta");
@@ -112,6 +115,7 @@ public class GreetingServiceImplTest {
         scenario1.setValId(idScenario1);
         greetingService.aggiungiScenarioAScelta(idScenario1, scenario1);
 
+        // scenario2 finale
         Scenario scenario2 = new Scenario("storia1");
         scenario2.setTestoScena("Testo dello scenario finale");
         String idScenario2 = greetingService.prossimoId();
@@ -122,6 +126,7 @@ public class GreetingServiceImplTest {
         scenari.add(scenario1);
         scenari.add(scenario2);
 
+        // scenario3 indovinello
         Scenario scenario3 = new ScenarioIndovinello("storia1");
         scenario3.setTestoScena("Testo dello scenario indovinello");
         scenario3.setDomandaCambioScenario("Domanda dello scenario indovinello");
@@ -130,13 +135,57 @@ public class GreetingServiceImplTest {
         String idScenario3 = greetingService.prossimoId();
         scenario3.setValId(idScenario3);
         greetingService.aggiungiScenarioIndovinello(idScenario3, scenario3);
+        scenari.add(scenario3);
 
+        // collegamenti
         greetingService.settaScenarioIniziale(scenario1);
         greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione1", scenario2);
         greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione2", scenario3);
         greetingService.settaCollegamentoSuccessivo(scenario3, "rc", scenario2);
+        // controllo che siano collegati tutti
         assertEquals(true, greetingService.controlloCollegamenti(scenari));
+        // salvo su file
+        assertEquals(true, greetingService.salvaSuFileScenari("storia1"));
 
+        chiudi();
+    }
+
+    @Test
+    public void testPartita() {
+        chiudi();
+
+        Utente utente5 = new Utente("Utente5", "Password5");
+        Storia storia2 = new Storia("storia2", utente5);
+        greetingService.creaNuovaStoria(storia2);
+        Storia storia = new Storia();
+        ArrayList<Storia> storie = greetingService.ottieniStorie();
+        for (Storia s : storie) {
+            if (s.getNome().equals("storia1")) {
+                storia = s;
+            } else {
+                System.out.println("non vaaaaa");
+            }
+        }
+
+        // carico la partita
+        Partita partita = greetingService.caricaPartita(storia, utente5, false);
+        Partita dp = greetingService.datiPartita(storia.getNome(), utente5.getUsername());
+        assertEquals("storia1", dp.getStoria().getNome());
+        assertEquals("Utente5", dp.getGiocatore().getUsername());
+
+        // gioca
+        Scenario scenarioAttuale = partita.getScenarioAttuale();
+
+        partita.addInventario("Oggetto1");
+        String oggetto = "Oggetto1";
+        assertEquals(true, partita.controllaOggetto(oggetto));
+        partita = greetingService.caricaSuccessivoScelta(partita, "Opzione1");
+
+        // elimina partita
+        greetingService.eliminaPartita(storia, utente5);
+        assertEquals(null, greetingService.datiPartita(storia.getNome(), utente5.getUsername()));
+
+        // chiusura
         chiudi();
     }
 
