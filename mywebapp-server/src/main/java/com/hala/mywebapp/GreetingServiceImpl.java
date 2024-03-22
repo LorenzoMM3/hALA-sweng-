@@ -52,6 +52,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
+    // -- metodi per utente
     @Override
     public boolean signIn(Utente utente) {
         if (db == null || db.isClosed()) {
@@ -66,7 +67,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         utentiNelSito.put(username, utente);
         db.commit();
-        convertToJsonUtenti();
+        convertToJsonUtenti();// chiamo il metodo che salva l'utente sul json
         return true; // Si può registrare
     }
 
@@ -101,6 +102,36 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
+    private void convertToJsonUtenti() {
+        if (db == null || db.isClosed()) {
+            openDB();
+        }
+
+        try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
+            pW.println("{");
+
+            boolean firstEntry = true;
+            for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
+                if (!firstEntry) {
+                    pW.println(",");
+                }
+                pW.println("  \"" + entry.getKey() + "\": {");
+                pW.println("    \"username\": \"" + entry.getValue().getUsername() + "\",");
+                pW.println("    \"password\": \"" + entry.getValue().getPassword() + "\",");
+                pW.println("    \"isLogged\": " + entry.getValue().getIsLogged());
+                pW.println("  }");
+
+                firstEntry = false;
+            }
+
+            pW.println("}");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // --metodi per storia
     @Override
     public boolean creaNuovaStoria(Storia nuovaStoria) {
         // Se il nome è già presente non si può creare
@@ -113,35 +144,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
         storieNelSito.put(nomeStoria, nuovaStoria);
         db.commit();
-        convertToJsonStorie();
+        convertToJsonStorie();// chiamo il metodo che salva la storia sul json
         return true; // Si può registrare
-    }
-
-    public boolean aggiungiScenarioAScelta(String id, Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            openDB();
-        }
-        scenariNelSito.put(id, scenario);
-        db.commit();
-        return true;
-    }
-
-    public boolean aggiungiScenarioFinale(String id, Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            openDB();
-        }
-        scenariNelSito.put(id, scenario);
-        db.commit();
-        return true;
-    }
-
-    public boolean aggiungiScenarioIndovinello(String id, Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            openDB();
-        }
-        scenariNelSito.put(id, scenario);
-        db.commit();
-        return true;
     }
 
     private void convertToJsonStorie() {
@@ -174,36 +178,57 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
-    private void convertToJsonUtenti() {
+    public ArrayList<Storia> ottieniStorie() {
+        ArrayList<Storia> temp = new ArrayList<Storia>();
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            temp.add(entry.getValue());
+        }
+        return temp;
+    }
+
+    public boolean eliminaStoria(String nomeStoria) {
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
+                eliminaScenari(nomeStoria);
+                storieNelSito.remove(entry.getKey());
+                db.commit();
+                convertToJsonStorie();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // --metodi per scenari
+    public boolean aggiungiScenarioAScelta(String id, Scenario scenario) {
         if (db == null || db.isClosed()) {
             openDB();
         }
+        scenariNelSito.put(id, scenario);
+        db.commit();
+        return true;
+    }
 
-        try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
-            pW.println("{");
-
-            boolean firstEntry = true;
-            for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
-                if (!firstEntry) {
-                    pW.println(",");
-                }
-                pW.println("  \"" + entry.getKey() + "\": {");
-                pW.println("    \"username\": \"" + entry.getValue().getUsername() + "\",");
-                pW.println("    \"password\": \"" + entry.getValue().getPassword() + "\",");
-                pW.println("    \"isLogged\": " + entry.getValue().getIsLogged());
-                pW.println("  }");
-
-                firstEntry = false;
-            }
-
-            pW.println("}");
-
-        } catch (IOException e) {
-            e.printStackTrace();
+    public boolean aggiungiScenarioFinale(String id, Scenario scenario) {
+        if (db == null || db.isClosed()) {
+            openDB();
         }
+        scenariNelSito.put(id, scenario);
+        db.commit();
+        return true;
+    }
+
+    public boolean aggiungiScenarioIndovinello(String id, Scenario scenario) {
+        if (db == null || db.isClosed()) {
+            openDB();
+        }
+        scenariNelSito.put(id, scenario);
+        db.commit();
+        return true;
     }
 
     public String contaScenari() {
+        // metodo che conta il numero di scenari nel db per dare un id al nuovo scenario
         if (db == null || db.isClosed()) {
             openDB();
         }
@@ -214,6 +239,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return numSc2;
     }
 
+    // ---collegamenti tra scenari
     public boolean settaScenarioIniziale(Scenario scenario) {
         if (db == null || db.isClosed()) {
             openDB();
@@ -273,7 +299,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             y.addPrecedente(keyAttuale);
             scenariNelSito.put(keyDaCollegare, y);
 
-            // Se è lo scenario iniziale
+            // nel db delle storie indico lo scenario iniziale
             if (x.getPrecedente().get(0).equals("-1")) {
                 Storia s = storieNelSito.get(x.getNomeStoria());
                 s.setScenarioIniziale(x);
@@ -298,7 +324,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public boolean controlloCollegamenti(ArrayList<Scenario> temp) {
-
+        // controllo che tutti gli scenari abbiano almeno un precedente da cui derivano
         for (Scenario t : temp) {
             if (t.getPrecedente().isEmpty() || t.getPrecedente() == null) {
                 return false;
@@ -308,6 +334,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public boolean salvaSuFileScenari(String nomeStoria) {
+        // salvo nel json lo scenario
         ArrayList<Scenario> temp = new ArrayList<Scenario>();
         boolean trovato = false;
 
@@ -419,20 +446,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
-    public ArrayList<Storia> ottieniStorie() {
-        int i = 0;
-        ArrayList<Storia> temp = new ArrayList<Storia>();
-        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
-            temp.add(entry.getValue());
-            /*
-             * System.out.println("storia nel map " + entry.getValue().getNome());
-             * System.out.println("storia nell'array " + temp.get(i).getNome());
-             */
-            i++;
-        }
-        return temp;
-    }
-
     public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato) {
         String key = trovaChiavePerScenario(scenarioDaModificare);
         if (!key.equals("-1")) {
@@ -447,8 +460,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 scenariNelSito.put(key, temp);
             }
 
-            // scenariNelSito.put(key, temp);
-
             // Controllo se è uno scenario iniziale
             ArrayList<String> precedenti = scenarioModificato.getPrecedente();
             if (precedenti.size() == 1 && precedenti.get(0).equals("-1")) {
@@ -460,19 +471,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             salvaSuFileScenari(nomeStoria);
             db.commit();
             return true;
-        }
-        return false;
-    }
-
-    public boolean eliminaStoria(String nomeStoria) {
-        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
-            if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
-                eliminaScenari(nomeStoria);
-                storieNelSito.remove(entry.getKey());
-                db.commit();
-                convertToJsonStorie();
-                return true;
-            }
         }
         return false;
     }
@@ -498,7 +496,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return collegamentiMancanti;
     }
 
+    // --metodi per partita
     public String contaPartite() {
+
+        // metodo per contare il numero di partite presenti nel db e dare un id alla
+        // partita
         if (db == null || db.isClosed()) {
             openDB();
         }
@@ -510,51 +512,32 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public Partita caricaPartita(Storia storia, Utente giocatore, boolean nuovoGioco) {
         String nomeStoria = storia.getNome();
         String usernameGiocatore = giocatore.getUsername();
-        // boolean iniziata = false;
         String idPartita = "-1";
         Partita daTornare;
         // controllo se esiste già la partita
-
-        /*
-         * for (Map.Entry<String, Partita> entry : partiteNelSito.entrySet()) {
-         * Partita p = entry.getValue();
-         * if (p.getStoria().getNome().equalsIgnoreCase(nomeStoria) &&
-         * p.getGiocatore().getUsername().equalsIgnoreCase(usernameGiocatore)){
-         * //iniziata = true; //se esiste setto a true
-         * idPartita = p.getId(); //e riprendo il suo id
-         * System.out.println("Scenario attuale: " + p.getScenarioAttuale().getValId());
-         * }
-         * }
-         */
         Partita p = datiPartita(nomeStoria, usernameGiocatore);
         if (p != null) {
             idPartita = p.getId();
         }
 
-        // se non è stata iniziata e sto facendo partire una nuova giocata oppure sto
-        // facendo partire una nuova giocata (? ma non basta solo nuovoGioco?)
-        if (idPartita.equals("-1") || (nuovoGioco)) { // potrei anche fare il controllo semplicemente se l'id è = -1
+        // se non è stata iniziata (ovvero l'id è -1) oppure sto facendo partire una
+        // nuova giocata
+        if (idPartita.equals("-1") || (nuovoGioco)) {
             if (nuovoGioco) {
                 eliminaPartita(storia, giocatore);
             }
             contaPartite();// chiamo il contapartite per creare l'id
             String nuovoId = contaPartite();
-            System.out.println("Storia, scenario iniziale:" + storia.getScenarioIniziale());
             daTornare = new Partita(giocatore, storia, nuovoId); // creo la partita
-            System.out.println("Nuova partita creata, scenario iniziale:" + daTornare.getScenarioAttuale().getValId());
             partiteNelSito.put(nuovoId, daTornare);// la aggiungo nel db
-            System.out.println("Partita inserita nella mappa, id scenario iniziale: "
-                    + partiteNelSito.get(nuovoId).getScenarioAttuale().getValId());
+            convertToJsonPartite();// chiamo il metodo per salvare la partita nel json
+            return daTornare;
 
-            convertToJsonPartite();
-            return daTornare;// la return
-
-        } else if (!idPartita.equals("-1") && (!nuovoGioco)) { // ------si può fare direttamente l'else-if o anche solo
-                                                               // else (per precisione metterei solo else)
+        } else if (!idPartita.equals("-1") && (!nuovoGioco)) {
             daTornare = partiteNelSito.get(idPartita);
             return daTornare;
         }
-        return null; // Non dovrebbe mai arrivare qui*/
+        return null; // Non dovrebbe mai arrivare qui
 
     }
 
@@ -579,39 +562,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 convertToJsonPartite();
             }
         }
-    }
-
-    public Partita caricaSuccessivoIndovinello(Partita partita, String risposta) {
-
-        Partita temp = partita;
-        String id = temp.getId();
-        ScenarioIndovinello attuale = (ScenarioIndovinello) temp.getScenarioAttuale();
-        boolean rispostaCorretta = attuale.verificaRisposta(risposta);
-        HashMap<String, String> successivi = attuale.getSuccessivo();
-        String indiceSuccessivo = "";
-        if (rispostaCorretta) {
-            indiceSuccessivo = successivi.get("true");
-        } else {
-            indiceSuccessivo = successivi.get("false");
-        }
-        Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
-        temp.setScenarioAttuale(daTornare);
-        partiteNelSito.put(id, temp);
-        convertToJsonPartite();
-        return temp;
-    }
-
-    public Partita caricaSuccessivoScelta(Partita partita, String scelta) {
-        Partita temp = partita;
-        String id = temp.getId();
-        ScenarioAScelta attuale = (ScenarioAScelta) temp.getScenarioAttuale();
-        HashMap<String, String> successivi = attuale.getSuccessivo();
-        String indiceSuccessivo = successivi.get(scelta);
-        Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
-        temp.setScenarioAttuale(daTornare);
-        partiteNelSito.put(id, temp);
-        convertToJsonPartite();
-        return temp;
     }
 
     private void convertToJsonPartite() {
@@ -646,13 +596,55 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
+    // --- metodi per giocare
+    public Partita caricaSuccessivoIndovinello(Partita partita, String risposta) {
+
+        Partita temp = partita;
+        String id = temp.getId();
+        ScenarioIndovinello attuale = (ScenarioIndovinello) temp.getScenarioAttuale();
+        boolean rispostaCorretta = attuale.verificaRisposta(risposta);
+        HashMap<String, String> successivi = attuale.getSuccessivo();
+        String indiceSuccessivo = "";
+        if (rispostaCorretta) {
+            indiceSuccessivo = successivi.get("true");
+        } else {
+            indiceSuccessivo = successivi.get("false");
+        }
+        Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
+        temp.setScenarioAttuale(daTornare);
+        partiteNelSito.put(id, temp);
+        convertToJsonPartite();
+        return temp;
+    }
+
+    public Partita caricaSuccessivoScelta(Partita partita, String scelta) {
+        Partita temp = partita;
+        String id = temp.getId();
+        ScenarioAScelta attuale = (ScenarioAScelta) temp.getScenarioAttuale();
+        HashMap<String, String> successivi = attuale.getSuccessivo();
+        String indiceSuccessivo = successivi.get(scelta);
+        Scenario daTornare = scenariNelSito.get(indiceSuccessivo);
+        temp.setScenarioAttuale(daTornare);
+        partiteNelSito.put(id, temp);
+        convertToJsonPartite();
+        return temp;
+    }
+
+    // --fine
     public void closeDatabase() {
         if (db != null && !db.isClosed()) {
             db.close();
         }
     }
 
-    public void logoutUtenti() {
+    @Override
+    public void destroy() {
+        logoutUtenti();
+        closeDatabase();
+        super.destroy();
+    }
+
+    public void logoutUtenti() { // settaggio di tutti gli utenti a logged=false quando si chiude il server
         for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
             Utente u = entry.getValue();
             u.setIsLogged(false);
@@ -661,13 +653,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
         db.commit();
         convertToJsonUtenti();
-    }
-
-    @Override
-    public void destroy() {
-        logoutUtenti();
-        closeDatabase();
-        super.destroy();
     }
 
 }
