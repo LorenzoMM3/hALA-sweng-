@@ -1,7 +1,5 @@
 package com.hala.mywebapp;
 
-import org.checkerframework.checker.units.qual.A;
-import org.checkerframework.checker.units.qual.s;
 import org.mapdb.*;
 
 import com.google.gwt.user.server.rpc.jakarta.RemoteServiceServlet;
@@ -11,7 +9,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 @SuppressWarnings("serial")
@@ -47,6 +44,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             partiteNelSito = (Map<String, Partita>) db.hashMap("partiteNelSitoPresenti").createOrOpen();
 
             if (db == null) {
+                // inizializzazione delle variabili per dare un id alle partite e agli scenari
                 numeroScenari = 0;
                 numeroPartite = 0;
             }
@@ -81,12 +79,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         Utente temp = utentiNelSito.get(username);
 
-        if (utente != null && utente.getPassword().equals(temp.getPassword())) {
-            utente.setIsLogged(true);
-            utentiNelSito.put(username, utente);
-            db.commit();
-            convertToJsonUtenti();
-            return true; // Credenziali corrette
+        if (temp != null && utente != null) {
+            if (utente.getPassword().equals(temp.getPassword())) {
+                utente.setIsLogged(true);
+                utentiNelSito.put(username, utente);
+                db.commit();
+                convertToJsonUtenti();
+                return true; // Credenziali corrette
+            }
         }
 
         return false; // Credenziali errate
@@ -107,19 +107,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         if (db == null || db.isClosed()) {
             openDB();
         }
-        System.out.println("Nome storia" + nuovaStoria.getNome());
-        System.out.println("Nome creatore" + nuovaStoria.getUtente());
         String nomeStoria = nuovaStoria.getNome();
-        System.out.println("Nome: " + nomeStoria);
         if (storieNelSito.containsKey(nomeStoria)) {
             return false; // Non si può registrare
         }
-        System.out.println("Uno");
         storieNelSito.put(nomeStoria, nuovaStoria);
-        System.out.println("Uno");
         db.commit();
         convertToJsonStorie();
-        System.out.println("Uno");
         return true; // Si può registrare
     }
 
