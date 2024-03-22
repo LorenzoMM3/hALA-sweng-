@@ -95,6 +95,9 @@ public class Collegamenti extends Composite implements IsWidget {
     @UiField
     Button settaSuccessivoFinale;
 
+    @UiField
+    ListBox scenariSenzaPrecedente;
+
     public Collegamenti(String nomeStoria, Utente utente) {
 
         initWidget(uiBinder.createAndBindUi(this));
@@ -180,8 +183,16 @@ public class Collegamenti extends Composite implements IsWidget {
 
                         } else {
                             messageLabel.setStyleName("messaggioa");
-                            messageLabel
-                                    .setText("Impossibile creare la storia, forse non hai collegato tutti gli scenari");
+                            messageLabel.setText(
+                                    "Impossibile creare la storia, devi collegare ancora i seguenti\n scenari:");
+                            scenariSenzaPrecedente = new ListBox();
+
+                            for (Scenario temp : scenariStoria) {
+                                if (temp.getPrecedente().size() == 0 || temp.getPrecedente() == null) {
+                                    scenariSenzaPrecedente.addItem("1: " + temp.getTestoScena()); // TODO: perchè non
+                                                                                                  // viene mostrata?
+                                }
+                            }
                         }
                     }
                 });
@@ -236,6 +247,7 @@ public class Collegamenti extends Composite implements IsWidget {
         settaSuccessivoAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                scenariSenzaPrecedente.setVisible(false);
                 messageLabel.setText("");
                 int indexControllo = menuScenari.getSelectedIndex();
                 String controllo = menuScenari.getItemText(indexControllo);
@@ -292,6 +304,7 @@ public class Collegamenti extends Composite implements IsWidget {
 
             @Override
             public void onClick(ClickEvent event) {
+                scenariSenzaPrecedente.setVisible(false);
                 messageLabel.setText("");
                 int indexControllo = menuScenari.getSelectedIndex();
                 String controllo = menuScenari.getItemText(indexControllo);
@@ -360,6 +373,7 @@ public class Collegamenti extends Composite implements IsWidget {
         settaSuccessivoFinale.setStyleName("lButton");
         // messageLabel.setStyleName("messaggio");
         LscenarioIniziale.setStyleName("testi");
+        scenariSenzaPrecedente.setVisible(false);
     }
 
     private void mostraSchermataScelte(ScenarioAScelta temp) {

@@ -6,6 +6,8 @@
 
 
     <g:VerticalPanel spacing="5">
+    <g:Button ui:field="buttonMostraInventario">Inventario</g:Button>
+        <g:Label ui:field="labelInventario"></g:Label>
         <g:Label ui:field="testoScenarioLabel"></g:Label>
         <g:Label ui:field="domandaCambioScenarioLabel"></g:Label>
         <g:Label ui:field="rispostaCambioScenarioLabel"></g:Label>

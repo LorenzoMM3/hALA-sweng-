@@ -306,7 +306,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean controlloCollegamenti(ArrayList<Scenario> temp) {
 
         for (Scenario t : temp) {
-            if (t.getPrecedente().isEmpty() && t.getPrecedente() == null) {
+            if (t.getPrecedente().isEmpty() || t.getPrecedente() == null) {
                 return false;
             }
         }

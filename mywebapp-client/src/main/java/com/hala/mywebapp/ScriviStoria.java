@@ -231,6 +231,8 @@ public class ScriviStoria extends Composite implements IsWidget {
                 message.setText("");
                 String oggetto = inserisciOggettoTextBox.getText();
                 if (!oggetto.trim().equals("")) {
+                    oggetto = oggetto.toUpperCase();
+                    oggetto = oggetto.trim();
                     oggettiSbloccabili.add(oggetto);
                     message.setStyleName("messaggios");
                     message.setText("Oggetto Sbloccabile Inserito nello Scenario.");
@@ -273,8 +275,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                                 public void onSuccess(Boolean verifica) {
                                     if (verifica) {
                                         message.setStyleName("messaggios");
-                                        message.setText("Scenario a scelta '" + testoScenarioField.getText()
-                                                + "' creato con successo");
+                                        message.setText("Scenario a scelta creato con successo");
                                         scenariCreati.add(scenario);
                                         // Resetto i field così da liberarli per la creazione di un nuovo scenario
                                         testoScenarioField.setText("");
