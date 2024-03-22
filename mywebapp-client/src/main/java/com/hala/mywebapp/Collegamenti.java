@@ -203,9 +203,20 @@ public class Collegamenti extends Composite implements IsWidget {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new ScriviStoria(utente));
-                // secondo me servira fare in modo che si torna alla creazione scenari
+
+                hALAServiceAsync.eliminaStoria(nomeStoria,
+                        new AsyncCallback<Boolean>() {
+                            @Override
+                            public void onFailure(Throwable caught) {
+                            }
+
+                            public void onSuccess(Boolean verifica) {
+
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new ScriviStoria(utente));
+
+                            }
+                        });
             }
         });
 
