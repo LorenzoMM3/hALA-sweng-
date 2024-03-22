@@ -20,8 +20,6 @@ public interface GreetingService extends RemoteService {
 
 	public boolean logOut(Utente utente);
 
-	// public Utente ottieniUtenteAttuale();
-
 	public boolean creaNuovaStoria(Storia nuovaStoria);
 
 	public boolean aggiungiScenarioAScelta(String id, Scenario scenario);
@@ -31,9 +29,6 @@ public interface GreetingService extends RemoteService {
 	public boolean aggiungiScenarioFinale(String id, Scenario scenario);
 
 	public boolean settaScenarioIniziale(Scenario scenario);
-
-	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
-	// collegamento);
 
 	public boolean settaCollegamentoSuccessivo(Scenario scenario, String opzione, Scenario collegamento);
 
@@ -58,5 +53,7 @@ public interface GreetingService extends RemoteService {
 	public Partita caricaSuccessivoIndovinello(Partita partita, String risposta);
 
 	public Partita caricaSuccessivoScelta(Partita partita, String opzione);
+
+	public ArrayList<Scenario> ottieniCollegamentiMancanti(String nomeStoria);
 
 }

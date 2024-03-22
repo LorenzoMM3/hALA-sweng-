@@ -5,9 +5,6 @@ import java.util.Map;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-/**
- * The async counterpart of <code>GreetingService</code>.
- */
 public interface GreetingServiceAsync {
 	public void initData(AsyncCallback<Boolean> callback);
 
@@ -19,8 +16,6 @@ public interface GreetingServiceAsync {
 
 	public void creaNuovaStoria(Storia nuovaStoria, AsyncCallback<Boolean> callback);
 
-	// public void ottieniUtenteAttuale(AsyncCallback<Utente> callback);
-
 	public void aggiungiScenarioAScelta(String id, Scenario scenario, AsyncCallback<Boolean> callback);
 
 	public void aggiungiScenarioIndovinello(String id, Scenario scenario, AsyncCallback<Boolean> callback);
@@ -28,8 +23,6 @@ public interface GreetingServiceAsync {
 	public void aggiungiScenarioFinale(String id, Scenario scenario, AsyncCallback<Boolean> callback);
 
 	public void settaScenarioIniziale(Scenario scenario, AsyncCallback<Boolean> callback);
-	// public void settaCollegamentoPrecedente(Scenario scenario, Scenario
-	// collegamento, AsyncCallback<Void> callback);
 
 	public void settaCollegamentoSuccessivo(Scenario scenario, String opzione, Scenario collegamento,
 			AsyncCallback<Boolean> callback);
@@ -56,4 +49,6 @@ public interface GreetingServiceAsync {
 	public void caricaSuccessivoIndovinello(Partita partita, String risposta, AsyncCallback<Partita> callback);
 
 	public void caricaSuccessivoScelta(Partita partita, String opzione, AsyncCallback<Partita> callback);
+
+	public void ottieniCollegamentiMancanti(String nomeStoria, AsyncCallback<ArrayList<Scenario>> asyncCallback);
 }

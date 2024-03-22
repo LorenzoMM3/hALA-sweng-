@@ -493,6 +493,17 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
+    public ArrayList<Scenario> ottieniCollegamentiMancanti(String nomeStoria) {
+        ArrayList<Scenario> scenariNellaStoria = ottieniScenariStoria(nomeStoria);
+        ArrayList<Scenario> collegamentiMancanti = new ArrayList<Scenario>();
+        for (Scenario s : scenariNellaStoria) {
+            if (s.getPrecedente().isEmpty() || s.getPrecedente() == null) {
+                collegamentiMancanti.add(s);
+            }
+        }
+        return collegamentiMancanti;
+    }
+
     public String contaPartite() {
         if (db == null || db.isClosed()) {
             openDB();
