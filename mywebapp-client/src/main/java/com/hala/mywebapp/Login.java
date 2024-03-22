@@ -20,7 +20,6 @@ public class Login extends Composite implements IsWidget {
 
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final LoginUiBinder UiB = GWT.create(LoginUiBinder.class);
-    protected static String utenteAttivo = "";
 
     interface LoginUiBinder extends UiBinder<Widget, Login> {
     }
@@ -75,11 +74,11 @@ public class Login extends Composite implements IsWidget {
                         @Override
                         public void onSuccess(Boolean verifica) {
                             if (verifica) {
-                                utenteAttivo = username;
                                 messageLabel.setStyleName("messaggios");
                                 messageLabel.setText("Login effettuato con successo!");
+                                utente.setIsLogged(true);
                                 RootPanel.get("startTable").clear();
-                                RootPanel.get("startTable").add(new HomePage(username));
+                                RootPanel.get("startTable").add(new HomePage(utente));
                             } else {
                                 messageLabel.setStyleName("messaggioa");
                                 messageLabel.setText("Credenziali errate. Riprova.");

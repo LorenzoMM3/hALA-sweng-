@@ -28,12 +28,22 @@ public class GiocaStoria extends Composite {
     Scenario scenarioAttuale;
     Partita partita;
     HashMap<String, String> opzioni;
+    boolean inventarioAperto;
 
     interface GiocaUiBinder extends UiBinder<Widget, GiocaStoria> {
     }
 
     @UiField
     Label testoScenarioLabel;
+
+    @UiField
+    Label nomeStoria;
+
+    @UiField
+    Button buttonMostraInventario;
+
+    @UiField
+    Label labelInventario;
 
     @UiField
     Label domandaCambioScenarioLabel;
@@ -74,13 +84,15 @@ public class GiocaStoria extends Composite {
     @UiField
     Label messageLabel;
 
-    public GiocaStoria(Storia storia, Utente giocatore, boolean nuovoGioco) {
+    public GiocaStoria(Storia storia, Utente utente, boolean nuovoGioco) {
         initWidget(UiB.createAndBindUi(this));
         settaGrafica();
         partita = new Partita();
         scenarioAttuale = new Scenario();
+        inventarioAperto = false;
+        nomeStoria.setText("Stai giocando a: " + storia.getNome());
 
-        hALAServiceAsync.caricaPartita(storia, giocatore, nuovoGioco, new AsyncCallback<Partita>() {
+        hALAServiceAsync.caricaPartita(storia, utente, nuovoGioco, new AsyncCallback<Partita>() {
             @Override
             public void onFailure(Throwable throwable) {
                 GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
@@ -97,8 +109,10 @@ public class GiocaStoria extends Composite {
 
             @Override
             public void onClick(ClickEvent event) {
+                labelInventario.setText("");
                 String risposta = inserimentoRispostaTB.getText();
                 inserimentoRispostaTB.setText("");
+                labelOggettiSbloccabili.setText(" ");
                 hALAServiceAsync.caricaSuccessivoIndovinello(partita, risposta, new AsyncCallback<Partita>() {
                     @Override
                     public void onFailure(Throwable throwable) {
@@ -108,6 +122,7 @@ public class GiocaStoria extends Composite {
                     @Override
                     public void onSuccess(Partita result) {
                         partita = result;
+                        listBoxOggettiSbloccabili.clear();
                         riempiCampi();
                     }
                 });
@@ -120,9 +135,11 @@ public class GiocaStoria extends Composite {
 
             @Override
             public void onClick(ClickEvent event) {
+                labelInventario.setText("");
                 String scelta = opzioniLB.getSelectedItemText();
                 String oggetto = opzioni.get(scelta);
                 boolean possiedeOggetto = false;
+                labelOggettiSbloccabili.setText(" ");
                 if (oggetto.length() > 0) {
                     // Controllo se l'utente possiede l'oggetto necessario per la scelta
                     possiedeOggetto = partita.controllaOggetto(oggetto);
@@ -145,6 +162,7 @@ public class GiocaStoria extends Composite {
                         @Override
                         public void onSuccess(Partita result) {
                             partita = result;
+                            listBoxOggettiSbloccabili.clear();
                             opzioni.clear();
                             riempiCampi();
                         }
@@ -155,25 +173,41 @@ public class GiocaStoria extends Composite {
 
         });
 
+        buttonMostraInventario.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                if (inventarioAperto) {
+                    // Se l'inventario è già aperto, chiudi l'inventario
+                    labelInventario.setText("");
+                    inventarioAperto = false;
+                } else {
+                    // Se l'inventario è chiuso, mostra l'inventario
+                    labelInventario.setText("");
+                    ArrayList<String> inventario = partita.getInventario();
+                    if (inventario.size() == 0) {
+                        labelInventario.setText("Inventario vuoto");
+                    } else {
+                        labelInventario.setText("Inventario:");
+                        for (String oggetto : inventario) {
+                            labelInventario.setText(labelInventario.getText() + " - " + oggetto);
+                        }
+                    }
+                    inventarioAperto = true;
+                }
+            }
+        });
+
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            Utente utenteAttuale = utente;
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter());
-                        }
-                    }
-                });
+                if (utente != null) {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new HomePage(utente));
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                }
             }
         });
 
@@ -184,8 +218,12 @@ public class GiocaStoria extends Composite {
                 if (selectedIndex != -1) {
                     String oggettoSbloccabile = listBoxOggettiSbloccabili.getItemText(selectedIndex);
                     partita.addInventario(oggettoSbloccabile);
+
+                    labelOggettiSbloccabili.setText("");
                     labelOggettiSbloccabili.setStyleName("messaggios");
                     labelOggettiSbloccabili.setText("Oggetto Raccolto");
+                    listBoxOggettiSbloccabili.removeItem(selectedIndex);
+
                 }
 
             }
@@ -194,35 +232,27 @@ public class GiocaStoria extends Composite {
         terminaButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        System.err.println("Errore qui");
-                    };
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            Utente utenteAttuale = utente;
+                if (utente != null) {
 
-                            hALAServiceAsync.eliminaPartita(storia, utenteAttuale, new AsyncCallback<Boolean>() {
-                                @Override
-                                public void onFailure(Throwable throwable) {
-                                    GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
-                                }
-
-                                @Override
-                                public void onSuccess(Boolean verifica) {
-                                    RootPanel.get("startTable").clear();
-                                    RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                                }
-                            });
-
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter()); // da sistemareeeeeee (nel termina non va
-                                                                            // questo pezzo, metteremo un mess)
+                    hALAServiceAsync.eliminaPartita(storia, utente, new AsyncCallback<Boolean>() {
+                        @Override
+                        public void onFailure(Throwable throwable) {
+                            GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
                         }
-                    }
-                });
+
+                        @Override
+                        public void onSuccess(Boolean verifica) {
+                            RootPanel.get("startTable").clear();
+                            RootPanel.get("startTable").add(new HomePage(utente));
+                        }
+                    });
+
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                    // questo pezzo, metteremo un mess)
+                }
             }
         });
 
@@ -230,6 +260,9 @@ public class GiocaStoria extends Composite {
 
     public void proponiOggettiRaccoglibili(Scenario scenarioAttuale) {
         if (scenarioAttuale.getOggettiCheSblocca().size() != 0) {
+            propostaOggettiSbloccabili.setText("");
+            listBoxOggettiSbloccabili.setVisible(true);
+            buttonOggettiSbloccabili.setVisible(true);
             ArrayList<String> oggettiSbloccabili = scenarioAttuale.getOggettiCheSblocca();
             for (String oggettoSbloccabile : oggettiSbloccabili) {
                 if (!partita.getInventario().contains(oggettoSbloccabile)) {
@@ -240,7 +273,10 @@ public class GiocaStoria extends Composite {
             }
             return;
         } else {
-            return;
+
+            propostaOggettiSbloccabili.setText("");
+            listBoxOggettiSbloccabili.setVisible(false);
+            buttonOggettiSbloccabili.setVisible(false);
         }
     }
 
@@ -259,6 +295,8 @@ public class GiocaStoria extends Composite {
     }
 
     public void settaGrafica() {
+        nomeStoria.setStyleName("testi");
+        buttonMostraInventario.setStyleName("lButton");
         buttonOggettiSbloccabili.setStyleName("lButton");
         terminaButton.setStyleName("lButton");
         propostaOggettiSbloccabili.setStyleName("testi");
@@ -268,6 +306,7 @@ public class GiocaStoria extends Composite {
         rispostaCambioScenarioLabel.setStyleName("testi");
         invioRispostaButton.setStyleName("lButton");
         invioSelezioneSceltaButton.setStyleName("lButton");
+        labelInventario.setStyleName("testi");
     }
 
     public void riempiCampi() {

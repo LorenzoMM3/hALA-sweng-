@@ -11,7 +11,7 @@ public class Partita implements Serializable, PartitaI {
     public Scenario scenarioAttuale;
     public ArrayList<String> inventario;
 
-    public Partita(Utente giocatore, Storia storia, String id){
+    public Partita(Utente giocatore, Storia storia, String id) {
         this.id = id;
         this.giocatore = giocatore;
         this.storia = storia;
@@ -19,7 +19,7 @@ public class Partita implements Serializable, PartitaI {
         inventario = new ArrayList<String>();
     }
 
-    public Partita(){
+    public Partita() {
         this.id = "";
         this.giocatore = null;
         this.storia = null;
@@ -27,52 +27,54 @@ public class Partita implements Serializable, PartitaI {
         inventario = new ArrayList<String>();
     }
 
-    public boolean controllaOggetto(String oggetto){
+    public boolean controllaOggetto(String oggetto) {
+        oggetto = oggetto.toUpperCase();
+        oggetto = oggetto.trim();
         return this.inventario.contains(oggetto);
     }
 
-    public Utente getGiocatore(){
+    public Utente getGiocatore() {
         return this.giocatore;
     }
 
-    public String getId(){
+    public String getId() {
         return this.id;
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setGiocatore(Utente utente){
+    public void setGiocatore(Utente utente) {
         this.giocatore = utente;
     }
 
-    public Storia getStoria(){
+    public Storia getStoria() {
         return this.storia;
     }
 
-    public void setStoria(Storia storia){
+    public void setStoria(Storia storia) {
         this.storia = storia;
     }
 
-    public Scenario getScenarioAttuale(){
+    public Scenario getScenarioAttuale() {
         return this.scenarioAttuale;
     }
 
-    public void setScenarioAttuale(Scenario scenarioAttuale){
+    public void setScenarioAttuale(Scenario scenarioAttuale) {
         this.scenarioAttuale = scenarioAttuale;
     }
 
-    public ArrayList<String> getInventario(){
+    public ArrayList<String> getInventario() {
         return this.inventario;
     }
 
-    public void addInventario(String oggetto){
+    public void addInventario(String oggetto) {
         this.inventario.add(oggetto);
     }
 
-    public void setInventario(ArrayList<String> inventario){
+    public void setInventario(ArrayList<String> inventario) {
         this.inventario = inventario;
     }
-    
+
 }

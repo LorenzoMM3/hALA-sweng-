@@ -95,7 +95,10 @@ public class Collegamenti extends Composite implements IsWidget {
     @UiField
     Button settaSuccessivoFinale;
 
-    public Collegamenti(String nomeStoria) {
+    @UiField
+    ListBox scenariSenzaPrecedente;
+
+    public Collegamenti(String nomeStoria, Utente utente) {
 
         initWidget(uiBinder.createAndBindUi(this));
         String nome = nomeStoria;
@@ -114,7 +117,6 @@ public class Collegamenti extends Composite implements IsWidget {
                     scenariStoria = result;
                     setScenaIniziale();
                 } else {
-                    // GEstire TODO
                 }
             }
         });
@@ -141,7 +143,6 @@ public class Collegamenti extends Composite implements IsWidget {
                             if (result) {
                                 messageLabel.setStyleName("messaggios");
                                 messageLabel.setText("Scenario iniziale impostato con successo");
-                                // attuale.addPrecedente("-1");
                                 facciataSecondaria();
                             } else {
                                 messageLabel.setStyleName("messaggioa");
@@ -170,29 +171,39 @@ public class Collegamenti extends Composite implements IsWidget {
                             messageLabel.setStyleName("messaggios");
                             messageLabel.setText("Storia creata con successo");
 
-                            hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                                @Override
-                                public void onFailure(Throwable caught) {
-                                }
-
-                                @Override
-                                public void onSuccess(Utente result) {
-                                    if (result != null) {
-                                        Utente utenteAttivo = new Utente();
-                                        utenteAttivo = result;
-                                        RootPanel.get("startTable").clear();
-                                        RootPanel.get("startTable").add(new HomePage(utenteAttivo.getUsername()));
-                                    } else {
-                                        RootPanel.get("startTable").clear();
-                                        RootPanel.get("startTable").add(new Starter());
-                                    }
-                                }
-                            });
+                            if (utente != null) {
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new HomePage(utente));
+                            } else {
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new Starter());
+                            }
 
                         } else {
                             messageLabel.setStyleName("messaggioa");
-                            messageLabel
-                                    .setText("Impossibile creare la storia, forse non hai collegato tutti gli scenari");
+                            messageLabel.setText(
+                                    "Impossibile creare la storia, devi collegare ancora i seguenti scenari:");
+
+                            hALAServiceAsync.ottieniCollegamentiMancanti(nomeStoria,
+                                    new AsyncCallback<ArrayList<Scenario>>() {
+                                        @Override
+                                        public void onFailure(Throwable caught) {
+                                        }
+
+                                        @Override
+                                        public void onSuccess(ArrayList<Scenario> result) {
+                                            int n = 1;
+                                            ArrayList<Scenario> collegamentiMancanti = result;
+                                            for (Scenario temp : collegamentiMancanti) {
+                                                if (temp.getPrecedente().isEmpty() || temp.getPrecedente() == null) {
+
+                                                    scenariSenzaPrecedente.addItem(n + ": " + temp.getTestoScena());
+                                                    n++;
+                                                }
+                                            }
+                                            scenariSenzaPrecedente.setVisible(true);
+                                        }
+                                    });
                         }
                     }
                 });
@@ -202,9 +213,20 @@ public class Collegamenti extends Composite implements IsWidget {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new ScriviStoria());
-                // secondo me servira fare in modo che si torna alla creazione scenari
+
+                hALAServiceAsync.eliminaStoria(nomeStoria,
+                        new AsyncCallback<Boolean>() {
+                            @Override
+                            public void onFailure(Throwable caught) {
+                            }
+
+                            public void onSuccess(Boolean verifica) {
+
+                                RootPanel.get("startTable").clear();
+                                RootPanel.get("startTable").add(new ScriviStoria(utente));
+
+                            }
+                        });
             }
         });
 
@@ -220,8 +242,8 @@ public class Collegamenti extends Composite implements IsWidget {
                         for (int i = 0; i < menuScenariCollegamenti.getItemCount(); i++) {
                             String t = menuScenariCollegamenti.getValue(i);
                             if (testo.equals(t)) {
-                                menuScenariCollegamenti.removeItem(i); // Elimino cosi da non poter collegare due
-                                                                       // scenari uguali
+                                // Elimino cosi da non poter collegare due scenari uguali
+                                menuScenariCollegamenti.removeItem(i);
                             }
                         }
 
@@ -247,6 +269,8 @@ public class Collegamenti extends Composite implements IsWidget {
         settaSuccessivoAScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                scenariSenzaPrecedente.setVisible(false);
+                scenariSenzaPrecedente.clear();
                 messageLabel.setText("");
                 int indexControllo = menuScenari.getSelectedIndex();
                 String controllo = menuScenari.getItemText(indexControllo);
@@ -287,7 +311,6 @@ public class Collegamenti extends Composite implements IsWidget {
                                         if (result) {
                                             messageLabel.setStyleName("messaggios");
                                             messageLabel.setText("Scenario successivo impostato con successo");
-                                            // qui da aggiungere qualcosa che rimuova la scelta gia collegata
                                         } else {
                                             messageLabel.setStyleName("messaggioa");
                                             messageLabel.setText("Impossibile impostare lo scenario successivo");
@@ -303,6 +326,8 @@ public class Collegamenti extends Composite implements IsWidget {
 
             @Override
             public void onClick(ClickEvent event) {
+                scenariSenzaPrecedente.setVisible(false);
+                scenariSenzaPrecedente.clear();
                 messageLabel.setText("");
                 int indexControllo = menuScenari.getSelectedIndex();
                 String controllo = menuScenari.getItemText(indexControllo);
@@ -347,7 +372,6 @@ public class Collegamenti extends Composite implements IsWidget {
                                             messageLabel.setStyleName("messaggios");
                                             messageLabel
                                                     .setText("Scenario indovinello successivo impostato con successo");
-                                            // qui da aggiungere qualcosa
                                         } else {
                                             messageLabel.setStyleName("messaggioa");
                                             messageLabel.setText(
@@ -365,12 +389,13 @@ public class Collegamenti extends Composite implements IsWidget {
     private void settaGrafica() {
         backButton.setStyleName("lButton");
         terminaButton.setStyleName("lButton");
+        scenariSenzaPrecedente.setVisible(false);
         settaSuccessivoAScelta.setStyleName("lButton");
         buttonSettaScenarioIniziale.setStyleName("lButton");
         settaSuccessivoIndovinello.setStyleName("lButton");
         settaSuccessivoFinale.setStyleName("lButton");
-        // messageLabel.setStyleName("messaggio");
         LscenarioIniziale.setStyleName("testi");
+
     }
 
     private void mostraSchermataScelte(ScenarioAScelta temp) {
@@ -401,7 +426,7 @@ public class Collegamenti extends Composite implements IsWidget {
     }
 
     private void facciataIniziale() {
-
+        pagina.remove(scenariSenzaPrecedente);
         pagina.remove(messageLabel);
         pagina.remove(CollegamentiPanel);
         pagina.remove(terminaButton);
@@ -413,8 +438,6 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(gestioneIndovinello);
         pagina.remove(gestioneFinale);
         listaScenari.setSelectedIndex(0);
-        // listaScenari.setVisibleItemCount(scenariStoria.size());
-        // menuScenari.setVisible(false);
 
     }
 
@@ -422,10 +445,8 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.remove(messageLabel);
         pagina.remove(ScenarioInizialePanel);
         pagina.add(ScenariDaCollegare);
-        // pagina.remove(LscenarioIniziale);
         riempiListaTranneFinali(menuScenari);
         menuScenari.addItem("Seleziona");
-        // menuScenari.setVisibleItemCount(scenariStoria.size());
         pagina.remove(backButton);
         pagina.add(gestioneScelte);
         pagina.add(gestioneIndovinello);
@@ -436,12 +457,14 @@ public class Collegamenti extends Composite implements IsWidget {
         pagina.add(CollegamentiPanel);
         riempiLista(menuScenariCollegamenti);
         pagina.add(messageLabel);
+        pagina.add(scenariSenzaPrecedente);
         pagina.add(terminaButton);
         pagina.add(backButton);
         listaScenari.setSelectedIndex(0);
         menuScenariCollegamenti.setSelectedIndex(0);
         menuScenari.setSelectedIndex(menuScenari.getItemCount() - 1);
-
+        scenariSenzaPrecedente.setSize("200px", "50px");
+        scenariSenzaPrecedente.setVisible(false);
     }
 
     private void riempiListaTranneFinali(ListBox lb) {

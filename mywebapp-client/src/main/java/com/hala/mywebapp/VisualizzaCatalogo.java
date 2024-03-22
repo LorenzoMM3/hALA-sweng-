@@ -68,7 +68,7 @@ public class VisualizzaCatalogo extends Composite {
     interface VisualizzaUiBinder extends UiBinder<Widget, VisualizzaCatalogo> {
     }
 
-    public VisualizzaCatalogo() {
+    public VisualizzaCatalogo(Utente utente) {
         initWidget(UiB.createAndBindUi(this));
         settaGrafica();
         storiaSelezionata = new Storia();
@@ -265,9 +265,16 @@ public class VisualizzaCatalogo extends Composite {
         mostraTutti.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new VisualizzaCatalogo());
-                RootPanel.get().clear();
+                if (utente == null) {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new VisualizzaCatalogo(null));
+                    RootPanel.get().clear();
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new VisualizzaCatalogo(utente));
+                    RootPanel.get().clear();
+                }
+
             }
         });
 
@@ -302,41 +309,30 @@ public class VisualizzaCatalogo extends Composite {
         giocaButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
+
+                if (utente != null) {
+                    int index = tabella.getKeyboardSelectedRow();
+                    if (index != -1) {
+                        // Storia storiaSelezionata = tutteLeStorie.get(index);
+                        // Controllare se l'utente ha gia giocato a questa storia
+                        // Se non ha ancora giocato:
+                        Storia daGiocare = storiaSelezionata;
+                        storiaSelezionata = null;
+                        RootPanel.get("startTable").clear();
+                        RootPanel.get("startTable").add(new SalvataggiPartita(daGiocare, utente));
+                        // RootPanel.get("startTable").add(new GiocaStoria(daGiocare, utenteAttuale));
+                        RootPanel.get().clear();
+                        // Se ha gia giocato:
+
+                    } else {
+                        messageLabel.setStyleName("messaggioa");
+                        messageLabel.setText("Seleziona una storia per giocare");
                     }
+                } else {
+                    messageLabel.setStyleName("messaggioa");
+                    messageLabel.setText("Devi essere loggato per giocare");
 
-                    @Override
-                    public void onSuccess(Utente result) {
-                        if (result != null) {
-                            int index = tabella.getKeyboardSelectedRow();
-                            Utente utenteAttuale = result;
-                            if (index != -1) {
-                                // Storia storiaSelezionata = tutteLeStorie.get(index);
-                                // Controllare se l'utente ha gia giocato a questa storia
-                                // Se non ha ancora giocato:
-                                Storia daGiocare = storiaSelezionata;
-                                storiaSelezionata = null;
-                                RootPanel.get("startTable").clear();
-                                RootPanel.get("startTable").add(new SalvataggiPartita(daGiocare, utenteAttuale));
-                                // RootPanel.get("startTable").add(new GiocaStoria(daGiocare, utenteAttuale));
-                                RootPanel.get().clear();
-                                // Se ha gia giocato:
-
-                            } else {
-                                messageLabel.setStyleName("messaggioa");
-                                messageLabel.setText("Seleziona una storia per giocare");
-                            }
-                        } else {
-                            messageLabel.setStyleName("messaggioa");
-                            messageLabel.setText("Devi essere loggato per giocare");
-
-                        }
-                    }
-
-                });
+                }
 
             }
         });
@@ -345,37 +341,16 @@ public class VisualizzaCatalogo extends Composite {
             @Override
             public void onClick(ClickEvent event) {
 
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", throwable);
-                    }
+                if (utente != null) {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new HomePage(utente));
+                    RootPanel.get().clear();
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                    RootPanel.get().clear();
+                }
 
-                    @Override
-                    public void onSuccess(Utente result) {
-                        if (result != null) {
-                            Utente utenteConnesso = new Utente();
-                            utenteConnesso = result;
-                            if (utenteConnesso.getIsLogged()) {
-                                RootPanel.get("startTable").clear();
-                                RootPanel.get("startTable").add(new HomePage(utenteConnesso.getUsername()));
-                                RootPanel.get().clear();
-                            } else {
-                                RootPanel.get("startTable").clear();
-                                RootPanel.get("startTable").add(new Starter());
-                                RootPanel.get().clear();
-                            }
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter());
-                            RootPanel.get().clear();
-                        }
-
-                    }
-                });
-                RootPanel.get("startTable").clear();
-                RootPanel.get("startTable").add(new Starter());
-                RootPanel.get().clear();
             }
         });
     }

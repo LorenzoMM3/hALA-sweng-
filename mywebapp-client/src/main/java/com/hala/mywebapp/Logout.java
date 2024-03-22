@@ -32,7 +32,7 @@ public class Logout extends Composite implements IsWidget {
     @UiField
     Label messageLabel;
 
-    public Logout() {
+    public Logout(Utente utente) {
         initWidget(UiB.createAndBindUi(this));
         sendButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
@@ -40,8 +40,7 @@ public class Logout extends Composite implements IsWidget {
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
-                String username = Login.utenteAttivo;
-                hALAServiceAsync.logOut(username, new AsyncCallback<Boolean>() {
+                hALAServiceAsync.logOut(utente, new AsyncCallback<Boolean>() {
 
                     @Override
                     public void onFailure(Throwable throwable) {
@@ -64,23 +63,16 @@ public class Logout extends Composite implements IsWidget {
         backButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                hALAServiceAsync.ottieniUtenteAttuale(new AsyncCallback<Utente>() {
-                    public void onFailure(Throwable caught) {
-                        GWT.log("Errore durante la chiamata asincrona al servizio remoto", caught);
-                    }
 
-                    public void onSuccess(Utente utente) {
-                        if (utente != null) {
-                            Utente utenteAttuale = utente;
+                if (utente != null) {
 
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new HomePage(utenteAttuale.getUsername()));
-                        } else {
-                            RootPanel.get("startTable").clear();
-                            RootPanel.get("startTable").add(new Starter());
-                        }
-                    }
-                });
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new HomePage(utente));
+                } else {
+                    RootPanel.get("startTable").clear();
+                    RootPanel.get("startTable").add(new Starter());
+                }
+
             }
         });
 

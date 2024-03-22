@@ -55,9 +55,11 @@
                                 
             </g:VerticalPanel>
         
+        <g:ListBox ui:field="scenariSenzaPrecedente"></g:ListBox>
+        <g:Button ui:field="terminaButton">Termina Collegamenti Storia</g:Button>
         </g:VerticalPanel>
 
-        <g:Button ui:field="terminaButton">Termina Collegamenti Storia</g:Button>
+        
             
     </g:HorizontalPanel>
 </ui:UiBinder>
