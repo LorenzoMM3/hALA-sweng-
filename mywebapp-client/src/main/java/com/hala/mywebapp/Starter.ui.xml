@@ -6,7 +6,7 @@
 
     <g:HTMLPanel>
     <div id="bottoni">
-        <g:HorizontalPanel spacing="20" ui:field="totale">
+        <g:HorizontalPanel spacing="30" ui:field="totale">
             <g:VerticalPanel spacing="6" ui:field="descrizione">
                 <g:Label ui:field="desc1">Benvenuti nel nostro mondo di avventure interattive!</g:Label>
                 <g:Label ui:field="desc2">Qui potrai scrivere e giocare a storie coinvolgenti, prendendo decisioni che influenzeranno il corso degli eventi.</g:Label> 
