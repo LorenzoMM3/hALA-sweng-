@@ -184,11 +184,12 @@ public class Collegamenti extends Composite implements IsWidget {
                         } else {
                             messageLabel.setStyleName("messaggioa");
                             messageLabel.setText(
-                                    "Impossibile creare la storia, devi collegare ancora i seguenti\n scenari:");
-                            scenariSenzaPrecedente = new ListBox();
-
+                                    "Impossibile creare la storia, devi collegare ancora i seguenti scenari:");
+                            // scenariSenzaPrecedente = new ListBox();
+                            scenariSenzaPrecedente.setVisible(true);
                             for (Scenario temp : scenariStoria) {
-                                if (temp.getPrecedente().size() == 0 || temp.getPrecedente() == null) {
+                                if (temp.getPrecedente().isEmpty() || temp.getPrecedente() == null) {
+
                                     scenariSenzaPrecedente.addItem("1: " + temp.getTestoScena()); // TODO: perchè non
                                                                                                   // viene mostrata?
                                 }
@@ -367,13 +368,14 @@ public class Collegamenti extends Composite implements IsWidget {
     private void settaGrafica() {
         backButton.setStyleName("lButton");
         terminaButton.setStyleName("lButton");
+        scenariSenzaPrecedente.setVisible(false);
         settaSuccessivoAScelta.setStyleName("lButton");
         buttonSettaScenarioIniziale.setStyleName("lButton");
         settaSuccessivoIndovinello.setStyleName("lButton");
         settaSuccessivoFinale.setStyleName("lButton");
         // messageLabel.setStyleName("messaggio");
         LscenarioIniziale.setStyleName("testi");
-        scenariSenzaPrecedente.setVisible(false);
+
     }
 
     private void mostraSchermataScelte(ScenarioAScelta temp) {

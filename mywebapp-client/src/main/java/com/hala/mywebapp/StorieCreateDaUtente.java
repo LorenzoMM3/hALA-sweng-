@@ -56,9 +56,8 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
 
             @Override
             public void onSuccess(ArrayList<Storia> result) {
-
                 for (Storia s : result) {
-                    if (s.getUtente().getUsername().equals(utente)) {
+                    if (s.getUtente().getUsername().equals(utente.getUsername())) {
                         storieUtente.add(s);
                         String nomeStoria = s.getNome();
                         elencoStorie.addItem(nomeStoria);

@@ -503,9 +503,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     public Partita caricaPartita(Storia storia, Utente giocatore, boolean nuovoGioco) {
-        System.out.println("Carica partita");
-        System.out.println("Storia: " + storia.getNome());
-        System.out.println("Scenario iniziale: " + storia.getScenarioIniziale().getValId());
         String nomeStoria = storia.getNome();
         String usernameGiocatore = giocatore.getUsername();
         // boolean iniziata = false;

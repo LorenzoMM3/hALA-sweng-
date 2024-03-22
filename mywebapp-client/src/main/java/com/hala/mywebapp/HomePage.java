@@ -79,6 +79,7 @@ public class HomePage extends Composite implements IsWidget {
         modificaButton.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
+                System.out.println("in homepage: " + utente.getUsername());
                 RootPanel.get("startTable").clear();
                 RootPanel.get("startTable").add(new StorieCreateDaUtente(utente));
             }

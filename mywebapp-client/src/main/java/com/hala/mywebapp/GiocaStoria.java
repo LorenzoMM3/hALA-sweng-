@@ -37,6 +37,9 @@ public class GiocaStoria extends Composite {
     Label testoScenarioLabel;
 
     @UiField
+    Label nomeStoria;
+
+    @UiField
     Button buttonMostraInventario;
 
     @UiField
@@ -87,6 +90,7 @@ public class GiocaStoria extends Composite {
         partita = new Partita();
         scenarioAttuale = new Scenario();
         inventarioAperto = false;
+        nomeStoria.setText("Stai giocando a: " + storia.getNome());
 
         hALAServiceAsync.caricaPartita(storia, utente, nuovoGioco, new AsyncCallback<Partita>() {
             @Override
@@ -105,6 +109,7 @@ public class GiocaStoria extends Composite {
 
             @Override
             public void onClick(ClickEvent event) {
+                labelInventario.setText("");
                 String risposta = inserimentoRispostaTB.getText();
                 inserimentoRispostaTB.setText("");
                 labelOggettiSbloccabili.setText(" ");
@@ -130,6 +135,7 @@ public class GiocaStoria extends Composite {
 
             @Override
             public void onClick(ClickEvent event) {
+                labelInventario.setText("");
                 String scelta = opzioniLB.getSelectedItemText();
                 String oggetto = opzioni.get(scelta);
                 boolean possiedeOggetto = false;
@@ -208,11 +214,12 @@ public class GiocaStoria extends Composite {
         buttonOggettiSbloccabili.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                labelOggettiSbloccabili.setText(" ");
                 int selectedIndex = listBoxOggettiSbloccabili.getSelectedIndex();
                 if (selectedIndex != -1) {
                     String oggettoSbloccabile = listBoxOggettiSbloccabili.getItemText(selectedIndex);
                     partita.addInventario(oggettoSbloccabile);
+
+                    labelOggettiSbloccabili.setText("");
                     labelOggettiSbloccabili.setStyleName("messaggios");
                     labelOggettiSbloccabili.setText("Oggetto Raccolto");
                     listBoxOggettiSbloccabili.removeItem(selectedIndex);
@@ -288,6 +295,7 @@ public class GiocaStoria extends Composite {
     }
 
     public void settaGrafica() {
+        nomeStoria.setStyleName("testi");
         buttonMostraInventario.setStyleName("lButton");
         buttonOggettiSbloccabili.setStyleName("lButton");
         terminaButton.setStyleName("lButton");
