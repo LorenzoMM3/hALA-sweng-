@@ -69,12 +69,14 @@ public class Partita implements Serializable, PartitaI {
         return this.inventario;
     }
 
-    public void addInventario(String oggetto) {
-        this.inventario.add(oggetto);
-    }
-
     public void setInventario(ArrayList<String> inventario) {
         this.inventario = inventario;
+    }
+
+    public void addInventario(String oggetto) {
+        oggetto = oggetto.toUpperCase();
+        oggetto = oggetto.trim();
+        this.inventario.add(oggetto);
     }
 
 }

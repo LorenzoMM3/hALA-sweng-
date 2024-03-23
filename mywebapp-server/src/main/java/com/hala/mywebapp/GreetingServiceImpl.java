@@ -186,6 +186,15 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
+    public Storia ottieniStoria(String nomeStoria) {
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
+                return entry.getValue();
+            }
+        }
+        return null;
+    }
+
     public boolean eliminaStoria(String nomeStoria) {
         for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
             if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
@@ -254,10 +263,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 String id = "-1";
                 x.addPrecedente(id);
                 temp = x;
-                scenariNelSito.put(k, x);
+                scenariNelSito.put(k, temp);
             }
 
         }
+
         if (!nomeStoria.equals("")) {
             for (Storia s : storieNelSito.values()) {
                 if (s.getNome().equalsIgnoreCase(nomeStoria)) {
@@ -312,6 +322,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             System.err.println("Errore: Chiave non trovata per uno degli scenari.");
             return false;
         }
+
     }
 
     private String trovaChiavePerScenario(Scenario scenario) {

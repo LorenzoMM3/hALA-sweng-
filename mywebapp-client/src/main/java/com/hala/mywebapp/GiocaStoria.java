@@ -221,9 +221,11 @@ public class GiocaStoria extends Composite {
 
                     labelOggettiSbloccabili.setText("");
                     labelOggettiSbloccabili.setStyleName("messaggios");
-                    labelOggettiSbloccabili.setText("Oggetto Raccolto");
+                    labelOggettiSbloccabili.setText("" + oggettoSbloccabile + " Raccolto!");
                     listBoxOggettiSbloccabili.removeItem(selectedIndex);
 
+                } else {
+                    labelOggettiSbloccabili.setText("Non ci sono oggetti da raccogliere");
                 }
 
             }
