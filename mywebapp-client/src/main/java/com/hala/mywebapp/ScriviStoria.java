@@ -162,7 +162,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                         public void onSuccess(Boolean verifica) {
                             if (verifica) {
                                 messageLabelCreate.setStyleName("messaggios");
-                                messageLabelCreate.setText("Storia creata con successo");
+                                messageLabelCreate.setText("Storia creata con successo.");
                                 titoloS.remove(inserisciStoria);
                                 attivaTutto();
                                 menuTipoScenario.setSelectedIndex(0);
@@ -171,14 +171,13 @@ public class ScriviStoria extends Composite implements IsWidget {
                             } else {
 
                                 messageLabelCreate.setStyleName("messaggioa");
-                                messageLabelCreate.setText("Nome già esistente, riprova");
+                                messageLabelCreate.setText("Nome già esistente, riprova con un altro nome.");
                             }
                         };
                     });
                 } else {
-
                     message.setStyleName("messaggioa");
-                    message.setText("Inserisci il titolo della storia");
+                    message.setText("Forse manca qualcosa... Inserisci il titolo della storia");
                 }
 
             }
@@ -218,7 +217,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     scelta.setText("");
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("inserisci il testo dell'opzione di scelta");
+                    message.setText("Scelta non aggiunta. Inserisci il testo dell'opzione di scelta");
                 }
             }
 
@@ -239,7 +238,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     inserisciOggettoTextBox.setText("");
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("Errore nell'inserimento. Inserire un Oggetto Sbloccabile nella casella di testo.");
+                    message.setText("Oggetto non aggiunto. Inserire un Oggetto Sbloccabile nella casella di testo.");
                 }
             }
         });
@@ -304,7 +303,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     });
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("Riempi i campi o aggiungi ancora una scelta");
+                    message.setText("Riempi tutti i campi o aggiungi ancora una scelta (devono essere almeno due).");
                     Window.scrollTo(0, 0);
                 }
 
@@ -367,7 +366,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     });
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("Riempi tutti i campi");
+                    message.setText("Scenario non creato. Riempi prima tutti i campi.");
                     Window.scrollTo(0, 0);
                 }
 
@@ -420,7 +419,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     });
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("Inserisci il testo dello scenario finale");
+                    message.setText("Scenario non creato. Inserisci il testo dello scenario finale.");
                     Window.scrollTo(0, 0);
                 }
 
@@ -461,7 +460,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 } else {
                     message.setStyleName("messaggioa");
                     message.setText(
-                            "Forse manca qualcosa (consiglio: inserisci almeno 2 scenari, se è uno scenario a scelta inserisci almeno due scelte)");
+                            "Forse manca qualcosa... (Consiglio: inserisci almeno 2 scenari nella storia, se crei uno scenario a scelta inserisci almeno due scelte).");
                 }
             }
 
