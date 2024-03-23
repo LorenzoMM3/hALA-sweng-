@@ -1,7 +1,6 @@
 package com.hala.mywebapp;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -186,14 +185,12 @@ public class ScriviStoria extends Composite implements IsWidget {
 
         menuTipoScenario.addChangeHandler(event -> {
             message.setText("");
-
             if ("Scenario a scelta".equals(menuTipoScenario.getSelectedValue())) {
                 hideAdditionalFieldsIndovinello();
                 hideAdditionalFieldsFinale();
                 showAdditionalFieldsAScelta();
                 opzioniSceltaTemp = new ArrayList<>();
             } else if ("Scenario con indovinello".equals(menuTipoScenario.getSelectedValue())) {
-
                 hideAdditionalFieldsAScelta();
                 hideAdditionalFieldsFinale();
                 showAdditionalFieldsIndovinello();
@@ -201,13 +198,11 @@ public class ScriviStoria extends Composite implements IsWidget {
                 hideAdditionalFieldsAScelta();
                 hideAdditionalFieldsIndovinello();
                 showAdditionalFieldsFinale();
-
             }
 
         });
 
         altraScelta.addClickHandler(new ClickHandler() {
-
             @Override
             public void onClick(ClickEvent event) {
                 if (!scelta.getText().isEmpty()) {
@@ -218,13 +213,13 @@ public class ScriviStoria extends Composite implements IsWidget {
                 } else {
                     message.setStyleName("messaggioa");
                     message.setText("Scelta non aggiunta. Inserisci il testo dell'opzione di scelta");
+                    Window.scrollTo(0, 0);
                 }
             }
 
         });
 
         inserisciOggettoButton.addClickHandler(new ClickHandler() {
-
             @Override
             public void onClick(ClickEvent event) {
                 message.setText("");
@@ -239,6 +234,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                 } else {
                     message.setStyleName("messaggioa");
                     message.setText("Oggetto non aggiunto. Inserire un Oggetto Sbloccabile nella casella di testo.");
+                    Window.scrollTo(0, 0);
                 }
             }
         });
@@ -459,8 +455,7 @@ public class ScriviStoria extends Composite implements IsWidget {
                     RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, utente));
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText(
-                            "Forse manca qualcosa... (Consiglio: inserisci almeno 2 scenari nella storia, se crei uno scenario a scelta inserisci almeno due scelte).");
+                    message.setText("Forse manca qualcosa... (Consiglio: inserisci almeno 2 scenari nella storia, se crei uno scenario a scelta inserisci almeno due scelte).");
                 }
             }
 

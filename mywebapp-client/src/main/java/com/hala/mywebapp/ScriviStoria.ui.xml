@@ -3,11 +3,6 @@
              xmlns:gwt='urn:import:com.google.gwt.user.client.ui'
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-    <ui:style>
-
-    </ui:style>
-
-
     <g:HorizontalPanel spacing="100">
         <g:VerticalPanel spacing="25" ui:field="titoloS">
             <g:Label ui:field="labelTitolo">Scrivi il titolo della storia:</g:Label>
@@ -31,7 +26,7 @@
             <g:Label ui:field="labelTestoScenario">Inserisci testo scenario:</g:Label>
             <g:TextBox ui:field="testoScenarioField"/>
 
-            <g:Label ui:field="inserisciOggettoLabel">Inserisci gli oggetti raccoglibili nello scenario:</g:Label>
+            <g:Label ui:field="inserisciOggettoLabel">Inserisci gli eventuali oggetti raccoglibili nello scenario:</g:Label>
             <g:TextBox ui:field="inserisciOggettoTextBox"/>
             <g:Button ui:field="inserisciOggettoButton">Aggiungi Oggetto</g:Button>
 
@@ -52,11 +47,12 @@
 
             <g:Button ui:field="creaScenarioFinale">Crea</g:Button>
 
-
         </g:VerticalPanel>
-        
-        
-        <g:Label ui:field="messageLabel"/>
-        <g:Button ui:field="creaCollegamenti">Crea collegamenti</g:Button>
+
+        <g:VerticalPanel spacing="25" ui:field="vpCollegamenti">
+            <g:Button ui:field="creaCollegamenti">Crea collegamenti</g:Button>
+            <g:Label ui:field="messageLabel"/>
+        </g:VerticalPanel>  
+
     </g:HorizontalPanel>
 </ui:UiBinder>
