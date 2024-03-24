@@ -30,6 +30,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         openDB();
     }
 
+    @SuppressWarnings("unchecked")
     public void openDB() {
         if (db != null && !db.isClosed()) {
             db.close();
@@ -67,8 +68,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         utentiNelSito.put(username, utente);
         db.commit();
-        convertToJsonUtenti();// chiamo il metodo che salva l'utente sul json
-        return true; // Si può registrare
+        convertToJsonUtenti();  // chiamo il metodo che salva l'utente sul json
+        return true;
     }
 
     @Override
@@ -131,21 +132,21 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
     }
 
-    // --metodi per storia
+    // Metodi per storia
+
     @Override
     public boolean creaNuovaStoria(Storia nuovaStoria) {
-        // Se il nome è già presente non si può creare
         if (db == null || db.isClosed()) {
             openDB();
         }
         String nomeStoria = nuovaStoria.getNome();
         if (storieNelSito.containsKey(nomeStoria)) {
-            return false; // Non si può registrare
+            return false;
         }
         storieNelSito.put(nomeStoria, nuovaStoria);
         db.commit();
-        convertToJsonStorie();// chiamo il metodo che salva la storia sul json
-        return true; // Si può registrare
+        convertToJsonStorie();
+        return true;
     }
 
     private void convertToJsonStorie() {
@@ -208,7 +209,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return false;
     }
 
-    // --metodi per scenari
+    // Metodi per scenari
+
     public boolean aggiungiScenarioAScelta(String id, Scenario scenario) {
         if (db == null || db.isClosed()) {
             openDB();
@@ -236,8 +238,9 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
+    // metodo che conta il numero di scenari nel db per dare un id al nuovo scenario
+    @SuppressWarnings("unused")
     public String contaScenari() {
-        // metodo che conta il numero di scenari nel db per dare un id al nuovo scenario
         if (db == null || db.isClosed()) {
             openDB();
         }
@@ -248,7 +251,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return numSc2;
     }
 
-    // ---collegamenti tra scenari
+    // Inserire lo Scenario Inziale
     public boolean settaScenarioIniziale(Scenario scenario) {
         if (db == null || db.isClosed()) {
             openDB();
@@ -263,7 +266,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 String id = "-1";
                 x.addPrecedente(id);
                 temp = x;
-                scenariNelSito.put(k, temp);
+                scenariNelSito.put(k, x);
             }
 
         }
@@ -459,6 +462,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato) {
         String key = trovaChiavePerScenario(scenarioDaModificare);
+        scenarioModificato.setValId(scenarioDaModificare.getValId()); // TODO: DA TESTARE
         if (!key.equals("-1")) {
             if (scenarioModificato.getTipologia().equals(TipologiaScenario.ASCELTA)) {
                 ScenarioAScelta temp = (ScenarioAScelta) scenarioModificato;
@@ -641,6 +645,41 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
+    public void logoutUtenti() { // settaggio di tutti gli utenti a logged=false quando si chiude il server
+        for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
+            Utente u = entry.getValue();
+            u.setIsLogged(false);
+            String key = entry.getKey();
+            utentiNelSito.put(key, u);
+        }
+        db.commit();
+        convertToJsonUtenti();
+    }
+
+    //Per il Test
+    public void eliminaUtente(String username) {
+        utentiNelSito.remove(username);
+        for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
+            if (entry.getValue().getUtente().getUsername().equalsIgnoreCase(username)) {
+                storieNelSito.remove(entry.getKey());
+            }
+        }
+        db.commit();
+        convertToJsonUtenti();
+    }
+
+    //Per il test
+    public ArrayList<Utente> ottieniUtenti(){
+        if (db == null || db.isClosed()) {
+            openDB();
+        }
+        ArrayList<Utente> temp = new ArrayList<Utente>();
+        for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
+            temp.add(entry.getValue());
+        }
+        return temp;
+    }
+
     // --fine
     public void closeDatabase() {
         if (db != null && !db.isClosed()) {
@@ -653,17 +692,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         logoutUtenti();
         closeDatabase();
         super.destroy();
-    }
-
-    public void logoutUtenti() { // settaggio di tutti gli utenti a logged=false quando si chiude il server
-        for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
-            Utente u = entry.getValue();
-            u.setIsLogged(false);
-            String key = entry.getKey();
-            utentiNelSito.put(key, u);
-        }
-        db.commit();
-        convertToJsonUtenti();
     }
 
 }

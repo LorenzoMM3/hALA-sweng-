@@ -2,9 +2,6 @@ package com.hala.mywebapp;
 
 import java.util.ArrayList;
 
-import org.checkerframework.checker.units.qual.m;
-
-import com.google.common.util.concurrent.ListenableScheduledFuture;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -12,7 +9,6 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
-import com.shapesecurity.salvation2.Values.Hash;
 
 public class StorieCreateDaUtente extends Composite implements IsWidget {
 

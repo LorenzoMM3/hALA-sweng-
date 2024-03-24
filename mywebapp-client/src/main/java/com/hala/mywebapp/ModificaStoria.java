@@ -2,8 +2,6 @@ package com.hala.mywebapp;
 
 import java.util.ArrayList;
 
-import org.checkerframework.checker.guieffect.qual.UI;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;

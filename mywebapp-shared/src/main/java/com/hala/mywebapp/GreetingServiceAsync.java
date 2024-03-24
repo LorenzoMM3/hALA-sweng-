@@ -1,7 +1,6 @@
 package com.hala.mywebapp;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

@@ -3,7 +3,6 @@ package com.hala.mywebapp;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.gargoylesoftware.htmlunit.javascript.host.dom.Text;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -17,8 +16,6 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.hala.mywebapp.VisualizzaCatalogo.VisualizzaUiBinder;
-import com.shapesecurity.salvation2.Values.Hash;
 
 public class GiocaStoria extends Composite {
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
