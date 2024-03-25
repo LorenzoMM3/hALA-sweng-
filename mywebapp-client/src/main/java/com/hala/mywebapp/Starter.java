@@ -34,12 +34,6 @@ public class Starter extends Composite implements IsWidget {
     Panel totale;
 
     @UiField
-    Panel descrizione;
-
-    @UiField
-    Panel bottoniPanel;
-
-    @UiField
     Label desc1;
     @UiField
     Label desc2;
@@ -47,6 +41,9 @@ public class Starter extends Composite implements IsWidget {
     Label desc3;
     @UiField
     Label desc4;
+
+    @UiField
+    Label desc21;
 
     @UiField
     HTMLPanel pagina;
@@ -60,6 +57,7 @@ public class Starter extends Composite implements IsWidget {
         desc2.setStyleName("testi");
         desc3.setStyleName("testi");
         desc4.setStyleName("testi");
+        desc21.setStyleName("testi");
         pagina.setStyleName("sfondo");
 
         signinButton.addClickHandler(new ClickHandler() {

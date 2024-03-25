@@ -330,7 +330,7 @@ public class VisualizzaCatalogo extends Composite {
                     }
                 } else {
                     messageLabel.setStyleName("messaggioa");
-                    messageLabel.setText("Devi essere loggato per giocare");
+                    messageLabel.setText("Devi effettuare il login per giocare");
 
                 }
 

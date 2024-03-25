@@ -68,7 +68,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         utentiNelSito.put(username, utente);
         db.commit();
-        convertToJsonUtenti();  // chiamo il metodo che salva l'utente sul json
+        convertToJsonUtenti(); // chiamo il metodo che salva l'utente sul json
         return true;
     }
 
@@ -656,7 +656,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         convertToJsonUtenti();
     }
 
-    //Per il Test
+    // Per il Test
     public void eliminaUtente(String username) {
         utentiNelSito.remove(username);
         for (Map.Entry<String, Storia> entry : storieNelSito.entrySet()) {
@@ -668,8 +668,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         convertToJsonUtenti();
     }
 
-    //Per il test
-    public ArrayList<Utente> ottieniUtenti(){
+    // Per il test
+    public ArrayList<Utente> ottieniUtenti() {
         if (db == null || db.isClosed()) {
             openDB();
         }

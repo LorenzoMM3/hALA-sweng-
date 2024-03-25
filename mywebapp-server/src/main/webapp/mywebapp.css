@@ -103,6 +103,7 @@ h1 {
   border: #466646; /* Spessore, tipo e colore del bordo */
   border-radius: 5px; 
   padding: 9px 18px;
+  margin: 5px, 30px;
 }
 
 .sButton:hover {
