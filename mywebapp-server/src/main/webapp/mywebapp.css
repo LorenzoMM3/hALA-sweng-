@@ -43,12 +43,8 @@ h1 {
   margin: 15px 6px 6px;
 }
 
-body{
-  background:var(--gradient-2, linear-gradient(90deg, #efffdc 100%, #84BF88 20%))
-}
-
 .sfondo{
-  background: #efffdc ;
+  background:var(--gradient-2, linear-gradient(90deg, #efffdc 100%, #84BF88 20%))
 }
 
 .sPanel{

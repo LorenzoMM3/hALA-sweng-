@@ -13,6 +13,10 @@
     <title>Web Application Starter Project</title>
     <script src="MyWebApp/MyWebApp.nocache.js"></script>
     <style>
+      
+      body{
+        background:var(--gradient-2, linear-gradient(90deg, #efffdc 100%, #84BF88 20%))
+      }
       div.alto{
         width:70%;
         height:10%;
@@ -26,6 +30,11 @@
         -webkit-backdrop-filter: blur( 4px );
         border-radius: 10px;
         border: 1px solid rgba( 255, 255, 255, 0.18 );
+      }
+      div.basso{
+        width:90%;
+        height:90%;
+        margin-top: 60px;
       }
       td.titolo{
         text-align:center;
@@ -54,8 +63,9 @@
         </tr>
       </table>
       
-    </div>    
-    <table align="center" id="startTable">
-    </table>
+    </div>  
+    <div class="basso"><table align="center" id="startTable"> </table></table></div>  
+    
+   
   </body>
 </html>
