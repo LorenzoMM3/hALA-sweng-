@@ -22,9 +22,10 @@ public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingS
 
                 @Override
                 public void onSuccess(Boolean verifica) {
+                    RootPanel.get("startTable").add(new Starter());
                 }
             });
-        RootPanel.get("startTable").add(new Starter());
+        
     }
 }
 

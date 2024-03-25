@@ -239,7 +239,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     }
 
     // metodo che conta il numero di scenari nel db per dare un id al nuovo scenario
-    @SuppressWarnings("unused")
     public String contaScenari() {
         if (db == null || db.isClosed()) {
             openDB();
