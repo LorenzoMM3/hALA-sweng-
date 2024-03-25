@@ -391,6 +391,7 @@ public class Collegamenti extends Composite implements IsWidget {
         settaSuccessivoIndovinello.setStyleName("lButton");
         settaSuccessivoFinale.setStyleName("lButton");
         LscenarioIniziale.setStyleName("testi");
+        totale.setStyleName("sfondo");
 
     }
 

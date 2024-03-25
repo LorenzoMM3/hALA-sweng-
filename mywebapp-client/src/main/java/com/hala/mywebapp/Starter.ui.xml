@@ -4,7 +4,7 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 
-    <g:HTMLPanel>
+    <g:HTMLPanel ui:field="pagina">
     <div id="bottoni">
         <g:HorizontalPanel spacing="30" ui:field="totale">
             <g:VerticalPanel spacing="6" ui:field="descrizione">

@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
@@ -47,6 +48,9 @@ public class Starter extends Composite implements IsWidget {
     @UiField
     Label desc4;
 
+    @UiField
+    HTMLPanel pagina;
+
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
         loginButton.setStyleName("sButton");
@@ -56,6 +60,7 @@ public class Starter extends Composite implements IsWidget {
         desc2.setStyleName("testi");
         desc3.setStyleName("testi");
         desc4.setStyleName("testi");
+        pagina.setStyleName("sfondo");
 
         signinButton.addClickHandler(new ClickHandler() {
             @Override

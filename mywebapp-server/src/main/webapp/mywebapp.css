@@ -1,8 +1,7 @@
 /** Add css rules here for your application. */
 /*var(--gradient-2, linear-gradient(90deg, #2accf5 0%, #5000fd 100%)) per fare uno sfondo sfumatooooo bellissimooo*/
-body{
-  background-color:rgb(#7B926E);
-}
+/*background-image:url(imgSfondoSfumato.png);*/
+
 
 /** Example rules used by the template application (remove for your app) */
 h1 {
@@ -43,6 +42,15 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+body{
+  background:var(--gradient-2, linear-gradient(90deg, #efffdc 100%, #84BF88 20%))
+}
+
+.sfondo{
+  background: #efffdc ;
+}
+
 .sPanel{
   padding: 10px;
   margin: 0;
