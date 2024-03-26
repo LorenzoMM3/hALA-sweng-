@@ -32,9 +32,7 @@ public class Logout extends Composite implements IsWidget {
 
     public Logout(Utente utente) {
         initWidget(UiB.createAndBindUi(this));
-        sendButton.setStyleName("lButton");
-        backButton.setStyleName("lButton");
-        messageLabel.setStyleName("messaggioa");
+        settaGrafica();
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -74,6 +72,12 @@ public class Logout extends Composite implements IsWidget {
             }
         });
 
+    }
+
+    private void settaGrafica() {
+        sendButton.setStyleName("lButton");
+        backButton.setStyleName("lButton");
+        messageLabel.setStyleName("messaggioa");
     }
 
     @Override

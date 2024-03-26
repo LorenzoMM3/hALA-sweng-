@@ -38,7 +38,6 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         if (db == null || db.isClosed()) {
             db = DBMaker.fileDB("file.db").make();
-            // txMaker = DBMaker.txMaker(db);
             utentiNelSito = (Map<String, Utente>) db.hashMap("utenteStorage").createOrOpen();
             storieNelSito = (Map<String, Storia>) db.hashMap("storieNelSitoPresenti").createOrOpen();
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
@@ -238,7 +237,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return true;
     }
 
-    // metodo che conta il numero di scenari nel db per dare un id al nuovo scenario
+    // ---metodo che conta il numero di scenari nel db per dare un id al nuovo
+    // scenario
     public String contaScenari() {
         if (db == null || db.isClosed()) {
             openDB();
@@ -462,7 +462,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     public boolean modificaScenario(String nomeStoria, Scenario scenarioDaModificare, Scenario scenarioModificato) {
         String key = trovaChiavePerScenario(scenarioDaModificare);
-        scenarioModificato.setValId(scenarioDaModificare.getValId()); // TODO: DA TESTARE
+        scenarioModificato.setValId(scenarioDaModificare.getValId());
         if (!key.equals("-1")) {
             if (scenarioModificato.getTipologia().equals(TipologiaScenario.ASCELTA)) {
                 ScenarioAScelta temp = (ScenarioAScelta) scenarioModificato;
@@ -514,7 +514,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     // --metodi per partita
     public String contaPartite() {
 
-        // metodo per contare il numero di partite presenti nel db e dare un id alla
+        // ---metodo per contare il numero di partite presenti nel db e dare un id alla
         // partita
         if (db == null || db.isClosed()) {
             openDB();

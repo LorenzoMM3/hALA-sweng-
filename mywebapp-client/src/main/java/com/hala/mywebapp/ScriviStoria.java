@@ -126,26 +126,7 @@ public class ScriviStoria extends Composite implements IsWidget {
         disabilitaTutto();
         scenariCreati = new ArrayList<>();
         oggettiSbloccabili = new ArrayList<>();
-        backButton.setStyleName("lButton");
-        inserisciStoria.setStyleName("lButton");
-        creaScenarioAScelta.setStyleName("lButton");
-        altraScelta.setStyleName("lButton");
-        creaScenarioIndovinello.setStyleName("lButton");
-        creaCollegamenti.setStyleName("lButton");
-        creaScenarioFinale.setStyleName("lButton");
-        inserisciOggettoButton.setStyleName("lButton");
-        labelTitolo.setStyleName("testi");
-        scriviScenarioLabel.setStyleName("testi");
-        tipologiaLabel.setStyleName("testi");
-        labelTestoScenario.setStyleName("testi");
-        messageLabel.setStyleName("messaggio");
-        titoloS.setStyleName("sPanel");
-        inserisciOggettoLabel.setStyleName("testi");
-        labelSceltaOggetto.setStyleName("testi");
-        labelRispostaIndovinello.setStyleName("testi");
-        labelDomandaIndovinello.setStyleName("testi");
-        labelScelta.setStyleName("testi");
-        labelDomandaAScelta.setStyleName("testi");
+        settaGrafica();
 
         inserisciStoria.addClickHandler(new ClickHandler() {
             @Override
@@ -455,7 +436,8 @@ public class ScriviStoria extends Composite implements IsWidget {
                     RootPanel.get("startTable").add(new Collegamenti(nomeStoriaTemp, utente));
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("Forse manca qualcosa... (Consiglio: inserisci almeno 2 scenari nella storia, se crei uno scenario a scelta inserisci almeno due scelte).");
+                    message.setText(
+                            "Forse manca qualcosa... (Consiglio: inserisci almeno 2 scenari nella storia, se crei uno scenario a scelta inserisci almeno due scelte).");
                 }
             }
 
@@ -605,5 +587,28 @@ public class ScriviStoria extends Composite implements IsWidget {
         vpScenario.remove(inserisciOggettoLabel);
         vpScenario.remove(inserisciOggettoTextBox);
         vpScenario.remove(inserisciOggettoButton);
+    }
+
+    private void settaGrafica() {
+        backButton.setStyleName("lButton");
+        inserisciStoria.setStyleName("lButton");
+        creaScenarioAScelta.setStyleName("lButton");
+        altraScelta.setStyleName("lButton");
+        creaScenarioIndovinello.setStyleName("lButton");
+        creaCollegamenti.setStyleName("lButton");
+        creaScenarioFinale.setStyleName("lButton");
+        inserisciOggettoButton.setStyleName("lButton");
+        labelTitolo.setStyleName("testi");
+        scriviScenarioLabel.setStyleName("testi");
+        tipologiaLabel.setStyleName("testi");
+        labelTestoScenario.setStyleName("testi");
+        messageLabel.setStyleName("messaggio");
+        titoloS.setStyleName("sPanel");
+        inserisciOggettoLabel.setStyleName("testi");
+        labelSceltaOggetto.setStyleName("testi");
+        labelRispostaIndovinello.setStyleName("testi");
+        labelDomandaIndovinello.setStyleName("testi");
+        labelScelta.setStyleName("testi");
+        labelDomandaAScelta.setStyleName("testi");
     }
 }

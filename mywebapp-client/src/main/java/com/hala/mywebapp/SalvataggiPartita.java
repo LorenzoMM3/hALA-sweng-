@@ -98,8 +98,6 @@ public class SalvataggiPartita extends Composite {
                     riprendiLabel.setText("l'ultima volta hai lasciato la partita in sospeso allo scenario:\n"
                             + result.getScenarioAttuale().getTestoScena());
                     riprendiButton.setVisible(true);
-                    Scenario attuale = result.getScenarioAttuale();
-                    String scenarioInizialeDellaStoria = storia.getScenarioIniziale().getTestoScena();
                 }
                 // Altrimenti non aggiunge nulla
             }
@@ -107,35 +105,4 @@ public class SalvataggiPartita extends Composite {
         });
 
     }
-
-    /*
-     * private void riempiListBox(ListBox lb) {
-     * hALAServiceAsync.caricaPartita(storia, utente, false, new
-     * AsyncCallback<Partita>() {
-     * 
-     * @Override
-     * public void onFailure(Throwable caught) {
-     * System.out.println("Errore nel caricamento della partita");
-     * }
-     * 
-     * @Override
-     * public void onSuccess(Partita result) {
-     * if (result != null){
-     * Scenario attuale = result.getScenarioAttuale();
-     * String scenarioInizialeDellaStoria =
-     * storia.getScenarioIniziale().getTestoScena();
-     * //qua si fa già un controllo se lo scenario attuale non è uguale allo
-     * scenario iniziale si aggiunge l'item
-     * if (!attuale.getTestoScena().equals(scenarioInizialeDellaStoria)){
-     * lb.addItem(attuale.getTestoScena());
-     * }
-     * }
-     * // Altrimenti non aggiunge nulla
-     * }
-     * 
-     * 
-     * });
-     * }
-     */
-
 }

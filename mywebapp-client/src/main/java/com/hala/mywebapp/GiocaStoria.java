@@ -250,7 +250,6 @@ public class GiocaStoria extends Composite {
                 } else {
                     RootPanel.get("startTable").clear();
                     RootPanel.get("startTable").add(new Starter());
-                    // questo pezzo, metteremo un mess)
                 }
             }
         });

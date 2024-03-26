@@ -320,7 +320,6 @@ public class VisualizzaCatalogo extends Composite {
                         storiaSelezionata = null;
                         RootPanel.get("startTable").clear();
                         RootPanel.get("startTable").add(new SalvataggiPartita(daGiocare, utente));
-                        // RootPanel.get("startTable").add(new GiocaStoria(daGiocare, utenteAttuale));
                         RootPanel.get().clear();
                         // Se ha gia giocato:
 

@@ -25,18 +25,6 @@ public class Scenario implements ScenarioI, Serializable {
         oggettiCheSblocca = new ArrayList<>();
     }
 
-    /*
-     * public Scenario(String id, String nomeStoria) {
-     * valId = id;
-     * this.nomeStoria = nomeStoria;
-     * domandaCambioScenario = "";
-     * testoScena = "";
-     * tipologiaScenario = null;
-     * precedente = new ArrayList<>();
-     * successivo = new ArrayList<>();
-     * }
-     * 
-     */
     public Scenario(String nomeStoria) {
         valId = "";
         this.nomeStoria = nomeStoria;

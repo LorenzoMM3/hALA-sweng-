@@ -49,11 +49,7 @@ public class Login extends Composite implements IsWidget {
 
     public Login() {
         initWidget(UiB.createAndBindUi(this));
-        loginPanel.setStyleName("sPanel");
-        backButton.setStyleName("lButton");
-        loginButton.setStyleName("lButton");
-        usernameLabel.setStyleName("testi");
-        passwordLabel.setStyleName("testi");
+        settaGrafica();
 
         loginButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -99,6 +95,14 @@ public class Login extends Composite implements IsWidget {
             }
         });
 
+    }
+
+    private void settaGrafica() {
+        loginPanel.setStyleName("sPanel");
+        backButton.setStyleName("lButton");
+        loginButton.setStyleName("lButton");
+        usernameLabel.setStyleName("testi");
+        passwordLabel.setStyleName("testi");
     }
 
     @Override

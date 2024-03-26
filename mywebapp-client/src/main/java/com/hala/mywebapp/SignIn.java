@@ -53,12 +53,7 @@ public class SignIn extends Composite implements IsWidget {
     public SignIn() {
         initWidget(UiB.createAndBindUi(this));
         startButton.setVisible(false);
-        startButton.setStyleName("lButton");
-        signinPanel.setStyleName("sPanel");
-        backButton.setStyleName("lButton");
-        sendButton.setStyleName("lButton");
-        usernameLabel.setStyleName("testi");
-        passwordLabel.setStyleName("testi");
+        settaGrafica();
 
         sendButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -112,6 +107,15 @@ public class SignIn extends Composite implements IsWidget {
                 RootPanel.get("startTable").add(new Login());
             }
         });
+    }
+
+    private void settaGrafica() {
+        startButton.setStyleName("lButton");
+        signinPanel.setStyleName("sPanel");
+        backButton.setStyleName("lButton");
+        sendButton.setStyleName("lButton");
+        usernameLabel.setStyleName("testi");
+        passwordLabel.setStyleName("testi");
     }
 
     @Override

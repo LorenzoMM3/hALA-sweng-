@@ -49,14 +49,8 @@ public class HomePage extends Composite implements IsWidget {
     public HomePage(Utente utente) {
         initWidget(uiBinder.createAndBindUi(this));
         mainPanel = GWT.create(VerticalPanel.class);
-        benvenuto.setStyleName("messaggios");
+        settaGrafica();
         benvenuto.setText("Ciao " + utente.getUsername() + ", cosa vuoi fare?");
-        logoutButton.setStyleName("lButton");
-        scriviButton.setStyleName("lButton");
-        modificaButton.setStyleName("lButton");
-        visualizzaButton.setStyleName("lButton");
-        bPanel.setStyleName("mPanel");
-        tastiPanel.setStyleName("sPanel");
 
         scriviButton.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent event) {
@@ -89,5 +83,15 @@ public class HomePage extends Composite implements IsWidget {
             }
         });
 
+    }
+
+    private void settaGrafica() {
+        benvenuto.setStyleName("messaggios");
+        logoutButton.setStyleName("lButton");
+        scriviButton.setStyleName("lButton");
+        modificaButton.setStyleName("lButton");
+        visualizzaButton.setStyleName("lButton");
+        bPanel.setStyleName("mPanel");
+        tastiPanel.setStyleName("sPanel");
     }
 }

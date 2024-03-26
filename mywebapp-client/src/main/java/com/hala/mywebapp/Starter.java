@@ -50,15 +50,7 @@ public class Starter extends Composite implements IsWidget {
 
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
-        loginButton.setStyleName("sButton");
-        signinButton.setStyleName("sButton");
-        visualizzaCatalogoButton.setStyleName("sButton");
-        desc1.setStyleName("testi");
-        desc2.setStyleName("testi");
-        desc3.setStyleName("testi");
-        desc4.setStyleName("testi");
-        desc21.setStyleName("testi");
-        pagina.setStyleName("sfondo");
+        settaGrafica();
 
         signinButton.addClickHandler(new ClickHandler() {
             @Override
@@ -84,6 +76,18 @@ public class Starter extends Composite implements IsWidget {
             }
         });
 
+    }
+
+    private void settaGrafica() {
+        loginButton.setStyleName("sButton");
+        signinButton.setStyleName("sButton");
+        visualizzaCatalogoButton.setStyleName("sButton");
+        desc1.setStyleName("testi");
+        desc2.setStyleName("testi");
+        desc3.setStyleName("testi");
+        desc4.setStyleName("testi");
+        desc21.setStyleName("testi");
+        pagina.setStyleName("sfondo");
     }
 
     @Override
