@@ -267,6 +267,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 x.addPrecedente(id);
                 temp = x;
                 scenariNelSito.put(k, x);
+                scenario.addPrecedente(id);
             }
 
         }
@@ -313,7 +314,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             scenariNelSito.put(keyDaCollegare, y);
 
             // nel db delle storie indico lo scenario iniziale
-            if (x.getPrecedente().get(0).equals("-1")) {
+            if (x.getPrecedente().get(0).equals("-1")) {// -----ma questa roba serve?
                 Storia s = storieNelSito.get(x.getNomeStoria());
                 s.setScenarioIniziale(x);
                 storieNelSito.put(x.getNomeStoria(), s);

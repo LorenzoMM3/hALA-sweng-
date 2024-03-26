@@ -33,7 +33,6 @@ public class GreetingServiceImplTest {
         chiudi();
     }
 
-
     // Test dell'Utente
 
     @Test
@@ -48,7 +47,6 @@ public class GreetingServiceImplTest {
         assertEquals(true, greetingService.signIn(utente1));
         assertEquals(true, greetingService.signIn(utente2));
         assertEquals(true, greetingService.signIn(utente3));
-        
 
         assertEquals(false, greetingService.signIn(utente1));
         assertEquals(false, greetingService.signIn(utente2));
@@ -79,14 +77,13 @@ public class GreetingServiceImplTest {
         assertEquals(false, utente2.getIsLogged());
         assertEquals(false, utente3.getIsLogged());
 
-        //Elimino l'utente
+        // Elimino l'utente
         greetingService.eliminaUtente("Utente1");
         greetingService.eliminaUtente("Utente2");
         greetingService.eliminaUtente("Utente3");
 
         chiudi();
     }
-
 
     // Test della Partita
 
@@ -107,7 +104,6 @@ public class GreetingServiceImplTest {
 
         chiudi();
     }
-
 
     // Test degli Scenari
 
@@ -130,17 +126,16 @@ public class GreetingServiceImplTest {
 
         // scenario2 finale
         Scenario scenario2 = new Scenario("storia1");
-        scenario2.setTestoScena("Testo dello scenario finale storia1"); 
+        scenario2.setTestoScena("Testo dello scenario finale storia1");
         String idScenario2 = greetingService.prossimoId();
         scenario2.setValId(idScenario2);
         greetingService.aggiungiScenarioFinale(idScenario2, scenario2);
 
         ArrayList<Scenario> scenari = new ArrayList<>();
-        
 
         // scenario3 indovinello
         Scenario scenario3 = new ScenarioIndovinello("storia1");
-        scenario3.setTestoScena("Testo dello scenario indovinello storia1");    
+        scenario3.setTestoScena("Testo dello scenario indovinello storia1");
         scenario3.setDomandaCambioScenario("Domanda dello scenario indovinello  storia1");
         scenario3.addOggettoCheSblocca("Oggetto3");
         ((ScenarioIndovinello) scenario3).setRispostaIndovinello("rc");
@@ -150,19 +145,14 @@ public class GreetingServiceImplTest {
 
         // collegamenti
         assertEquals(true, greetingService.settaScenarioIniziale(scenario1));
-        ArrayList<String> prec = new ArrayList<>();
-        prec.add("-1");
-        scenario1.setPrecedente(prec);
-        assertEquals(true,greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione1", scenario2));
+        assertEquals(true, greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione1", scenario2));
         // Controllo quale manca
         ArrayList<Scenario> mancanti = greetingService.ottieniCollegamentiMancanti("storia1");
         assertEquals("Testo dello scenario indovinello storia1", mancanti.get(0).getTestoScena());
-        assertEquals(true,greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione2", scenario3));
-        assertEquals(true,greetingService.settaCollegamentoSuccessivo(scenario3, "true", scenario2));
+        assertEquals(true, greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione2", scenario3));
+        assertEquals(true, greetingService.settaCollegamentoSuccessivo(scenario3, "true", scenario2));
         // Provo a collegare con uno scenario che non esiste
-        assertEquals(false,greetingService.settaCollegamentoSuccessivo(new Scenario(), "Opzione3", new Scenario()));
-
-
+        assertEquals(false, greetingService.settaCollegamentoSuccessivo(new Scenario(), "Opzione3", new Scenario()));
 
         scenari.add(scenario1);
         scenari.add(scenario2);
@@ -175,22 +165,22 @@ public class GreetingServiceImplTest {
         // salvo su file
         assertEquals(true, greetingService.salvaSuFileScenari("storia1"));
 
-        //TEST MODIFICA SCENARIO
-        //Modifico lo scenario indovinello
+        // TEST MODIFICA SCENARIO
+        // Modifico lo scenario indovinello
         Scenario scenarioModificatoIndovinello = new ScenarioIndovinello("storia1");
-        scenarioModificatoIndovinello.setTestoScena("Testo dello scenario indovinello modificato");    
+        scenarioModificatoIndovinello.setTestoScena("Testo dello scenario indovinello modificato");
         scenarioModificatoIndovinello.setDomandaCambioScenario("Domanda dello scenario indovinello  modificato");
         ((ScenarioIndovinello) scenarioModificatoIndovinello).setRispostaIndovinello("risposta modificata");
         greetingService.modificaScenario("storia1", scenario3, scenarioModificatoIndovinello);
 
-        //Modifico lo scenario a scelta
+        // Modifico lo scenario a scelta
         Scenario scenarioModificatoAScelta = new ScenarioAScelta("storia1");
         scenarioModificatoAScelta.setTestoScena("Testo dello scenario a scelta modificato");
         scenarioModificatoAScelta.setDomandaCambioScenario("Domanda dello scenario a scelta modificato");
-        HashMap<String,String> opzioniModificate = ((ScenarioAScelta)scenario1).getOpzioniScelta();
+        HashMap<String, String> opzioniModificate = ((ScenarioAScelta) scenario1).getOpzioniScelta();
         opzioniModificate.put("Opzione1M", opzioniModificate.get("Opzione1"));
         opzioniModificate.put("Opzione2M", opzioniModificate.get("Opzione2"));
-        HashMap<String,String> successiviModificati = scenario1.getSuccessivo();
+        HashMap<String, String> successiviModificati = scenario1.getSuccessivo();
         successiviModificati.put("Opzione1M", successiviModificati.get("Opzione1"));
         successiviModificati.put("Opzione2M", successiviModificati.get("Opzione2"));
         scenarioModificatoAScelta.setSuccessivo(successiviModificati);
@@ -201,70 +191,73 @@ public class GreetingServiceImplTest {
         ArrayList<String> precedentiModificati = new ArrayList<>();
         precedentiModificati.add("-1");
         assertEquals(precedentiModificati, scenario1.getPrecedente());
-        scenarioModificatoAScelta.setPrecedente(precedentiModificati); //Lo facciamo nel client
+        scenarioModificatoAScelta.setPrecedente(precedentiModificati); // Lo facciamo nel client
         greetingService.modificaScenario("storia1", scenario1, scenarioModificatoAScelta);
 
-        //Modifico lo scenario finale
+        // Modifico lo scenario finale
         Scenario scenarioModificatoFinale = new Scenario("storia1");
         scenarioModificatoFinale.setTestoScena("Testo dello scenario finale storia1");
         greetingService.modificaScenario("storia1", scenario2, scenarioModificatoFinale);
 
-        //Controllo che lo scenario sia stato modificato
+        // Controllo che lo scenario sia stato modificato
         Storia storiaModificata = greetingService.ottieniStoria("storia1");
         ArrayList<Scenario> scenariModificati = greetingService.ottieniScenariStoria("storia1");
         int indiceIndovinello = 0;
         int indiceAScelta = 0;
         int indiceFinale = 0;
-        for (Scenario s: scenariModificati){
-            if (s.getTestoScena().equals("Testo dello scenario indovinello modificato")){
+        for (Scenario s : scenariModificati) {
+            if (s.getTestoScena().equals("Testo dello scenario indovinello modificato")) {
                 indiceIndovinello = scenariModificati.indexOf(s);
             }
-            if (s.getTestoScena().equals("Testo dello scenario a scelta modificato")){
+            if (s.getTestoScena().equals("Testo dello scenario a scelta modificato")) {
                 indiceAScelta = scenariModificati.indexOf(s);
             }
-            if (s.getTestoScena().equals("Testo dello scenario finale storia1")){
+            if (s.getTestoScena().equals("Testo dello scenario finale storia1")) {
                 indiceFinale = scenariModificati.indexOf(s);
             }
         }
 
-
-        assertEquals("Testo dello scenario indovinello modificato", scenariModificati.get(indiceIndovinello).getTestoScena());
-        assertEquals("Testo dello scenario indovinello modificato", scenariModificati.get(indiceIndovinello).getTestoScena());
-        assertEquals("Domanda dello scenario indovinello  modificato", scenariModificati.get(indiceIndovinello).getDomandaCambioScenario());
-        assertEquals("risposta modificata", ((ScenarioIndovinello) scenariModificati.get(indiceIndovinello)).getRispostaIndovinello());
+        assertEquals("Testo dello scenario indovinello modificato",
+                scenariModificati.get(indiceIndovinello).getTestoScena());
+        assertEquals("Testo dello scenario indovinello modificato",
+                scenariModificati.get(indiceIndovinello).getTestoScena());
+        assertEquals("Domanda dello scenario indovinello  modificato",
+                scenariModificati.get(indiceIndovinello).getDomandaCambioScenario());
+        assertEquals("risposta modificata",
+                ((ScenarioIndovinello) scenariModificati.get(indiceIndovinello)).getRispostaIndovinello());
         assertEquals("Testo dello scenario a scelta modificato", scenariModificati.get(indiceAScelta).getTestoScena());
-        assertEquals("Domanda dello scenario a scelta modificato", scenariModificati.get(indiceAScelta).getDomandaCambioScenario());
-        assertEquals("{Opzione1M=Oggetto1, Opzione2M=Oggetto2}", ((ScenarioAScelta) scenariModificati.get(indiceAScelta)).getOpzioniScelta() + "");
+        assertEquals("Domanda dello scenario a scelta modificato",
+                scenariModificati.get(indiceAScelta).getDomandaCambioScenario());
+        assertEquals("{Opzione1M=Oggetto1, Opzione2M=Oggetto2}",
+                ((ScenarioAScelta) scenariModificati.get(indiceAScelta)).getOpzioniScelta() + "");
         assertEquals("Testo dello scenario finale storia1", scenariModificati.get(indiceFinale).getTestoScena());
 
-
-        //Setto uno scenario di una storia non creata
+        // Setto uno scenario di una storia non creata
         Scenario scenarioInv = new Scenario("storiaNonEsistente");
         String idScenarioInv = greetingService.prossimoId();
         scenarioInv.setValId(idScenarioInv);
         scenarioInv.getValId();
-        assertEquals(false,greetingService.settaScenarioIniziale(scenarioInv));
+        assertEquals(false, greetingService.settaScenarioIniziale(scenarioInv));
 
-        //Test Elimina Scenari
+        // Test Elimina Scenari
         greetingService.eliminaScenari("storia1");
         assertEquals("[]", greetingService.ottieniScenariStoria("storia1") + "");
-        //Test Elimina Storia
+        // Test Elimina Storia
         greetingService.eliminaStoria("storia1");
         assertEquals(null, greetingService.ottieniStoria("storia1"));
         chiudi();
     }
 
-
     // Test della Partita
 
     @Test
     public void etestPartita() {
-        
+
         chiudi();
         creaStoria();
 
         Utente utente5 = new Utente("Utente5", "Password5");
-        
+
         Storia storia = greetingService.ottieniStoria("storia3");
 
         Partita partita = greetingService.caricaPartita(storia, utente5, false);
@@ -272,9 +265,8 @@ public class GreetingServiceImplTest {
         Partita dp = greetingService.datiPartita(storia.getNome(), utente5.getUsername());
         assertEquals("storia3", dp.getStoria().getNome());
         assertEquals("Utente5", dp.getGiocatore().getUsername());
-        
+
         // gioca
-        
 
         partita.addInventario("Oggetto1");
         String oggetto = "Oggetto1";
@@ -296,11 +288,11 @@ public class GreetingServiceImplTest {
         partita2.addInventario("Oggetto2");
         partita2 = greetingService.caricaSuccessivoScelta(partita2, "Opzione2");
 
-        //Utente torna alla homepage ed esce dalla partita
-        //Ricomincia a giocare
+        // Utente torna alla homepage ed esce dalla partita
+        // Ricomincia a giocare
         partita2 = greetingService.caricaPartita(storia, utente5, false);
         assertEquals("Testo dello scenario indovinello storia3", partita2.getScenarioAttuale().getTestoScena());
-        
+
         greetingService.caricaSuccessivoIndovinello(partita2, "rc");
         assertEquals("Testo dello scenario finale storia3", partita2.getScenarioAttuale().getTestoScena());
 
@@ -308,17 +300,17 @@ public class GreetingServiceImplTest {
         assertEquals("storia3", partita2.getStoria().getNome());
         assertEquals("Utente5", partita2.getGiocatore().getUsername());
         assertEquals("Testo dello scenario a scelta storia3", partita2.getScenarioAttuale().getTestoScena());
-        
-        // elimina partita (Concludere il Test con l'eliminazione della partita altrimenti i dati rimangono salvati e non è possibile rifarlo)
+
+        // elimina partita (Concludere il Test con l'eliminazione della partita
+        // altrimenti i dati rimangono salvati e non è possibile rifarlo)
         greetingService.eliminaPartita(storia, utente5);
         assertEquals(null, greetingService.datiPartita(storia.getNome(), utente5.getUsername()));
         // chiusura
         chiudi();
-        
+
     }
 
-
-    private void creaStoria(){
+    private void creaStoria() {
         Utente utente6 = new Utente("Utente6", "Password6");
         Storia storia3 = new Storia("storia3", utente6);
         greetingService.creaNuovaStoria(storia3);
@@ -343,7 +335,6 @@ public class GreetingServiceImplTest {
         greetingService.aggiungiScenarioFinale(idScenario2, scenario2);
 
         ArrayList<Scenario> scenari = new ArrayList<>();
-        
 
         // scenario3 indovinello
         ScenarioIndovinello scenario3 = new ScenarioIndovinello("storia3");
@@ -356,7 +347,7 @@ public class GreetingServiceImplTest {
         greetingService.aggiungiScenarioIndovinello(idScenario3, scenario3);
 
         // collegamenti
-        assertEquals(true,greetingService.settaScenarioIniziale(scenario1));
+        assertEquals(true, greetingService.settaScenarioIniziale(scenario1));
         greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione1", scenario2);
         greetingService.settaCollegamentoSuccessivo(scenario1, "Opzione2", scenario3);
         greetingService.settaCollegamentoSuccessivo(scenario3, "true", scenario2);
@@ -365,11 +356,10 @@ public class GreetingServiceImplTest {
 
     }
 
-
     // Chiusura del DataBase
 
     @Test
-    public void fchiusuraServer(){
+    public void fchiusuraServer() {
         chiudi();
         Utente utente = new Utente("Utente", "Password");
         greetingService.signIn(utente);
@@ -396,5 +386,4 @@ public class GreetingServiceImplTest {
         greetingService.closeDatabase();
     }
 
-    
 }

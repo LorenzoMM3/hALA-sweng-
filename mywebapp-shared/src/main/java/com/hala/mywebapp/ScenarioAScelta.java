@@ -16,7 +16,7 @@ public class ScenarioAScelta extends Scenario implements Serializable {
 
     public ScenarioAScelta(String nome) {
         super(nome);
-        //valId = id;
+        // valId = id;
         opzioniScelta = new HashMap<>();
         this.tipologiaScenario = TipologiaScenario.ASCELTA;
     }
@@ -35,17 +35,33 @@ public class ScenarioAScelta extends Scenario implements Serializable {
     public void setValId(String id) {
         this.valId = id;
     }
-     
+
     public String getValId() {
         return this.valId;
     }
-    
+
     public HashMap<String, String> getOpzioniScelta() {
         return opzioniScelta;
     }
 
     public TipologiaScenario getTipologia() {
         return this.tipologiaScenario;
+    }
+
+    public void setPrecedente(ArrayList<String> precedente) {
+        this.precedente = precedente;
+    }
+
+    public void setSuccessivo(HashMap<String, String> successivo) {
+        this.successivo = successivo;
+    }
+
+    public ArrayList<String> getPrecedente() {
+        return this.precedente;
+    }
+
+    public HashMap<String, String> getSuccessivo() {
+        return this.successivo;
     }
 
 }

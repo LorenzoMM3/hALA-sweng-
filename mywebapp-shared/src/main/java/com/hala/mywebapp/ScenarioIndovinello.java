@@ -1,6 +1,8 @@
 package com.hala.mywebapp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ScenarioIndovinello extends Scenario implements Serializable {
 
@@ -62,5 +64,20 @@ public class ScenarioIndovinello extends Scenario implements Serializable {
         return this.tipologiaScenario;
     }
 
-    
+    public void setPrecedente(ArrayList<String> precedente) {
+        this.precedente = precedente;
+    }
+
+    public void setSuccessivo(HashMap<String, String> successivo) {
+        this.successivo = successivo;
+    }
+
+    public ArrayList<String> getPrecedente() {
+        return this.precedente;
+    }
+
+    public HashMap<String, String> getSuccessivo() {
+        return this.successivo;
+    }
+
 }
