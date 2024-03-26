@@ -13,9 +13,7 @@
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/MyWebApp/greet</url-pattern>
   </servlet-mapping>
-  <listener>
-<listener-class>com.hala.mywebapp.ListenerImpl</listener-class>
-</listener>
+ 
 
 	<!-- Default page to serve -->
   <welcome-file-list>
