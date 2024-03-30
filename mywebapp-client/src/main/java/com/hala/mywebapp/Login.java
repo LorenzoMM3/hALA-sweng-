@@ -103,6 +103,8 @@ public class Login extends Composite implements IsWidget {
         loginButton.setStyleName("lButton");
         usernameLabel.setStyleName("testi");
         passwordLabel.setStyleName("testi");
+        usernameField.setStyleName("textBox");
+        passwordField.setStyleName("textBox");
     }
 
     @Override

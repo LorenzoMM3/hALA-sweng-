@@ -37,16 +37,12 @@ public class Starter extends Composite implements IsWidget {
     Label desc1;
     @UiField
     Label desc2;
-    @UiField
-    Label desc3;
-    @UiField
-    Label desc4;
 
     @UiField
-    Label desc21;
+    Panel bottoniPanel;
 
     @UiField
-    HTMLPanel pagina;
+    Panel bottoncini;
 
     public Starter() {
         initWidget(uiBinder.createAndBindUi(this));
@@ -82,12 +78,10 @@ public class Starter extends Composite implements IsWidget {
         loginButton.setStyleName("sButton");
         signinButton.setStyleName("sButton");
         visualizzaCatalogoButton.setStyleName("sButton");
-        desc1.setStyleName("testi");
-        desc2.setStyleName("testi");
-        desc3.setStyleName("testi");
-        desc4.setStyleName("testi");
-        desc21.setStyleName("testi");
-        pagina.setStyleName("sfondo");
+        desc1.setStyleName("testi2");
+        desc2.setStyleName("testi3");
+        bottoniPanel.setStyleName("centramento");
+        bottoncini.setStyleName("centramento2");
     }
 
     @Override

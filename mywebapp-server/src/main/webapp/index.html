@@ -13,15 +13,18 @@
     <title>Web Application Starter Project</title>
     <script src="MyWebApp/MyWebApp.nocache.js"></script>
     <style>
-  
+      
       div.alto{
+        /*margin: 0 auto;*/
         width:70%;
-        height:10%;
-        margin: 0 auto; 
+        height:15%;
+        
+        margin-left:218px;
+        margin-top:20px;
         text-align:right;
-        justify-content: center; /* Centra orizzontalmente */
+        justify-content: center; /* Centra orizzontalmente D0CDE0*/
         align-items: center;
-        background: rgb(#D0CDE0);
+        background: rgb(#ffffff);
         box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
         backdrop-filter: blur( 4px );
         -webkit-backdrop-filter: blur( 4px );
@@ -29,13 +32,14 @@
         border: 1px solid rgba( 255, 255, 255, 0.18 );
       }
       div.basso{
-        width:70%;
-        height:90%;
-        margin-top: 60px;
-        margin-left: 230px; 
+        overflow: auto;
+        width:80%;
+        height:85%;
+        margin-top: 35px;
+        margin-left: 130px;
         justify-content: center;
         border-radius: 10px;
-        background:var(--gradient-2, linear-gradient(90deg, #efffdc 100%, #84BF88 20%))
+        padding-left:40px;
       }
       td.titolo{
         text-align:center;
@@ -57,6 +61,7 @@
     </style>
   </head>
   <body>
+
     <div class="alto">
       <table class="testa">
         <tr>
@@ -65,8 +70,8 @@
       </table>
       
     </div>  
-    <div class="basso"><table align="center" id="startTable"> </table></table></div>  
-    
+    <div class="basso"><table align="center" id="startTable"> </table></div>  
+
    
   </body>
 </html>

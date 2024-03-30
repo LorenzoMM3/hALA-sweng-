@@ -359,6 +359,8 @@ public class VisualizzaCatalogo extends Composite {
         ricerca.setStyleName("lButton");
         backButton.setStyleName("lButton");
         giocaButton.setStyleName("lButton");
+        nomeRicerca.setStyleName("textBox");
+        filtroListBox.setStyleName("listBox");
     }
 
     @Override

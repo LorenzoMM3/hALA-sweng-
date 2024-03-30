@@ -132,7 +132,7 @@ public class StorieCreateDaUtente extends Composite implements IsWidget {
         modificaButton.setStyleName("lButton");
         eliminaButton.setStyleName("lButton");
         backButton.setStyleName("lButton");
-        elencoStorie.setSize("200px", "50px");
+        elencoStorie.setStyleName("listBox");
 
     }
 }

@@ -1,14 +1,10 @@
 /** Add css rules here for your application. */
-/*var(--gradient-2, linear-gradient(90deg, #2accf5 0%, #5000fd 100%)) per fare uno sfondo sfumatooooo bellissimooo*/
-/*background-image:url(imgSfondoSfumato.png);*/
-
-
 /** Example rules used by the template application (remove for your app) */
 h1 {
   font-size: 40px;
   font-weight: bold;
   color: #565263;
-  margin: 40px 0px 70px;
+  margin: 40px 220px 70px;
   text-align: center;
   font-family: 'bufalino', sans-serif;
   font-style: normal;
@@ -43,30 +39,31 @@ h1 {
   margin: 15px 6px 6px;
 }
 
-.sfondo{
-  background:var(--gradient-2, linear-gradient(90deg, #efffdc 100%, #84BF88 20%))
-}
-
-.sPanel{
-  padding: 10px;
-  margin: 0;
+.sPanel{ /*stile per pannelli con bottoni*/
+  padding-top: 25px;
+  padding-bottom: 20px;
+  margin-top: 7px;
+  padding-left:20px;
+  margin-bottom: 20px;
+  margin-left:10px;
   width: 300px;
-  height: 300px;
+  height: 270px;
   background-color: transparent;
   border: 2px solid transparent;
   font-size: 1rem;
-  transition: border-color .3s cubic-bezier(.25, .01, .25, 1) 0s, color .3s cubic-bezier(.25, .01, .25, 1) 0s, background .2s cubic-bezier(.25, .01, .25, 1) 0s;
   background: rgba(255, 255, 255, 0.11);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   text-align:center;
   border-radius: 5px; 
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;
 }
 
-.mPanel{
+.mPanel{ /*stile per pannello con sola scritta*/
   padding: 10px;
-  margin: 0;
+  margin: 7px;
   width: 300px;
   height: 10px;
   background-color: transparent;
@@ -81,7 +78,7 @@ h1 {
   border-radius: 5px; 
 }
 
-.lButton{
+.lButton{ /*stile per bottoni di tutta la pagine tranne quelli dello starter*/
   color: #466646;
   background: #84BF88;
   font-family: 'bufalino', sans-serif;
@@ -93,7 +90,7 @@ h1 {
   padding: 7px 15px;
 }
 
-.sButton{
+.sButton{ /*stile i bottoni dello starter*/
   color: #466646;
   background: #84BF88;
   font-family: 'bufalino', sans-serif;
@@ -117,7 +114,7 @@ h1 {
 }
 
 
-.messaggios{
+.messaggios{  /*stile per messaggi di successo*/
   font-family: 'bufalino', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -125,7 +122,7 @@ h1 {
   color: #466646;
 }
 
-.messaggioa{
+.messaggioa{ /*stile per messaggi di allerta*/
   font-family: 'bufalino', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -133,10 +130,64 @@ h1 {
   color: #A65D33;
 }
 
-.testi{
+.testi{ /*stile per tutti i testi di istruzione del sito*/
   font-family: 'bufalino', sans-serif;
   font-style: normal;
   font-size: medium;
   font-weight: bold;
   color: #565263;
+}
+
+.testi2{ /*stile per il testo di benvenuto nello starter*/
+  
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-size: 30px;
+  font-weight: bold;
+  color: #565263;
+}
+
+.testi3{ /*stile per il sottotitoletto di spiegazione nello starter*/
+  
+  font-family: 'bufalino', sans-serif;
+  font-style: normal;
+  font-size: medium;
+  font-weight: bold;
+  color: #7d7b83;
+}
+
+
+/* ----centramento dei bottoni nello starter----*/
+.centramento{ 
+  padding-left:250px;
+}
+.centramento2{
+  padding-left:35px;
+}
+/*---- ----*/
+
+.textBox{ /*stile dei testbox*/
+  width: 200px; /* larghezza desiderata */
+  height: 20px; /* altezza desiderata */
+  border: 1px solid #dfdfdf; /* bordo grigio */
+  border-radius: 5px; /* angoli arrotondati */
+  outline: none; /* rimuove il contorno attorno al textbox quando è in focus */
+}
+
+.textBox:focus {
+  border-color: #466646; /* colore del bordo quando il textbox è in focus */
+}
+
+.listBox { /*stile dei listbox*/
+  width: 200px; 
+  height: 35px; 
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  outline: none; 
+}
+
+.listBox:focus {
+  border-color: #466646; 
 }

@@ -6,20 +6,19 @@
 
     <g:HTMLPanel ui:field="pagina">
     <div id="bottoni">
-        <g:HorizontalPanel spacing="30" ui:field="totale">
+        <g:VerticalPanel spacing="30" ui:field="totale">
             <g:VerticalPanel spacing="6" ui:field="descrizione">
-                <g:Label ui:field="desc1">Benvenuti nel nostro mondo di avventure interattive!</g:Label>
-                <g:Label ui:field="desc2">Qui potrai scrivere e giocare a storie coinvolgenti, </g:Label> 
-                <g:Label ui:field="desc21">prendendo decisioni che influenzeranno il corso degli eventi.</g:Label> 
-                <g:Label ui:field="desc3">Esplora mondi fantastici, risolvi enigmi e crea le tue epiche narrazioni:</g:Label>
-                <g:Label ui:field="desc4">Il potere della tua immaginazione è l'unica limitazione!</g:Label>
+                <g:Label ui:field="desc1">Benvenuto nel nostro mondo di avventure interattive!</g:Label>
+                <g:Label ui:field="desc2">Qui potrai scrivere e giocare a storie coinvolgenti, prendendo decisioni che influenzeranno il corso degli eventi. </g:Label> 
             </g:VerticalPanel>
-            <g:VerticalPanel spacing="6" ui:field="bottoniPanel">
-                <g:Button ui:field="signinButton" text="signIn"/>
-                <g:Button ui:field="loginButton" text="logIn"/>
-                <g:Button ui:field="visualizzaCatalogoButton" text="Visualizza il catalogo delle storie"/>
+            <g:VerticalPanel spacing="8" ui:field="bottoniPanel">
+            <g:HorizontalPanel spacing="6" ui:field="bottoncini">
+                <g:Button ui:field="signinButton" text="Registrati"/>
+                <g:Button ui:field="loginButton" text="Accedi"/>                
+            </g:HorizontalPanel>
+            <g:Button ui:field="visualizzaCatalogoButton" text="Visualizza il catalogo delle storie"/>
             </g:VerticalPanel>
-        </g:HorizontalPanel>
+        </g:VerticalPanel>
     </div>
 </g:HTMLPanel>
 

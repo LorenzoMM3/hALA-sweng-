@@ -5,13 +5,14 @@
              xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 
 
-    <g:VerticalPanel spacing="5">
+    <g:VerticalPanel spacing="13">
         <g:Label ui:field="salutoLabel"/>
-        <g:Button ui:field="giocaButton">Ricomincia dall'inizio</g:Button>
-        <g:Label ui:field="avvisoLabel">(Attenzione, non potrai tornare indietro)</g:Label>
+        <g:HorizontalPanel spacing="7">
+            <g:Button ui:field="giocaButton">Inizia la partita</g:Button>
+            <g:Label ui:field="avvisoLabel">(Attenzione, non potrai tornare indietro)</g:Label>
+        </g:HorizontalPanel>
         <g:Label ui:field="riprendiLabel"/>
         <g:Button ui:field="riprendiButton">Riprendi</g:Button>
         <g:Button ui:field="backButton">Torna alla lista delle storie</g:Button>
-        
     </g:VerticalPanel>
 </ui:UiBinder>

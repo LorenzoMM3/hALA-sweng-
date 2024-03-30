@@ -46,6 +46,12 @@ public class ScriviStoria extends Composite implements IsWidget {
     VerticalPanel vpScenario;
 
     @UiField
+    VerticalPanel istruzioni;
+
+    @UiField
+    Button chiaro;
+
+    @UiField
     Label scriviScenarioLabel;
 
     @UiField
@@ -119,6 +125,9 @@ public class ScriviStoria extends Composite implements IsWidget {
 
     @UiField
     Label inserisciOggettoLabel;
+
+    @UiField
+    Anchor link1;
 
     public ScriviStoria(Utente utente) {
         initWidget(uiBinder.createAndBindUi(this));
@@ -426,6 +435,17 @@ public class ScriviStoria extends Composite implements IsWidget {
             }
         });
 
+        link1.addClickHandler(event -> {
+            disabilitaTutto();
+            vpScenario.add(istruzioni);
+            istruzioni.setVisible(true);
+        });
+
+        chiaro.addClickHandler(event -> {
+            vpScenario.remove(istruzioni);
+            istruzioni.setVisible(false);
+        });
+
         creaCollegamenti.addClickHandler(new ClickHandler() {
 
             @Override
@@ -468,6 +488,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     }
 
     private void disabilitaTutto() {
+        istruzioni.setVisible(false);
         labelTestoScenario.setVisible(false);
         scriviScenarioLabel.setVisible(false);
         tipologiaLabel.setVisible(false);
@@ -590,6 +611,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     }
 
     private void settaGrafica() {
+        RootPanel.get("startTable").clear();
         backButton.setStyleName("lButton");
         inserisciStoria.setStyleName("lButton");
         creaScenarioAScelta.setStyleName("lButton");
@@ -610,5 +632,17 @@ public class ScriviStoria extends Composite implements IsWidget {
         labelDomandaIndovinello.setStyleName("testi");
         labelScelta.setStyleName("testi");
         labelDomandaAScelta.setStyleName("testi");
+        titoloStoria.setStyleName("textBox");
+        testoScenarioField.setStyleName("textBox");
+        domandaFieldAScelta.setStyleName("textBox");
+        scelta.setStyleName("textBox");
+        domandaFieldIndovinello.setStyleName("textBox");
+        rispostaFieldIndovinello.setStyleName("textBox");
+        oggetto.setStyleName("textBox");
+        inserisciOggettoTextBox.setStyleName("textBox");
+        menuTipoScenario.setStyleName("listBox");
+        link1.setStyleName("messaggioa");
+        istruzioni.setStyleName("testi");
+        chiaro.setStyleName("lbutton");
     }
 }

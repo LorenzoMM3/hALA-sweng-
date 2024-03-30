@@ -305,6 +305,9 @@ public class GiocaStoria extends Composite {
         invioRispostaButton.setStyleName("lButton");
         invioSelezioneSceltaButton.setStyleName("lButton");
         labelInventario.setStyleName("testi");
+        inserimentoRispostaTB.setStyleName("textBox");
+        listBoxOggettiSbloccabili.setStyleName("listBox");
+        opzioniLB.setStyleName("listBox");
     }
 
     public void riempiCampi() {

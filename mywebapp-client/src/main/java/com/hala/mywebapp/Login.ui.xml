@@ -4,7 +4,7 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
              
 
-    <g:VerticalPanel ui:field="loginPanel" spacing="10">
+    <g:VerticalPanel ui:field="loginPanel" spacing="12">
         <g:Label ui:field="usernameLabel">Username:</g:Label>
         <g:TextBox ui:field="usernameField"/>
         <g:Label ui:field="passwordLabel">Password:</g:Label>
