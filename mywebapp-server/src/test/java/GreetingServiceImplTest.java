@@ -391,7 +391,6 @@ public class GreetingServiceImplTest {
             greetingService.logIn(utenteChiusura2);
             greetingService.destroy();
             assertEquals(true, Database.getInstance().getDB().isClosed());
-            // Lo riapro per vedere se gli utenti erano stati sloggati
             
 
             

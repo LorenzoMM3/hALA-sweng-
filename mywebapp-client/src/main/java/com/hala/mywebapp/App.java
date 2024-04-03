@@ -9,21 +9,12 @@ public class App implements EntryPoint{
 public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
 
     public void onModuleLoad() {
-        hALAServiceAsync.initData(new AsyncCallback<Boolean>() {
-                @Override
-                public void onFailure(Throwable throwable) {
-                    try {
-                        throw new Exception("Errore nel caricamento dei dati");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onSuccess(Boolean verifica) {
-                    RootPanel.get("startTable").add(new Starter());
-                }
-            });
+        try{
+            RootPanel.get("startTable").add(new Starter());
+        }
+        catch (Exception e){
+            System.out.println("Errore: " + e.getMessage());
+        }
         
     }
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
     private Map<String, Utente> utentiNelSito;
@@ -606,7 +607,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         return temp;
     }
 
-    public void logoutUtenti() { // settaggio di tutti gli utenti a logged=false quando si chiude il server
+    public void logoutUtenti() { 
+        initData();// settaggio di tutti gli utenti a logged=false quando si chiude il server
         for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
             Utente u = entry.getValue();
             u.setIsLogged(false);
@@ -627,31 +629,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
         Database.getInstance().getDB().commit();
         convertToJsonUtenti();
-    }
-
-    // Per il test
-    public ArrayList<Utente> ottieniUtenti() {
-        initData();
         
-        ArrayList<Utente> temp = new ArrayList<Utente>();
-        for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
-            temp.add(entry.getValue());
-        }
-        return temp;
     }
 
-    // --fine
-    public void closeDatabase() {
-        if (Database.getInstance().getDB() != null && !Database.getInstance().getDB().isClosed()) {
-            Database.getInstance().getDB().close();
-        }
-    }
 
-    @Override
-    public void destroy() {
-        logoutUtenti();
-        closeDatabase();
-        super.destroy();
-    }
+
+
+
+
 
 }
