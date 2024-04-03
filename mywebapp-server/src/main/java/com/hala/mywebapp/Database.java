@@ -3,11 +3,9 @@ package com.hala.mywebapp;
 import org.mapdb.DB;
 import org.mapdb.DBException;
 import org.mapdb.DBMaker;
-import org.mapdb.DBException;
 
 import com.google.gwt.user.client.Window;
 
-import java.io.IOException;
 import java.util.Map;
 
 public class Database {
@@ -19,7 +17,7 @@ public class Database {
     private Map<String, Partita> partiteNelSito;
 
     private Database() {
-        // openDB();
+        openDB();
     }
 
     public static synchronized Database getInstance() {
@@ -29,6 +27,7 @@ public class Database {
         return instance;
     }
 
+    @SuppressWarnings("unchecked")
     public synchronized void openDB() {
         if (db != null && !db.isClosed()) {
             db.close();
@@ -41,15 +40,12 @@ public class Database {
             scenariNelSito = (Map<String, Scenario>) db.hashMap("scenariNelSitoPresenti").createOrOpen();
             partiteNelSito = (Map<String, Partita>) db.hashMap("partiteNelSitoPresenti").createOrOpen();
         } catch (DBException.VolumeIOError volumeIOError) {
-            // Gestisci l'errore di I/O specifico qui
             Window.alert(
-                    "Errore del Database. Potrebbe essere dettato da problemi di permessi, spazio su disco insufficiente o problemi hardware. Per favore riprova");
+                    "Errore del Database. Riprova");
         }
-
-        // Altre inizializzazioni se necessario
     }
 
-    // Metodi per ottenere i vari hashmap e altre operazioni sul database
+    // Metodi per ottenere i vari hashmap
 
     public Map<String, Utente> getUtentiNelSito() {
         return utentiNelSito;
@@ -80,9 +76,8 @@ public class Database {
                 db.close();
             }
         } catch (DBException.VolumeIOError volumeIOError) {
-            // Gestisci l'errore di I/O specifico qui
             Window.alert(
-                    "Errore del Database. Potrebbe essere dettato da problemi di permessi, spazio su disco insufficiente o problemi hardware. Per favore riprova");
+                    "Errore del Database. Riprova");
         }
     }
 }

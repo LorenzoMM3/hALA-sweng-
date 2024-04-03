@@ -1,6 +1,5 @@
 package com.hala.mywebapp;
 
-import org.mapdb.*;
 
 import com.google.gwt.user.server.rpc.jakarta.RemoteServiceServlet;
 
@@ -10,12 +9,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import com.hala.mywebapp.Database;
 
-@SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
-    public DB db;
     private Map<String, Utente> utentiNelSito;
     private Map<String, Storia> storieNelSito;
     private Map<String, Scenario> scenariNelSito;
@@ -25,18 +21,16 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     private String numeroScenari2;
     private int numeroPartite;
     private String numeroPartite2;
-    Database databaseSingleton = Database.getInstance();
 
     @Override
     public void initData() {
-        databaseSingleton.openDB();
-        db = databaseSingleton.getDB();
-        utentiNelSito = databaseSingleton.getUtentiNelSito();
-        storieNelSito = databaseSingleton.getStorieNelSito();
-        scenariNelSito = databaseSingleton.getScenariNelSito();
-        partiteNelSito = databaseSingleton.getPartiteNelSito();
 
-        if (db == null) {
+        utentiNelSito = Database.getInstance().getUtentiNelSito();
+        storieNelSito = Database.getInstance().getStorieNelSito();
+        scenariNelSito = Database.getInstance().getScenariNelSito();
+        partiteNelSito = Database.getInstance().getPartiteNelSito();
+
+        if (Database.getInstance().getDB() == null) {
             // inizializzazione delle variabili per dare un id alle partite e agli scenari
             numeroScenari = 0;
             numeroPartite = 0;
@@ -46,10 +40,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     // -- metodi per utente
     @Override
     public boolean signIn(Utente utente) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
 
         String username = utente.getUsername();
 
@@ -58,17 +49,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         }
 
         utentiNelSito.put(username, utente);
-        db.commit();
+        Database.getInstance().getDB().commit();
         convertToJsonUtenti(); // chiamo il metodo che salva l'utente sul json
         return true;
     }
 
     @Override
     public boolean logIn(Utente utente) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         String username = utente.getUsername();
 
         Utente temp = utentiNelSito.get(username);
@@ -77,7 +65,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             if (utente.getPassword().equals(temp.getPassword())) {
                 utente.setIsLogged(true);
                 utentiNelSito.put(username, utente);
-                db.commit();
+                Database.getInstance().getDB().commit();
                 convertToJsonUtenti();
                 return true; // Credenziali corrette
             }
@@ -90,16 +78,13 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     public boolean logOut(Utente utente) {
         utente.setIsLogged(false);
         utentiNelSito.put(utente.getUsername(), utente);
-        db.commit();
+        Database.getInstance().getDB().commit();
         convertToJsonUtenti();
         return true;
     }
 
     private void convertToJsonUtenti() {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
 
         try (PrintWriter pW = new PrintWriter(new FileWriter("utentiNelSito.json"))) {
             pW.println("{");
@@ -129,25 +114,19 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     @Override
     public boolean creaNuovaStoria(Storia nuovaStoria) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         String nomeStoria = nuovaStoria.getNome();
         if (storieNelSito.containsKey(nomeStoria)) {
             return false;
         }
         storieNelSito.put(nomeStoria, nuovaStoria);
-        db.commit();
+        Database.getInstance().getDB().commit();
         convertToJsonStorie();
         return true;
     }
 
     private void convertToJsonStorie() {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
 
         try (PrintWriter pW = new PrintWriter(new FileWriter("storieNelSito.json"))) {
             pW.println("{");
@@ -196,7 +175,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             if (entry.getValue().getNome().equalsIgnoreCase(nomeStoria)) {
                 eliminaScenari(nomeStoria);
                 storieNelSito.remove(entry.getKey());
-                db.commit();
+                Database.getInstance().getDB().commit();
                 convertToJsonStorie();
                 return true;
             }
@@ -207,55 +186,39 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     // Metodi per scenari
 
     public boolean aggiungiScenarioAScelta(String id, Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         scenariNelSito.put(id, scenario);
-        db.commit();
+        Database.getInstance().getDB().commit();
         return true;
     }
 
     public boolean aggiungiScenarioFinale(String id, Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         scenariNelSito.put(id, scenario);
-        db.commit();
+        Database.getInstance().getDB().commit();
         return true;
     }
 
     public boolean aggiungiScenarioIndovinello(String id, Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         scenariNelSito.put(id, scenario);
-        db.commit();
+        Database.getInstance().getDB().commit();
         return true;
     }
 
-    // ---metodo che conta il numero di scenari nel db per dare un id al nuovo
+    // ---metodo che conta il numero di scenari nel Database.getInstance().getDB()
+    // per dare un id al nuovo
     // scenario
     public String contaScenari() {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
-        for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
-            numeroScenari++;
-        }
+        initData();
+        numeroScenari = scenariNelSito.size();
         String numSc2 = Integer.toString(numeroScenari);
         return numSc2;
     }
 
     // Inserire lo Scenario Inziale
     public boolean settaScenarioIniziale(Scenario scenario) {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         String nomeStoria = "";
         Scenario temp = new Scenario();
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
@@ -313,14 +276,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             y.addPrecedente(keyAttuale);
             scenariNelSito.put(keyDaCollegare, y);
 
-            // nel db delle storie indico lo scenario iniziale
+            // nel Database.getInstance().getDB() delle storie indico lo scenario iniziale
             if (x.getPrecedente().get(0).equals("-1")) {// -----ma questa roba serve?
                 Storia s = storieNelSito.get(x.getNomeStoria());
                 s.setScenarioIniziale(x);
                 storieNelSito.put(x.getNomeStoria(), s);
                 convertToJsonStorie();
             }
-            db.commit();
+            Database.getInstance().getDB().commit();
             return true;
         } else {
             System.err.println("Errore: Chiave non trovata per uno degli scenari.");
@@ -440,7 +403,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             }
         }
 
-        db.commit();
+        Database.getInstance().getDB().commit();
         convertToJsonStorie();
 
     }
@@ -485,7 +448,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 convertToJsonStorie();
             }
             salvaSuFileScenari(nomeStoria);
-            db.commit();
+            Database.getInstance().getDB().commit();
             return true;
         }
         return false;
@@ -495,7 +458,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
         for (Map.Entry<String, Scenario> entry : scenariNelSito.entrySet()) {
             if (entry.getValue().getNomeStoria().equalsIgnoreCase(nomeStoria)) {
                 scenariNelSito.remove(entry.getKey());
-                db.commit();
+                Database.getInstance().getDB().commit();
                 salvaSuFileScenari(nomeStoria);
             }
         }
@@ -515,12 +478,10 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     // --metodi per partita
     public String contaPartite() {
 
-        // ---metodo per contare il numero di partite presenti nel db e dare un id alla
+        // ---metodo per contare il numero di partite presenti nel
+        // Database.getInstance().getDB() e dare un id alla
         // partita
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
         numeroPartite++;
         numeroPartite2 = Integer.toString(numeroPartite);
         return numeroPartite2;
@@ -546,7 +507,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             contaPartite();// chiamo il contapartite per creare l'id
             String nuovoId = contaPartite();
             daTornare = new Partita(giocatore, storia, nuovoId); // creo la partita
-            partiteNelSito.put(nuovoId, daTornare);// la aggiungo nel db
+            partiteNelSito.put(nuovoId, daTornare);// la aggiungo nel Database.getInstance().getDB()
             convertToJsonPartite();// chiamo il metodo per salvare la partita nel json
             return daTornare;
 
@@ -575,17 +536,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             if (p.getStoria().getNome().equalsIgnoreCase(storia.getNome())
                     && p.getGiocatore().getUsername().equalsIgnoreCase(utente.getUsername())) {
                 partiteNelSito.remove(entry.getKey());
-                db.commit();
+                Database.getInstance().getDB().commit();
                 convertToJsonPartite();
             }
         }
     }
 
     private void convertToJsonPartite() {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
 
         try (PrintWriter pW = new PrintWriter(new FileWriter("partiteNelSito.json"))) {
             pW.println("{");
@@ -655,7 +613,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
             String key = entry.getKey();
             utentiNelSito.put(key, u);
         }
-        db.commit();
+        Database.getInstance().getDB().commit();
         convertToJsonUtenti();
     }
 
@@ -667,16 +625,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
                 storieNelSito.remove(entry.getKey());
             }
         }
-        db.commit();
+        Database.getInstance().getDB().commit();
         convertToJsonUtenti();
     }
 
     // Per il test
     public ArrayList<Utente> ottieniUtenti() {
-        if (db == null || db.isClosed()) {
-            // databaseSingleton.openDB();
-            initData();
-        }
+        initData();
+        
         ArrayList<Utente> temp = new ArrayList<Utente>();
         for (Map.Entry<String, Utente> entry : utentiNelSito.entrySet()) {
             temp.add(entry.getValue());
@@ -686,8 +642,8 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
     // --fine
     public void closeDatabase() {
-        if (db != null && !db.isClosed()) {
-            db.close();
+        if (Database.getInstance().getDB() != null && !Database.getInstance().getDB().isClosed()) {
+            Database.getInstance().getDB().close();
         }
     }
 
