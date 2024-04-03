@@ -1,10 +1,9 @@
 package com.hala.mywebapp;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ScenarioAScelta extends Scenario implements Serializable {
+public class ScenarioAScelta extends Scenario{
 
     protected HashMap<String, String> opzioniScelta; // Testo Opzione=Oggetto, se non presente è null
     protected TipologiaScenario tipologiaScenario;

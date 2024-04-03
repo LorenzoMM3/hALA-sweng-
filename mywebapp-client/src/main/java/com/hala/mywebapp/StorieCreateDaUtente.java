@@ -10,7 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
-public class StorieCreateDaUtente extends Composite implements IsWidget {
+public class StorieCreateDaUtente extends Composite {
 
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final StorieCreateDaUtenteUiBinder uiBinder = GWT.create(StorieCreateDaUtenteUiBinder.class);

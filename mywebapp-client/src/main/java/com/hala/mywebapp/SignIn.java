@@ -8,14 +8,13 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class SignIn extends Composite implements IsWidget {
+public class SignIn extends Composite {
 
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final SignInUiBinder UiB = GWT.create(SignInUiBinder.class);

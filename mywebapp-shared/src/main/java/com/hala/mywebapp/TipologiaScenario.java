@@ -1,8 +1,7 @@
 package com.hala.mywebapp;
 
-import java.io.Serializable;
 
-public enum TipologiaScenario implements Serializable {
+public enum TipologiaScenario {
     DEFAULT,
     ASCELTA,
     INDOVINELLO

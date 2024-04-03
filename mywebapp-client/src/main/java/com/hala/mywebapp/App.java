@@ -15,7 +15,6 @@ public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingS
                     try {
                         throw new Exception("Errore nel caricamento dei dati");
                     } catch (Exception e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }

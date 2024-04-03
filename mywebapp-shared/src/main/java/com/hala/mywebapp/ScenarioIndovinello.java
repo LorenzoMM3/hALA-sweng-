@@ -1,10 +1,9 @@
 package com.hala.mywebapp;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ScenarioIndovinello extends Scenario implements Serializable {
+public class ScenarioIndovinello extends Scenario{
 
     protected String domandaIndovinello;
     protected String rispostaIndovinello;
