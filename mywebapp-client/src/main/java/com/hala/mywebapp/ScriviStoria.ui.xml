@@ -49,21 +49,7 @@
             <g:Button ui:field="creaScenarioIndovinello">Crea</g:Button>
 
             <g:Button ui:field="creaScenarioFinale">Crea</g:Button>
-            <g:VerticalPanel ui:field="istruzioni" spacing="10">
-                <g:Label ui:field="ist1">1. Inserisci il titolo della storia</g:Label>
-                <g:Label ui:field="ist2">2. Scegli il tipo di scenario: a scelta, a indovinello o finale</g:Label>
-                <g:Label ui:field="ist21"> 2.1 a scelta: inserisci le opzioni tra le quali il giocatore dovrà fare la sua scelta</g:Label>
-                <g:Label ui:field="ist211">  2.1.1 è facoltativo aggiungere il vincolo di un oggetto da avere nell'inventario per poter fare quella scelta</g:Label>
-                <g:Label ui:field="ist22"> 2.2 a indovinello: l'utente dovrà rispondere ad un indovinello</g:Label>
-                <g:Label ui:field="ist23"> 2.3 finale: sarà la conclusione della giocata</g:Label>
-                <g:Label ui:field="ist3">3. Inserisci il testo dello scenario</g:Label>
-                <g:Label ui:field="ist4">4. Inserisci l'oggetto (anche più di uno) che l'utente può raccogliere nello scenario (è facoltativo) </g:Label>
-                <g:Label ui:field="ist5">5. Clicca "crea" e ricomincia per tutti gli scenari che vuoi creare</g:Label>
-                <g:Label ui:field="ist6">6. Una volta scritti tutti gli scenari clicca il bottone per creare i collegamenti</g:Label>
-                <g:Label ui:field="ist61"> 6.1 All'inizio setta lo scenario da cui il giocatore partirà</g:Label>
-                <g:Label ui:field="ist62"> 6.2 Fai i collegamenti in base a quale scenario vuoi che il giocatore venga portato per le varie scelte che prende</g:Label>
-                <g:Button ui:field="chiaro">Tutto chiaro!</g:Button>
-            </g:VerticalPanel>
+            
         </g:VerticalPanel>
 
         <g:VerticalPanel spacing="20" ui:field="vpCollegamenti">

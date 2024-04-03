@@ -11,7 +11,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.Window;
 
-public class ScriviStoria extends Composite implements IsWidget {
+public class ScriviStoria extends Composite {
 
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final ScriviStoriaUiBinder uiBinder = GWT.create(ScriviStoriaUiBinder.class);
@@ -20,6 +20,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     private String nomeStoriaTemp;
     private String idTemp = "";
     private ArrayList<String> oggettiSbloccabili;
+    String tiposcena = "";
 
     interface ScriviStoriaUiBinder extends UiBinder<Widget, ScriviStoria> {
     }
@@ -45,12 +46,7 @@ public class ScriviStoria extends Composite implements IsWidget {
     @UiField
     VerticalPanel vpScenario;
 
-    @UiField
-    VerticalPanel istruzioni;
-
-    @UiField
-    Button chiaro;
-
+   
     @UiField
     Label scriviScenarioLabel;
 
@@ -138,37 +134,40 @@ public class ScriviStoria extends Composite implements IsWidget {
         settaGrafica();
 
         inserisciStoria.addClickHandler(new ClickHandler() {
+
             @Override
             public void onClick(ClickEvent event) {
-                if (!titoloStoria.getText().isEmpty()) {
-                    message.setText("");
-                    nomeStoriaTemp = titoloStoria.getText().toUpperCase();
-                    Storia nuovaStoria = new Storia(nomeStoriaTemp, utente);
-                    hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
-                        public void onFailure(Throwable caught) {
-                        };
+                
+                    if (!titoloStoria.getText().isEmpty()) {
+                        message.setText("");
+                        nomeStoriaTemp = titoloStoria.getText().toUpperCase();
+                        Storia nuovaStoria = new Storia(nomeStoriaTemp, utente);
+                        hALAServiceAsync.creaNuovaStoria(nuovaStoria, new AsyncCallback<Boolean>() {
+                            public void onFailure(Throwable caught) {
+                            };
 
-                        public void onSuccess(Boolean verifica) {
-                            if (verifica) {
-                                messageLabelCreate.setStyleName("messaggios");
-                                messageLabelCreate.setText("Storia creata con successo.");
-                                titoloS.remove(inserisciStoria);
-                                attivaTutto();
-                                menuTipoScenario.setSelectedIndex(0);
-                                showAdditionalFieldsAScelta();
-                                opzioniSceltaTemp = new ArrayList<>();
-                            } else {
+                            public void onSuccess(Boolean verifica) {
+                                if (verifica) {
+                                    messageLabelCreate.setStyleName("messaggios");
+                                    messageLabelCreate.setText("Storia creata con successo.");
+                                    titoloS.remove(inserisciStoria);
+                                    attivaTutto();
+                                    menuTipoScenario.setSelectedIndex(0);
+                                    showAdditionalFieldsAScelta();
+                                    opzioniSceltaTemp = new ArrayList<>();
+                                } else {
 
-                                messageLabelCreate.setStyleName("messaggioa");
-                                messageLabelCreate.setText("Nome già esistente, riprova con un altro nome.");
-                            }
-                        };
-                    });
-                } else {
-                    message.setStyleName("messaggioa");
-                    message.setText("Forse manca qualcosa... Inserisci il titolo della storia");
-                }
+                                    messageLabelCreate.setStyleName("messaggioa");
+                                    messageLabelCreate.setText("Nome già esistente, riprova con un altro nome.");
+                                }
+                            };
+                        });
+                    } else {
+                        message.setStyleName("messaggioa");
+                        message.setText("Forse manca qualcosa... Inserisci il titolo della storia");
+                    }
 
+                
             }
 
         });
@@ -195,14 +194,15 @@ public class ScriviStoria extends Composite implements IsWidget {
         altraScelta.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                if (!scelta.getText().isEmpty()) {
+                message.setText("");
+                if (!scelta.getText().isEmpty() && !scelta.getText().trim().equals("") && scelta.getText().length() <= 50) {
                     String oggettoTemp = oggetto.getText(); // Uguale a "" se non serve
                     opzioniSceltaTemp.add(scelta.getText() + ";" + oggettoTemp);
                     oggetto.setText("");
                     scelta.setText("");
                 } else {
                     message.setStyleName("messaggioa");
-                    message.setText("Scelta non aggiunta. Inserisci il testo dell'opzione di scelta");
+                    message.setText("Scelta non aggiunta. Il testo non può essere vuoto o troppo lungo.");
                     Window.scrollTo(0, 0);
                 }
             }
@@ -242,47 +242,54 @@ public class ScriviStoria extends Composite implements IsWidget {
 
                         @Override
                         public void onSuccess(String result) {
+                            message.setText("");
                             idTemp = result;
                             ScenarioAScelta scenario = new ScenarioAScelta(nomeStoriaTemp);
                             scenario.setValId(idTemp);
                             scenario.setTestoScena(testoScenarioField.getText());
-                            scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
-                            scenario.setOpzioniScelte(opzioniSceltaTemp);
-                            scenario.setOggettiCheSblocca(oggettiSbloccabili);
+                            if (domandaFieldAScelta.getText().length() <= 100) {
+                                scenario.setDomandaCambioScenario(domandaFieldAScelta.getText());
+                                scenario.setOpzioniScelte(opzioniSceltaTemp);
+                                scenario.setOggettiCheSblocca(oggettiSbloccabili);
 
-                            message.setText("");
-                            vpScenario.add(message);
-                            hALAServiceAsync.aggiungiScenarioAScelta(idTemp, scenario, new AsyncCallback<Boolean>() {
-                                @Override
-                                public void onFailure(Throwable caught) {
-                                }
-
-                                public void onSuccess(Boolean verifica) {
-                                    if (verifica) {
-                                        message.setStyleName("messaggios");
-                                        message.setText("Scenario a scelta creato con successo");
-                                        scenariCreati.add(scenario);
-                                        // Resetto i field così da liberarli per la creazione di un nuovo scenario
-                                        testoScenarioField.setText("");
-                                        domandaFieldAScelta.setText("");
-                                        scelta.setText("");
-                                        // Libero l'array di scelte
-                                        opzioniSceltaTemp.clear();
-                                        oggettiSbloccabili.clear();
-
-                                    } else {
-                                        message.setStyleName("messaggioa");
-                                        message.setText("Errore nella creazione dello scenario a scelta");
-                                        // Resetto i field così da liberarli per la creazione di un nuovo scenario
-                                        testoScenarioField.setText("");
-                                        domandaFieldAScelta.setText("");
-                                        scelta.setText("");
-                                        // Libero l'array di scelte
-                                        opzioniSceltaTemp.clear();
-                                        oggettiSbloccabili.clear();
+                                message.setText("");
+                                vpScenario.add(message);
+                                hALAServiceAsync.aggiungiScenarioAScelta(idTemp, scenario, new AsyncCallback<Boolean>() {
+                                    @Override
+                                    public void onFailure(Throwable caught) {
                                     }
-                                }
-                            });
+
+                                    public void onSuccess(Boolean verifica) {
+                                        if (verifica) {
+                                            message.setStyleName("messaggios");
+                                            message.setText("Scenario a scelta creato con successo");
+                                            scenariCreati.add(scenario);
+                                            // Resetto i field così da liberarli per la creazione di un nuovo scenario
+                                            testoScenarioField.setText("");
+                                            domandaFieldAScelta.setText("");
+                                            scelta.setText("");
+                                            // Libero l'array di scelte
+                                            opzioniSceltaTemp.clear();
+                                            oggettiSbloccabili.clear();
+
+                                        } else {
+                                            message.setStyleName("messaggioa");
+                                            message.setText("Errore nella creazione dello scenario a scelta");
+                                            // Resetto i field così da liberarli per la creazione di un nuovo scenario
+                                            testoScenarioField.setText("");
+                                            domandaFieldAScelta.setText("");
+                                            scelta.setText("");
+                                            // Libero l'array di scelte
+                                            opzioniSceltaTemp.clear();
+                                            oggettiSbloccabili.clear();
+                                        }
+                                    }
+                                });
+                            } else {
+                                message.setStyleName("messaggioa");
+                                message.setText("Domanda troppo lunga. Inserisci una domanda più corta.");
+                                Window.scrollTo(0, 0);
+                            }
 
                         }
 
@@ -309,47 +316,55 @@ public class ScriviStoria extends Composite implements IsWidget {
                         @Override
                         public void onSuccess(String result) {
                             idTemp = result;
+                            message.setText("");
                             ScenarioIndovinello scenario = new ScenarioIndovinello(nomeStoriaTemp);
 
                             scenario.setValId(idTemp);
+                            
                             scenario.setTestoScena(testoScenarioField.getText());
 
-                            scenario.setDomandaCambioScenario(domandaFieldIndovinello.getText());
-                            scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
-                            scenario.setOggettiCheSblocca(oggettiSbloccabili);
+                            if (domandaFieldIndovinello.getText().length() <= 100){
+                                scenario.setDomandaCambioScenario(domandaFieldIndovinello.getText());
+                                scenario.setRispostaIndovinello(rispostaFieldIndovinello.getText());
+                                scenario.setOggettiCheSblocca(oggettiSbloccabili);
 
-                            message.setText("");
-                            vpScenario.add(message);
+                                message.setText("");
+                                vpScenario.add(message);
 
-                            hALAServiceAsync.aggiungiScenarioIndovinello(idTemp, scenario,
-                                    new AsyncCallback<Boolean>() {
-                                        @Override
-                                        public void onFailure(Throwable caught) {
-                                        }
-
-                                        public void onSuccess(Boolean verifica) {
-                                            if (verifica) {
-                                                scenariCreati.add(scenario);
-                                                message.setStyleName("messaggios");
-                                                message.setText("Scenario Indovinello creato con successo");
-                                                testoScenarioField.setText("");
-                                                domandaFieldIndovinello.setText("");
-                                                rispostaFieldIndovinello.setText("");
-                                                oggettiSbloccabili.clear();
-
-                                            } else {
-                                                message.setStyleName("messaggioa");
-                                                message.setText("Errore nella creazione dello scenario indovinello");
-                                                testoScenarioField.setText("");
-                                                domandaFieldIndovinello.setText("");
-                                                rispostaFieldIndovinello.setText("");
-                                                oggettiSbloccabili.clear();
+                                hALAServiceAsync.aggiungiScenarioIndovinello(idTemp, scenario,
+                                        new AsyncCallback<Boolean>() {
+                                            @Override
+                                            public void onFailure(Throwable caught) {
                                             }
-                                        }
-                                    });
-                        }
 
+                                            public void onSuccess(Boolean verifica) {
+                                                if (verifica) {
+                                                    scenariCreati.add(scenario);
+                                                    message.setStyleName("messaggios");
+                                                    message.setText("Scenario Indovinello creato con successo");
+                                                    testoScenarioField.setText("");
+                                                    domandaFieldIndovinello.setText("");
+                                                    rispostaFieldIndovinello.setText("");
+                                                    oggettiSbloccabili.clear();
+
+                                                } else {
+                                                    message.setStyleName("messaggioa");
+                                                    message.setText("Errore nella creazione dello scenario indovinello");
+                                                    testoScenarioField.setText("");
+                                                    domandaFieldIndovinello.setText("");
+                                                    rispostaFieldIndovinello.setText("");
+                                                    oggettiSbloccabili.clear();
+                                                }
+                                            }
+                                        });
+                            } else {
+                            message.setStyleName("messaggioa");
+                            message.setText("Domanda troppo lunga. Inserisci una domanda più corta.");
+                            Window.scrollTo(0, 0);
+                            }
+                        }
                     });
+                    
                 } else {
                     message.setStyleName("messaggioa");
                     message.setText("Scenario non creato. Riempi prima tutti i campi.");
@@ -436,15 +451,22 @@ public class ScriviStoria extends Composite implements IsWidget {
         });
 
         link1.addClickHandler(event -> {
-            disabilitaTutto();
-            vpScenario.add(istruzioni);
-            istruzioni.setVisible(true);
+            String istruzioni = "1. Inserisci il titolo della storia\n"
+                    + "2. Scegli il tipo di scenario: a scelta, a indovinello o finale\n" +
+            "2.1 a scelta: inserisci le opzioni tra le quali il giocatore dovrà fare la sua scelta\n" +
+            "2.1.1 è facoltativo aggiungere il vincolo di un oggetto da avere nell'inventario per poter fare quella scelta\n" +
+            "2.2 a indovinello: l'utente dovrà rispondere ad un indovinello\n" +
+            "2.3 finale: sarà la conclusione della giocata\n" +
+            "3. Inserisci il testo dello scenario\n" +
+            "4. Inserisci l'oggetto (anche più di uno) che l'utente può raccogliere nello scenario (è facoltativo)\n" +
+            "5. Clicca \"crea\" e ricomincia per tutti gli scenari che vuoi creare\n" +
+            "6. Una volta scritti tutti gli scenari clicca il bottone per creare i collegamenti\n" +
+            "6.1 All'inizio setta lo scenario da cui il giocatore partirà\n" +
+            "6.2 Fai i collegamenti in base a quale scenario vuoi che il giocatore venga portato per le varie scelte che prende\n";
+            Window.alert(istruzioni);
         });
 
-        chiaro.addClickHandler(event -> {
-            vpScenario.remove(istruzioni);
-            istruzioni.setVisible(false);
-        });
+       
 
         creaCollegamenti.addClickHandler(new ClickHandler() {
 
@@ -488,7 +510,6 @@ public class ScriviStoria extends Composite implements IsWidget {
     }
 
     private void disabilitaTutto() {
-        istruzioni.setVisible(false);
         labelTestoScenario.setVisible(false);
         scriviScenarioLabel.setVisible(false);
         tipologiaLabel.setVisible(false);
@@ -642,7 +663,6 @@ public class ScriviStoria extends Composite implements IsWidget {
         inserisciOggettoTextBox.setStyleName("textBox");
         menuTipoScenario.setStyleName("listBox");
         link1.setStyleName("messaggioa");
-        istruzioni.setStyleName("testi");
-        chiaro.setStyleName("lbutton");
+        
     }
 }

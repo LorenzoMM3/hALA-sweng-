@@ -11,7 +11,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
-public class Collegamenti extends Composite implements IsWidget {
+public class Collegamenti extends Composite {
 
     public static final GreetingServiceAsync hALAServiceAsync = GWT.create(GreetingService.class);
     private static final CollegamentiUiBinder uiBinder = GWT.create(CollegamentiUiBinder.class);
@@ -392,6 +392,12 @@ public class Collegamenti extends Composite implements IsWidget {
         settaSuccessivoFinale.setStyleName("lButton");
         LscenarioIniziale.setStyleName("testi");
         totale.setStyleName("sfondo");
+        scenariSenzaPrecedente.setStyleName("listBox");
+        menuScelte.setStyleName("listBox");
+        menuIndovinelli.setStyleName("listBox");
+        menuScenariCollegamenti.setStyleName("listBox");
+        listaScenari.setStyleName("listBox");
+        menuScenari.setStyleName("listBox");
 
     }
 
@@ -460,7 +466,7 @@ public class Collegamenti extends Composite implements IsWidget {
         listaScenari.setSelectedIndex(0);
         menuScenariCollegamenti.setSelectedIndex(0);
         menuScenari.setSelectedIndex(menuScenari.getItemCount() - 1);
-        scenariSenzaPrecedente.setSize("200px", "50px");
+
         scenariSenzaPrecedente.setVisible(false);
     }
 
@@ -470,14 +476,15 @@ public class Collegamenti extends Composite implements IsWidget {
                 lb.addItem(temp.getTestoScena());
             }
         }
-        lb.setSize("200px", "50px");
+
     }
 
     private void riempiLista(ListBox lb) {
         for (Scenario temp : scenariStoria) {
             lb.addItem(temp.getTestoScena());
         }
-        lb.setSize("200px", "50px");
+
     }
 
 }
+
