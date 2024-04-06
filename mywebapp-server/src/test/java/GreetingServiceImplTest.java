@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.hala.mywebapp.GreetingServiceImpl;
+import com.hala.mywebapp.ListenerImpl;
 import com.hala.mywebapp.Scenario;
 import com.hala.mywebapp.ScenarioAScelta;
 import com.hala.mywebapp.ScenarioIndovinello;
@@ -389,7 +390,8 @@ public class GreetingServiceImplTest {
             greetingService.logIn(utenteChiusura1);
             greetingService.signIn(utenteChiusura2);
             greetingService.logIn(utenteChiusura2);
-            greetingService.destroy();
+            ListenerImpl listener = new ListenerImpl();
+            listener.contextDestroyed(null);
             assertEquals(true, Database.getInstance().getDB().isClosed());
             
 
